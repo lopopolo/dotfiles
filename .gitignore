@@ -1,0 +1,17 @@
+/.Trash
+/.ssh
+
+# all of the default folders in a mac home directory
+/Desktop/
+/Documents/
+/Downloads/
+/Library/
+/Movies/
+/Music/
+/Pictures/
+/Public/
+/Sites/
+
+# dropbox
+/Dropbox/
+/.dropbox/
