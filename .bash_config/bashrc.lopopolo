@@ -29,7 +29,7 @@ alias src='source ~/.bash_profile; source ~/.bashrc'
 alias la='ls -la'
 
 # Make it quicker to edit this file
-alias b='vim ~/.bashrc.lopopolo'
+alias b='vim ~/.bash_config/bashrc.lopopolo'
 
 # Alias g=git and add bash completion
 alias g='git'
@@ -59,7 +59,7 @@ PLAIN="\[\e[m\]"
 
 function prompt_command {
   git_ps1_colored
-  export PS1="$WHITE[\$(date +%H:%M)|\u|\h] [\w]$PLAIN\[$git_ps1_color\]$git_ps1_string$PLAIN \$\n▶ "
+  export PS1="\033]0;\h\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$PLAIN\[$git_ps1_color\]$git_ps1_string$PLAIN \$\n▶ "
 }
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
