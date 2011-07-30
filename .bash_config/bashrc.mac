@@ -1,0 +1,7 @@
+# mac specific customizations
+
+alias ls='ls -h -F'
+
+# make MacVim my default editor
+alias vim='mvim'
+alias vimcmd='/usr/bin/vim'

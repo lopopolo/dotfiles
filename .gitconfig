@@ -1,0 +1,10 @@
+[user]
+	name = Ryan Lopopolo
+	email = rjl@hyperbo.la
+[color]
+	ui = auto
+[core]
+	excludesfile = /Users/lopopolo/.git-global-ignore
+[alias]
+	s = status --untracked-files=no
+	stat = status

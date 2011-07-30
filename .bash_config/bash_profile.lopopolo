@@ -1,0 +1,5 @@
+# z: https://github.com/rupa/z
+source $HOME/scripts/z/z.sh
+
+# make sure we always source bashrc (Terminal only sources bash_profile)
+source ~/.bashrc
