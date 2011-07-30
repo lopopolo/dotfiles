@@ -5,6 +5,9 @@
 # and don't want it to be a submodule
 /.vim/
 
+# don't track repos. This is where all other git repos live
+/repos/
+
 # all of the default folders in a mac home directory
 /Desktop/
 /Documents/
