@@ -4,7 +4,7 @@
 [color]
 	ui = auto
 [core]
-	excludesfile = /Users/lopopolo/.git-global-ignore
+	excludesfile = ~/.git-global-ignore
 [alias]
 	s = status --untracked-files=no
 	stat = status
