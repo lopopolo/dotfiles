@@ -5,3 +5,6 @@ alias ls='ls -h -F'
 # make MacVim my default editor
 alias vim='mvim'
 alias vimcmd='/usr/bin/vim'
+
+# put gems in path
+export PATH=~/.gem/ruby/1.8/bin:$PATH
