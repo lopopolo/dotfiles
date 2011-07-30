@@ -11,5 +11,6 @@ your home directory generally is. To clone:
 
 1.  from $HOME, `git clone https://github.com/lopopolo/dotfiles.git`
 2.  `mv dotfiles/* ~/`
-3.  `find dotfiles -type f -exec mv {} ~/ \;`
+3.  `find dotfiles -type f -exec mv {} ~/ \;` because globbing doesn't
+match dotfiles by default.
 4.  `rm -rf dotfiles`
