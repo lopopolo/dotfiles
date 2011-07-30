@@ -3,11 +3,7 @@
 
 # don't track .vim since I keep track of it in its own repo
 # and don't want it to be a submodule
-# Also don't keep track of vimrc and gvimrc because they are
-# machine specific symlinks
-/.vim
-/.vimrc
-/.gvimrc
+/.vim/
 
 # all of the default folders in a mac home directory
 /Desktop/
