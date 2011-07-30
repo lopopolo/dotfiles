@@ -50,3 +50,6 @@ if &t_Co >= 256 || has("gui_running")
   colorscheme mustang
 endif
 
+" Quickly display a markdown preview of the current buffer
+:map <leader>m :%w ! markdown_doctor \| bcat<CR><CR>
+
