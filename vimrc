@@ -2,6 +2,7 @@
 filetype off
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+call pathogen#helptags()
 
 syntax on
 filetype plugin indent on
@@ -32,7 +33,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 set laststatus=2 
-set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ lin:%l\,%L\ col:%c%V\ pos:%o\ %P
+set statusline=%<%F%h%m%r%h%w%y\ %{fugitive#statusline()}\ %{&ff}\ lin:%l\,%L\ col:%c%V\ pos:%o\ %P
 
 set wrap
 set textwidth=79
