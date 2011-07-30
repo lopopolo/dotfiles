@@ -64,3 +64,6 @@ function prompt_command {
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
 
+# z: https://github.com/rupa/z
+source ~/scripts/z/z.sh
+
