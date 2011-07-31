@@ -9,7 +9,7 @@ Setup
 Git will complain if you try and clone into a non-empty directory, which
 your home directory generally is. To clone:
 
-1.  from $HOME, `git clone https://github.com/lopopolo/dotfiles.git`
+1.  from $HOME, `git clone git@github.com:lopopolo/dotfiles.git`
 2.  `mv dotfiles/* ~/`
 3.  `find dotfiles -type f -exec mv {} ~/ \;` because globbing doesn't
 match dotfiles by default.
