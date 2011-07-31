@@ -10,3 +10,5 @@
 	stat = status
 [github]
 	user = lopopolo
+[branch]
+	autosetuprebase = always
