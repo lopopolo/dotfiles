@@ -59,7 +59,7 @@ PLAIN="\[\e[m\]"
 
 function prompt_command {
   git_ps1_colored
-  export PS1="\033]0;\h\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$PLAIN\[$git_ps1_color\]$git_ps1_string$PLAIN \$\n▶ "
+  export PS1="\033]0;\h : \W\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$PLAIN\[$git_ps1_color\]$git_ps1_string$PLAIN \$\n▶ "
 }
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
