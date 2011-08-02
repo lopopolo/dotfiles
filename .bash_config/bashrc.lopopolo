@@ -64,6 +64,11 @@ function prompt_command {
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
 
+# django stuff
+export DJANGO_SETTINGS_MODULE=hyperbola.settings
+export PATH=$HOME/repos/hyperbola:$PATH
+export PYTHONPATH=$HOME/repos/hyperbola:$PYTHONPATH
+
 # z: https://github.com/rupa/z
 source ~/scripts/z/z.sh
 
