@@ -7,7 +7,7 @@ function vim {
   if [ $# -eq 0 ]; then
     mvim
   else
-    mvim --remote-tab "$@"
+    mvim --remote-tab-silent "$@"
   fi
 }
 alias vimcmd='/usr/bin/vim'
