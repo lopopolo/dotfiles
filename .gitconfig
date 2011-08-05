@@ -12,3 +12,5 @@
 	user = lopopolo
 [branch]
 	autosetuprebase = always
+[branch "master"]
+	rebase = true
