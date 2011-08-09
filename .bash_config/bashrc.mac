@@ -15,4 +15,4 @@ alias vimcmd='/usr/bin/vim'
 export GIT_EDITOR=/usr/bin/vim
 
 # put gems in path
-export PATH=~/.gem/ruby/1.8/bin:$PATH
+export PATH=~/.gem/ruby/1.8/bin:/usr/local/git/bin:$PATH
