@@ -69,6 +69,12 @@ export DJANGO_SETTINGS_MODULE=hyperbola.settings
 export PATH=$HOME/repos/hyperbola:$PATH
 export PYTHONPATH=$HOME/repos/hyperbola:$PYTHONPATH
 
+# rbenv
+export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
+source $HOME/.rbenv/completions/rbenv.bash
+
+# stuff for moving around directories
+export CDPATH=.:~:~/repos:~/repos/hyperbola:~/repos/hyperbola/hyperbola
 # z: https://github.com/rupa/z
 source ~/scripts/z/z.sh
 

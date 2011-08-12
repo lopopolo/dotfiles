@@ -1,3 +1,9 @@
 [submodule "scripts/z"]
 	path = scripts/z
 	url = git://github.com/rupa/z.git
+[submodule ".rbenv"]
+	path = .rbenv
+	url = git://github.com/sstephenson/rbenv.git
+[submodule "scripts/ruby-build"]
+	path = scripts/ruby-build
+	url = git://github.com/sstephenson/ruby-build.git
