@@ -53,3 +53,13 @@ endif
 " Quickly display a markdown preview of the current buffer
 :map <leader>m :%w ! markdown_doctor \| bcat<CR><CR>
 
+" disable middle click pasting (I accidentall do this all the time)
+nnoremap <MiddleMouse> <Nop>
+nnoremap <2-MiddleMouse> <Nop>
+nnoremap <3-MiddleMouse> <Nop>
+nnoremap <4-MiddleMouse> <Nop>
+
+inoremap <MiddleMouse> <Nop>
+inoremap <2-MiddleMouse> <Nop>
+inoremap <3-MiddleMouse> <Nop>
+inoremap <4-MiddleMouse> <Nop>
