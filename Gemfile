@@ -3,6 +3,7 @@ source "http://gems.github.com"
 
 gem "bcat"
 gem "bundler"
+gem "gollum"
 gem "markdown_doctor"
 gem "rake"
 # ruby-debug
