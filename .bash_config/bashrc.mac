@@ -17,3 +17,11 @@ export GIT_EDITOR=/usr/bin/vim
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
+
+cdf() # cd's to frontmost window of Finder
+{
+  cd "`osascript -e 'tell application "Finder"' \
+    -e 'set myname to POSIX path of (target of window 1 as alias)' \
+    -e 'end tell' 2>/dev/null`"
+}
+
