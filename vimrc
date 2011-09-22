@@ -41,6 +41,8 @@ set formatoptions=qrn1
 highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
+set cursorline
+
 nnoremap ; :
 
 " save on lose focus
