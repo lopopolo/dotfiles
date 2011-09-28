@@ -12,4 +12,6 @@ your home directory generally is. To clone:
 1.  from `$HOME`, `git init`
 2.  `git remote add origin  git@github.com:lopopolo/dotfiles.git`
 3.  `git pull origin master`
+4.  Remember to install rubies with `rbenv install` and install gems in each
+    one with `bundle install`
 
