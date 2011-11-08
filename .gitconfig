@@ -8,6 +8,7 @@
 [alias]
 	s = status --untracked-files=no
 	stat = status
+	co = checkout
 [github]
 	user = lopopolo
 [branch]
