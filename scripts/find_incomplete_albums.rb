@@ -36,7 +36,7 @@ Dir.new(MUSIC_DIR).each do |artist|
       bad = false if track_num_range.sort == all.sort && all.min == 1
     end
     # if still bad, do the output
-    if bad
+    if bad || TRACKS.length > 1 && TRACKS.has_key?(nil)
       puts "#{artist}/#{album}"
       num_incomplete_albums += 1
     end
