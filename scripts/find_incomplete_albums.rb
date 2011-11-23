@@ -44,5 +44,5 @@ Dir.new(MUSIC_DIR).each do |artist|
 end
 # by this point, we've looked at every file in MUSIC_DIR. Optimization say, what?
 
-puts "#{num_incomplete_albums} incomplete albums"
+puts "\n#{num_incomplete_albums} incomplete albums"
 
