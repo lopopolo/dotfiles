@@ -8,7 +8,7 @@ MUSIC_DIR = File.expand_path "~/Music/iTunes/iTunes Media/Music"
 
 # let's not create 30k copies of this regex and another 30k hashes, mmkay?
 IGNORE_REGEXP = Regexp.compile(/^\./)
-TRACKS = []
+TRACKS = Hash.new { Array.new }
 
 num_incomplete_albums = 0
 Dir.new(MUSIC_DIR).each do |artist|
@@ -19,11 +19,13 @@ Dir.new(MUSIC_DIR).each do |artist|
     Dir.new(File.join(artist_dir, album)).each do |song|
       # assume tracks are numbered in the standard
       # iTunes way: optional_disk_number-track
-      TRACKS << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
+      TRACKS[$1] = TRACKS[$1] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
     end
-    if TRACKS.max > TRACKS.length
-      puts "#{artist}/#{album}"
-      num_incomplete_albums += 1
+    TRACKS.each_key do |key|
+      if TRACKS[key].max != TRACKS[key].length
+        puts "#{artist}/#{album}"
+        num_incomplete_albums += 1
+      end
     end
   end
 end
