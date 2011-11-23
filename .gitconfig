@@ -9,6 +9,7 @@
 	s = status --untracked-files=no
 	stat = status
 	co = checkout
+	ahead = log origin/master..HEAD
 [github]
 	user = lopopolo
 [branch]
