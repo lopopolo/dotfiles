@@ -21,11 +21,24 @@ Dir.new(MUSIC_DIR).each do |artist|
       # iTunes way: optional_disk_number-track
       TRACKS[$1] = TRACKS[$1] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
     end
+
+    bad = false
     TRACKS.each_key do |key|
-      if TRACKS[key].max != TRACKS[key].length
-        puts "#{artist}/#{album}"
-        num_incomplete_albums += 1
-      end
+      # check that the album
+      track_num_range = (TRACKS[key].min..TRACKS[key].max).to_a
+      bad = true if track_num_range.sort != TRACKS[key].sort || TRACKS[key].min > 1
+    end
+    # check to see if the bad designation is due to a multidisk album with
+    # continuous track numbering
+    if bad
+      all = TRACKS.values.flatten
+      track_num_range = *(all.min..all.max).to_a
+      bad = false if track_num_range.sort == all.sort && all.min == 1
+    end
+    # if still bad, do the output
+    if bad
+      puts "#{artist}/#{album}"
+      num_incomplete_albums += 1
     end
   end
 end
