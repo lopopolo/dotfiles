@@ -3,6 +3,10 @@
 # This script underestimates. It doesn't catch albums that are only
 # missing tracks at the end.
 
+# run this every once in a while to find tracks that iTunes hasn't moved
+# to their rightful home
+# ▶ find ~/Music -name "* 2.mp3" | grep -iv "part" | grep -iv "pt" | less
+
 # yes, its hard-coded for macs. Get over it.
 MUSIC_DIR = File.expand_path "~/Music/iTunes/iTunes Media/Music"
 
