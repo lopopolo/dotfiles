@@ -12,6 +12,21 @@ your home directory generally is. To clone:
 1.  from `$HOME`, `git init`
 2.  `git remote add origin  git@github.com:lopopolo/dotfiles.git`
 3.  `git pull origin master`
-4.  Remember to install rubies with `rbenv install` and install gems in each
-    one with `bundle install`
+4.  `git submodule init && git submodule update`
+
+Then do these things to finish setting up:
+
+1.  `brew install bash-completion git readline tig wget pil`
+2.  Remember to install rubies and gems
+
+  * `CONFIGURE_OPTS="--with-readline-dir=/usr/local/Cellar/readline/6.2.1/" rbenv install 1.`something
+  * `gem install bundle`
+  * `bundle install`
+  * `rbenv rehash`
+
+3.  Pimp out python:
+
+  *  `easy_install ipython`
+  *  `easy_install readline`
+  *  `easy_install pil`
 
