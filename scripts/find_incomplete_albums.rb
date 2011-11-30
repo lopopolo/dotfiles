@@ -7,6 +7,10 @@
 # to their rightful home
 # ▶ find ~/Music -name "* 2.mp3" | grep -iv "part" | grep -iv "pt" | less
 
+# run this to find tracks not tagged with featured artists at the end
+# ▶ find ~/Music -iname "*feat.*mix*"
+# ▶ find ~/Music -iname "*(feat.*(*"
+
 # yes, its hard-coded for macs. Get over it.
 MUSIC_DIR = File.expand_path "~/Music/iTunes/iTunes Media/Music"
 
