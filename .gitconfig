@@ -12,6 +12,7 @@
 	ahead = log origin/master..HEAD
 [github]
 	user = lopopolo
+	token = a3c9b63c113b6b4be414ebe374991ba6
 [branch]
 	autosetuprebase = always
 [branch "master"]
