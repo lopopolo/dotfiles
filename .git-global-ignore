@@ -3,3 +3,5 @@
 # vim stuff
 *.swp
 *~
+# xcode
+xcuserdata
