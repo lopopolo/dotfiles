@@ -28,3 +28,6 @@
 [submodule "bundle/vim-thrift"]
 	path = bundle/vim-thrift
 	url = git://github.com/jigish/vim-thrift.git
+[submodule "bundle/solarized"]
+	path = bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git

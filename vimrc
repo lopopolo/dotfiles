@@ -59,7 +59,8 @@ nnoremap ; :
 au FocusLost * :wa
 
 if &t_Co >= 256 || has("gui_running")
-  colorscheme mustang
+  set background=dark
+  colorscheme solarized
 endif
 
 " Quickly display a markdown preview of the current buffer
