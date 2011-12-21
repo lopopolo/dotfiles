@@ -7,3 +7,9 @@
 [submodule "scripts/ruby-build"]
 	path = scripts/ruby-build
 	url = git://github.com/sstephenson/ruby-build.git
+[submodule "colors/solarized"]
+	path = colors/solarized
+	url = git://github.com/altercation/solarized.git
+[submodule "colors/solarized-xcode"]
+	path = colors/solarized-xcode
+	url = git://github.com/urbanape/solarized-xcode.git
