@@ -1,3 +1,4 @@
+# vim: filetype=sh
 # make sure we always source bashrc (Terminal only sources bash_profile)
 source ~/.bashrc
 

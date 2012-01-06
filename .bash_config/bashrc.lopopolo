@@ -1,3 +1,4 @@
+# vim: filetype=sh
 # Pull in platform-specific configurations.
 uname=`uname`
 if [[ "$uname" == "Linux" ]]; then
@@ -70,8 +71,8 @@ export PATH=$HOME/repos/hyperbola:$PATH
 export PYTHONPATH=$HOME/repos/hyperbola:$PYTHONPATH
 
 # rbenv
-export PATH=$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH
-source $HOME/.rbenv/completions/rbenv.bash
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
 
 # stuff for moving around directories
 export CDPATH=.:~:~/repos:~/repos/hyperbola:~/repos/hyperbola/hyperbola
