@@ -26,7 +26,7 @@ export MANPATH=$HOME/man:$MANPATH
 export EDITOR=vim
 
 # Aliases
-alias src='source ~/.bash_profile; source ~/.bashrc'
+alias src='source ~/.bashrc'
 alias la='ls -la'
 
 # Make it quicker to edit this file
