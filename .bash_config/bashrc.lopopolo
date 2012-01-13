@@ -40,27 +40,20 @@ complete -o bashdefault -o default -o nospace -F _git g
 alias v='vim'
 complete -o filenames -F _filedir_xspec v
 
-# Completion scripts:
-source ~/scripts/completion/git-completion.bash
-
 # useful shell functions
 source ~/scripts/bash_functions.sh
 
 # Let's get a nice colorized prompt which knows about git
-source ~/scripts/git_ps1.sh
-export GIT_PS1_SHOWDIRTYSTATE=1
+source ~/scripts/git_ps1.lopopolo.sh
 
-# Nice prompt
-RED="\[\033[0;31m\]"
-GREEN="\[\033[0;32m\]"
-YELLOW="\[\033[0;33m\]"
-BLUE="\[\033[0;34m\]"
-WHITE="\[\033[0;37m\]"
-PLAIN="\[\e[m\]"
-
+# This PS1 does the following:
+# * Set terminal title to hostname : current directory name
+# * prints [24-hour time|username|hostname]
+# * prints current working directory
+# * prints current branch and git state, colorized
 function prompt_command {
-  git_ps1_colored
-  export PS1="\033]0;\h : \W\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$PLAIN\[$git_ps1_color\]$git_ps1_string$PLAIN \$\n▶ "
+  git_ps1_lopopolo
+  export PS1="\033]0;\h : \W\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n$GREEN\[▶\]$PLAIN "
 }
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
