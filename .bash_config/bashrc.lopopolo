@@ -14,7 +14,6 @@ export TERM="xterm-256color"
 
 # Sweet bash stuff
 export HISTSIZE=1000000
-export HISTCONTROL=ignoredups
 export HISTCONTROL=ignoreboth
 
 # #1 best bash config option of all time. Also, see .inputrc for more vi goodness in readline-enabled apps.
@@ -29,8 +28,10 @@ export EDITOR=vim
 alias src='source ~/.bashrc'
 alias la='ls -la'
 
-# Make it quicker to edit this file
+# Make it quicker to edit the bashrc's
 alias b='vim ~/.bash_config/bashrc.lopopolo'
+alias bm='vim ~/.bash_config/bashrc.mac'
+alias bl='vim ~/.bash_config/bashrc.linux'
 
 # Alias g=git and add bash completion
 alias g='git'
