@@ -3,7 +3,6 @@
 git_ps1_lopopolo() {
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
-  export GIT_PS1_SHOWUPSTREAM="auto"
 
   # export colors
   export RED="\033[0;31m"
@@ -18,7 +17,23 @@ git_ps1_lopopolo() {
   local color
   color=$GREEN
   git diff --ignore-submodules=untracked --no-ext-diff --quiet --exit-code || color=$YELLOW
-  export __lopopolo_git_string=" $color($git_string)$PLAIN"
+
+  # do ahead behind from origin/master
+  local aheadbehind
+  local upstreamstate
+  upstreamstate=""
+  aheadbehind=""
+  if [ -d "$(__gitdir)" ]; then
+    aheadbehind=$(git rev-list --count --left-right origin/master...HEAD)
+    regex='([^[:space:]]+)[[:space:]]*(.*)'
+    if [[ "$aheadbehind" =~ $regex ]]; then
+      [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate<"
+      [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate>"
+    fi
+  fi
+
+  # and we're done
+  export __lopopolo_git_string=" $color($git_string $upstreamstate)$PLAIN"
 }
 
 ps1_help() {
