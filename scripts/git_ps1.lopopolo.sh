@@ -27,13 +27,20 @@ git_ps1_lopopolo() {
     aheadbehind=$(git rev-list --count --left-right origin/master...HEAD)
     regex='([^[:space:]]+)[[:space:]]*(.*)'
     if [[ "$aheadbehind" =~ $regex ]]; then
-      [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate<"
-      [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate>"
+      if [ "${BASH_REMATCH[1]}" != "0" ]; then
+        upstreamstate="$upstreamstate<"
+      fi
+      if [ "${BASH_REMATCH[2]}" != "0" ]; then
+        upstreamstate="$upstreamstate>"
+      fi
+      if [ "$upstreamstate" != "" ]; then
+        upstreamstate=" $upstreamstate"
+      fi
     fi
   fi
 
   # and we're done
-  export __lopopolo_git_string=" $color($git_string $upstreamstate)$PLAIN"
+  export __lopopolo_git_string=" $color($git_string$upstreamstate)$PLAIN"
 }
 
 ps1_help() {
