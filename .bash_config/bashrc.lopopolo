@@ -54,7 +54,7 @@ source ~/scripts/git_ps1.lopopolo.sh
 # * prints current branch and git state, colorized
 function prompt_command {
   git_ps1_lopopolo
-  export PS1="\033]0;\h : \W\007$WHITE[\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n$GREEN\[▶\]$PLAIN "
+  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n\[$GREEN\]▶\[$PLAIN\] "
 }
 PROMPT_COMMAND=prompt_command
 export PS1='$ '

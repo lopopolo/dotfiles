@@ -5,12 +5,12 @@ git_ps1_lopopolo() {
   export GIT_PS1_SHOWUNTRACKEDFILES=1
 
   # export colors
-  export RED="\033[0;31m"
-  export GREEN="\033[0;32m"
-  export YELLOW="\033[0;33m"
-  export BLUE="\033[0;34m"
-  export WHITE="\033[0;37m"
-  export PLAIN="\033[0;0m"
+  RED="\033[0;31m"
+  GREEN="\033[0;32m"
+  YELLOW="\033[0;33m"
+  BLUE="\033[0;34m"
+  WHITE="\033[0;37m"
+  PLAIN="\e[m"
 
   local git_string
   git_string=$(__git_ps1 "%s")
@@ -34,7 +34,7 @@ git_ps1_lopopolo() {
   fi
 
   # and we're done
-  export __lopopolo_git_string=" $color($git_string$upstreamstate)$PLAIN"
+  export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate)\[$PLAIN\]"
 }
 
 ps1_help() {
