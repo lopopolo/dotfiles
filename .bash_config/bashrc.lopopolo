@@ -53,8 +53,15 @@ source ~/scripts/git_ps1.lopopolo.sh
 # * prints current working directory
 # * prints current branch and git state, colorized
 function prompt_command {
+  local EXITSTATUS="$?"
   git_ps1_lopopolo
-  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n\[$GREEN\]▶\[$PLAIN\] "
+  if [[ "$EXITSTATUS" == "0" ]]; then
+    PROMPTCOLOR=$GREEN
+  else
+    PROMPTCOLOR=$RED
+  fi
+  PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
+  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n$PROMPTLINE"
 }
 PROMPT_COMMAND=prompt_command
 export PS1='$ '
