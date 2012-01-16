@@ -10,3 +10,6 @@
 [submodule "vendor/ruby-build"]
 	path = vendor/ruby-build
 	url = git://github.com/sstephenson/ruby-build.git
+[submodule "vendor/ack"]
+	path = vendor/ack
+	url = git://github.com/petdance/ack.git
