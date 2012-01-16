@@ -70,6 +70,4 @@ eval "$(rbenv init -)"
 
 # stuff for moving around directories
 export CDPATH=.:~:~/repos:~/repos/hyperbola:~/repos/hyperbola/hyperbola
-# z: https://github.com/rupa/z
-source ~/scripts/z/z.sh
 
