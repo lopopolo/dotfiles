@@ -7,8 +7,8 @@
 
 # standard bash configs. Source my special ones in
 # whatever default is given on a machine
-.bash_profile
-.bashrc
+/.bash_profile
+/.bashrc
 
 # don't track .vim since I keep track of it in its own repo
 # and don't want it to be a submodule
