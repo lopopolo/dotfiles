@@ -13,28 +13,31 @@ git_ps1_lopopolo() {
   PLAIN="\e[m"
 
   local git_string
-  git_string=$(__git_ps1 "%s")
-  local color
-  color=$GREEN
-  git diff --ignore-submodules=untracked --no-ext-diff --quiet --exit-code || color=$YELLOW
-
-  # do ahead behind from origin/master
-  local aheadbehind
-  local upstreamstate
-  upstreamstate=""
-  aheadbehind=""
   if [ -d "$(__gitdir)" ]; then
+    git_string=$(__git_ps1 "%s")
+    local color
+    color=$GREEN
+    git diff --ignore-submodules=untracked --no-ext-diff --quiet --exit-code || color=$YELLOW
+
+    # do ahead behind from origin/master
+    local aheadbehind
+    local upstreamstate
+    upstreamstate=""
+    aheadbehind=""
     aheadbehind=$(git rev-list --count --left-right origin/master...HEAD)
+
     regex='([^[:space:]]+)[[:space:]]*(.*)'
     if [[ "$aheadbehind" =~ $regex ]]; then
       [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate<"
       [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate>"
       [[ "$upstreamstate" != "" ]] && upstreamstate=" $upstreamstate"
     fi
+    # and we're done
+    export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate)\[$PLAIN\]"
+  else
+    export __lopopolo_git_string=""
   fi
 
-  # and we're done
-  export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate)\[$PLAIN\]"
 }
 
 ps1_help() {
