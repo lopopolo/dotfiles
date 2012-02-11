@@ -17,7 +17,7 @@ IRB.conf[:PROMPT][:CUSTOM] = {
   :PROMPT_I => "#{PROMPT_RUBY_VERSION} #{'>'} ",
   :PROMPT_S => nil,
   :PROMPT_C => "#{PROMPT_RUBY_VERSION} #{'*'} ",
-  :RETURN => "%s"
+  :RETURN => "=> %s\n"
 }
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
