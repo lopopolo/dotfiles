@@ -13,3 +13,6 @@
 [submodule "vendor/ack"]
 	path = vendor/ack
 	url = git://github.com/petdance/ack.git
+[submodule "vendor/play"]
+	path = vendor/play
+	url = git@github.com:lopopolo/play.git

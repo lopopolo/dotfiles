@@ -28,3 +28,6 @@ cdf() # cd's to frontmost window of Finder
     -e 'end tell' 2>/dev/null`"
 }
 
+# plays on plays on plays
+export PATH=$PATH:~/vendor/play
+
