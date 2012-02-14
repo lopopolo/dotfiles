@@ -76,3 +76,11 @@ inoremap <MiddleMouse> <Nop>
 inoremap <2-MiddleMouse> <Nop>
 inoremap <3-MiddleMouse> <Nop>
 inoremap <4-MiddleMouse> <Nop>
+
+" let me type :W to save, cuz that always happens
+cnoreabbrev W w
+" :command W w
+
+" save a buffer I don't have the perms for
+:map <leader>s :w !sudo tee %<CR>
+
