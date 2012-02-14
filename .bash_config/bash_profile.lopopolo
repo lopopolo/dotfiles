@@ -8,6 +8,9 @@ ORIGDIR=`pwd`
 cd $HOME
 [ -d $(__gitdir) ] && git remote update
 
+cd $HOME/.vim
+[ -d $(__gitdir) ] && git remote update
+
 if [ -d $HOME/repos ]; then
   cd $HOME/repos
   for dir in ./*/
