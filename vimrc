@@ -64,7 +64,7 @@ if &t_Co >= 256 || has("gui_running")
 endif
 
 " Quickly display a markdown preview of the current buffer
-:map <leader>m :%w ! bundle exec markdown_doctor \| bundle exec bcat<CR><CR>
+:map <leader>m :%w ! markdown.rb > temp.html && open temp.html<CR><CR>
 
 " disable middle click pasting (I accidentall do this all the time)
 nnoremap <MiddleMouse> <Nop>
