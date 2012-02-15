@@ -56,7 +56,7 @@ set cursorline
 nnoremap ; :
 
 " save on lose focus
-au FocusLost * :wa
+au FocusLost * silent! wa
 
 if &t_Co >= 256 || has("gui_running")
   set background=dark
