@@ -2,27 +2,3 @@
 # make sure we always source bashrc (Terminal only sources bash_profile)
 source ~/.bashrc
 
-# update remotes for all repos on login
-
-ORIGDIR=`pwd`
-cd $HOME
-[ -d $(__gitdir) ] && git remote update
-
-cd $HOME/.vim
-[ -d $(__gitdir) ] && git remote update
-
-if [ -d $HOME/repos ]; then
-  cd $HOME/repos
-  for dir in ./*/
-  do
-    dir=${dir%*/}
-    echo "$dir"
-    cd "$dir"
-    [ -d $(__gitdir) ] && git remote update
-    cd ..
-  done
-fi
-
-cd "$ORIGDIR"
-ORIGDIR=""
-
