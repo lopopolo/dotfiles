@@ -24,7 +24,9 @@ export MANPATH=$HOME/man:$MANPATH
 
 export EDITOR=vim
 
+# =========================================================================== #
 # Aliases
+# =========================================================================== #
 alias src='source ~/.bashrc'
 alias la='ls -la'
 
@@ -41,11 +43,41 @@ complete -o bashdefault -o default -o nospace -F _git g
 alias v='vim'
 complete -o filenames -F _filedir_xspec v
 
+# =========================================================================== #
 # useful shell functions
-source ~/scripts/bash_functions.sh
+# =========================================================================== #
+unset -f freq
+unset -f is_not_ascii
+
+# This function prints out a list of my most frequently used commands
+# Its unreadable because I golfed it
+function freq
+{
+  cat ~/.*h_h*|cut -d" " -f1|ruby -e'h=Hash.new 0;h[$_]+=1 while gets;h.each{|k,v|puts"#{v} "+k}'|sort -rn|head
+}
+
+# This function prints out lines in the given files that
+# contain non-ascii characters
+function is_not_ascii
+{
+  if [ "$#" == "0" ]; then
+    echo "Usage: $0 file1 file2 ..."
+    exit 1
+  fi
+  while (( "$#" )); do
+    echo "$1:"
+    perl -nwe 'print if /[^[:ascii:]]/' "$1"
+    shift
+  done
+}
+
+
+# =========================================================================== #
+# Prompt
+# =========================================================================== #
 
 # Let's get a nice colorized prompt which knows about git
-source ~/scripts/git_ps1.lopopolo.sh
+source $HOME/scripts/git_ps1.lopopolo.sh
 
 # This PS1 does the following:
 # * Set terminal title to hostname : current directory name
@@ -60,10 +92,10 @@ function prompt_command {
   else
     PROMPTCOLOR=$RED
   fi
-  PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
+  local PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
   export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n$PROMPTLINE"
 }
-PROMPT_COMMAND=prompt_command
+PROMPT_COMMAND='prompt_command;'"$PROMPT_COMMAND"
 export PS1='$ '
 
 # django stuff
@@ -76,5 +108,5 @@ export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 
 # stuff for moving around directories
-export CDPATH=.:~:~/repos:~/repos/hyperbola:~/repos/hyperbola/hyperbola
+export CDPATH=.:$HOME:$HOME/repos:$HOME/repos/hyperbola:$HOME/repos/hyperbola/hyperbola
 

@@ -21,7 +21,8 @@ if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-cdf() # cd's to frontmost window of Finder
+unset -f cdf
+function cdf # cd's to frontmost window of Finder
 {
   cd "`osascript -e 'tell application "Finder"' \
     -e 'set myname to POSIX path of (target of window 1 as alias)' \
@@ -29,5 +30,5 @@ cdf() # cd's to frontmost window of Finder
 }
 
 # plays on plays on plays
-export PATH=$PATH:~/vendor/play
+export PATH=$PATH:$HOME/vendor/play
 
