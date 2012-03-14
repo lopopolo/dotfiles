@@ -53,7 +53,7 @@ unset -f is_not_ascii
 # Its unreadable because I golfed it
 function freq
 {
-  cat ~/.*h_h*|cut -d" " -f1|ruby -e'h=Hash.new 0;h[$_]+=1 while gets;h.each{|k,v|puts"#{v} "+k}'|sort -rn|head
+  cat ~/.bash_history | cut -d" " -f1 | sort | uniq -c | sort -rn | head
 }
 
 # This function prints out lines in the given files that
