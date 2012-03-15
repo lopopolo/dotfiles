@@ -40,7 +40,7 @@ Dir.new(MUSIC_DIR).each do |artist|
     # continuous track numbering
     if bad
       all = TRACKS.values.flatten
-      track_num_range = *(all.min..all.max).to_a
+      track_num_range = (all.min..all.max).to_a
       bad = false if track_num_range.sort == all.sort && all.min == 1
     end
     # if still bad, do the output
