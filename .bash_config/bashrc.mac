@@ -18,7 +18,8 @@ export GIT_EDITOR=/usr/bin/vim
 # homebrew stuff
 export PATH=/usr/local/bin:$PATH # because the doctor said so
 if [ -f `brew --prefix`/etc/bash_completion ]; then
-  . `brew --prefix`/etc/bash_completion
+  source `brew --prefix`/etc/bash_completion
+  source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 fi
 
 unset -f cdf
