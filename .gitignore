@@ -4,6 +4,7 @@
 # history files, these are machine specific
 .*_history
 .*hst
+.*hist
 
 # standard bash configs. Source my special ones in
 # whatever default is given on a machine
