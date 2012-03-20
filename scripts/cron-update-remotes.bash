@@ -1,5 +1,9 @@
 #!/bin/bash -l
 
+# if you use public key authentication for any of these git repos,
+# make sure your key doesn't have a passphrase or the fetch will
+# fail
+
 cd $HOME
 [ -d $(__gitdir) ] && git remote update &> /dev/null
 
