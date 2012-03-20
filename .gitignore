@@ -13,6 +13,7 @@
 # don't track .vim since I keep track of it in its own repo
 # and don't want it to be a submodule
 /.vim/
+/.viminfo
 
 # don't track repos. This is where all other git repos live
 /repos/
@@ -28,6 +29,23 @@
 /Public/
 /Sites/
 
+# and the .CFUserTextEncoding file that is autogened
+.CFUserTextEncoding
+
 # dropbox
 /Dropbox/
 /.dropbox/
+
+# eclipse and svn stuff
+/.eclipse_keyring
+/.subversion
+
+# play stuff
+/.play
+
+# python package config
+/.config
+
+# system ruby gems
+/.gem
+
