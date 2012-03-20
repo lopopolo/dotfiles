@@ -16,6 +16,12 @@ alias vimcmd='/usr/bin/vim'
 export GIT_EDITOR=/usr/bin/vim
 
 # homebrew stuff
+# mac bash completion is broken, but homebrew's works
+# use it to source the ack auto completer
+if [ ! -f `brew --prefix`/etc/bash_completion.d/ack ]; then
+  ln -s "$HOME/vendor/ack/etc/ack.bash_completion.sh" `brew --prefix`/etc/bash_completion.d/ack
+fi
+
 export PATH=/usr/local/bin:$PATH # because the doctor said so
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   source `brew --prefix`/etc/bash_completion
