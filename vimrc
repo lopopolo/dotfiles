@@ -1,8 +1,10 @@
-" pathogen stuff
+" ================================== Pathogen =================================
 filetype off
 source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
+
+" =============================== Basic settings ==============================
 
 syntax on
 filetype plugin indent on
@@ -20,8 +22,12 @@ set number
 set ruler
 set backspace=indent,eol,start
 
+" Allow for modelines
+set modeline
+
 let mapleader = ","
 
+" searching
 set ignorecase
 set smartcase
 set incsearch
@@ -32,41 +38,62 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <tab> %
 vnoremap <tab> %
 
+" status lines
 set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %{fugitive#statusline()}\ %{&ff}\ lin:%l\,%L\ col:%c%V\ pos:%o\ %P
-
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd ColorScheme * highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-
-set wrap
-set textwidth=79
-set formatoptions=qrn1
-highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
-" highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+\%#\@<!$/
-
-" strip trailing whitespace on save
-autocmd BufWritePre * :%s/\s\+$//e
-
 set cursorline
 
-nnoremap ; :
+" text wrapping
+set wrap
+set textwidth=110
+let &wrapmargin= &textwidth
+set formatoptions=tcroql
 
-" save on lose focus
-au FocusLost * silent! wa
+" ============================== Command mappings =============================
 
+" save a buffer I don't have the perms for
+cmap w!! :w !sudo tee %<CR>
+
+" set shiftwidth to 4
+map <leader>s4 :set shiftwidth=4<CR>
+
+" cd to the directory containing the file in the buffer
+nmap <silent> <leader>cd :lcd %:h<CR>
+
+" ================================ Color scheme ===============================
+
+" solarized
 if &t_Co >= 256 || has("gui_running")
   set background=dark
   colorscheme solarized
 endif
 
-" Quickly display a markdown preview of the current buffer
-:map <leader>m :%w ! markdown.rb > temp.html && open temp.html<CR><CR>
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-" disable middle click pasting (I accidentall do this all the time)
+" =============================== Auto commands ===============================
+
+" strip trailing whitespace on save
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+
+autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+
+" save on lose focus, but don't complain if you can't
+au FocusLost * silent! wa
+
+" ==================== Typo prevention and other vim remaps ===================
+" ===  ===
+
+nnoremap ; :
+
+" disable middle click pasting (I accidentally do this all the time)
 nnoremap <MiddleMouse> <Nop>
 nnoremap <2-MiddleMouse> <Nop>
 nnoremap <3-MiddleMouse> <Nop>
@@ -79,8 +106,24 @@ inoremap <4-MiddleMouse> <Nop>
 
 " let me type :W to save, cuz that always happens
 cnoreabbrev W w
-" :command W w
 
-" save a buffer I don't have the perms for
-:map <leader>s :w !sudo tee %<CR>
+" =============================== Plugin stuff  ===============================
+
+" Quickly display a markdown preview of the current buffer
+map <leader>m :%w ! markdown.rb > temp.html && open temp.html<CR><CR>
+
+" nerdtree shortcut
+map <leader>n :NERDTree
+map <leader>nt :NERDTreeToggle
+" nerdtree settings
+let g:NERDTreeChDirMode=1
+
+" supertab
+let g:SuperTabDefaultCompletionType = "context"
+
+" ack
+map <leader>a :Ack
+
+" syntastic
+set statusline+=%=%{SyntasticStatuslineFlag()}
 
