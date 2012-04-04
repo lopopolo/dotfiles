@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+unset -f git_ps1_lopopolo
 git_ps1_lopopolo() {
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -45,6 +46,7 @@ git_ps1_lopopolo() {
 
 }
 
+unset -f ps1_help
 ps1_help() {
   echo -e "$YELLOW* means the working tree is dirty$PLAIN"
   echo -e "$GREEN+ means files are staged$PLAIN"
