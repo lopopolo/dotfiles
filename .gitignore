@@ -33,6 +33,16 @@
 # and the .CFUserTextEncoding file that is autogened
 .CFUserTextEncoding
 
+# some other stuff that I assume is OS X related
+/.cups
+/.fontconfig
+
+# X11 auth
+/.Xauthority
+
+# MIT VPN
+/.anyconnect
+
 # dropbox
 /Dropbox/
 /.dropbox/
