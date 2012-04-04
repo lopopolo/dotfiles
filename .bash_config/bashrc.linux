@@ -5,3 +5,7 @@ alias ls='ls -h -F --color=auto --tabsize=0 --group-directories-first'
 
 EDITOR="vim"
 
+# enable bash completion in interactive shells
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
