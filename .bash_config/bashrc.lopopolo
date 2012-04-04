@@ -77,7 +77,7 @@ function is_not_ascii
 # =========================================================================== #
 
 # Let's get a nice colorized prompt which knows about git
-source $HOME/scripts/git_ps1.lopopolo.sh
+source $HOME/scripts/git_ps1.lopopolo.bash
 
 # This PS1 does the following:
 # * Set terminal title to hostname : current directory name
