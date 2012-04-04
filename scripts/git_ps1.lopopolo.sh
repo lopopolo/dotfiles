@@ -10,7 +10,7 @@ git_ps1_lopopolo() {
   YELLOW="\033[0;33m"
   BLUE="\033[0;34m"
   WHITE="\033[0;37m"
-  PLAIN="\e[m"
+  PLAIN="\033[m"
 
   local git_string
   if [ -d "$(__gitdir)" ]; then
