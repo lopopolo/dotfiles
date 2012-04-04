@@ -2,3 +2,6 @@
 # linux specific customizations
 
 alias ls='ls -h -F --color=auto --tabsize=0 --group-directories-first'
+
+EDITOR="vim"
+
