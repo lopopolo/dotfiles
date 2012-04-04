@@ -10,6 +10,8 @@
 # whatever default is given on a machine
 /.bash_profile
 /.bashrc
+/.bash_logout
+/.profile
 
 # don't track .vim since I keep track of it in its own repo
 # and don't want it to be a submodule
@@ -40,12 +42,17 @@
 # X11 auth
 /.Xauthority
 
+# Ubuntu stuff
+.sudo_as_admin_successful
+motd.legal-displayed
+
 # MIT VPN
 /.anyconnect
 
 # dropbox
 /Dropbox/
 /.dropbox/
+/.dropbox-dist/
 
 # eclipse and svn stuff
 /.eclipse_keyring
