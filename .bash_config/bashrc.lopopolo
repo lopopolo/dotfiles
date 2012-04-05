@@ -98,6 +98,10 @@ function prompt_command {
 PROMPT_COMMAND='prompt_command;'"$PROMPT_COMMAND"
 export PS1='$ '
 
+# =========================================================================== #
+# Tools
+# =========================================================================== #
+
 # django stuff
 export DJANGO_SETTINGS_MODULE=hyperbola.settings
 export PATH=$HOME/repos/hyperbola:$PATH
@@ -109,4 +113,7 @@ eval "$(rbenv init -)"
 
 # stuff for moving around directories
 export CDPATH=.:$HOME:$HOME/repos:$HOME/repos/hyperbola:$HOME/repos/hyperbola/hyperbola
+
+# git helper scripts
+export PATH=$HOME/vendor/git-scripts:$PATH
 

@@ -16,3 +16,6 @@
 [submodule "vendor/play"]
 	path = vendor/play
 	url = git@github.com:lopopolo/play.git
+[submodule "vendor/git-scripts"]
+	path = vendor/git-scripts
+	url = git://github.com/cespare/git-scripts.git
