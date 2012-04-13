@@ -33,8 +33,8 @@ git_ps1_lopopolo() {
 
       regex='([^[:space:]]+)[[:space:]]*(.*)'
       if [[ "$aheadbehind" =~ $regex ]]; then
-        [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate -behind"
-        [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate +ahead"
+        [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate -behind[${BASH_REMATCH[1]}]"
+        [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate +ahead[${BASH_REMATCH[2]}]"
       fi
     fi
     # and we're done
