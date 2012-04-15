@@ -49,6 +49,8 @@ set textwidth=110
 let &wrapmargin= &textwidth
 set formatoptions=tcroql
 
+set autochdir
+
 " ============================== Command mappings =============================
 
 " save a buffer I don't have the perms for
@@ -89,7 +91,6 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 au FocusLost * silent! wa
 
 " ==================== Typo prevention and other vim remaps ===================
-" ===  ===
 
 nnoremap ; :
 
