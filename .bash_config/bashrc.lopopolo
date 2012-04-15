@@ -34,6 +34,8 @@ alias la='ls -la'
 alias b='vim ~/.bash_config/bashrc.lopopolo'
 alias bm='vim ~/.bash_config/bashrc.mac'
 alias bl='vim ~/.bash_config/bashrc.linux'
+# and vimrc
+alias vv='vim ~/.vimrc'
 
 # Alias g=git and add bash completion
 alias g='git'
