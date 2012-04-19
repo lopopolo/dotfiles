@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash -i
 
 # if you use public key authentication for any of these git repos,
 # make sure your key doesn't have a passphrase or the fetch will
