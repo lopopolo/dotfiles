@@ -3,10 +3,14 @@ require 'wirble'
 Wirble.init
 Wirble.colorize
 
-# stolen from github:cespare/dotfiles
 class Object
   def cool_methods
     (self.methods - Object.new.methods).sort
+  end
+
+  # list methods which aren't in superclass
+  def local_methods(obj = self)
+    (obj.methods - obj.class.superclass.instance_methods).sort
   end
 end
 
