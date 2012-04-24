@@ -90,6 +90,23 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 " save on lose focus, but don't complain if you can't
 au FocusLost * silent! wa
 
+" Put these in an autocmd group, so that we can delete them easily.
+augroup vimrcEx
+au!
+
+" When editing a file, always jump to the last known cursor position.
+" Don't do it when the position is invalid or when inside an event handler
+" (happens when dropping a file on gvim).
+autocmd BufReadPost *
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal g`\"" |
+  \ endif
+
+" Automatically load .vimrc source when saved
+autocmd BufWritePost .vimrc source $MYVIMRC
+
+augroup END
+
 " ==================== Typo prevention and other vim remaps ===================
 
 nnoremap ; :
@@ -115,7 +132,7 @@ map <leader>m :%w ! markdown.rb > temp.html && open temp.html<CR><CR>
 
 " nerdtree shortcut
 map <leader>n :NERDTree
-map <leader>nt :NERDTreeToggle
+map <leader>nt :NERDTreeToggle<CR>
 " nerdtree settings
 let g:NERDTreeChDirMode=1
 
