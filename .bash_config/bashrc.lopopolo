@@ -1,4 +1,10 @@
 # vim: filetype=sh
+
+# unset prompt command. This is the beginning of initialization so we aren't in danger of losing
+# anything. If we don't unset it, we end up chaining calls to the function prompt_command which
+# breaks coloring the PS1 based on exit code
+unset PROMPT_COMMAND
+
 # Pull in platform-specific configurations.
 uname=`uname`
 if [[ "$uname" == "Linux" ]]; then
