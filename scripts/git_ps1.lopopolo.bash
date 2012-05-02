@@ -23,7 +23,7 @@ git_ps1_lopopolo() {
     # if there are any remotes, do ahead behind from origin/master
     local hasremote
     hasremote=1
-    git ls-remote --exit-code . origin/master &> /dev/null || hasremote=0
+    [ $(git ls-remote . origin/master | wc -l) != 0 ] || hasremote=0
     if (( $hasremote )); then
       local aheadbehind
       local upstreamstate
