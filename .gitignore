@@ -6,6 +6,9 @@
 .*hst
 .*hist
 
+# The .gitconfig symlink. Configs are stored in ~/.git-configs
+/.gitconfig
+
 # standard bash configs. Source my special ones in
 # whatever default is given on a machine
 /.bash_profile
