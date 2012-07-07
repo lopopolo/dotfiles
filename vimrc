@@ -114,7 +114,6 @@ nnoremap ; :
 " let me type :W to save, cuz that always happens
 cnoreabbrev W w
 
-w
 " ============================== Split shortcuts ==============================
 
 " window
