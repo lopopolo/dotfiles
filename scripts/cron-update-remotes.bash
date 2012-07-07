@@ -10,14 +10,25 @@ cd $HOME
 cd $HOME/.vim
 [ -d ".git" ] && git remote update &> /dev/null
 
-if [ -d $HOME/repos ]; then
-  cd $HOME/repos
-  for dir in ./*/
-  do
-    dir=${dir%*/}
-    cd "$dir"
-    [ -d ".git" ] && git remote update &> /dev/null
-    cd ..
-  done
-fi
+cd $HOME/.rbenv
+[ -d ".git" ] && git remote update &> /dev/null
+
+
+function update_all_repo_remotes
+{
+  if [ -d "$1" ]; then
+    cd "$1"
+    for dir in ./*/
+    do
+      dir=${dir%*/}
+      cd "$dir"
+      [ -d ".git" ] && git remote update &> /dev/null
+      cd ..
+    done
+  fi
+
+}
+
+update_all_repo_remotes $HOME/repos
+update_all_repo_remotes $HOME/vendor
 
