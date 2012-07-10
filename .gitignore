@@ -76,6 +76,7 @@ motd.legal-displayed
 
 # work stuff
 /.account
+/.bashrc.local
 
 # nodejs stuff
 .node-gyp/
@@ -86,7 +87,17 @@ motd.legal-displayed
 .netbeans/.superId
 
 # dev machine
-.appledoc/
-.slocdata/
-.wireshark-etc/
-.wireshark/
+/.appledoc/
+/.slocdata/
+/.wireshark-etc/
+/.wireshark/
+/.composer/
+/.ivy2/
+/.sbt/
+/.tms_cache/
+/lib/
+/lib64/
+/libexec/
+/share/
+/tmp/
+/.phpsh/

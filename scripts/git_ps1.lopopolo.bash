@@ -13,7 +13,6 @@ git_ps1_lopopolo() {
   WHITE="\033[0;37m"
   PLAIN="\033[m"
 
-
   if [ -z "${GIT_REMOTES_TO_TEST}" ]; then
     echo "git PS1 error: Set GIT_REMOTES_TO_TEST in .bashrc"
   fi
@@ -23,7 +22,7 @@ git_ps1_lopopolo() {
     git_string=$(__git_ps1 "%s")
     local color
     color=$GREEN
-    git diff --ignore-submodules=untracked --no-ext-diff --quiet --exit-code || color=$YELLOW
+    git diff --ignore-submodules --no-ext-diff --quiet --exit-code || color=$YELLOW
 
     # test to see if any of the given remotes exist
     local remote=""
@@ -37,7 +36,7 @@ git_ps1_lopopolo() {
       local upstreamstate
       upstreamstate=""
       aheadbehind=""
-      aheadbehind=$(git rev-list --count --left-right ${remote}...HEAD)
+      aheadbehind=$(git rev-list --count --left-right ${remote}...HEAD) # requires git 1.7.3
 
       regex='([^[:space:]]+)[[:space:]]*(.*)'
       if [[ "$aheadbehind" =~ $regex ]]; then
@@ -59,7 +58,7 @@ git_ps1_lopopolo() {
       repo_root_string=" in $repo_root"
     fi
     # and we're done
-    export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate$repo_root_string)\[$PLAIN\]"
+    export __lopopolo_git_string=" \[$color\](${git_string}${upstreamstate}${repo_root_string})\[$PLAIN\]"
   else
     export __lopopolo_git_string=""
   fi
