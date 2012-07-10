@@ -70,3 +70,6 @@ motd.legal-displayed
 # system ruby gems
 /.gem
 
+# work stuff
+/.account
+
