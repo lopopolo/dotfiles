@@ -1,0 +1,19 @@
+[user]
+	name = Ryan Lopopolo
+	email = lopopolo@box.com
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.git-global-ignore
+[alias]
+	s = status --untracked-files=no
+	stat = status
+	co = checkout
+	ahead = log origin/master..HEAD
+[github]
+	user = lopopolo
+	token = a3c9b63c113b6b4be414ebe374991ba6
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
