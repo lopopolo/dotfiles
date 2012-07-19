@@ -51,6 +51,9 @@ complete -o bashdefault -o default -o nospace -F _git g
 alias v='vim'
 complete -o filenames -F _filedir_xspec v
 
+# json pretty printing
+alias jsonpp='python -mjson.tool'
+
 # =========================================================================== #
 # useful shell functions
 # =========================================================================== #
