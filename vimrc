@@ -21,6 +21,7 @@ set smartindent
 set number
 set ruler
 set backspace=indent,eol,start
+set scrolloff=5
 
 " Allow for modelines
 set modeline
