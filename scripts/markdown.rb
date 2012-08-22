@@ -16,10 +16,10 @@ h1 {
   padding-bottom: 10px;
 }
 body {
-  font: 14px / 20px "Helvetica Neue", "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+  font: 14px / 20px "Helvetica Neue", Helvetica, "Lucida Grande", Arial, Verdana, sans-serif;
 }
 pre, code {
-  font-family: "Ubuntu Mono", Courier, monospace;
+  font-family: "Inconsolata", "Ubuntu Mono", Courier, monospace;
   background-color: #F0EEEA;
   padding: 2px;
 }
@@ -245,11 +245,7 @@ EOF
 markdown_options = { :fenced_code_blocks => true, :tables => true, :space_after_headers => true }
 markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, markdown_options)
 
-text = ""
-while gets
-  text += $_
-end
 puts HEADER
-puts markdown.render(text)
+puts markdown.render(ARGF.read)
 puts FOOTER
 
