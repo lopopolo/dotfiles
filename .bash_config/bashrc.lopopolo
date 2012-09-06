@@ -59,6 +59,7 @@ alias jsonpp='python -mjson.tool'
 # =========================================================================== #
 unset -f freq
 unset -f is_not_ascii
+unset -f diff_line_count
 
 # This function prints out a list of my most frequently used commands
 # Its unreadable because I golfed it
@@ -82,6 +83,20 @@ function is_not_ascii
   done
 }
 
+function diff_line_count
+{
+  	# export colors
+  	RED="\033[0;31m"
+  	GREEN="\033[0;32m"
+  	PLAIN="\033[m"
+	echo -ne "${GREEN}"
+	echo -n "+ $(git diff --no-color $1 | grep '^+' | wc -l)"
+	echo -ne "${PLAIN}"
+	echo -n " : "
+	echo -ne "${RED}"
+	echo "- $(git diff --no-color $1 | grep '^-' | wc -l)"
+	echo -ne "${PLAIN}"
+}
 
 # =========================================================================== #
 # Prompt
