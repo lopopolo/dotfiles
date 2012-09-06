@@ -37,8 +37,17 @@ git_ps1_lopopolo() {
         [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate +ahead[${BASH_REMATCH[2]}]"
       fi
     fi
+
+    # set up repo root detection
+    local repo_root
+    local repo_root_string
+    repo_root_string=""
+    repo_root=$(basename $(dirname $(readlink-f.sh `__gitdir`)))
+    if [ ! -z $repo_root ]; then
+      repo_root_string=" in $repo_root"
+    fi
     # and we're done
-    export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate)\[$PLAIN\]"
+    export __lopopolo_git_string=" \[$color\]($git_string$upstreamstate$repo_root_string)\[$PLAIN\]"
   else
     export __lopopolo_git_string=""
   fi
