@@ -57,6 +57,9 @@ motd.legal-displayed
 /.dropbox/
 /.dropbox-dist/
 
+# box
+/Box Documents/
+
 # eclipse and svn stuff
 /.eclipse_keyring
 /.subversion
