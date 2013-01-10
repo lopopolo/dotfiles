@@ -59,6 +59,7 @@ motd.legal-displayed
 
 # box
 /Box Documents/
+/Box Sync/
 
 # eclipse and svn stuff
 /.eclipse_keyring
@@ -75,4 +76,8 @@ motd.legal-displayed
 
 # work stuff
 /.account
+
+# nodejs stuff
+.node-gyp/
+.npm/
 
