@@ -22,7 +22,7 @@ if [ ! -f `brew --prefix`/etc/bash_completion.d/ack ]; then
   ln -s "$HOME/vendor/ack/etc/ack.bash_completion.sh" `brew --prefix`/etc/bash_completion.d/ack
 fi
 
-export PATH=/usr/local/bin:$PATH # because the doctor said so
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH # because the doctor said so
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   source `brew --prefix`/etc/bash_completion
   source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
