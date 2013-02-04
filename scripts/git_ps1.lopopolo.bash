@@ -42,8 +42,12 @@ git_ps1_lopopolo() {
     local repo_root
     local repo_root_string
     repo_root_string=""
-    repo_root=$(basename $(dirname $(readlink-f.sh `__gitdir`)))
-    if [ ! -z $repo_root ]; then
+
+    repo_root=$(readlink-f.sh `__gitdir`)
+    repo_root=$(dirname "$repo_root")
+    repo_root=$(basename "$repo_root")
+
+    if [ ! -z "$repo_root" ]; then
       repo_root_string=" in $repo_root"
     fi
     # and we're done
