@@ -18,4 +18,4 @@
 [branch "master"]
 	rebase = true
 [push]
-	default = current
+	default = upstream

@@ -17,3 +17,5 @@
 	autosetuprebase = always
 [branch "master"]
 	rebase = true
+[push]
+	default = upstream
