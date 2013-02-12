@@ -81,3 +81,6 @@ motd.legal-displayed
 .node-gyp/
 .npm/
 
+# java stuff
+.nbprofiler/machinedata.jdk16
+.netbeans/.superId
