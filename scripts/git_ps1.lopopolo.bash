@@ -13,6 +13,11 @@ git_ps1_lopopolo() {
   WHITE="\033[0;37m"
   PLAIN="\033[m"
 
+
+  if [ -z "${GIT_REMOTES_TO_TEST}" ]; then
+    echo "git PS1 error: Set GIT_REMOTES_TO_TEST in .bashrc"
+  fi
+
   local git_string
   if [ -d "$(__gitdir)" ]; then
     git_string=$(__git_ps1 "%s")
@@ -20,16 +25,19 @@ git_ps1_lopopolo() {
     color=$GREEN
     git diff --ignore-submodules=untracked --no-ext-diff --quiet --exit-code || color=$YELLOW
 
-    # if there are any remotes, do ahead behind from origin/master
-    local hasremote
-    hasremote=1
-    [ $(git ls-remote . origin/master | wc -l) != 0 ] || hasremote=0
-    if (( $hasremote )); then
+    # test to see if any of the given remotes exist
+    local remote=""
+    while read -r remote_to_test; do
+      [ $(git ls-remote . ${remote_to_test} | wc -l) != 0 ] && remote=${remote_to_test} && break
+    done <<< "${GIT_REMOTES_TO_TEST}"
+
+    # if one does, do an ahead-behind from it to HEAD
+    if [ "$remote" != "" ]; then
       local aheadbehind
       local upstreamstate
       upstreamstate=""
       aheadbehind=""
-      aheadbehind=$(git rev-list --count --left-right origin/master...HEAD)
+      aheadbehind=$(git rev-list --count --left-right ${remote}...HEAD)
 
       regex='([^[:space:]]+)[[:space:]]*(.*)'
       if [[ "$aheadbehind" =~ $regex ]]; then
