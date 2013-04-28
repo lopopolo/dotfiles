@@ -84,3 +84,9 @@ motd.legal-displayed
 # java stuff
 .nbprofiler/machinedata.jdk16
 .netbeans/.superId
+
+# dev machine
+.appledoc/
+.slocdata/
+.wireshark-etc/
+.wireshark/

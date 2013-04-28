@@ -11,3 +11,5 @@ temp.html # for markdown rendering
 *.class
 *.pyc
 
+# generated when previewing markdown from vim
+temp.html
