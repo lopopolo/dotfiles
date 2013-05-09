@@ -13,8 +13,8 @@ git_ps1_lopopolo() {
   WHITE="\033[0;37m"
   PLAIN="\033[m"
 
-  if [ -z "${GIT_REMOTES_TO_TEST}" ]; then
-    echo "git PS1 error: Set GIT_REMOTES_TO_TEST in .bashrc"
+  if [ -z "$(GIT_REMOTES_TO_TEST_FN)" ]; then
+    echo "git PS1 error: Set GIT_REMOTES_TO_TEST_FN in .bashrc"
   fi
 
   local git_string
@@ -28,7 +28,7 @@ git_ps1_lopopolo() {
     local remote=""
     while read -r remote_to_test; do
       [ $(git ls-remote . ${remote_to_test} | wc -l) != 0 ] && remote=${remote_to_test} && break
-    done <<< "${GIT_REMOTES_TO_TEST}"
+    done <<< "$(GIT_REMOTES_TO_TEST_FN)"
 
     # if one does, do an ahead-behind from it to HEAD
     if [ "$remote" != "" ]; then

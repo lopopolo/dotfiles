@@ -32,3 +32,27 @@ Then do these things to finish setting up:
    and `.bash_profile`.
 6. Symlink to the proper `.gitconfig` from `$HOME/.git-configs`.
 
+Git PS1
+-------
+The custom git PS1 takes a function that determine which remote to test against.
+
+Here is an example that includes some default remotes and chooses the current
+branch if it is also a remote branch:
+
+```bash
+export GIT_REMOTES_TO_TEST='origin/dev-ios-merge
+  origin/master'
+
+function GIT_REMOTES_TO_TEST_FN {
+  if [ -d "$(__gitdir)" ]; then
+    if [ $(git branch -r | grep "$(git rev-parse --abbrev-ref HEAD)" | wc -l) != 0 ]; then
+      echo "$(git rev-parse --abbrev-ref HEAD)"
+    else
+      echo "$GIT_REMOTES_TO_TEST"
+    fi
+  else
+    echo "$GIT_REMOTES_TO_TEST"
+  fi
+}
+```
+
