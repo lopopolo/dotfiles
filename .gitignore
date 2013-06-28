@@ -101,3 +101,5 @@ motd.legal-displayed
 /share/
 /tmp/
 /.phpsh/
+/.htoprc
+/.rnd
