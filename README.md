@@ -40,13 +40,13 @@ Here is an example that includes some default remotes and chooses the current
 branch if it is also a remote branch:
 
 ```bash
-export GIT_REMOTES_TO_TEST='origin/dev-ios-merge
-  origin/master'
+export GIT_REMOTES_TO_TEST='origin/master'
 
+unset -f GIT_REMOTES_TO_TEST_FN
 function GIT_REMOTES_TO_TEST_FN {
   if [ -d "$(__gitdir)" ]; then
     if [ $(git branch -r | grep "$(git rev-parse --abbrev-ref HEAD)" | wc -l) != 0 ]; then
-      echo "$(git rev-parse --abbrev-ref HEAD)"
+      echo "$(git rev-parse --abbrev-ref @{u})"
     else
       echo "$GIT_REMOTES_TO_TEST"
     fi
