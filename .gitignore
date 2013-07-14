@@ -5,6 +5,9 @@
 .*_history
 .*hst
 .*hist
+# mongo
+/.dbshell
+
 
 # The .gitconfig symlink. Configs are stored in ~/.git-configs
 /.gitconfig
@@ -41,6 +44,7 @@
 # some other stuff that I assume is OS X related
 /.cups
 /.fontconfig
+/.cache/
 
 # X11 auth
 /.Xauthority
@@ -68,23 +72,9 @@ motd.legal-displayed
 # play stuff
 /.play
 
-# python package config
-/.config
-
-# system ruby gems
-/.gem
-
 # work stuff
 /.account
 /.bashrc.local
-
-# nodejs stuff
-.node-gyp/
-.npm/
-
-# java stuff
-.nbprofiler/machinedata.jdk16
-.netbeans/.superId
 
 # dev machine
 /.appledoc/
@@ -92,8 +82,6 @@ motd.legal-displayed
 /.wireshark-etc/
 /.wireshark/
 /.composer/
-/.ivy2/
-/.sbt/
 /.tms_cache/
 /lib/
 /lib64/
@@ -103,3 +91,30 @@ motd.legal-displayed
 /.phpsh/
 /.htoprc
 /.rnd
+
+#######################################
+# Programming language specific files #
+#######################################
+
+# java stuff
+.nbprofiler/machinedata.jdk16
+.netbeans/.superId
+/.yjp/
+
+# nodejs stuff
+.node-gyp/
+.npm/
+
+# objc
+/.cocoapods/
+
+# python package config
+/.config
+
+# system ruby gems
+/.gem
+
+# scala
+/.ivy2/
+/.m2/
+/.sbt/
