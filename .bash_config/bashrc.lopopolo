@@ -136,11 +136,6 @@ export PS1='$ '
 # Tools
 # =========================================================================== #
 
-# django stuff
-export DJANGO_SETTINGS_MODULE=hyperbola.settings
-export PATH=$HOME/repos/hyperbola:$PATH
-export PYTHONPATH=$HOME/repos/hyperbola:$PYTHONPATH
-
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
