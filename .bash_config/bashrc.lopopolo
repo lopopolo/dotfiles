@@ -15,8 +15,16 @@ elif [[ "$uname" == "Darwin" ]]; then
   source $HOME/.bash_config/bashrc.mac
 fi
 
+# TERM setup
 export CLICOLOR=1
 export TERM="xterm-256color"
+# A bash function to display a growl notification using iTerm's magic escape sequence.
+unset -f growl
+function growl
+{
+  echo -ne "\033]9;${*}\007"
+}
+
 
 # Sweet bash stuff
 export HISTSIZE=1000000
