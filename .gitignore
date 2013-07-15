@@ -108,6 +108,9 @@ motd.legal-displayed
 # objc
 /.cocoapods/
 
+# php
+/.pearrc
+
 # python package config
 /.config
 
