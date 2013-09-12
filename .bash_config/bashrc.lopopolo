@@ -126,8 +126,15 @@ function prompt_command {
   else
     PROMPTCOLOR=$RED
   fi
+
+  # if we're on a mac, add battery info
+  local battery
+  battery=""
+  if [ "$PLATFORM" == "MAC" ]; then
+    battery=$(battery)
+  fi
   local PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
-  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w]$__lopopolo_git_string\n$PROMPTLINE"
+  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w] $battery $__lopopolo_git_string\n$PROMPTLINE"
 }
 PROMPT_COMMAND='prompt_command;'"$PROMPT_COMMAND"
 export PS1='$ '
