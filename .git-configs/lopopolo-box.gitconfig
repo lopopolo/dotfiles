@@ -11,7 +11,7 @@
 	co = checkout
 	ahead = log origin/master..HEAD
 	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
-	pushg = !sh -c \"git push ssh://scm.dev.box.net:29418/metadata-repository HEAD:refs/for/dev\" -
+	pushg = !sh -c \"git push ssh://scm.dev.box.net:29418/metadata HEAD:refs/for/dev\" -
 [github]
 	user = lopopolo
 	token = a3c9b63c113b6b4be414ebe374991ba6
