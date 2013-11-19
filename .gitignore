@@ -91,6 +91,12 @@ motd.legal-displayed
 /.phpsh/
 /.htoprc
 /.rnd
+# jvisualvm
+.nbprofiler/
+# homebrew PHP
+/.pearrc
+# Gatling
+/.zinc/
 
 #######################################
 # Programming language specific files #
