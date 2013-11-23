@@ -32,7 +32,7 @@ GEM
       bond (>= 0.4.2)
       debugger (~> 1.1)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
+    debugger-ruby_core_source (1.2.4)
     escape (0.0.4)
     fuzzy_match (2.0.4)
     gem-man (0.3.0)
