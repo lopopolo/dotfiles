@@ -1,4 +1,4 @@
-source :rubygems
+source "https://rubygems.org"
 
 gem "bundler"
 gem "rake"
@@ -15,3 +15,5 @@ gem "debugger-completion", :platforms => :ruby_19
 # irb enhancer
 gem "wirble"
 
+# ios
+gem "cocoapods"

@@ -1,7 +1,28 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
+    activesupport (3.2.15)
+      i18n (~> 0.6, >= 0.6.4)
+      multi_json (~> 1.0)
     bond (0.4.3)
+    claide (0.4.0)
+    cocoapods (0.28.0)
+      activesupport (>= 3.2.15, < 4)
+      claide (~> 0.4.0)
+      cocoapods-core (= 0.28.0)
+      cocoapods-downloader (~> 0.2.0)
+      colored (~> 1.2)
+      escape (~> 0.0.4)
+      json_pure (~> 1.8)
+      open4 (~> 1.3)
+      xcodeproj (~> 0.14.1)
+    cocoapods-core (0.28.0)
+      activesupport (>= 3.2.15, < 4)
+      fuzzy_match (~> 2.0.4)
+      json (~> 1.8)
+      nap (~> 0.5)
+    cocoapods-downloader (0.2.0)
+    colored (1.2)
     columnize (0.3.6)
     debugger (1.6.2)
       columnize (>= 0.3.1)
@@ -12,9 +33,17 @@ GEM
       debugger (~> 1.1)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.3)
+    escape (0.0.4)
+    fuzzy_match (2.0.4)
     gem-man (0.3.0)
+    i18n (0.6.5)
+    json (1.8.1)
+    json_pure (1.8.1)
     linecache (0.46)
       rbx-require-relative (> 0.0.4)
+    multi_json (1.8.2)
+    nap (0.5.1)
+    open4 (1.3.0)
     rake (10.1.0)
     rbx-require-relative (0.0.9)
     redcarpet (3.0.0)
@@ -25,12 +54,17 @@ GEM
       linecache (>= 0.3)
     rubyvis (0.6.0)
     wirble (0.1.3)
+    xcodeproj (0.14.1)
+      activesupport (~> 3.0)
+      colored (~> 1.2)
+      rake
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler
+  cocoapods
   debugger
   debugger-completion
   gem-man
