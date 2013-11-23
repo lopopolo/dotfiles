@@ -119,6 +119,7 @@ motd.legal-displayed
 
 # python package config
 /.config
+/.pip
 
 # system ruby gems
 /.gem
