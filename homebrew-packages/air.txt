@@ -1,3 +1,4 @@
+appledoc
 autoconf
 bash-completion
 bgrep
@@ -23,8 +24,8 @@ libpng
 libtasn1
 libtiff
 libtool
+libyaml
 little-cms
-mysql
 nettle
 nmap
 openssl
@@ -35,10 +36,9 @@ pidof
 pil
 pixman
 pkg-config
-postgresql
 proctools
-qemu
 readline
+spark
 ssh-copy-id
 tbb
 tig
