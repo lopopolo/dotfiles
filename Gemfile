@@ -16,4 +16,6 @@ gem "debugger-completion", :platforms => :ruby_19
 gem "wirble"
 
 # ios
-gem "cocoapods"
+group :ios do
+  gem "cocoapods"
+end

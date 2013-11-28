@@ -121,6 +121,8 @@ motd.legal-displayed
 /.config
 /.pip
 
+# ruby
+/.bundle
 # system ruby gems
 /.gem
 
