@@ -52,6 +52,8 @@ set formatoptions=tcroql
 
 set autochdir
 
+set mouse=a
+
 " ============================== Command mappings =============================
 
 " save a buffer I don't have the perms for
