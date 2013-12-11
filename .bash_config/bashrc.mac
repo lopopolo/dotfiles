@@ -39,3 +39,7 @@ function cdf # cd's to frontmost window of Finder
 # plays on plays on plays
 export PATH=$PATH:$HOME/vendor/play
 
+# rbenv on mac
+export RBENV_ROOT=/usr/local/var/rbenv
+eval "$(rbenv init -)"
+

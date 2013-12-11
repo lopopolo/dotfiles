@@ -1,15 +1,9 @@
-[submodule ".rbenv"]
-	path = .rbenv
-	url = git://github.com/sstephenson/rbenv.git
 [submodule "colors/solarized"]
 	path = colors/solarized
 	url = git://github.com/altercation/solarized.git
 [submodule "colors/solarized-xcode"]
 	path = colors/solarized-xcode
 	url = git://github.com/urbanape/solarized-xcode.git
-[submodule "vendor/ruby-build"]
-	path = vendor/ruby-build
-	url = git://github.com/sstephenson/ruby-build.git
 [submodule "vendor/ack"]
 	path = vendor/ack
 	url = git://github.com/petdance/ack.git
