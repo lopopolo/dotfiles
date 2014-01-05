@@ -10,10 +10,6 @@ cd $HOME
 cd $HOME/.vim
 [ -d ".git" ] && git remote update &> /dev/null
 
-cd $HOME/.rbenv
-[ -d ".git" ] && git remote update &> /dev/null
-
-
 function update_all_repo_remotes
 {
   if [ -d "$1" ]; then
