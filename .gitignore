@@ -103,6 +103,7 @@ motd.legal-displayed
 #######################################
 
 # java stuff
+/.gradle/
 .nbprofiler/machinedata.jdk16
 .netbeans/.superId
 /.yjp/
