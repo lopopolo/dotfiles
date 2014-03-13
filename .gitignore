@@ -28,6 +28,7 @@
 /repos/
 
 # all of the default folders in a mac home directory
+/Applications/
 /Desktop/
 /Documents/
 /Downloads/
