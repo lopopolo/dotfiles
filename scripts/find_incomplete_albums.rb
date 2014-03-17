@@ -8,8 +8,7 @@
 # ▶ find ~/Music -name "* 2.mp3" | grep -iv "part" | grep -iv "pt" | less
 
 # run this to find tracks not tagged with featured artists at the end
-# ▶ find ~/Music -iname "*feat.*mix*"
-# ▶ find ~/Music -iname "*(feat.*(*"
+# ▶ find ~/Music -iname '*feat.*(*[a-z]*' | grep -v 'vs\.' | grep -v '_' | grep -Ev 'feat[^\)]+\('
 
 require "pathname"
 
