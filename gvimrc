@@ -3,9 +3,9 @@
 
 let s:uname = system("echo -n \"$(uname)\"")
 if s:uname == "Darwin"
-  set guifont=Inconsolata:h16
+  set guifont=Inconsolata-g:h16
 else
-  set guifont="Inconsolata 16"
+  set guifont="Inconsolata-g 16"
 endif
 
 " Get rid of the macvim and gvim toolbars
