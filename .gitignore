@@ -61,6 +61,7 @@ motd.legal-displayed
 /Dropbox/
 /.dropbox/
 /.dropbox-dist/
+/.dropbox-master/
 
 # box
 /Box Documents/
@@ -98,6 +99,8 @@ motd.legal-displayed
 /.pearrc
 # Gatling
 /.zinc/
+# VMs
+/VirtualBox VMs/
 
 #######################################
 # Programming language specific files #
