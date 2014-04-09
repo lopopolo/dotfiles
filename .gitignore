@@ -137,3 +137,5 @@ motd.legal-displayed
 /.ivy2/
 /.m2/
 /.sbt/
+# YourKit memory snapshots
+/Snapshots
