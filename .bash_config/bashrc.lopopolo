@@ -26,13 +26,6 @@ export BLUE="\033[0;34m"
 export WHITE="\033[0;37m"
 export PLAIN="\033[m"
 
-# A bash function to display a growl notification using iTerm's magic escape sequence.
-unset -f growl
-function growl
-{
-  echo -ne "\033]9;${*}\007"
-}
-
 # Sweet bash stuff
 export HISTSIZE=1000000
 export HISTCONTROL=ignoreboth
