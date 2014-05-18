@@ -18,13 +18,20 @@ fi
 # TERM setup
 export CLICOLOR=1
 export TERM="xterm-256color"
+# colors
+export RED="\033[0;31m"
+export GREEN="\033[0;32m"
+export YELLOW="\033[0;33m"
+export BLUE="\033[0;34m"
+export WHITE="\033[0;37m"
+export PLAIN="\033[m"
+
 # A bash function to display a growl notification using iTerm's magic escape sequence.
 unset -f growl
 function growl
 {
   echo -ne "\033]9;${*}\007"
 }
-
 
 # Sweet bash stuff
 export HISTSIZE=1000000
@@ -93,17 +100,13 @@ function is_not_ascii
 
 function diff_line_count
 {
-  	# export colors
-  	RED="\033[0;31m"
-  	GREEN="\033[0;32m"
-  	PLAIN="\033[m"
-	echo -ne "${GREEN}"
-	echo -n "+ $(git diff --no-color $1 | grep '^+' | wc -l)"
-	echo -ne "${PLAIN}"
-	echo -n " : "
-	echo -ne "${RED}"
-	echo "- $(git diff --no-color $1 | grep '^-' | wc -l)"
-	echo -ne "${PLAIN}"
+  echo -ne "$GREEN"
+  echo -n "+ $(git diff --no-color $1 | grep '^+' | wc -l)"
+  echo -ne "$PLAIN"
+  echo -n " : "
+  echo -ne "$RED"
+  echo "- $(git diff --no-color $1 | grep '^-' | wc -l)"
+  echo -ne "$PLAIN"
 }
 
 # =========================================================================== #
@@ -118,9 +121,10 @@ source $HOME/scripts/git_ps1.lopopolo.bash
 # * prints [24-hour time|username|hostname]
 # * prints current working directory
 # * prints current branch and git state, colorized
-function prompt_command {
+function prompt_command
+{
   local EXITSTATUS="$?"
-  git_ps1_lopopolo
+  local GITSTATUS=$(git_ps1_lopopolo)
   if [[ "$EXITSTATUS" == "0" ]]; then
     PROMPTCOLOR=$GREEN
   else
@@ -128,15 +132,15 @@ function prompt_command {
   fi
 
   # if we're on a mac, add battery info
-  local battery
-  battery=""
+  local BATTERYSTATUS=""
   if [ "$PLATFORM" == "MAC" ]; then
-    battery=$(battery)
+    BATTERYSTATUS="$(battery) "
   fi
+  local TERMTITLE="\033]0;\h : \W\007"
   local PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
-  export PS1="\033]0;\h : \W\007\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w] $battery $__lopopolo_git_string\n$PROMPTLINE"
+  export PS1="$TERMTITLE\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w] $BATTERYSTATUS$GITSTATUS\n$PROMPTLINE"
 }
-PROMPT_COMMAND='prompt_command;'"$PROMPT_COMMAND"
+PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
 export PS1='$ '
 
 # =========================================================================== #

@@ -5,14 +5,6 @@ git_ps1_lopopolo() {
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-  # export colors
-  RED="\033[0;31m"
-  GREEN="\033[0;32m"
-  YELLOW="\033[0;33m"
-  BLUE="\033[0;34m"
-  WHITE="\033[0;37m"
-  PLAIN="\033[m"
-
   if [ -z "$(GIT_REMOTES_TO_TEST_FN)" ]; then
     echo "git PS1 error: Set GIT_REMOTES_TO_TEST_FN in .bashrc"
   fi
@@ -58,11 +50,10 @@ git_ps1_lopopolo() {
       repo_root_string=" in $repo_root"
     fi
     # and we're done
-    export __lopopolo_git_string=" \[$color\](${git_string}${upstreamstate}${repo_root_string})\[$PLAIN\]"
+    echo "\[$color\](${git_string}${upstreamstate}${repo_root_string})\[$PLAIN\]"
   else
-    export __lopopolo_git_string=""
+    echo ""
   fi
-
 }
 
 unset -f ps1_help
