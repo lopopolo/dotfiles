@@ -118,9 +118,9 @@ function prompt_command
 {
   local EXITSTATUS="$?"
   local GITSTATUS=$(git_ps1_lopopolo)
-  if [[ "$EXITSTATUS" == "0" ]]; then
-    PROMPTCOLOR=$GREEN
-  else
+
+  local PROMPTCOLOR=$GREEN
+  if [[ "$EXITSTATUS" != "0" ]]; then
     PROMPTCOLOR=$RED
   fi
 
@@ -129,6 +129,7 @@ function prompt_command
   if [ "$PLATFORM" == "MAC" ]; then
     BATTERYSTATUS="$(battery) "
   fi
+
   local TERMTITLE="\033]0;\h : \W\007"
   local PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
   export PS1="$TERMTITLE\[$WHITE\][\$(date +%H:%M)|\u|\h] [\w] $BATTERYSTATUS$GITSTATUS\n$PROMPTLINE"
