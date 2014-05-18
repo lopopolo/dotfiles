@@ -148,7 +148,7 @@ export PS1='$ '
 # =========================================================================== #
 
 # stuff for moving around directories
-export CDPATH=.:$HOME:$HOME/repos:$HOME/repos/hyperbola:$HOME/repos/hyperbola/hyperbola
+export CDPATH=.:$HOME:$HOME/repos
 
 # git helper scripts
 export PATH=$HOME/vendor/git-scripts:$PATH
