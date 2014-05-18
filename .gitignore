@@ -101,6 +101,8 @@ motd.legal-displayed
 /.zinc/
 # VMs
 /VirtualBox VMs/
+# password manager
+/.keepassx/
 
 #######################################
 # Programming language specific files #
