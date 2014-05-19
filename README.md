@@ -43,10 +43,15 @@ branch if it is also a remote branch:
 export GIT_REMOTES_TO_TEST='origin/master'
 
 unset -f GIT_REMOTES_TO_TEST_FN
-function GIT_REMOTES_TO_TEST_FN {
+function GIT_REMOTES_TO_TEST_FN
+{
   if [ -d "$(__gitdir)" ]; then
-    if [ $(git branch -r | grep "$(git rev-parse --abbrev-ref HEAD)" | wc -l) != 0 ]; then
-      echo "$(git rev-parse --abbrev-ref @{u})"
+    # check that the current HEAD is a symbolic ref, i.e.: Not detached
+    # and that it has a valid upstream
+    git symbolic-ref -q HEAD &>/dev/null && \
+      git rev-parse --quiet --verify @{upstream} &>/dev/null
+    if [[ "$?" == "0" ]]; then
+      echo "$(git rev-parse --abbrev-ref @{upstream})"
     else
       echo "$GIT_REMOTES_TO_TEST"
     fi

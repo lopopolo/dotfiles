@@ -18,8 +18,8 @@ git_ps1_lopopolo() {
 
     # test to see if any of the given remotes exist
     local remote=""
-    while read -r remote_to_test; do
-      [ $(git ls-remote . ${remote_to_test} | wc -l) != 0 ] && remote=${remote_to_test} && break
+    while read -r candidate; do
+      &>/dev/null git ls-remote --exit-code . "$candidate" && remote="$candidate" && break
     done <<< "$(GIT_REMOTES_TO_TEST_FN)"
 
     # if one does, do an ahead-behind from it to HEAD
@@ -27,10 +27,9 @@ git_ps1_lopopolo() {
       local aheadbehind
       local upstreamstate
       upstreamstate=""
-      aheadbehind=""
-      aheadbehind=$(git rev-list --count --left-right ${remote}...HEAD) # requires git 1.7.3
+      aheadbehind=$(git rev-list --quiet ${remote}...HEAD && git rev-list --count --left-right ${remote}...HEAD) # requires git 1.7.3
 
-      regex='([^[:space:]]+)[[:space:]]*(.*)'
+      local regex='([^[:space:]]+)[[:space:]]*(.*)'
       if [[ "$aheadbehind" =~ $regex ]]; then
         [[ "${BASH_REMATCH[1]}" != "0" ]] && upstreamstate="$upstreamstate -behind[${BASH_REMATCH[1]}]"
         [[ "${BASH_REMATCH[2]}" != "0" ]] && upstreamstate="$upstreamstate +ahead[${BASH_REMATCH[2]}]"
