@@ -82,7 +82,7 @@ function is_not_ascii
 {
   if [ "$#" == "0" ]; then
     echo "Usage: $0 file1 file2 ..."
-    exit 1
+    return 1
   fi
   while (( "$#" )); do
     echo "$1:"
