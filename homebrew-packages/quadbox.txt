@@ -29,6 +29,7 @@ rbenv
 redis
 ruby-build
 rust
+sbt
 scala
 spark
 ssh-copy-id
