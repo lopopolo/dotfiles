@@ -3,6 +3,7 @@ bgrep
 binutils
 ctags
 eigen
+faac
 ffmpeg
 flac
 git
@@ -12,6 +13,7 @@ go
 jasper
 jsonpp
 libogg
+libtool
 libyaml
 little-cms
 macvim
