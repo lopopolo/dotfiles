@@ -94,26 +94,32 @@ fun! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfun
 
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+augroup strip_trailing_whitespace
+    au!
+    au BufWritePre * :call <SID>StripTrailingWhitespaces()
+augroup END
 
-" save on lose focus, but don't complain if you can't
-au FocusLost * silent! wa
+augroup save_on_lose_focus
+    au!
+    " save on lose focus, but don't complain if you can't
+    au FocusLost * silent! wa
+augroup END
 
-" Put these in an autocmd group, so that we can delete them easily.
+augroup restore_cursor
+    au!
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \   exe "normal g`\"" |
+                \ endif
+augroup END
+
 augroup vimrcEx
-au!
-
-" When editing a file, always jump to the last known cursor position.
-" Don't do it when the position is invalid or when inside an event handler
-" (happens when dropping a file on gvim).
-autocmd BufReadPost *
-  \ if line("'\"") > 0 && line("'\"") <= line("$") |
-  \   exe "normal g`\"" |
-  \ endif
-
-" Automatically load .vimrc source when saved
-autocmd BufWritePost .vimrc source $MYVIMRC
-
+    au!
+    " Automatically load .vimrc source when saved
+    autocmd BufWritePost .vimrc source $MYVIMRC
 augroup END
 
 " ==================== Typo prevention and other vim remaps ===================
