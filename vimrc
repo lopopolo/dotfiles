@@ -6,6 +6,12 @@ call pathogen#helptags()
 
 " =============================== Basic settings ==============================
 
+" all colors for python
+augroup python
+    au!
+    au BufRead,BufNewFile *.py,*.pyw let python_highlight_all=1
+augroup END
+
 syntax on
 filetype plugin indent on
 
