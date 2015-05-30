@@ -168,10 +168,3 @@ map <leader>a :Ack
 " syntastic
 set statusline+=%=%{SyntasticStatuslineFlag()}
 
-" load the macruby syntax checker for syntastic if the shebang
-" has macruby in it
-autocmd BufRead *
-  \ if getline(1) =~ 'macruby' |
-  \   let g:syntastic_ruby_checker = "macruby" |
-  \ endif
-
