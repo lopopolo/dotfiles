@@ -147,3 +147,4 @@ export CDPATH=.:$HOME:$HOME/repos
 # git helper scripts
 export PATH=$HOME/vendor/git-scripts:$PATH
 
+export GOPATH=$HOME/repos/gopath:$GOPATH
