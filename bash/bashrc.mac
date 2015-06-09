@@ -36,16 +36,6 @@ function cdf # cd's to frontmost window of Finder
     -e 'end tell' 2>/dev/null`"
 }
 
-# A bash function to display a growl notification using iTerm's magic escape sequence.
-unset -f growl
-function growl
-{
-  echo -ne "\033]9;${*}\007"
-}
-
-# plays on plays on plays
-export PATH=$PATH:$HOME/vendor/play
-
 # rbenv on mac
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
