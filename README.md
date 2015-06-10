@@ -6,35 +6,33 @@ is in a separate repo).
 
 Setup
 -----
-Bootstrapping my dotfiles doesn't make sense to me. This repo is meant to be cloned
-into my `$HOME`. Git will complain if you try and clone into a non-empty directory,
-which your home directory generally is. To clone:
+`git clean` in my home directory terrifies me, so these dotfiles are scoped to a
+subdirectory of `$HOME` and can bootstrap themselves by making symlinks.
 
 ```bash
 cd $HOME
-git init
-git remote add origin  git@github.com:lopopolo/dotfiles.git
-git pull origin master
-git submodule init && git submodule update
+git clone git@github.com:lopopolo/dotfiles.git .dotfiles
+cd .dotfiles
+git submodule update --init
+make
+make git-config-<TAB> # options for work or personal
+
+# inject bash config into system provided config files
+echo "source ~/.dotfiles/bash/bash_profile.lopopolo" >> $HOME/.bash_profile
+echo "source ~/.dotfiles/bash/bashrc.lopopolo" >> $HOME/.bashrc
 ```
 
 Then do these things to finish setting up:
 
-1.  Install homebrew packages. Lists of packages can be found in `$HOME/homebrew-packages`.
+1.  Install homebrew packages. Lists of packages can be found in `$HOME/.dotfiles/homebrew-packages`.
 2.  Install rubies and gems.
   * `CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)" rbenv install $RUBY_VERSION`
-3.  Pimp out python by installing some packages.
-  *  `easy_install ipython`
-  *  `easy_install readline`
-  *  `easy_install pil`
-4. Setup repo update cronjob located at `$HOME/scripts/cron-update-remotes.bash`.
-5. Source `bashrc.lopopolo` and `bash_profile.lopopolo` from the system provided `.bashrc`
-   and `.bash_profile`.
-6. Symlink to the proper `.gitconfig` from `$HOME/.git-configs`.
+3. Setup repo update cronjob located at `$HOME/.dotfiles/scripts/cron-update-remotes.bash`.
 
 Git PS1
 -------
 The custom git PS1 takes a function that determine which remote to test against.
+Put one in your .bashrc file.
 
 Here is an example that includes some default remotes and chooses the current
 branch if it is also a remote branch:
