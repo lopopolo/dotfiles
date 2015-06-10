@@ -4,7 +4,9 @@
 # make sure your key doesn't have a passphrase or the fetch will
 # fail
 
-cd $HOME
+DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+
+cd $DOTFILES_ROOT
 [ -d ".git" ] && git remote update &> /dev/null
 
 cd $HOME/.vim
