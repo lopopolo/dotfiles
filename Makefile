@@ -4,10 +4,14 @@ TARGETDIR=$(HOME)
 
 all: bootstrap
 
-bootstrap: $(DOTFILES)
+bootstrap: $(DOTFILES) vim
 
 $(DOTFILES):
 	ln -snf $(CWD)/files/$@ $(TARGETDIR)/$@
+
+vim:
+	ln -snf $(HOME)/.vim/vimrc $(HOME)/.vimrc
+	ln -snf $(HOME)/.vim/gvimrc $(HOME)/.gvimrc
 
 git-config-rjl:
 	ln -snf $(CWD)/git-configs/rjl-hyperbola.gitconfig $(TARGETDIR)/.gitconfig
@@ -15,4 +19,4 @@ git-config-rjl:
 git-config-box:
 	ln -snf $(CWD)/git-configs/lopopolo-box.gitconfig $(TARGETDIR)/.gitconfig
 
-.PHONY: $(DOTFILES)
+.PHONY: $(DOTFILES) vim
