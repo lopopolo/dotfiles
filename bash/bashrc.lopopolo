@@ -47,9 +47,9 @@ alias src='source ~/.bashrc'
 alias la='ls -la'
 
 # Make it quicker to edit the bashrc's
-alias b='vim ~/.bash_config/bashrc.lopopolo'
-alias bm='vim ~/.bash_config/bashrc.mac'
-alias bl='vim ~/.bash_config/bashrc.linux'
+alias b="vim $DOTFILES_ROOT/bash/bashrc.lopopolo"
+alias bm="vim $DOTFILES_ROOT/bash/bashrc.mac"
+alias bl="vim $DOTFILES_ROOT/bash/bashrc.linux"
 # and vimrc
 alias vv='vim ~/.vimrc'
 
