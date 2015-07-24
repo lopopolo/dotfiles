@@ -27,6 +27,6 @@ function update_all_repo_remotes
 
 }
 
-update_all_repo_remotes $HOME/repos
-update_all_repo_remotes $HOME/vendor
+update_all_repo_remotes $DOTFILES_ROOT/repos
+update_all_repo_remotes $DOTFILES_ROOT/vendor
 
