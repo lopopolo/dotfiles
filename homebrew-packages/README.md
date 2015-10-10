@@ -5,5 +5,5 @@ using homebrew. To update a particular host's list, run
 the following command:
 
 ```
-brew leaves > $HOME/homebrew-packages/`hostname`.txt
+brew leaves > $DOTFILES_ROOT/homebrew-packages/`hostname -s`.txt
 ```

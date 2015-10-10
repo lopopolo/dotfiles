@@ -10,10 +10,10 @@ git
 glib
 gnutls
 go
+id3lib
 jasper
 jsonpp
 libogg
-libtool
 libyaml
 little-cms
 macvim
@@ -22,7 +22,7 @@ nmap
 node
 ossp-uuid
 p11-kit
-php54
+josegonzalez/php/php54
 pidof
 pixman
 pngcrush
@@ -39,3 +39,4 @@ tbb
 unrar
 wget
 youtube-dl
+homebrew/dupes/zlib
