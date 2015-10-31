@@ -12,7 +12,6 @@ gnutls
 go
 id3lib
 jasper
-jsonpp
 libogg
 libyaml
 little-cms
