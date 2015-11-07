@@ -10,29 +10,29 @@
 # run this to find tracks not tagged with featured artists at the end
 # ▶ find ~/Music -iname '*feat.*(*[a-z]*' | grep -v 'vs\.' | grep -v '_' | grep -Ev 'feat[^\)]+\('
 
-require "pathname"
+require 'pathname'
 
 # OS X only
-MUSIC_DIR = File.expand_path "~/Music/iTunes/iTunes Media/Music"
+MUSIC_DIR = File.expand_path '~/Music/iTunes/iTunes Media/Music'
 
-abort "Cannot find iTunes directory. This script only runs on OS X" if not Pathname.new(MUSIC_DIR).exist?
+abort 'Cannot find iTunes directory. This script only runs on OS X' unless Pathname.new(MUSIC_DIR).exist?
 
 TRACKS = Hash.new { |h, k| h[k] = Array.new }
-NO_DISC = "single disc album"
+NO_DISC = 'single disc album'
 
 num_incomplete_albums = 0
-(Dir.glob(File.join(MUSIC_DIR, "*")) - %w[. ..]).each do |artist_path|
+(Dir.glob(File.join(MUSIC_DIR, '*')) - %w[. ..]).each do |artist_path|
   artist = Pathname.new(artist_path).basename.to_path
 
-  (Dir.glob(File.join(artist_path, "*")) - %w[. ..]).each do |album_path|
+  (Dir.glob(File.join(artist_path, '*')) - %w[. ..]).each do |album_path|
     album = Pathname.new(album_path).basename.to_path
     TRACKS.clear
 
-    (Dir.glob(File.join(album_path, "*")) - %w[. ..]).each do |song_path|
+    (Dir.glob(File.join(album_path, '*')) - %w[. ..]).each do |song_path|
       song = Pathname.new(song_path).basename.to_path
       # assume tracks are numbered in the standard
       # iTunes way: optional_disk_number-track
-      TRACKS[($1 || NO_DISC).chomp("-")] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
+      TRACKS[($1 || NO_DISC).chomp('-')] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
     end
 
     TRACKS.each do |disc, track_numbers|

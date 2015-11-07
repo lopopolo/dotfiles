@@ -8,25 +8,25 @@
 # of an album mapped to the same folder (i.e., a US and Europe version) with
 # different track names. (And also when you have actual duplicates.)
 
-require "pathname"
+require 'pathname'
 
 # OS X only
-MUSIC_DIR = File.expand_path "~/Music/iTunes/iTunes Media/Music"
+MUSIC_DIR = File.expand_path '~/Music/iTunes/iTunes Media/Music'
 
-abort "Cannot find iTunes directory. This script only runs on OS X" if not Pathname.new(MUSIC_DIR).exist?
+abort 'Cannot find iTunes directory. This script only runs on OS X' unless Pathname.new(MUSIC_DIR).exist?
 
 TRACK_COUNTS = Hash.new { |h, k| h[k] = Hash.new(0) }
-NO_DISC = "single disc album"
+NO_DISC = 'single disc album'
 
 num_dupe_albums = 0
-(Dir.glob(File.join(MUSIC_DIR, "*")) - %w[. ..]).each do |artist_path|
+(Dir.glob(File.join(MUSIC_DIR, '*')) - %w[. ..]).each do |artist_path|
   artist = Pathname.new(artist_path).basename.to_path
 
-  (Dir.glob(artist_dir = File.join(artist_path, "*")) - %w[. ..]).each do |album_path|
+  (Dir.glob(artist_dir = File.join(artist_path, '*')) - %w[. ..]).each do |album_path|
     album = Pathname.new(album_path).basename.to_path
     TRACK_COUNTS.clear
 
-    (Dir.glob(File.join(album_path, "*")) - %w[. ..]).each do |song_path|
+    (Dir.glob(File.join(album_path, '*')) - %w[. ..]).each do |song_path|
       song = Pathname.new(song_path).basename.to_path
       # assume tracks are numbered in the standard
       # iTunes way: optional_disk_number-track
