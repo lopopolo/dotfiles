@@ -35,8 +35,8 @@ export HISTCONTROL=ignoreboth
 # #1 best bash config option of all time. Also, see .inputrc for more vi goodness in readline-enabled apps.
 set -o vi
 
-export PATH=$DOTFILES_ROOT/bin:$DOTFILES_ROOT/scripts:$PATH
-export MANPATH=$DOTFILES_ROOT/man:$MANPATH
+export PATH="$DOTFILES_ROOT/bin:$DOTFILES_ROOT/scripts:$PATH"
+export MANPATH="$DOTFILES_ROOT/man:$MANPATH"
 
 export EDITOR=vim
 
@@ -109,7 +109,7 @@ function diff_line_count
 # =========================================================================== #
 
 # Let's get a nice colorized prompt which knows about git
-source $DOTFILES_ROOT/scripts/git_ps1.lopopolo.bash
+source "$DOTFILES_ROOT/scripts/git_ps1.lopopolo.bash"
 
 # This PS1 does the following:
 # * Set terminal title to hostname : current directory name
@@ -119,15 +119,15 @@ source $DOTFILES_ROOT/scripts/git_ps1.lopopolo.bash
 function prompt_command
 {
   local EXITSTATUS="$?"
-  local GITSTATUS=$(git_ps1_lopopolo)
+  local GITSTATUS="$(git_ps1_lopopolo)"
 
-  local PROMPTCOLOR=$GREEN
+  local PROMPTCOLOR="$GREEN"
   if [[ "$EXITSTATUS" != "0" ]]; then
-    PROMPTCOLOR=$RED
+    PROMPTCOLOR="$RED"
   fi
 
   # if we're on a mac, add battery info
-  local BATTERYSTATUS=""
+  local BATTERYSTATUS=" "
   if [ "$PLATFORM" == "MAC" ]; then
     BATTERYSTATUS="$(battery) "
   fi
@@ -144,9 +144,10 @@ export PS1='$ '
 # =========================================================================== #
 
 # stuff for moving around directories
-export CDPATH=.:$HOME:$DOTFILES_ROOT:$DOTFILES_ROOT/repos
+export CDPATH=".:$HOME:$DOTFILES_ROOT:$DOTFILES_ROOT/repos"
 
 # git helper scripts
-export PATH=$PATH:$DOTFILES_ROOT/vendor/git-scripts
+export PATH="$PATH:$DOTFILES_ROOT/vendor/git-scripts"
 
-export GOPATH=$DOTFILES_ROOT/gopath
+export GOPATH="$DOTFILES_ROOT/gopath"
+export PATH="$PATH:$GOPATH/bin"

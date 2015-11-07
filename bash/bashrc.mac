@@ -18,14 +18,14 @@ export GIT_EDITOR=/usr/bin/vim
 # homebrew stuff
 # mac bash completion is broken, but homebrew's works
 # use it to source the ack auto completer
-if [ ! -f `brew --prefix`/etc/bash_completion.d/ack ]; then
-  ln -snf $DOTFILES_ROOT/vendor/ack/etc/ack.bash_completion.sh `brew --prefix`/etc/bash_completion.d/ack
+if [ ! -f "$(brew --prefix)/etc/bash_completion.d/ack" ]; then
+  ln -snf "$DOTFILES_ROOT/vendor/ack/etc/ack.bash_completion.sh" `brew --prefix`/etc/bash_completion.d/ack
 fi
 
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH # because the doctor said so
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-  source `brew --prefix`/etc/bash_completion
-  source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # because the doctor said so
+if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  source "$(brew --prefix)/etc/bash_completion"
+  source "$(brew --prefix)/Library/Contributions/brew_bash_completion.sh"
 fi
 
 unset -f cdf
@@ -39,4 +39,3 @@ function cdf # cd's to frontmost window of Finder
 # rbenv on mac
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
-
