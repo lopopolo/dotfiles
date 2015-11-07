@@ -6,7 +6,7 @@
 
 DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 
-cd $DOTFILES_ROOT
+cd "$DOTFILES_ROOT"
 [ -d ".git" ] && git remote update &> /dev/null
 
 cd $HOME/.vim
@@ -24,9 +24,9 @@ function update_all_repo_remotes
       cd ..
     done
   fi
-
 }
 
-update_all_repo_remotes $DOTFILES_ROOT/repos
-update_all_repo_remotes $DOTFILES_ROOT/vendor
+update_all_repo_remotes "$DOTFILES_ROOT/colors"
+update_all_repo_remotes "$DOTFILES_ROOT/repos"
+update_all_repo_remotes "$DOTFILES_ROOT/vendor"
 
