@@ -2,6 +2,11 @@
 
 unset -f git_ps1_lopopolo
 git_ps1_lopopolo() {
+  RED="\033[0;31m"
+  GREEN="\033[0;32m"
+  YELLOW="\033[0;33m"
+  PLAIN="\033[m"
+
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
 
@@ -11,10 +16,10 @@ git_ps1_lopopolo() {
 
   local git_string
   if [ -d "$(__gitdir)" ]; then
-    git_string=$(__git_ps1 "%s")
+    git_string="$(__git_ps1 "%s")"
     local color
-    color=$GREEN
-    git diff --ignore-submodules --no-ext-diff --quiet --exit-code || color=$YELLOW
+    color="$GREEN"
+    git diff --ignore-submodules --no-ext-diff --quiet --exit-code || color="$YELLOW"
 
     # test to see if any of the given remotes exist
     local remote=""
@@ -23,10 +28,10 @@ git_ps1_lopopolo() {
     done <<< "$(GIT_REMOTES_TO_TEST_FN)"
 
     # if one does, do an ahead-behind from it to HEAD
+    local upstreamstate
+    upstreamstate=""
     if [ "$remote" != "" ]; then
       local aheadbehind
-      local upstreamstate
-      upstreamstate=""
       aheadbehind=$(git rev-list --quiet ${remote}...HEAD && git rev-list --count --left-right ${remote}...HEAD) # requires git 1.7.3
 
       local regex='([^[:space:]]+)[[:space:]]*(.*)'
@@ -57,6 +62,11 @@ git_ps1_lopopolo() {
 
 unset -f ps1_help
 ps1_help() {
+  RED="\033[0;31m"
+  GREEN="\033[0;32m"
+  YELLOW="\033[0;33m"
+  PLAIN="\033[m"
+
   echo -e "$YELLOW* means the working tree is dirty$PLAIN"
   echo -e "$GREEN+ means files are staged$PLAIN"
   echo -e "$RED% means there are untracked files$PLAIN"
