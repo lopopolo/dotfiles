@@ -109,7 +109,7 @@ function diff_line_count
 # =========================================================================== #
 
 # Let's get a nice colorized prompt which knows about git
-source "$DOTFILES_ROOT/scripts/git_ps1.lopopolo.bash"
+source "$DOTFILES_ROOT/bash/git_ps1.lopopolo.bash"
 
 # This PS1 does the following:
 # * Set terminal title to hostname : current directory name
