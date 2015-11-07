@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require "rubygems"
-require "bundler/setup"
-require "redcarpet"
+require 'rubygems'
+require 'bundler/setup'
+require 'redcarpet'
 
 HEADER = <<EOF
 <style type="text/css">
