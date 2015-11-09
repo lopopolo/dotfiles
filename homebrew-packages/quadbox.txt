@@ -25,6 +25,8 @@ josegonzalez/php/php54
 pidof
 pixman
 pngcrush
+popt
+python
 python3
 rbenv
 redis
