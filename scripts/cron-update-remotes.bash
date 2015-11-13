@@ -6,27 +6,36 @@
 
 DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 
-cd "$DOTFILES_ROOT"
-[ -d ".git" ] && git remote update &> /dev/null
-
-cd $HOME/.vim
-[ -d ".git" ] && git remote update &> /dev/null
-
-function update_all_repo_remotes
+function update_remotes
 {
+  if [ -z "$1" -o ! -d "$1" ]; then
+    echo "update_remotes takes 1 argument (a path to a directory)"
+    exit 1
+  fi
+  {
+    pushd "$1"
+    [ -d ".git" ] && git remote update
+    popd
+  } &> /dev/null
+}
+
+function foreach_directory
+{
+  if [ -z "$1" -o -z "$2" ]; then
+    echo "foreach_directory takes 2 arguments"
+    exit 1
+  fi
   if [ -d "$1" ]; then
-    cd "$1"
-    for dir in ./*/
+    for dir in "$1"/*/
     do
-      dir=${dir%*/}
-      cd "$dir"
-      [ -d ".git" ] && git remote update &> /dev/null
-      cd ..
+      "$2" "$dir"
     done
   fi
 }
 
-update_all_repo_remotes "$DOTFILES_ROOT/colors"
-update_all_repo_remotes "$DOTFILES_ROOT/repos"
-update_all_repo_remotes "$DOTFILES_ROOT/vendor"
+update_remotes "$DOTFILES_ROOT"
+update_remotes "$HOME/.vim"
 
+foreach_directory "$DOTFILES_ROOT/colors" "update_remotes"
+foreach_directory "$DOTFILES_ROOT/repos" "update_remotes"
+foreach_directory "$DOTFILES_ROOT/vendor" "update_remotes"
