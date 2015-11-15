@@ -1,6 +1,6 @@
 # vim: filetype=sh
 
-export DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+export DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 
 # unset prompt command. This is the beginning of initialization so we aren't in danger of losing
 # anything. If we don't unset it, we end up chaining calls to the function prompt_command which
