@@ -42,7 +42,7 @@ GEM
     escape_utils (1.1.0)
     fuzzy_match (2.0.4)
     gem-man (0.3.0)
-    github-linguist (4.7.2)
+    github-linguist (4.7.3)
       charlock_holmes (~> 0.7.3)
       escape_utils (~> 1.1.0)
       mime-types (>= 1.19)
