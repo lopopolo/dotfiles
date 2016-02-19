@@ -66,6 +66,9 @@ end
     TRACKS[($1 || NO_DISC).chomp('-')] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
   end
 
+  if TRACKS.has_key?(NO_DISC) && TRACKS.length > 1
+    print_error(artist, album, NO_DISC, 'Album has no disc and disc number tracks')
+  end
   TRACKS.each do |disc, track_numbers|
     # check for dupes
     if track_numbers.uniq != track_numbers
