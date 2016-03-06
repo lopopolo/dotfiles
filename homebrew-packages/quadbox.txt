@@ -1,6 +1,8 @@
 bash-completion
 bgrep
 binutils
+boost
+cloc
 ctags
 eigen
 faac
@@ -13,6 +15,7 @@ go
 id3lib
 jasper
 libogg
+libvo-aacenc
 libyaml
 little-cms
 macvim
@@ -33,6 +36,7 @@ redis
 rust
 sbt
 scala
+sloccount
 spark
 ssh-copy-id
 tbb
