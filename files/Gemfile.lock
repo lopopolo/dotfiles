@@ -59,7 +59,7 @@ GEM
     rake (10.5.0)
     redcarpet (3.3.4)
     rubyvis (0.6.1)
-    rugged (0.24.0b13)
+    rugged (0.24.0)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
