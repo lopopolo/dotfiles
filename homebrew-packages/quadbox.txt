@@ -5,7 +5,6 @@ boost
 cloc
 ctags
 eigen
-faac
 ffmpeg
 flac
 git
@@ -14,6 +13,7 @@ gnutls
 go
 id3lib
 jasper
+libav
 libogg
 libvo-aacenc
 libyaml
@@ -33,6 +33,7 @@ python
 python3
 rbenv
 redis
+rtmpdump
 rust
 sbt
 scala
