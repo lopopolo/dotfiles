@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.5.2)
+    activesupport (4.2.6)
       i18n (~> 0.7)
       json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
@@ -42,7 +42,7 @@ GEM
     escape_utils (1.1.0)
     fuzzy_match (2.0.4)
     gem-man (0.3.0)
-    github-linguist (4.7.6)
+    github-linguist (4.8.0)
       charlock_holmes (~> 0.7.3)
       escape_utils (~> 1.1.0)
       mime-types (>= 1.19)
@@ -56,10 +56,10 @@ GEM
     molinillo (0.4.4)
     nap (1.1.0)
     netrc (0.7.8)
-    rake (10.5.0)
+    rake (11.1.1)
     redcarpet (3.3.4)
     rubyvis (0.6.1)
-    rugged (0.24.0)
+    rugged (0.25.0b1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -83,4 +83,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
