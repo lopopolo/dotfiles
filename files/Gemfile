@@ -5,8 +5,6 @@ gem "rake"
 gem "redcarpet"
 gem "gem-man"
 
-gem "github-linguist"
-
 gem "rubyvis"
 
 # irb enhancer

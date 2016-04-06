@@ -7,7 +7,6 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
-    charlock_holmes (0.7.3)
     claide (0.9.1)
     cocoapods (0.39.0)
       activesupport (>= 4.0.2)
@@ -39,27 +38,17 @@ GEM
     cocoapods-try (0.5.1)
     colored (1.2)
     escape (0.0.4)
-    escape_utils (1.1.0)
     fuzzy_match (2.0.4)
     gem-man (0.3.0)
-    github-linguist (4.8.0)
-      charlock_holmes (~> 0.7.3)
-      escape_utils (~> 1.1.0)
-      mime-types (>= 1.19)
-      rugged (>= 0.23.0b)
     i18n (0.7.0)
     json (1.8.3)
-    mime-types (3.0)
-      mime-types-data (~> 3.2015)
-    mime-types-data (3.2016.0221)
     minitest (5.8.4)
     molinillo (0.4.4)
     nap (1.1.0)
     netrc (0.7.8)
-    rake (11.1.1)
+    rake (11.1.2)
     redcarpet (3.3.4)
     rubyvis (0.6.1)
-    rugged (0.25.0b1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -76,7 +65,6 @@ DEPENDENCIES
   bundler
   cocoapods
   gem-man
-  github-linguist
   rake
   redcarpet
   rubyvis
