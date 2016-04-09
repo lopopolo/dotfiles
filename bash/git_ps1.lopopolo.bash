@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 unset -f git_ps1_lopopolo
 function git_ps1_lopopolo
 {
