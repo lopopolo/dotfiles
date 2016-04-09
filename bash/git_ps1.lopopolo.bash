@@ -61,7 +61,7 @@ function git_ps1_lopopolo
 unset -f ps1_help
 function ps1_help
 {
-  USAGE="$YELLOW* means the working tree is dirty$PLAIN
+  local USAGE="$YELLOW* means the working tree is dirty$PLAIN
 $GREEN+ means files are staged$PLAIN
 $RED% means there are untracked files$PLAIN
 
