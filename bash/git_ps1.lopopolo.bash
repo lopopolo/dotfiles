@@ -8,25 +8,35 @@ function git_ps1_lopopolo
     echo "git PS1 error: Set GIT_REMOTES_TO_TEST_FN in .bashrc"
   fi
 
-  local git_string
   if [ -d "$(__gitdir)" ]; then
-    git_string="$(__git_ps1 "%s")"
-    local color
-    color="$GREEN"
-    git diff --ignore-submodules --no-ext-diff --quiet --exit-code || color="$YELLOW"
+    local git_string="$(__git_ps1 "%s")"
+    local color=""
+    git diff --ignore-submodules --no-ext-diff --quiet --exit-code
+    if [ $? -eq 0 ]; then
+      color="$GREEN"
+    else
+      color="$YELLOW"
+    fi
 
     # test to see if any of the given remotes exist
     local remote=""
     while read -r candidate; do
-      &>/dev/null git ls-remote --exit-code . "$candidate" && remote="$candidate" && break
+      &>/dev/null git ls-remote --exit-code . "$candidate"
+      if [ $? -eq 0 ]; then
+        remote="$candidate"
+        break
+      fi
     done <<< "$(GIT_REMOTES_TO_TEST_FN)"
 
     # if one does, do an ahead-behind from it to HEAD
-    local upstreamstate
-    upstreamstate=""
-    if [ "$remote" != "" ]; then
-      local aheadbehind
-      aheadbehind=$(git rev-list --quiet ${remote}...HEAD && git rev-list --count --left-right ${remote}...HEAD) # requires git 1.7.3
+    local upstreamstate=""
+    if [ ! -z "$remote" ]; then
+      # requires git 1.7.3
+      local aheadbehind=""
+      git rev-list --quiet "${remote}"...HEAD
+      if [ $? -eq 0 ]; then
+        aheadbehind="$(git rev-list --count --left-right "${remote}"...HEAD)"
+      fi
 
       local regex='([^[:space:]]+)[[:space:]]*(.*)'
       if [[ "$aheadbehind" =~ $regex ]]; then
@@ -36,14 +46,8 @@ function git_ps1_lopopolo
     fi
 
     # set up repo root detection
-    local repo_root
-    local repo_root_string
-    repo_root_string=""
-
-    repo_root=$(readlink-f.sh `__gitdir`)
-    repo_root=$(dirname "$repo_root")
-    repo_root=$(basename "$repo_root")
-
+    local repo_root="$(basename "$(dirname "$(readlink-f.sh `__gitdir`)")")"
+    local repo_root_string=""
     if [ ! -z "$repo_root" ]; then
       repo_root_string=" in $repo_root"
     fi
