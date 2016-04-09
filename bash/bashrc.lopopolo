@@ -96,13 +96,9 @@ function is_not_ascii
 
 function diff_line_count
 {
-  echo -ne "$GREEN"
-  echo -n "+ $(git diff --no-color $1 | grep '^+' | wc -l)"
-  echo -ne "$PLAIN"
-  echo -n " : "
-  echo -ne "$RED"
-  echo "- $(git diff --no-color $1 | grep '^-' | wc -l)"
-  echo -ne "$PLAIN"
+  while read line; do
+    echo -e "${GREEN}+$(echo "$line" | awk '{ print $1 }')\t${RED}-$(echo "$line" | awk '{ print $2 }')\t${PLAIN}$(echo "$line" | awk '{ print $3 }')"
+  done < <(git diff --numstat "$@")
 }
 
 # =========================================================================== #
