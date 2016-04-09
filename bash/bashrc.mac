@@ -4,7 +4,8 @@
 alias ls='ls -h -F'
 
 # make MacVim my default editor
-function vim {
+function vim
+{
   if [ $# -eq 0 ]; then
     mvim
   else
