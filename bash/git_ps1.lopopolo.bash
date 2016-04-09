@@ -62,9 +62,8 @@ $GREEN+ means files are staged$PLAIN
 $RED% means there are untracked files$PLAIN
 
 upstream:
-  <  means the repo is behind upstream
-  >  means the repo is ahead
-  <> indicates the repo and upstream have divereged"
+  +ahead[N]  means the repo is ahead upstream N commits
+  -behind[N] means the repo is behind upstream N commits"
 
   echo -e "$USAGE"
 }
