@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
 unset -f git_ps1_lopopolo
-git_ps1_lopopolo() {
-  RED="\033[0;31m"
-  GREEN="\033[0;32m"
-  YELLOW="\033[0;33m"
-  PLAIN="\033[m"
-
+function git_ps1_lopopolo
+{
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
 
@@ -61,18 +57,17 @@ git_ps1_lopopolo() {
 }
 
 unset -f ps1_help
-ps1_help() {
-  RED="\033[0;31m"
-  GREEN="\033[0;32m"
-  YELLOW="\033[0;33m"
-  PLAIN="\033[m"
+function ps1_help
+{
+  USAGE="$YELLOW* means the working tree is dirty$PLAIN
+$GREEN+ means files are staged$PLAIN
+$RED% means there are untracked files$PLAIN
 
-  echo -e "$YELLOW* means the working tree is dirty$PLAIN"
-  echo -e "$GREEN+ means files are staged$PLAIN"
-  echo -e "$RED% means there are untracked files$PLAIN"
-  echo "upstream:"
-  echo "  < means the repo is behind upstream"
-  echo "  > means the repo is ahead"
-  echo "  <> indicates the repo and upstream have divereged"
+upstream:
+  <  means the repo is behind upstream
+  >  means the repo is ahead
+  <> indicates the repo and upstream have divereged"
+
+  echo -e "$USAGE"
 }
 
