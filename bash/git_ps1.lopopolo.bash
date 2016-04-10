@@ -46,7 +46,7 @@ function git_ps1_lopopolo
     fi
 
     # set up repo root detection
-    local repo_root="$(basename "$(dirname "$(readlink-f.sh `__gitdir`)")")"
+    local repo_root="$(basename "$(dirname "$(readlink-f.sh "$(__gitdir)")")")"
     local repo_root_string=""
     if [ ! -z "$repo_root" ]; then
       repo_root_string=" in $repo_root"

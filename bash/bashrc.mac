@@ -31,9 +31,9 @@ fi
 unset -f cdf
 function cdf # cd's to frontmost window of Finder
 {
-  cd "`osascript -e 'tell application "Finder"' \
+  cd "$(osascript -e 'tell application "Finder"' \
     -e 'set myname to POSIX path of (target of window 1 as alias)' \
-    -e 'end tell' 2>/dev/null`"
+    -e 'end tell' 2>/dev/null)" || return 1
 }
 
 # rbenv on mac
