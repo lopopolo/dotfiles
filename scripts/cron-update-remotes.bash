@@ -8,7 +8,7 @@ DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 
 function update_remotes
 {
-  if [ -z "$1" -o ! -d "$1" ]; then
+  if [ -z "$1" ] || [ ! -d "$1" ]; then
     echo "update_remotes takes 1 argument (a path to a directory)"
     exit 1
   fi
@@ -21,7 +21,7 @@ function update_remotes
 
 function foreach_directory
 {
-  if [ -z "$1" -o -z "$2" ]; then
+  if [ -z "$1" ] || [ -z "$2" ]; then
     echo "foreach_directory takes 2 arguments"
     exit 1
   fi
