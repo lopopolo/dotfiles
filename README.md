@@ -47,9 +47,9 @@ function GIT_REMOTES_TO_TEST_FN
     # check that the current HEAD is a symbolic ref, i.e.: Not detached
     # and that it has a valid upstream
     git symbolic-ref -q HEAD &>/dev/null && \
-      git rev-parse --quiet --verify @{upstream} &>/dev/null
+      git rev-parse --quiet --verify '@{upstream}' &>/dev/null
     if [[ "$?" == "0" ]]; then
-      echo "$(git rev-parse --abbrev-ref @{upstream})"
+      git rev-parse --abbrev-ref '@{upstream}'
     else
       echo "$GIT_REMOTES_TO_TEST"
     fi
