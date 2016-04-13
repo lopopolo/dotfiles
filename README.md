@@ -24,9 +24,8 @@ echo "source ~/.dotfiles/bash/bashrc.lopopolo" >> $HOME/.bashrc
 
 Then do these things to finish setting up:
 
-1.  Install homebrew packages. Lists of packages can be found in `$HOME/.dotfiles/homebrew-packages`.
-2.  Install rubies and gems.
-  * `CONFIGURE_OPTS="--with-readline-dir=$(brew --prefix readline)" rbenv install $RUBY_VERSION`
+1. Install homebrew packages. Lists of packages can be found in `$HOME/.dotfiles/homebrew-packages`.
+2. Install rubies and gems: `rbenv install $RUBY_VERSION`
 3. Setup repo update cronjob located at `$HOME/.dotfiles/scripts/cron-update-remotes.bash`.
 
 Git PS1
