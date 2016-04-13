@@ -7,9 +7,6 @@
 [submodule "vendor/ack"]
 	path = vendor/ack
 	url = git://github.com/petdance/ack.git
-[submodule "vendor/git-scripts"]
-	path = vendor/git-scripts
-	url = git://github.com/cespare/git-scripts.git
 [submodule "colors/intellij-colors-solarized"]
 	path = colors/intellij-colors-solarized
 	url = git@github.com:jkaving/intellij-colors-solarized.git

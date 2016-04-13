@@ -145,8 +145,5 @@ export PS1='$ '
 # stuff for moving around directories
 export CDPATH=".:$HOME:$DOTFILES_ROOT:$DOTFILES_ROOT/repos"
 
-# git helper scripts
-export PATH="$PATH:$DOTFILES_ROOT/vendor/git-scripts"
-
 export GOPATH="$DOTFILES_ROOT/gopath"
 export PATH="$PATH:$GOPATH/bin"
