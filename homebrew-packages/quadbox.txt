@@ -24,6 +24,7 @@ rtmpdump
 rust
 sbt
 scala
+shellcheck
 sloccount
 spark
 ssh-copy-id
