@@ -1,3 +1,4 @@
+ack
 bash-completion
 cloc
 ctags
