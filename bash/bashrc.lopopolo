@@ -38,7 +38,6 @@ shopt -s histappend
 set -o vi
 
 export PATH="$DOTFILES_ROOT/bin:$DOTFILES_ROOT/scripts:$PATH"
-export MANPATH="$DOTFILES_ROOT/man:$MANPATH"
 
 export EDITOR=vim
 
