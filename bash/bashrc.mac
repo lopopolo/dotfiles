@@ -20,9 +20,15 @@ export GIT_EDITOR=/usr/bin/vim
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # because the doctor said so
 
 # mac bash completion is broken, but homebrew's works
+# ack bash completion
+if [ ! -f "$(brew --prefix)/etc/bash_completion.d/ack" ]; then
+  ln -s "$DOTFILES_ROOT/vendor/ack/ack_completion.bash" "$(brew --prefix)/etc/bash_completion.d/ack"
+fi
+
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
   source "$(brew --prefix)/etc/bash_completion"
 fi
+
 
 unset -f cdf
 function cdf # cd's to frontmost window of Finder
