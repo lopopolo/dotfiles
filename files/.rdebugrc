@@ -1,6 +1,0 @@
-set autolist
-set autoeval
-set autoreload
-
-require 'debugger/completion'
-
