@@ -28,6 +28,9 @@
 #
 # Run this to find tracks not tagged with featured artists at the end:
 # ▶ find ~/Music -iname '*feat.*(*[a-z]*' | grep -v 'vs\.' | grep -v '_' | grep -Ev 'feat[^\)]+\('
+#
+# Run this to find tracks missing the '.' after 'feat' in the featured artist list
+# ▶ find ~/Music -name '*feat *'
 
 require 'pathname'
 
