@@ -29,9 +29,13 @@ export BLUE="\033[0;34m"
 export WHITE="\033[0;37m"
 export PLAIN="\033[m"
 
-# Sweet bash stuff
-export HISTSIZE=1000000
+# bash history
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+# https://news.ycombinator.com/item?id=11811272
 export HISTCONTROL=ignoreboth
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 shopt -s histappend
 
 # #1 best bash config option of all time. Also, see .inputrc for more vi goodness in readline-enabled apps.
