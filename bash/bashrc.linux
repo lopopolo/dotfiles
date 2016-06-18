@@ -8,6 +8,7 @@ if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
 
+# http://askubuntu.com/questions/62095/how-to-alias-git-to-g-so-that-bash-completion-rules-are-preserved
 if [ -f /usr/share/bash-completion/completions/git ]; then
   source /usr/share/bash-completion/completions/git
 fi
