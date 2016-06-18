@@ -8,7 +8,7 @@ function git_ps1_lopopolo
     echo "git PS1 error: Set GIT_REMOTES_TO_TEST_FN in .bashrc"
   fi
 
-  if [ -d "$(__gitdir)" ]; then
+  if [ -d "$(git rev-parse --git-dir 2> /dev/null)" ]; then
     local git_string="$(__git_ps1 "%s")"
     local color=""
     git diff --ignore-submodules --no-ext-diff --quiet --exit-code
@@ -46,7 +46,7 @@ function git_ps1_lopopolo
     fi
 
     # set up repo root detection
-    local repo_root="$(basename "$(dirname "$(readlink-f.sh "$(__gitdir)")")")"
+    local repo_root="$(basename "$(dirname "$(readlink-f.sh "$(git rev-parse --git-dir 2> /dev/null)")")")"
     local repo_root_string=""
     if [ ! -z "$repo_root" ]; then
       repo_root_string=" in $repo_root"
