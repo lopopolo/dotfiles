@@ -7,3 +7,7 @@ alias ls='ls -h -F --color=auto --tabsize=0 --group-directories-first'
 if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
+
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+fi
