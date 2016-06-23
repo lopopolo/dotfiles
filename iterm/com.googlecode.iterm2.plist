@@ -479,6 +479,8 @@
 	<false/>
 	<key>HideTab</key>
 	<false/>
+	<key>HideTabNumber</key>
+	<false/>
 	<key>HighlightTabLabels</key>
 	<true/>
 	<key>HotKeyBookmark</key>
@@ -517,6 +519,8 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
+	<key>NSScrollViewShouldScrollUnderTitlebar</key>
+	<false/>
 	<key>NSTableView Columns KeyBingingTable</key>
 	<array>
 		<data>
@@ -528,18 +532,23 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>322</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>427 410 201 308 0 0 1920 1178 </string>
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>704 189 445 270 0 0 1920 1178 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>139 151 924 485 0 0 1440 877 </string>
+	<string>139 209 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 294 592 584 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -1270,6 +1279,8 @@
 			<key>Use Canonical Parser</key>
 			<false/>
 			<key>Use Italic Font</key>
+			<false/>
+			<key>Use Non-ASCII Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
@@ -2013,8 +2024,22 @@
 			<string>/Users/lopopolo</string>
 		</dict>
 	</array>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>1</integer>
 	<key>NoSyncHaveShownPromoWithId_4</key>
 	<true/>
+	<key>NoSyncHaveWarnedAboutIncompatibleSoftware</key>
+	<true/>
+	<key>NoSyncInstallationId</key>
+	<string>D36BA819-D421-41C1-A9B2-7A5D95DB84D5</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>486571302.22173899</real>
 	<key>NoSyncTimeOfLastPromo</key>
 	<real>477730747.28213602</real>
 	<key>NoSyncTimeOfLastPromoDownload</key>
@@ -2033,6 +2058,8 @@
 	<false/>
 	<key>PasteFromClipboard</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -2080,12 +2107,14 @@
 	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
+	<key>SUFeedAlternateAppNameKey</key>
+	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=99</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-06-02T14:33:00Z</date>
+	<date>2016-06-23T04:21:46Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2102,6 +2131,8 @@
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
 	<integer>6</integer>
+	<key>TabStyle</key>
+	<integer>0</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>ThreeFingerEmulates</key>
@@ -2131,6 +2162,6 @@
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
 	<key>iTerm Version</key>
-	<string>2.1.4</string>
+	<string>3.0.0</string>
 </dict>
 </plist>
