@@ -42,7 +42,7 @@ export GIT_REMOTES_TO_TEST='origin/master'
 unset -f GIT_REMOTES_TO_TEST_FN
 function GIT_REMOTES_TO_TEST_FN
 {
-  if [ -d "$(__gitdir)" ]; then
+  if [ -d "$(git rev-parse --git-dir 2> /dev/null)" ]; then
     # check that the current HEAD is a symbolic ref, i.e.: Not detached
     # and that it has a valid upstream
     git symbolic-ref -q HEAD &>/dev/null && \
