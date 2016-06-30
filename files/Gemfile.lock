@@ -7,6 +7,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    ast (2.3.0)
     claide (1.0.0)
     cocoapods (1.0.1)
       activesupport (>= 4.0.2)
@@ -50,12 +51,24 @@ GEM
     molinillo (0.4.5)
     nap (1.1.0)
     netrc (0.7.8)
+    parser (2.3.1.2)
+      ast (~> 2.2)
+    powerpack (0.1.1)
+    rainbow (2.1.0)
     rake (11.2.2)
     redcarpet (3.3.4)
+    rubocop (0.41.1)
+      parser (>= 2.3.1.1, < 3.0)
+      powerpack (~> 0.1)
+      rainbow (>= 1.99.1, < 3.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-progressbar (1.8.1)
     rubyvis (0.6.1)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    unicode-display_width (1.1.0)
     wirble (0.1.3)
     xcodeproj (1.1.0)
       activesupport (>= 3)
@@ -71,6 +84,7 @@ DEPENDENCIES
   gem-man
   rake
   redcarpet
+  rubocop
   rubyvis
   wirble
 
