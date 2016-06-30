@@ -22,25 +22,29 @@
 # where you are missing tracks from the end of an album.
 #
 # # Library Maintenance
-# Run this every once in a while to find tracks that iTunes hasn't moved to their
-# rightful home:
+# Run this every once in a while to find tracks that iTunes hasn't moved to
+# their rightful home:
 # $ find ~/Music -name "* 2.mp3" | grep -iv "part" | grep -iv "pt" | less
 #
 # Run this to find tracks not tagged with featured artists at the end:
-# ▶ find ~/Music -iname '*feat.*(*[a-z]*' | grep -v 'vs\.' | grep -v '_' | grep -Ev 'feat[^\)]+\('
+# $ find ~/Music -iname '*feat.*(*[a-z]*' | grep -v 'vs\.' | grep -v '_' |
+# > grep -Ev 'feat[^\)]+\('
 #
-# Run this to find tracks missing the '.' after 'feat' in the featured artist list
-# ▶ find ~/Music -name '*feat *'
+# Run this to find tracks missing the '.' after 'feat' in the featured artist
+# list
+# $ find ~/Music -name '*feat *'
 
 require 'pathname'
 
 # OS X only
 MUSIC_DIR = File.expand_path '~/Music/iTunes/iTunes Media/Music'
 
-abort 'Cannot find iTunes directory. This script only runs on OS X.' unless Pathname.new(MUSIC_DIR).exist?
+unless Pathname.new(MUSIC_DIR).exist?
+  abort 'Cannot find iTunes directory. This script only runs on OS X.'
+end
 
-TRACKS = Hash.new { |h, k| h[k] = Array.new }
-NO_DISC = 'single disc album'
+TRACKS = Hash.new { |h, k| h[k] = [] }
+NO_DISC = 'single disc album'.freeze
 
 def metadata_from_path(path)
   album = File.basename(path)
@@ -58,18 +62,23 @@ def print_error(artist, album, disc, message)
   end
 end
 
-(Dir.glob(File.join(MUSIC_DIR, '*', '*')) - %w[. ..]).each do |album_path|
+(Dir.glob(File.join(MUSIC_DIR, '*', '*')) - %w(. ..)).each do |album_path|
   TRACKS.clear
   artist, album = metadata_from_path(album_path)
 
-  (Dir.glob(File.join(album_path, '*')) - %w[. ..]).each do |song_path|
+  (Dir.glob(File.join(album_path, '*')) - %w(. ..)).each do |song_path|
     song = Pathname.new(song_path).basename.to_path
     # assume tracks are numbered in the standard
     # iTunes way: optional_disk_number-track
-    TRACKS[($1 || NO_DISC).chomp('-')] << $2.to_i if song =~ /^(\d\d?-)?(\d\d)/
+    match = /^(?<disc>\d\d?-)?(?<track>\d\d)/.match(song)
+    if match
+      disc = match[:disc]
+      disc = NO_DISC if disc.nil?
+      TRACKS[disc.chomp('-')] << match[:track].to_i
+    end
   end
 
-  if TRACKS.has_key?(NO_DISC) && TRACKS.length > 1
+  if TRACKS.key?(NO_DISC) && TRACKS.length > 1
     print_error(artist, album, NO_DISC, 'Album has no disc and disc number tracks')
   end
   TRACKS.each do |disc, track_numbers|
@@ -77,8 +86,8 @@ end
     if track_numbers.uniq != track_numbers
       print_error(artist, album, disc, 'Album contains duplicates')
     end
-    # check that each disc in the album contains a continuous range of track numbers
-    # that starts at 1
+    # check that each disc in the album contains a continuous range of track
+    # numbers that starts at 1
     track_num_range = (track_numbers.min..track_numbers.max).to_a
     if track_num_range.sort != track_numbers.uniq.sort || track_numbers.min > 1
       print_error(artist, album, disc, 'Incomplete album')

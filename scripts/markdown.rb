@@ -4,7 +4,7 @@ require 'rubygems'
 require 'bundler/setup'
 require 'redcarpet'
 
-HEADER = <<EOF
+HEADER = <<EOF.freeze
 <style type="text/css">
 a {
   color: #4183C4;
@@ -239,15 +239,14 @@ pre .il {
 <div id="wrapper">
 EOF
 
-FOOTER = <<EOF
+FOOTER = <<EOF.freeze
 </div>
 </div>
 EOF
 
-markdown_options = { :fenced_code_blocks => true, :tables => true, :space_after_headers => true }
+markdown_options = { fenced_code_blocks: true, tables: true, space_after_headers: true }
 markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new, markdown_options)
 
 puts HEADER
 puts markdown.render(ARGF.read)
 puts FOOTER
-
