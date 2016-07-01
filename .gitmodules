@@ -1,9 +1,9 @@
 [submodule "colors/solarized"]
 	path = colors/solarized
-	url = git://github.com/altercation/solarized.git
+	url = https://github.com/altercation/solarized.git
 [submodule "colors/solarized-xcode"]
 	path = colors/solarized-xcode
-	url = git://github.com/urbanape/solarized-xcode.git
+	url = https://github.com/zacbir/solarized-xcode.git
 [submodule "colors/intellij-colors-solarized"]
 	path = colors/intellij-colors-solarized
-	url = git@github.com:jkaving/intellij-colors-solarized.git
+	url = https://github.com/jkaving/intellij-colors-solarized.git
