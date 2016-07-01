@@ -71,11 +71,10 @@ end
     # assume tracks are numbered in the standard
     # iTunes way: optional_disk_number-track
     match = /^(?<disc>\d\d?-)?(?<track>\d\d)/.match(song)
-    if match
-      disc = match[:disc]
-      disc = NO_DISC if disc.nil?
-      TRACKS[disc.chomp('-')] << match[:track].to_i
-    end
+    next unless match
+    disc = match[:disc]
+    disc = NO_DISC if disc.nil?
+    TRACKS[disc.chomp('-')] << match[:track].to_i
   end
 
   if TRACKS.key?(NO_DISC) && TRACKS.length > 1
