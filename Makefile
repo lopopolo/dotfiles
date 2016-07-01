@@ -4,10 +4,16 @@ TARGETDIR=$(HOME)
 
 all: bootstrap
 
-bootstrap: $(DOTFILES) vim
+bootstrap: $(DOTFILES) dev vim
 
 $(DOTFILES):
 	ln -snf $(CWD)/files/$@ $(TARGETDIR)/$@
+
+dev:
+	mkdir -p $(HOME)/dev/repos
+	mkdir -p $(HOME)/dev/gopath/bin
+	mkdir -p $(HOME)/dev/gopath/pkg
+	mkdir -p $(HOME)/dev/gopath/src
 
 vim:
 	ln -snf $(HOME)/.vim/vimrc $(HOME)/.vimrc

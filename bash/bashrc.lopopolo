@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # vim: filetype=sh
 
 export DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
@@ -146,7 +147,7 @@ export PS1='$ '
 # =========================================================================== #
 
 # stuff for moving around directories
-export CDPATH=".:$HOME:$DOTFILES_ROOT:$DOTFILES_ROOT/repos"
+export CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev/repos"
 
-export GOPATH="$DOTFILES_ROOT/gopath"
+export GOPATH="$HOME/dev/gopath"
 export PATH="$PATH:$GOPATH/bin"
