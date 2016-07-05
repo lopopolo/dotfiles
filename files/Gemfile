@@ -1,17 +1,16 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-gem "bundler"
-gem "rake"
-gem "redcarpet"
-gem "rubocop"
-gem "gem-man"
+gem 'rake'
+gem 'redcarpet'
+gem 'rubocop'
+gem 'gem-man'
 
-gem "rubyvis"
+gem 'rubyvis'
 
 # irb enhancer
-gem "wirble"
+gem 'wirble'
 
 # ios
 group :ios do
-  gem "cocoapods"
+  gem 'cocoapods'
 end

@@ -1,11 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (4.2.6)
+    activesupport (5.0.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (~> 0.7)
-      json (~> 1.7, >= 1.7.7)
       minitest (~> 5.1)
-      thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     ast (2.3.0)
     claide (1.0.0)
@@ -41,12 +40,12 @@ GEM
       netrc (= 0.7.8)
     cocoapods-try (1.0.0)
     colored (1.2)
+    concurrent-ruby (1.0.2)
     escape (0.0.4)
     fourflusher (0.3.2)
     fuzzy_match (2.0.4)
     gem-man (0.3.0)
     i18n (0.7.0)
-    json (1.8.3)
     minitest (5.9.0)
     molinillo (0.4.5)
     nap (1.1.0)
@@ -79,7 +78,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bundler
   cocoapods
   gem-man
   rake
