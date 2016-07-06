@@ -4,6 +4,7 @@
 # make sure your key doesn't have a passphrase or the fetch will
 # fail
 
+set -e
 shopt -s nullglob
 
 DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
@@ -41,4 +42,4 @@ update_remotes "$HOME/.vim"
 foreach_directory "$DOTFILES_ROOT/colors" "update_remotes"
 foreach_directory "$DOTFILES_ROOT/vendor" "update_remotes"
 
-[ -d "$HOME/dev/repos" ] && foreach_directory "$HOME/dev/repos" "update_remotes"
+[ -d "$HOME/dev/repos" ] && foreach_directory "$HOME/dev/repos" "update_remotes" || :
