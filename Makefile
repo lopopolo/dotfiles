@@ -22,7 +22,4 @@ vim:
 git-config-rjl:
 	ln -snf $(CWD)/git-configs/rjl-hyperbola.gitconfig $(TARGETDIR)/.gitconfig
 
-git-config-box:
-	ln -snf $(CWD)/git-configs/lopopolo-box.gitconfig $(TARGETDIR)/.gitconfig
-
 .PHONY: $(DOTFILES) vim
