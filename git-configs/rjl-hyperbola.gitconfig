@@ -1,3 +1,4 @@
+# vim: ft=gitconfig:
 [user]
 	name = Ryan Lopopolo
 	email = rjl@hyperbo.la
