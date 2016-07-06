@@ -9,7 +9,7 @@
 	s = status --untracked-files=no
 	stat = status
 	co = checkout
-	ahead = log origin/master..HEAD
+	ahead = log @{upstream}..HEAD
 	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
 [github]
 	user = lopopolo
