@@ -4,6 +4,8 @@
 # make sure your key doesn't have a passphrase or the fetch will
 # fail
 
+shopt -s nullglob
+
 DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 
 function update_remotes
