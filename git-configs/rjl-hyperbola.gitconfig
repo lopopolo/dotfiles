@@ -16,7 +16,16 @@
 	token = a3c9b63c113b6b4be414ebe374991ba6
 [branch]
 	autosetuprebase = always
+	autosetupmerge = always
 [branch "master"]
 	rebase = true
 [push]
-	default = upstream
+	default = simple
+[merge]
+	defaultToUpstream = true
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+[advice]
+	detachedHead = false
