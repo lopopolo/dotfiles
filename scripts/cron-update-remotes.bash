@@ -39,5 +39,6 @@ update_remotes "$DOTFILES_ROOT"
 update_remotes "$HOME/.vim"
 
 foreach_directory "$DOTFILES_ROOT/colors" "update_remotes"
-foreach_directory "$DOTFILES_ROOT/repos" "update_remotes"
 foreach_directory "$DOTFILES_ROOT/vendor" "update_remotes"
+
+[ -d "$HOME/dev/repos" ] && foreach_directory "$HOME/dev/repos" "update_remotes"
