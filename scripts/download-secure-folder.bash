@@ -49,7 +49,7 @@ eval DESTINATION="$DESTINATION"
 
 pushd "$DESTINATION" &> /dev/null
 
-box-folder-tree.bash -a qr7JkYvcrQfgNE8zVh8rNALfC5aOE2bQ -f 1733369953 -d .
+box-folder-tree.bash -a "$ACCESS_TOKEN" -f 1733369953 -d .
 
 cat <<EOF > Secure/README.txt
 This folder contains the passwords, ssh keys, two factor codes
