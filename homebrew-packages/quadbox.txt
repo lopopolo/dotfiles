@@ -7,6 +7,7 @@ ffmpeg
 flac
 git
 go
+httpie
 libav
 libogg
 libvo-aacenc
