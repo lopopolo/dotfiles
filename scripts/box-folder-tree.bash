@@ -82,6 +82,15 @@ EOF
 )"
 }
 
+# $1 - indentation depth
+# $2 - tabstop
+# $3 - string
+function indent
+{
+  printf "%-$(($1*$2))s" " "
+  echo "$3"
+}
+
 ROOT_FOLDER_NAME=""
 
 # $1 - folder id
@@ -99,8 +108,7 @@ function make_folder
 
   mkdir "$folder_name"
   pushd "$folder_name" &> /dev/null
-  printf " %.s" $(eval "echo {0.."$(($d*2))"}")
-  echo "/$folder_name"
+  indent "$d" "2" "/$folder_name"
 
   items_json="$(curl --silent "https://api.box.com/2.0/folders/$1/items" -H "Authorization: Bearer $ACCESS_TOKEN")"
 
@@ -111,8 +119,7 @@ function make_folder
       file_json="$(curl --silent "https://api.box.com/2.0/files/$file_id?fields=name" \
         -H "Authorization: Bearer $ACCESS_TOKEN")"
       file_name="$(extract_field_from_item "$file_json" "name")"
-      printf " %.s" $(eval "echo {0.."$(($d*2))"}")
-      echo "↳ $file_name"
+      indent "$d" "2" "↳ $file_name"
       curl --silent -L -o "$(extract_field_from_item "$file_json" "name")" \
         "https://api.box.com/2.0/files/$file_id/content" \
         -H "Authorization: Bearer $ACCESS_TOKEN"
