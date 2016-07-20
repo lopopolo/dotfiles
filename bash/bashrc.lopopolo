@@ -132,7 +132,7 @@ function prompt_command
   # if we're on a mac, add battery info
   local BATTERYSTATUS=" "
   if [ "$PLATFORM" == "MAC" ]; then
-    BATTERYSTATUS="$(battery) "
+    BATTERYSTATUS="$(battery -p) "
   fi
 
   local TERMTITLE="\033]0;\h : \W\007"
