@@ -147,7 +147,7 @@ export PS1='$ '
 # =========================================================================== #
 
 # stuff for moving around directories
-export CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev/repos"
+export CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev:$HOME/dev/repos"
 
 export GOPATH="$HOME/dev/gopath"
 export PATH="$PATH:$GOPATH/bin"
