@@ -77,11 +77,10 @@ unset -f freq
 unset -f is_not_ascii
 unset -f diff_line_count
 
-# This function prints out a list of my most frequently used commands
-# Its unreadable because I golfed it
+# freq prints out a list of my most frequently used commands
 function freq
 {
-  cut -d" " -f1 ~/.bash_history | sort | uniq -c | sort -rn | head
+  cut -d" " -f1 ~/.bash_history | grep -Ev "^[[:space:]]*$" | sort | uniq -c | sort -rn | head
 }
 
 # This function prints out lines in the given files that
