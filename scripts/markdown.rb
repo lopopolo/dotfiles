@@ -1,10 +1,11 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'rubygems'
 require 'bundler/setup'
 require 'redcarpet'
 
-HEADER = <<EOF.freeze
+HEADER = <<EOF
 <!-- https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css -->
 <!-- https://github.com/sindresorhus/github-markdown-css -->
 <style type="text/css">
@@ -716,7 +717,7 @@ HEADER = <<EOF.freeze
 <article class="markdown-body">
 EOF
 
-FOOTER = <<EOF.freeze
+FOOTER = <<EOF
 </article>
 EOF
 

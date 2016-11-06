@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # This script looks through an iTunes music folder and performs several
 # integrity checks. This script only uses the filesystem and thus,
@@ -44,7 +45,7 @@ unless Pathname.new(MUSIC_DIR).exist?
 end
 
 TRACKS = Hash.new { |h, k| h[k] = [] }
-NO_DISC = 'single disc album'.freeze
+NO_DISC = 'single disc album'
 
 def metadata_from_path(path)
   album = File.basename(path)
