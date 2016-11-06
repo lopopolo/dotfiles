@@ -46,6 +46,7 @@ end
 
 TRACKS = Hash.new { |h, k| h[k] = [] }
 NO_DISC = 'single disc album'
+DOT_DOT = %w(. ..).freeze
 
 def metadata_from_path(path)
   album = File.basename(path)
@@ -63,11 +64,11 @@ def print_error(artist, album, disc, message)
   end
 end
 
-(Dir.glob(File.join(MUSIC_DIR, '*', '*')) - %w(. ..)).each do |album_path|
+(Dir.glob(File.join(MUSIC_DIR, '*', '*')) - DOT_DOT).each do |album_path|
   TRACKS.clear
   artist, album = metadata_from_path(album_path)
 
-  (Dir.glob(File.join(album_path, '*')) - %w(. ..)).each do |song_path|
+  (Dir.glob(File.join(album_path, '*')) - DOT_DOT).each do |song_path|
     song = Pathname.new(song_path).basename.to_path
     # assume tracks are numbered in the standard
     # iTunes way: optional_disk_number-track
@@ -83,13 +84,12 @@ end
   end
   TRACKS.each do |disc, track_numbers|
     # check for dupes
-    if track_numbers.uniq != track_numbers
+    if track_numbers.uniq.length != track_numbers.length
       print_error(artist, album, disc, 'Album contains duplicates')
     end
     # check that each disc in the album contains a continuous range of track
     # numbers that starts at 1
-    track_num_range = (track_numbers.min..track_numbers.max).to_a
-    if track_num_range.sort != track_numbers.uniq.sort || track_numbers.min > 1
+    if [*1..track_numbers.max] != track_numbers.sort
       print_error(artist, album, disc, 'Incomplete album')
     end
   end
