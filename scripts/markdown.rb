@@ -491,7 +491,7 @@ HEADER = <<EOF
 .markdown-body code:before,
 .markdown-body code:after {
   letter-spacing: -0.2em;
-  content: "\00a0";
+  content: "\\00a0";
 }
 
 .markdown-body pre>code {
