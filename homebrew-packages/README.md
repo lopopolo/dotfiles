@@ -1,9 +1,13 @@
 # Homebrew packages
 
-This directory contains snapshots of packages installed
-using homebrew. To update a particular host's list, run
-the following command:
+Package lists are maintained using [`brew bundle`](https://github.com/Homebrew/homebrew-bundle).
 
-```
-brew leaves > $DOTFILES_ROOT/homebrew-packages/`hostname -s`.txt
+This directory contains a Brewfile per host containing a
+list of top-level packages installed using homebrew.
+
+To bootstrap a new system
+
+```sh
+brew tap bundle
+brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`
 ```
