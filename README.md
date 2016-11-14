@@ -58,3 +58,33 @@ function GIT_REMOTES_TO_TEST_FN
 }
 ```
 
+ssh-agent
+---------
+If you wish to enable ssh agent forwarding, add the following to `.bashrc`:
+
+```bash
+# ssh-agent snippet from http://stackoverflow.com/a/18915067
+
+SSH_ENV="$HOME/.ssh/environment"
+
+unset -f start_agent
+function start_agent {
+    echo "Initialising new SSH agent..."
+    /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    . "${SSH_ENV}" > /dev/null
+    /usr/bin/ssh-add;
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+    pgrep ssh-agent | grep "${SSH_AGENT_PID}" > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+```
