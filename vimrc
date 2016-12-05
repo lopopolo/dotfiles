@@ -96,7 +96,8 @@ endfun
 
 augroup strip_trailing_whitespace
     au!
-    au BufWritePre * :call <SID>StripTrailingWhitespaces()
+    " but not in markdown where trailing whitespace is significant
+    au BufWritePre * if &ft!~?'markdown' | :call <SID>StripTrailingWhitespaces() | endif
 augroup END
 
 augroup save_on_lose_focus
