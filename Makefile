@@ -22,4 +22,7 @@ vim:
 git-config-rjl:
 	ln -snf $(CWD)/git-configs/rjl-hyperbola.gitconfig $(TARGETDIR)/.gitconfig
 
+brewfile:
+	brew leaves -1 | awk '{ print "brew '"'"'" $$1 "'"'"'" }' | git diff --no-index --word-diff homebrew-packages/Brewfile.`hostname -s` -
+
 .PHONY: $(DOTFILES) vim
