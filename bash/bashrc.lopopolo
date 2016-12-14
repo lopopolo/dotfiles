@@ -1,7 +1,8 @@
 # shellcheck shell=bash
 # vim: filetype=sh
 
-export DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
+export DOTFILES_ROOT
+DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 
 # unset prompt command. This is the beginning of initialization so we aren't in danger of losing
 # anything. If we don't unset it, we end up chaining calls to the function prompt_command which
@@ -120,8 +121,8 @@ source "$DOTFILES_ROOT/bash/git_ps1.lopopolo.bash"
 # * prints current branch and git state, colorized
 function prompt_command
 {
-  local EXITSTATUS="$?"
-  local GITSTATUS="$(git_ps1_lopopolo)"
+  local -r EXITSTATUS="$?"
+  local -r GITSTATUS="$(git_ps1_lopopolo)"
 
   local PROMPTCOLOR="$GREEN"
   if [[ "$EXITSTATUS" != "0" ]]; then
