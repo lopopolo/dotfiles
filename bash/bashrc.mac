@@ -41,3 +41,7 @@ function cdf # cd's to frontmost window of Finder
 # rbenv on mac
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
+
+# pyenv on mac
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
