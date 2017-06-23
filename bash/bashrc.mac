@@ -2,6 +2,7 @@
 # mac specific customizations
 
 alias ls='ls -h -F'
+alias nosleep='pmset noidle'
 
 # make MacVim my default editor
 function vim
@@ -30,8 +31,9 @@ if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
 fi
 
 
+# chdir to frontmost window of Finder.app
 unset -f cdf
-function cdf # cd's to frontmost window of Finder
+function cdf
 {
   cd "$(osascript -e 'tell application "Finder"' \
     -e 'set myname to POSIX path of (target of window 1 as alias)' \
