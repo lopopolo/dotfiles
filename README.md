@@ -37,23 +37,22 @@ Here is an example that includes some default remotes and chooses the current
 branch if it is also a remote branch:
 
 ```bash
-export GIT_REMOTES_TO_TEST='origin/master'
+export git_ps1_lopopolo_remote_list='origin/master'
 
-unset -f GIT_REMOTES_TO_TEST_FN
-function GIT_REMOTES_TO_TEST_FN
+unset -f git_ps1_lopopolo_remote_generator
+function git_ps1_lopopolo_remote_generator
 {
-  if [ -d "$(git rev-parse --git-dir 2> /dev/null)" ]; then
-    # check that the current HEAD is a symbolic ref, i.e.: Not detached
-    # and that it has a valid upstream
-    git symbolic-ref -q HEAD &>/dev/null && \
-      git rev-parse --quiet --verify '@{upstream}' &>/dev/null
-    if [[ "$?" == "0" ]]; then
-      git rev-parse --abbrev-ref '@{upstream}'
-    else
-      echo "$GIT_REMOTES_TO_TEST"
-    fi
+	# if not in a git repository, do nothing
+  if ! git rev-parse 2> /dev/null; then
+    echo ""
+    return 0
+  fi
+  # check that the current HEAD is a symbolic ref, i.e.: Not detached
+  # and that it has a valid upstream
+  if git symbolic-ref -q HEAD &>/dev/null && git rev-parse --quiet --verify '@{upstream}' &>/dev/null; then
+    git rev-parse --abbrev-ref '@{upstream}'
   else
-    echo "$GIT_REMOTES_TO_TEST"
+    echo "$git_ps1_lopopolo_remote_list"
   fi
 }
 ```
