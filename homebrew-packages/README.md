@@ -11,3 +11,6 @@ To bootstrap a new system
 brew tap bundle
 brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`
 ```
+
+These dotfiles also include the alias `brew-bundle-install` which executes
+the above host-specific `Brewfile` install.
