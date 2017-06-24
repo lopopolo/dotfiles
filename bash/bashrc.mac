@@ -3,6 +3,7 @@
 
 alias ls='ls -h -F'
 alias nosleep='pmset noidle'
+alias nosleeptillbrooklyn='nosleep'
 alias brew-bundle-install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`'
 
 # make MacVim my default editor
