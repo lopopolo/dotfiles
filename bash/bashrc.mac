@@ -5,6 +5,7 @@ alias ls='ls -h -F'
 alias nosleep='pmset noidle'
 alias nosleeptillbrooklyn='nosleep'
 alias brew-bundle-install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`'
+alias listening-ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
 # make MacVim my default editor
 function vim
