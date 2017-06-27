@@ -1,3 +1,4 @@
+tap 'caskroom/cask'
 brew 'ack'
 brew 'ansible'
 brew 'awscli'
