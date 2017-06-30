@@ -49,9 +49,14 @@ eval DESTINATION="$DESTINATION"
 
 pushd "$DESTINATION" &> /dev/null
 
-box-folder-tree.bash -a "$ACCESS_TOKEN" -f 1733369953 -d .
+tree="$(box-folder-tree.bash -a "$ACCESS_TOKEN" -f 1733369953 -d .)"
 
-cat <<EOF > Secure/README.txt
+if [[ -z "$tree" ]] || [[ ! -d "$tree" ]]; then
+  echo "Download failed"
+  exit 1
+fi
+
+cat <<EOF > "$tree/README.txt"
 This folder contains the passwords, ssh keys, two factor codes
 and other security-related content of Ryan Lopopolo <rjl@hyperbo.la>.
 
@@ -59,7 +64,7 @@ This archive was generated on $(date "+%Y-%m-%d") using the tool
 $0.
 
 Passwords can be found in the Keypass folder. The database is a
-.kbdx file that can be opened with KeepassX <https://www.keepassx.org/>.
+.kbdx file that can be opened with KeepassXC <https://keepassxc.org/>.
 
 Several accounts require two factor authentication codes. If my phone is
 inaccessible, the backup codes in the 2FA folder can be used.

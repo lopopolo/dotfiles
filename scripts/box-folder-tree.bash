@@ -87,8 +87,10 @@ EOF
 # $3 - string
 function indent
 {
-  printf "%-$(($1*$2))s" " "
-  echo "$3"
+  {
+    printf "%-$(($1*$2))s" " "
+    echo "$3"
+  } >&2
 }
 
 ROOT_FOLDER_NAME=""
@@ -103,7 +105,8 @@ function make_folder
   folder_name="$(extract_field_from_item "$folder_json" "name")"
 
   if [ "$d" -eq "0" ]; then
-    ROOT_FOLDER_NAME="$folder_name"
+    ROOT_FOLDER_NAME="$folder_name $(date "+%Y-%m-%d")"
+    folder_name="$ROOT_FOLDER_NAME"
   fi
 
   mkdir "$folder_name"
@@ -142,5 +145,5 @@ pushd "$DESTINATION" &> /dev/null
 
 make_folder "$FOLDER_ID" "0"
 
-pushd "$ROOT_FOLDER_NAME" &> /dev/null
+echo "$ROOT_FOLDER_NAME"
 
