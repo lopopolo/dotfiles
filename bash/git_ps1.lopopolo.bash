@@ -26,7 +26,6 @@ list of remotes to test for upstream divergence."
         return 0
         ;;
       *)
-        echo "foo"
         git_ps1_lopopolo_usage
         return 1
         ;;
@@ -65,7 +64,7 @@ list of remotes to test for upstream divergence."
 
   # if one does, do an ahead-behind from it to HEAD
   local upstreamstate=""
-  if [ ! -z "$remote" ]; then
+  if [[ -n "$remote" ]]; then
     # requires git 1.7.3
     local aheadbehind
     if git rev-list --quiet "${remote}"...HEAD; then
@@ -75,14 +74,18 @@ list of remotes to test for upstream divergence."
     # shellcheck disable=SC2086
     set -- tombstone $aheadbehind
     shift
-    [[ "$1" != "0" ]] && upstreamstate="$upstreamstate -behind[$1]"
-    [[ "$2" != "0" ]] && upstreamstate="$upstreamstate -ahead[$2]"
+    if [[ "$1" != "0" ]]; then
+      upstreamstate="$upstreamstate -behind[$1]"
+    fi
+    if [[ "$2" != "0" ]]; then
+      upstreamstate="$upstreamstate -ahead[$2]"
+    fi
   fi
 
   # set up repo root detection
   local repo_root
   repo_root="$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")"
-  if [ ! -z "$repo_root" ]; then
+  if [[ -n "$repo_root" ]]; then
     repo_root=" in $repo_root"
   fi
   # and we're done
