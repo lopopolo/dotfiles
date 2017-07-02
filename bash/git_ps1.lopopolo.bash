@@ -75,10 +75,10 @@ list of remotes to test for upstream divergence."
     set -- tombstone $aheadbehind
     shift
     if [[ "$1" != "0" ]]; then
-      upstreamstate="$upstreamstate -behind[$1]"
+      upstreamstate="$upstreamstate behind[$1]"
     fi
     if [[ "$2" != "0" ]]; then
-      upstreamstate="$upstreamstate -ahead[$2]"
+      upstreamstate="$upstreamstate ahead[$2]"
     fi
   fi
 
