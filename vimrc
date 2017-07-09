@@ -169,3 +169,5 @@ map <leader>a :Ack
 " syntastic
 set statusline+=%=%{SyntasticStatuslineFlag()}
 
+set exrc
+" set secure
