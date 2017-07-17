@@ -2,8 +2,7 @@
 # mac specific customizations
 
 alias ls='ls -h -F'
-alias nosleep='pmset noidle'
-alias nosleeptillbrooklyn='nosleep'
+alias nosleeptillbrooklyn='caffeinate -s'
 alias brew_bundle_install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
