@@ -150,7 +150,8 @@ export PS1='$ '
 # =========================================================================== #
 
 # stuff for moving around directories
-export CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev:$HOME/dev/repos"
+# https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
+CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev:$HOME/dev/repos"
 
 export GOPATH="$HOME/dev/gopath"
 export PATH="$PATH:$GOPATH/bin"
