@@ -154,6 +154,8 @@ nmap <leader><up>      <C-W>k
 " Quickly display a markdown preview of the current buffer
 map <leader>m :%w ! markdown.rb > temp.html && open temp.html<CR><CR>
 
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
 " nerdtree shortcut
 map <leader>n :NERDTree
 map <leader>nt :NERDTreeToggle<CR>
@@ -168,6 +170,3 @@ map <leader>a :Ack
 
 " syntastic
 set statusline+=%=%{SyntasticStatuslineFlag()}
-
-set exrc
-" set secure
