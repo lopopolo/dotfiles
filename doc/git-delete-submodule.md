@@ -1,11 +1,7 @@
 # Steps to Delete a Git Submodule
 
-(I can never remember these)
+Requires `git>=2.12.0` – <https://stackoverflow.com/a/41788804>:
 
 ```bash
-SUBMODULE="path/to/submodule"
-git rm --cached "$SUBMODULE"
-vim .gitmodules # Deleting the lines about the submodule
-vim .git/config # Deleting the lines about the submodule
-rm -rf "$SUBMODULE"
+git rm path/to/submodule
 ```
