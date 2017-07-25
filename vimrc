@@ -165,8 +165,5 @@ let g:NERDTreeChDirMode=1
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" ack
-map <leader>a :Ack
-
 " syntastic
 set statusline+=%=%{SyntasticStatuslineFlag()}
