@@ -1,8 +1,7 @@
 Dotfiles
 ========
 
-This is everything I want in my home directory (except my vim config, which
-is in a separate repo).
+Configs and scripts for making a machine feel like `$HOME`.
 
 Setup
 -----
