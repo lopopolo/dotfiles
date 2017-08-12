@@ -39,7 +39,7 @@ vim-init:
 
 .PHONY: $(BUNDLES)
 $(BUNDLES):
-	cd "$@" && git checkout master && git pull
+	cd "$@" && if [[ -n "$$(git rev-parse --show-superproject-working-tree)" ]]; then git checkout master && git pull; fi
 
 .PHONY: update-vim-bundles
 update-vim-bundles: $(BUNDLES)
