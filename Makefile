@@ -28,7 +28,7 @@ brewfile:
 	brew leaves -1 | awk '{ print "brew '"'"'" $$1 "'"'"'" }' | git diff --no-index --word-diff homebrew-packages/Brewfile.`hostname -s` -
 
 .PHONY: vim
-vim: vim-init update-vim-bundles
+vim: vim-init vim-update-bundles vim-python
 
 .PHONY: vim-init
 vim-init:
@@ -41,5 +41,11 @@ vim-init:
 $(BUNDLES):
 	cd "$@" && if [[ -n "$$(git rev-parse --show-superproject-working-tree)" ]]; then git checkout master && git pull; fi
 
-.PHONY: update-vim-bundles
-update-vim-bundles: $(BUNDLES)
+.PHONY: vim-python
+vim-python:
+	wget -O $(PWD)/vim/bundle/python.vim/plugin/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/vimrc
+	wget -O $(PWD)/vim/bundle/python.vim/syntax/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/python.vim
+
+
+.PHONY: vim-update-bundles
+vim-update-bundles: $(BUNDLES)
