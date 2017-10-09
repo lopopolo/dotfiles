@@ -1,15 +1,8 @@
 source 'https://rubygems.org'
 
-gem 'gem-man'
 gem 'rake'
 gem 'redcarpet'
 gem 'rubocop'
-gem 'rubyvis'
 
 # irb enhancer
 gem 'wirble'
-
-# ios
-group :ios do
-  gem 'cocoapods'
-end
