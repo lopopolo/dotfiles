@@ -55,3 +55,6 @@
 [submodule "vim/bundle/editorconfig-vim"]
 	path = vim/bundle/editorconfig-vim
 	url = https://github.com/editorconfig/editorconfig-vim.git
+[submodule "vim/bundle/sql-heredoc.vim"]
+	path = vim/bundle/sql-heredoc.vim
+	url = https://github.com/aliou/sql-heredoc.vim.git
