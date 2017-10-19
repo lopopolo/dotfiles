@@ -58,3 +58,9 @@
 [submodule "vim/bundle/sql-heredoc.vim"]
 	path = vim/bundle/sql-heredoc.vim
 	url = https://github.com/aliou/sql-heredoc.vim.git
+[submodule "vim/bundle/goyo.vim"]
+	path = vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
