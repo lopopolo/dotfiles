@@ -120,10 +120,7 @@ augroup END
 augroup vimrcEx
     au!
     " Automatically load .vimrc source when saved
-    autocmd BufWritePost .vimrc source $MYVIMRC
-    autocmd BufWritePost vimrc source $MYVIMRC
-    autocmd BufWritePost .gvimrc source $MYVIMRC
-    autocmd BufWritePost gvimrc source $MYVIMRC
+    autocmd BufWritePost .vimrc,vimrc,.gvimrc,gvimrc source $MYVIMRC
 augroup END
 
 " ==================== Typo prevention and other vim remaps ===================
