@@ -19,17 +19,12 @@ set nocompatible
 set noswapfile
 
 set expandtab
-set smarttab
 set tabstop=2
 set shiftwidth=2
-set autoindent
 set smartindent
 set number
 set ruler
-set backspace=indent,eol,start
-set scrolloff=5
 
-" Allow for modelines
 set modeline
 
 let mapleader = ","
@@ -37,27 +32,17 @@ let mapleader = ","
 " searching
 set ignorecase
 set smartcase
-set incsearch
 set showmatch
 set hlsearch
 set gdefault
 nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
 
 " status lines
-set laststatus=2
 set statusline=%<%F%h%m%r%h%w%y\ %{fugitive#statusline()}\ %{&ff}\ lin:%l\,%L\ col:%c%V\ pos:%o\ %P
 set cursorline
 
-" text wrapping
-set wrap
-set textwidth=110
-let &wrapmargin= &textwidth
-set formatoptions=tcroql
-
+" crutches
 set autochdir
-
 set mouse=a
 
 " ============================== Command mappings =============================
