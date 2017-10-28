@@ -1,18 +1,4 @@
 require 'rubygems'
-require 'wirble'
-Wirble.init
-Wirble.colorize
-
-class Object
-  def cool_methods
-    (self.methods - Object.new.methods).sort
-  end
-
-  # list methods which aren't in superclass
-  def local_methods(obj = self)
-    (obj.methods - obj.class.superclass.instance_methods).sort
-  end
-end
 
 # print ruby version at every prompt
 PROMPT_RUBY_VERSION = "[#{RUBY_VERSION}]"
@@ -25,5 +11,5 @@ IRB.conf[:PROMPT][:CUSTOM] = {
 }
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 
-IRB.conf[:SAVE_HISTORY] = 100
+IRB.conf[:SAVE_HISTORY] = 1000
 
