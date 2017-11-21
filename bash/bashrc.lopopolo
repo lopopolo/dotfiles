@@ -88,12 +88,13 @@ function freq
 # contain non-ascii characters
 function is_not_ascii
 {
-  if [ "$#" == "0" ]; then
+  if [[ "$#" == "0" ]]; then
     echo "Usage: $0 file1 file2 ..."
     return 1
   fi
+  local argc="$#"
   while (( "$#" )); do
-    echo "$1:"
+    if [[ "$argc" -gt "1" ]]; then echo "$1:"; fi
     perl -nwe 'print if /[^[:ascii:]]/' "$1"
     shift
   done
