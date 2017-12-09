@@ -3,12 +3,12 @@ GEM
   specs:
     ast (2.3.0)
     parallel (1.12.0)
-    parser (2.4.0.0)
-      ast (~> 2.2)
+    parser (2.4.0.2)
+      ast (~> 2.3)
     powerpack (0.1.1)
     rainbow (2.2.2)
       rake
-    rake (12.2.1)
+    rake (12.3.0)
     redcarpet (3.4.0)
     rubocop (0.51.0)
       parallel (~> 1.10)
