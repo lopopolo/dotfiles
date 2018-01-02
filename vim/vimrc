@@ -42,7 +42,7 @@ set statusline=%<%F%h%m%r%h%w%y\ %{fugitive#statusline()}\ %{&ff}\ lin:%l\,%L\ c
 set cursorline
 
 " crutches
-set autochdir
+" set autochdir
 set mouse=a
 
 " ============================== Command mappings =============================
