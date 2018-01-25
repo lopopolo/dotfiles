@@ -43,8 +43,8 @@ $(BUNDLES):
 
 .PHONY: vim-python
 vim-python:
-	wget -O $(PWD)/vim/bundle/python.vim/plugin/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/vimrc
-	wget -O $(PWD)/vim/bundle/python.vim/syntax/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/python.vim
+	curl -o $(PWD)/vim/bundle/python.vim/plugin/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/vimrc
+	curl -o $(PWD)/vim/bundle/python.vim/syntax/python.vim http://svn.python.org/projects/python/trunk/Misc/Vim/python.vim
 
 
 .PHONY: vim-update-bundles
