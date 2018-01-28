@@ -36,15 +36,18 @@ list of remotes to test for upstream divergence."
   export GIT_PS1_SHOWDIRTYSTATE=1
   export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-  if [[ "$(type -t "git_ps1_lopopolo_remote_generator")" != "function" ]]; then
-    echo 1>&2 "git PS1 error: Set git_ps1_lopopolo_remote_generator in .bashrc"
-  fi
-
   # if not in a git repository, do nothing
-  if ! git rev-parse 2>/dev/null; then
+	local git_top_level
+  if ! git_top_level="$(git rev-parse --show-toplevel 2>/dev/null)"; then
     echo ""
     return 0
   fi
+
+  # set up repo root detection
+  local repo_name
+  local repo_root
+  repo_name="$(basename "$git_top_level")"
+  repo_root=" in $repo_name"
 
   local -r git_string="$(__git_ps1 "%s")"
   local color
@@ -55,12 +58,7 @@ list of remotes to test for upstream divergence."
 
   # test to see if any of the given remotes exist
   local remote
-  while read -r candidate; do
-    if git ls-remote --quiet --exit-code . "$candidate" >/dev/null; then
-      remote="$candidate"
-      break
-    fi
-  done <<<"$(git_ps1_lopopolo_remote_generator)"
+  remote="origin/master"
 
   # if one does, do an ahead-behind from it to HEAD
   local upstreamstate=""
@@ -82,12 +80,6 @@ list of remotes to test for upstream divergence."
     fi
   fi
 
-  # set up repo root detection
-  local repo_root
-  repo_root="$(basename "$(git rev-parse --show-toplevel 2>/dev/null)")"
-  if [[ -n "$repo_root" ]]; then
-    repo_root=" in $repo_root"
-  fi
   # and we're done
-  echo "\[$color\](${git_string}${upstreamstate}${repo_root})\[$PLAIN\]"
+  echo -e "$color(${git_string}${upstreamstate}${repo_root})$PLAIN"
 }

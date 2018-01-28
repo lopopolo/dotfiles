@@ -1,10 +1,9 @@
-Dotfiles
-========
+# Dotfiles
 
 Configs and scripts for making a machine feel like `$HOME`.
 
-Setup
------
+## Setup
+
 `git clean` in my home directory terrifies me, so these dotfiles are scoped to a
 subdirectory of `$HOME` and can bootstrap themselves by making symlinks.
 
@@ -25,39 +24,9 @@ Then do these things to finish setting up:
 
 1. Install homebrew packages. Lists of packages can be found in `$HOME/.dotfiles/homebrew-packages`.
 2. Install rubies and gems: `rbenv install $RUBY_VERSION`
-3. Setup repo update cronjob located at `$HOME/.dotfiles/scripts/cron-update-remotes.bash`.
 
-Git PS1
--------
-The custom git PS1 takes a function that determine which remote to test against.
-Put one in your .bashrc file.
+## ssh-agent
 
-Here is an example that includes some default remotes and chooses the current
-branch if it is also a remote branch:
-
-```bash
-export git_ps1_lopopolo_remote_list='origin/master'
-
-unset -f git_ps1_lopopolo_remote_generator
-function git_ps1_lopopolo_remote_generator
-{
-	# if not in a git repository, do nothing
-  if ! git rev-parse 2> /dev/null; then
-    echo ""
-    return 0
-  fi
-  # check that the current HEAD is a symbolic ref, i.e.: Not detached
-  # and that it has a valid upstream
-  if git symbolic-ref -q HEAD &>/dev/null && git rev-parse --quiet --verify '@{upstream}' &>/dev/null; then
-    git rev-parse --abbrev-ref '@{upstream}'
-  else
-    echo "$git_ps1_lopopolo_remote_list"
-  fi
-}
-```
-
-ssh-agent
----------
 If you wish to enable ssh agent forwarding, add the following to `.bashrc`:
 
 ```bash
