@@ -24,12 +24,12 @@ fi
 export CLICOLOR=1
 export TERM="xterm-256color"
 # colors
-export RED="\033[0;31m"
-export GREEN="\033[0;32m"
-export YELLOW="\033[0;33m"
-export BLUE="\033[0;34m"
-export WHITE="\033[0;37m"
-export PLAIN="\033[m"
+export RED="\\033[0;31m"
+export GREEN="\\033[0;32m"
+export YELLOW="\\033[0;33m"
+export BLUE="\\033[0;34m"
+export WHITE="\\033[0;37m"
+export PLAIN="\\033[m"
 
 # bash history
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
@@ -103,7 +103,7 @@ function is_not_ascii
 function diff_line_count
 {
   while read -r line; do
-    echo -e "${GREEN}+$(echo "$line" | awk '{ print $1 }')\t${RED}-$(echo "$line" | awk '{ print $2 }')\t${PLAIN}$(echo "$line" | awk '{ print $3 }')"
+    echo -e "${GREEN}+$(echo "$line" | awk '{ print $1 }')\\t${RED}-$(echo "$line" | awk '{ print $2 }')\\t${PLAIN}$(echo "$line" | awk '{ print $3 }')"
   done < <(git diff --numstat "$@")
 }
 
@@ -136,11 +136,11 @@ function prompt_command
     BATTERYSTATUS="$(battery -p) "
   fi
 
-  local TERMTITLE="\033]0;\h : \W\007"
-  local PROMPTLINE="\[$PROMPTCOLOR\]▶\[$PLAIN\] "
+  local TERMTITLE="\\033]0;\\h : \\W\\007"
+  local PROMPTLINE="\\[$PROMPTCOLOR\\]▶\\[$PLAIN\\] "
   local NOW
   NOW="$(date +%H:%M)"
-  export PS1="$TERMTITLE\[$WHITE\][$NOW|\u|\h] [\w] $BATTERYSTATUS$GITSTATUS\n$PROMPTLINE"
+  export PS1="$TERMTITLE\\[$WHITE\\][$NOW|\\u|\\h] [\\w] ${BATTERYSTATUS}${GITSTATUS}\\n${PROMPTLINE}"
 }
 shopt -u promptvars
 PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
