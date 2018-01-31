@@ -1,7 +1,6 @@
 # shellcheck shell=bash
 # vim: filetype=sh
 
-export DOTFILES_ROOT
 DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 
 # unset prompt command. This is the beginning of initialization so we aren't in danger of losing
@@ -43,7 +42,7 @@ shopt -s histappend
 # #1 best bash config option of all time. Also, see .inputrc for more vi goodness in readline-enabled apps.
 set -o vi
 
-export PATH="$DOTFILES_ROOT/bin:$DOTFILES_ROOT/scripts:$PATH"
+export PATH="$DOTFILES_ROOT/scripts:$PATH"
 
 export EDITOR=vim
 
