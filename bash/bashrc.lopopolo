@@ -44,7 +44,8 @@ set -o vi
 
 export PATH="$DOTFILES_ROOT/scripts:$PATH"
 
-export EDITOR=vim
+export EDITOR
+EDITOR="$(which vim)"
 
 # =========================================================================== #
 # Aliases

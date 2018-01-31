@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 # vim: filetype=sh
 # mac specific customizations
 
@@ -7,6 +8,7 @@ alias brew_bundle_install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/B
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
 # make MacVim my default editor
+unset -f vim
 function vim
 {
   if [ $# -eq 0 ]; then
@@ -15,9 +17,6 @@ function vim
     mvim --remote-tab-silent "$@"
   fi
 }
-alias vimcmd='/usr/bin/vim'
-
-export GIT_EDITOR=/usr/bin/vim
 
 # homebrew stuff
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # because the doctor said so
@@ -31,7 +30,6 @@ fi
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
   source "$(brew --prefix)/etc/bash_completion"
 fi
-
 
 # chdir to frontmost window of Finder.app
 unset -f cdf
