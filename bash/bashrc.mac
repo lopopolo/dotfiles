@@ -11,7 +11,7 @@ alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 unset -f vim
 function vim
 {
-  if [ $# -eq 0 ]; then
+  if [[ "$#" == "0" ]]; then
     mvim
   else
     mvim --remote-tab-silent "$@"
