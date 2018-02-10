@@ -1,3 +1,4 @@
+tap 'beeftornado/rmtree'
 tap 'caskroom/cask'
 tap 'Goles/battery'
 brew 'ack'
