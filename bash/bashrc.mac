@@ -40,6 +40,17 @@ function cdf
     -e 'end tell' 2>/dev/null)" || return 1
 }
 
+# create a temporary and ephemeral Chrome instance
+unset -f wipe
+function wipe() {
+  wipeprofile="$(mktemp -d)"
+  open -n -W -a "Google Chrome" --args \
+    --user-data-dir="$wipeprofile" \
+    --no-first-run --new-window --incognito \
+    https://www.google.com
+  rm -r "$wipeprofile"
+}
+
 # rbenv on mac
 export RBENV_ROOT=/usr/local/var/rbenv
 eval "$(rbenv init -)"
