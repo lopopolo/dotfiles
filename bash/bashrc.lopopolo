@@ -136,8 +136,13 @@ function prompt_command
     BATTERYSTATUS="$(battery -p) "
   fi
 
+  local PYVENV=""
+  if [[ -n "$VIRTUAL_ENV" ]]; then
+    PYVENV="($(basename "$VIRTUAL_ENV")) "
+  fi
+
   local TERMTITLE="\\033]0;\\h : \\W\\007"
-  local PROMPTLINE="\\[$PROMPTCOLOR\\]▶\\[$PLAIN\\] "
+  local PROMPTLINE="\\[$YELLOW\\]$PYVENV\\[$PLAIN\\]\\[$PROMPTCOLOR\\]▶\\[$PLAIN\\] "
   local NOW
   NOW="$(date +%H:%M)"
   export PS1="$TERMTITLE\\[$WHITE\\][$NOW|\\u|\\h] [\\w] ${BATTERYSTATUS}${GITSTATUS}\\n${PROMPTLINE}"
