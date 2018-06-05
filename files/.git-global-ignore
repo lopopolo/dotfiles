@@ -168,3 +168,6 @@ xcuserdata/
 /*.gcno
 
 # End of https://www.gitignore.io/api/vim,xcode,macos,intellij+all,intellij+iml
+
+# markdown artifacts
+temp.html

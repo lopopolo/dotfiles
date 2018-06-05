@@ -16,20 +16,20 @@ AllCops:
     - 'bench/**/*'
 ##################### Style ##################################
 # Check indentation of private/protected visibility modifiers.
-Style/AccessModifierIndentation:
+Layout/AccessModifierIndentation:
   Enabled: true
 # Check the naming of accessor methods for get_/set_.
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
 # Use alias_method instead of alias.
 Style/Alias:
   EnforcedStyle: prefer_alias_method
   Enabled: true
 # Align the elements of an array literal if they span more than one line.
-Style/AlignArray:
+Layout/AlignArray:
   Enabled: true
 # Align the elements of a hash literal if they span more than one line.
-Style/AlignHash:
+Layout/AlignHash:
   Enabled: true
 # Use `Array#join` instead of `Array#*`.
 Style/ArrayJoin:
@@ -38,7 +38,7 @@ Style/ArrayJoin:
 Style/AsciiComments:
   Enabled: true
 # Use only ascii symbols in identifiers.
-Style/AsciiIdentifiers:
+Naming/AsciiIdentifiers:
   Enabled: true
 # Checks for uses of Module#attr.
 Style/Attr:
@@ -50,20 +50,20 @@ Style/BeginBlock:
 Style/BlockComments:
   Enabled: true
 # Put end statement of multiline block on its own line.
-Style/BlockEndNewline:
+Layout/BlockEndNewline:
   Enabled: true
 # Avoid using {...} for multi-line blocks (multiline chaining is # always
 # ugly). Prefer {...} over do...end for single-line blocks.
 Style/BlockDelimiters:
   Enabled: true
 # Indentation of when in a case/when/[else/]end.
-Style/CaseIndentation:
+Layout/CaseIndentation:
   Enabled: true
 # Checks for uses of character literals.
 Style/CharacterLiteral:
   Enabled: true
 # Use CamelCase for classes and modules.'
-Style/ClassAndModuleCamelCase:
+Naming/ClassAndModuleCamelCase:
   Enabled: true
 # Checks style of children classes and modules.
 Style/ClassAndModuleChildren:
@@ -82,10 +82,10 @@ Style/CommandLiteral:
   Enabled: true
   EnforcedStyle: percent_x
 # Indentation of comments.
-Style/CommentIndentation:
+Layout/CommentIndentation:
   Enabled: true
 # Constants should use SCREAMING_SNAKE_CASE.
-Style/ConstantName:
+Naming/ConstantName:
   Enabled: true
 # Use def with parentheses when there are arguments.
 Style/DefWithParentheses:
@@ -94,44 +94,44 @@ Style/DefWithParentheses:
 Style/Documentation:
   Enabled: false
 # Align elses and elsifs correctly.
-Style/ElseAlignment:
+Layout/ElseAlignment:
   Enabled: true
 # Use empty lines between defs.
-Style/EmptyLineBetweenDefs:
+Layout/EmptyLineBetweenDefs:
   Enabled: false
 # Don't use several empty lines in a row.
-Style/EmptyLines:
+Layout/EmptyLines:
   Enabled: true
 # Keep blank lines around access modifiers.
-Style/EmptyLinesAroundAccessModifier:
+Layout/EmptyLinesAroundAccessModifier:
   Enabled: true
 # Keeps track of empty lines around block bodies.
-Style/EmptyLinesAroundBlockBody:
+Layout/EmptyLinesAroundBlockBody:
   Enabled: true
 # Keeps track of empty lines around class bodies.
-Style/EmptyLinesAroundClassBody:
+Layout/EmptyLinesAroundClassBody:
   Enabled: true
 # Keeps track of empty lines around module bodies.
-Style/EmptyLinesAroundModuleBody:
+Layout/EmptyLinesAroundModuleBody:
   Enabled: true
 # Keeps track of empty lines around method bodies.
-Style/EmptyLinesAroundMethodBody:
+Layout/EmptyLinesAroundMethodBody:
   Enabled: true
 # Avoid the use of END blocks.
 Style/EndBlock:
   Enabled: true
 # Use Unix-style line endings.
-Style/EndOfLine:
+Layout/EndOfLine:
   Enabled: true
 # Favor the use of Fixnum#even? && Fixnum#odd?
 Style/EvenOdd:
   Enabled: true
 # Use snake_case for source file names.
-Style/FileName:
+Naming/FileName:
   Enabled: true
 # Checks for a line break before the first parameter in a multi-line method
 # parameter definition.
-Style/FirstMethodParameterLineBreak:
+Layout/FirstMethodParameterLineBreak:
   Enabled: true
 # Checks for flip flops.
 Style/FlipFlop:
@@ -158,13 +158,13 @@ Style/IdenticalConditionalBranches:
   Enabled: true
 # Checks the indentation of the first line of the right-hand-side of a
 # multi-line assignment.
-Style/IndentAssignment:
+Layout/IndentAssignment:
   Enabled: true
 # Keep indentation straight.
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   Enabled: true
 # Use 2 spaces for indentation.
-Style/IndentationWidth:
+Layout/IndentationWidth:
   Enabled: true
 # Use Kernel#loop for infinite loops.
 Style/InfiniteLoop:
@@ -173,31 +173,31 @@ Style/InfiniteLoop:
 Style/LambdaCall:
   Enabled: true
 # Comments should start with a space.
-Style/LeadingCommentSpace:
+Layout/LeadingCommentSpace:
   Enabled: true
 # Checks if the method definitions have or don't have parentheses.
 Style/MethodDefParentheses:
   Enabled: true
 # Use the configured style when naming methods.
-Style/MethodName:
+Naming/MethodName:
   Enabled: true
 # Checks for usage of `extend self` in modules.
 Style/ModuleFunction:
   Enabled: false
 # Checks that the closing brace in an array literal is either on the same line
 # as the last array element, or a new line.
-Style/MultilineArrayBraceLayout:
+Layout/MultilineArrayBraceLayout:
   Enabled: false
   EnforcedStyle: symmetrical
 # Avoid multi-line chains of blocks.
 Style/MultilineBlockChain:
   Enabled: true
 # Ensures newlines after multiline block do statements.
-Style/MultilineBlockLayout:
+Layout/MultilineBlockLayout:
   Enabled: true
 # Checks that the closing brace in a hash literal is either on the same line as
 # the last hash element, or a new line.
-Style/MultilineHashBraceLayout:
+Layout/MultilineHashBraceLayout:
   Enabled: false
   EnforcedStyle: symmetrical
 # Do not use then for multi-line if/unless.
@@ -205,19 +205,19 @@ Style/MultilineIfThen:
   Enabled: true
 # Checks that the closing brace in a method call is either on the same line as
 # the last method argument, or a new line.
-Style/MultilineMethodCallBraceLayout:
+Layout/MultilineMethodCallBraceLayout:
   Enabled: false
   EnforcedStyle: symmetrical
 # Checks indentation of method calls with the dot operator that span more than
 # one line.
-Style/MultilineMethodCallIndentation:
+Layout/MultilineMethodCallIndentation:
   Enabled: false
 # Checks that the closing brace in a method definition is symmetrical with
 # respect to the opening brace and the method parameters.
-Style/MultilineMethodDefinitionBraceLayout:
+Layout/MultilineMethodDefinitionBraceLayout:
   Enabled: false
 # Checks indentation of binary operations that span more than one line.
-Style/MultilineOperationIndentation:
+Layout/MultilineOperationIndentation:
   Enabled: false
 # Avoid multi-line `? :` (the ternary operator), use if/unless instead.
 Style/MultilineTernaryOperator:
@@ -247,7 +247,7 @@ Style/NumericLiterals:
 Style/OneLineConditional:
   Enabled: true
 # When defining binary operators, name the argument other.
-Style/OpMethod:
+Naming/BinaryOperatorParameterName:
   Enabled: true
 # Don't use parentheses around the condition of an if/unless/while.
 Style/ParenthesesAroundCondition:
@@ -266,47 +266,47 @@ Style/SignalException:
   EnforcedStyle: only_raise
   Enabled: true
 # Use spaces after colons.
-Style/SpaceAfterColon:
+Layout/SpaceAfterColon:
   Enabled: true
 # Use spaces after commas.
-Style/SpaceAfterComma:
+Layout/SpaceAfterComma:
   Enabled: true
 # Do not put a space between a method name and the opening parenthesis in a
 # method definition.
-Style/SpaceAfterMethodName:
+Layout/SpaceAfterMethodName:
   Enabled: true
 # Tracks redundant space after the ! operator.
-Style/SpaceAfterNot:
+Layout/SpaceAfterNot:
   Enabled: true
 # Use spaces after semicolons.
-Style/SpaceAfterSemicolon:
+Layout/SpaceAfterSemicolon:
   Enabled: true
 # Use space around equals in parameter default
-Style/SpaceAroundEqualsInParameterDefault:
+Layout/SpaceAroundEqualsInParameterDefault:
   Enabled: true
 # Use a space around keywords if appropriate.
-Style/SpaceAroundKeyword:
+Layout/SpaceAroundKeyword:
   Enabled: true
 # Use a single space around operators.
-Style/SpaceAroundOperators:
+Layout/SpaceAroundOperators:
   Enabled: true
 # No spaces before commas.
-Style/SpaceBeforeComma:
+Layout/SpaceBeforeComma:
   Enabled: true
 # Checks for missing space between code and a comment on the same line.
-Style/SpaceBeforeComment:
+Layout/SpaceBeforeComment:
   Enabled: true
 # No spaces before semicolons.
-Style/SpaceBeforeSemicolon:
+Layout/SpaceBeforeSemicolon:
   Enabled: true
 # Use spaces inside hash literal braces - or don't.
-Style/SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: true
 # No spaces inside range literals.
-Style/SpaceInsideRangeLiteral:
+Layout/SpaceInsideRangeLiteral:
   Enabled: true
 # Checks for padding/surrounding spaces inside string interpolation.
-Style/SpaceInsideStringInterpolation:
+Layout/SpaceInsideStringInterpolation:
   EnforcedStyle: no_space
   Enabled: true
 # Check for the usage of parentheses around stabby lambda arguments.
@@ -322,10 +322,10 @@ Style/StringMethods:
     intern: to_sym
   Enabled: true
 # No hard tabs.
-Style/Tab:
+Layout/Tab:
   Enabled: true
 # Checks trailing blank lines and final newline.
-Style/TrailingBlankLines:
+Layout/TrailingBlankLines:
   Enabled: true
 # Checks for %W when interpolation is not needed.
 Style/UnneededCapitalW:
@@ -337,11 +337,11 @@ Style/UnneededPercentQ:
 Style/VariableInterpolation:
   Enabled: true
 # Use the configured style when naming variables.
-Style/VariableName:
+Naming/VariableName:
   EnforcedStyle: snake_case
   Enabled: true
 # Use the configured style when numbering variables.
-Style/VariableNumber:
+Naming/VariableNumber:
   Enabled: false
 # Use when x then ... for one-line cases.
 Style/WhenThen:
@@ -403,20 +403,20 @@ Lint/IneffectiveAccessModifier:
 Lint/AmbiguousOperator:
   Enabled: true
 # Align block ends correctly.
-Lint/BlockAlignment:
+Layout/BlockAlignment:
   Enabled: true
 # Default values in optional keyword arguments and optional ordinal arguments
 # should not refer back to the name of the argument.
 Lint/CircularArgumentReference:
   Enabled: true
 # Checks for condition placed in a confusing position relative to the keyword.
-Lint/ConditionPosition:
+Layout/ConditionPosition:
   Enabled: true
 # Check for debugger calls.
 Lint/Debugger:
   Enabled: true
 # Align ends corresponding to defs correctly.
-Lint/DefEndAlignment:
+Layout/DefEndAlignment:
   Enabled: true
 # Check for deprecated class method calls.
 Lint/DeprecatedClassMethods:
@@ -431,7 +431,7 @@ Lint/ElseLayout:
 Lint/EmptyEnsure:
   Enabled: true
 # Align ends correctly.
-Lint/EndAlignment:
+Layout/EndAlignment:
   Enabled: true
 # END blocks should not be placed inside method definitions.
 Lint/EndInMethod:
@@ -440,7 +440,7 @@ Lint/EndInMethod:
 Lint/EnsureReturn:
   Enabled: true
 # The use of eval represents a serious security risk.
-Lint/Eval:
+Security/Eval:
   Enabled: true
 # Catches floating-point literals too large or small for Ruby to represent.
 Lint/FloatOutOfRange:
@@ -452,12 +452,8 @@ Lint/FormatParameterMismatch:
 # represented as a single string literal.
 Lint/ImplicitStringConcatenation:
   Enabled: true
-# Checks for invalid character literals with a non-escaped whitespace
-# character.
-Lint/InvalidCharacterLiteral:
-  Enabled: true
 # Checks of literals used in conditions.
-Lint/LiteralInCondition:
+Lint/LiteralAsCondition:
   Enabled: true
 # Checks for literals used in interpolation.
 Lint/LiteralInInterpolation:
@@ -493,7 +489,7 @@ Lint/UnderscorePrefixedVariableName:
 # Checks for rubocop:disable comments that can be removed.
 # Note: this cop is not disabled when disabling all cops.
 # It must be explicitly disabled.
-Lint/UnneededDisable:
+Lint/UnneededCopDisableDirective:
   Enabled: false
 # Unreachable code.
 Lint/UnreachableCode:

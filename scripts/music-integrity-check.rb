@@ -46,7 +46,7 @@ end
 
 TRACKS = Hash.new { |h, k| h[k] = [] }
 NO_DISC = 'single disc album'
-DOT_DOT = %w(. ..).freeze
+DOT_DOT = %w[. ..].freeze
 
 def metadata_from_path(path)
   album = File.basename(path)
@@ -58,9 +58,9 @@ end
 
 def print_error(artist, album, disc, message)
   if disc == NO_DISC
-    $stderr.puts "#{artist}/#{album}: #{message}"
+    warn "#{artist}/#{album}: #{message}"
   else
-    $stderr.puts "#{artist}/#{album} (disc #{disc}): #{message}"
+    warn "#{artist}/#{album} (disc #{disc}): #{message}"
   end
 end
 
@@ -89,7 +89,7 @@ end
     end
     # check that each disc in the album contains a continuous range of track
     # numbers that starts at 1
-    if [*1..track_numbers.max] != track_numbers.sort
+    if track_numbers.sort != [*1..track_numbers.max]
       print_error(artist, album, disc, 'Incomplete album')
     end
   end
