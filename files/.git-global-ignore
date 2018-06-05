@@ -46,6 +46,9 @@ atlassian-ide-plugin.xml
 # Cursive Clojure plugin
 .idea/replstate.xml
 
+# Ruby plugin and RubyMine
+/.rakeTasks
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -53,10 +56,17 @@ crashlytics-build.properties
 fabric.properties
 
 ### Intellij+all Patch ###
-# Ignores the whole idea folder
+# Ignores the whole .idea folder and all .iml files
 # See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
 
 .idea/
+
+# Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
+
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
 
 ### Intellij+iml ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
@@ -84,15 +94,13 @@ fabric.properties
 
 # Cursive Clojure plugin
 
+# Ruby plugin and RubyMine
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 
 ### Intellij+iml Patch ###
 # Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
 
-*.iml
-modules.xml
-.idea/misc.xml
-*.ipr
 
 ### macOS ###
 *.DS_Store
@@ -123,10 +131,8 @@ Temporary Items
 
 ### Vim ###
 # swap
-[._]*.s[a-v][a-z]
-[._]*.sw[a-p]
-[._]s[a-v][a-z]
-[._]sw[a-p]
+.sw[a-p]
+.*.sw[a-p]
 # session
 Session.vim
 # temporary
@@ -166,6 +172,7 @@ xcuserdata/
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+
 
 # End of https://www.gitignore.io/api/vim,xcode,macos,intellij+all,intellij+iml
 
