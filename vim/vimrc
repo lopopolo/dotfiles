@@ -12,6 +12,8 @@ filetype plugin indent on
 set nocompatible
 set noswapfile
 
+set encoding=utf-8
+
 set expandtab
 set tabstop=2
 set shiftwidth=2
@@ -43,9 +45,6 @@ set mouse=a
 
 " save a buffer I don't have the perms for
 cmap w!! :w !sudo tee %<CR>
-
-" set shiftwidth to 4
-map <leader>s4 :set shiftwidth=4<CR>
 
 " cd to the directory containing the file in the buffer
 nmap <silent> <leader>cd :lcd %:h<CR>
