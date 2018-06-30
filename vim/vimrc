@@ -6,12 +6,6 @@ call pathogen#helptags()
 
 " =============================== Basic settings ==============================
 
-" all colors for python
-augroup python
-    au!
-    au BufRead,BufNewFile *.py,*.pyw let python_highlight_all=1
-augroup END
-
 syntax on
 filetype plugin indent on
 
@@ -150,8 +144,21 @@ let g:NERDTreeChDirMode=1
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
 
-" syntastic
-set statusline+=%=%{SyntasticStatuslineFlag()}
+" ale
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline+=%=%{LinterStatus()}
 
 " gitgutter
 set updatetime=250
