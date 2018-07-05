@@ -109,7 +109,7 @@ function diff_line_count
 }
 
 function rand_string {
-  LANG=C < /dev/urandom tr -dc A-Za-z0-9 | head -c"${1:-32}"
+  LANG=C < /dev/urandom tr -dc A-HJ-KM-NP-Za-km-np-z2-9 | head -c"${1:-32}"
   echo
 }
 
