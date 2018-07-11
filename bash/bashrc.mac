@@ -18,6 +18,9 @@ function vim
   fi
 }
 
+# VS Code
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
 # homebrew stuff
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # because the doctor said so
 
