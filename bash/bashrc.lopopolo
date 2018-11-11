@@ -8,6 +8,22 @@ DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
 # breaks coloring the PS1 based on exit code
 unset PROMPT_COMMAND
 
+unset -f prepend_to_path
+function prepend_to_path
+{
+  if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
+    export PATH="$1:${PATH}"
+  fi
+}
+
+unset -f append_to_path
+function append_to_path
+{
+  if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
+    export PATH="${PATH}:$1"
+  fi
+}
+
 # Pull in platform-specific configurations.
 if [[ "$(uname)" == "Linux" ]]; then
   export PLATFORM=LINUX # for scripts
@@ -166,4 +182,4 @@ export PS1='$ '
 CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev:$HOME/dev/repos"
 
 export GOPATH="$HOME/dev/gopath"
-export PATH="$PATH:$GOPATH/bin"
+prepend_to_path "$GOPATH/bin"

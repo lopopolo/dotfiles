@@ -19,10 +19,11 @@ function vim
 }
 
 # VS Code
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+append_to_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # homebrew stuff
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH" # because the doctor said so
+prepend_to_path "/usr/local/sbin"
+prepend_to_path "/usr/local/bin"
 
 # mac bash completion is broken, but homebrew's works
 # ack bash completion
@@ -45,7 +46,8 @@ function cdf
 
 # create a temporary and ephemeral Chrome instance
 unset -f wipe
-function wipe() {
+function wipe
+{
   wipeprofile="$(mktemp -d)"
   open -n -W -a "Google Chrome" --args \
     --user-data-dir="$wipeprofile" \
@@ -56,8 +58,12 @@ function wipe() {
 
 # rbenv on mac
 export RBENV_ROOT=/usr/local/var/rbenv
-eval "$(rbenv init -)"
+if [[ ":${PATH}:" != *:"${RBENV_ROOT}/shims":* ]]; then
+  eval "$(rbenv init -)"
+fi
 
 # pyenv on mac
 export PYENV_ROOT=/usr/local/var/pyenv
-eval "$(pyenv init -)"
+if [[ ":${PATH}:" != *:"${PYENV_ROOT}/shims":* ]]; then
+  eval "$(pyenv init -)"
+fi
