@@ -40,9 +40,7 @@ require 'pathname'
 # OS X only
 MUSIC_DIR = File.expand_path '~/Music/iTunes/iTunes Media/Music'
 
-unless Pathname.new(MUSIC_DIR).exist?
-  abort 'Cannot find iTunes directory. This script only runs on OS X.'
-end
+abort 'Cannot find iTunes directory. This script only runs on OS X.' unless Pathname.new(MUSIC_DIR).exist?
 
 TRACKS = Hash.new { |h, k| h[k] = [] }
 NO_DISC = 'single disc album'
@@ -74,23 +72,18 @@ end
     # iTunes way: optional_disk_number-track
     match = /^(?<disc>\d\d?-)?(?<track>\d\d)/.match(song)
     next unless match
+
     disc = match[:disc]
     disc = NO_DISC if disc.nil?
     TRACKS[disc.chomp('-')] << match[:track].to_i
   end
 
-  if TRACKS.key?(NO_DISC) && TRACKS.length > 1
-    print_error(artist, album, NO_DISC, 'Album has no disc and disc number tracks')
-  end
+  print_error(artist, album, NO_DISC, 'Album has no disc and disc number tracks') if TRACKS.key?(NO_DISC) && TRACKS.length > 1
   TRACKS.each do |disc, track_numbers|
     # check for dupes
-    if track_numbers.uniq.length != track_numbers.length
-      print_error(artist, album, disc, 'Album contains duplicates')
-    end
+    print_error(artist, album, disc, 'Album contains duplicates') if track_numbers.uniq.length != track_numbers.length
     # check that each disc in the album contains a continuous range of track
     # numbers that starts at 1
-    if track_numbers.sort != [*1..track_numbers.max]
-      print_error(artist, album, disc, 'Incomplete album')
-    end
+    print_error(artist, album, disc, 'Incomplete album') if track_numbers.sort != [*1..track_numbers.max]
   end
 end
