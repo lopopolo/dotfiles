@@ -1,11 +1,9 @@
 # shellcheck shell=bash
 # vim: filetype=sh
 
-DOTFILES_ROOT=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." &> /dev/null && pwd)
-
-# unset prompt command. This is the beginning of initialization so we aren't in danger of losing
-# anything. If we don't unset it, we end up chaining calls to the function prompt_command which
-# breaks coloring the PS1 based on exit code
+# unset `PROMPT_COMMAND`. This is the beginning of initialization so we aren't in danger
+# of losing anything. If we don't unset it, we end up chaining calls to the function
+# `prompt_command` which breaks coloring the `$PS1` based on exit code.
 unset PROMPT_COMMAND
 
 unset -f prepend_to_path
@@ -24,8 +22,8 @@ function append_to_path
   fi
 }
 
-# shellcheck source=bash/bashrc.mac
-source "$DOTFILES_ROOT/bash/bashrc.mac"
+# shellcheck source=files/.bashrc.mac
+source "$HOME/.bashrc.mac"
 
 # TERM setup
 export CLICOLOR=1
@@ -42,18 +40,19 @@ export PLAIN="\\033[m"
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 # https://news.ycombinator.com/item?id=11811272
 export HISTCONTROL=ignoreboth
-export HISTSIZE=1000000
-export HISTFILESIZE=1000000
+export HISTSIZE=-1
+export HISTFILESIZE=-1
 export HISTIGNORE="ls:exit:history:[bf]g:jobs"
 shopt -s histappend
 
-# #1 best bash config option of all time. Also, see .inputrc for more vi goodness in readline-enabled apps.
+# The single best bash config option of all time. Also, see .inputrc for more vi
+# goodness in readline-enabled apps.
 set -o vi
 
-prepend_to_path "$DOTFILES_ROOT/scripts"
+prepend_to_path "$HOME/.dotfiles/scripts"
 
 export EDITOR
-EDITOR="$(which vim)"
+EDITOR="$(command -v vim)"
 
 # =========================================================================== #
 # Aliases
@@ -62,11 +61,10 @@ alias src='source ~/.bashrc'
 alias la='ls -la'
 
 # Make it quicker to edit the bashrc's
-alias b='vim $DOTFILES_ROOT/bash/bashrc.lopopolo'
-alias bm='vim $DOTFILES_ROOT/bash/bashrc.mac'
-alias bl='vim $DOTFILES_ROOT/bash/bashrc.linux'
+alias b='vim "$HOME/.bashrc.dotfiles"'
+alias bm='vim "$HOME/.bashrc.mac"'
 # and vimrc
-alias vv='vim ~/.vimrc'
+alias vv='vim "$HOME/.vimrc"'
 
 # Alias g=git and add bash completion
 alias g='git'
@@ -90,7 +88,12 @@ unset -f rand_string
 # freq prints out a list of my most frequently used commands
 function freq
 {
-  cut -d" " -f1 ~/.bash_history | grep -Ev "^[[:space:]]*$" | sort | uniq -c | sort -rn | head
+  cut -d" " -f1 ~/.bash_history |
+    grep -Ev "^[[:space:]]*$" |
+    sort |
+    uniq -c |
+    sort -rn |
+    head
 }
 
 # This function prints out lines in the given files that
@@ -111,9 +114,7 @@ function is_not_ascii
 
 function diff_line_count
 {
-  while read -r line; do
-    echo -e "${GREEN}+$(echo "$line" | awk '{ print $1 }')\\t${RED}-$(echo "$line" | awk '{ print $2 }')\\t${PLAIN}$(echo "$line" | awk '{ print $3 }')"
-  done < <(git diff --numstat "$@")
+  git diff-index --numstat HEAD
 }
 
 function rand_string {
@@ -125,41 +126,47 @@ function rand_string {
 # Prompt
 # =========================================================================== #
 
-# Let's get a nice colorized prompt which knows about git
-# shellcheck source=bash/git_ps1.lopopolo.bash
-source "$DOTFILES_ROOT/bash/git_ps1.lopopolo.bash"
-
 # This PS1 does the following:
-# * Set terminal title to hostname : current directory name
-# * prints [24-hour time|username|hostname]
-# * prints current working directory
-# * prints current branch and git state, colorized
+# * Set terminal title to current directory name
+# * prints [24-hour time] [current working directory] [battery status] (git prompt)
+# * prints prompt caret colored by last exit code
 function prompt_command
 {
-  local -r EXITSTATUS="$?"
-  local -r GITSTATUS="$(git_ps1_lopopolo)"
+  local -r last_exit_code="$?"
+  local git_prompt="$(__git_ps1 "%s")"
+  if [[ -n "$git_prompt" ]]; then
+    local level="=" ahead behind dirty git_color="$GREEN"
+    while read -r rev; do
+      if [[ "${rev:0:1}" == "<" ]]; then ahead=">"; level=""; fi
+      if [[ "${rev:0:1}" == ">" ]]; then behind="<"; level=""; fi
+    done < <(git rev-list --left-right "HEAD...@{u}")
 
-  local PROMPTCOLOR="$GREEN"
-  if [[ "$EXITSTATUS" != "0" ]]; then
-    PROMPTCOLOR="$RED"
+    if [[ -n "$(git diff-index --name-only -z HEAD)" ]]; then
+      dirty="*"
+      git_color="$YELLOW"
+    fi
+    git_prompt="${git_color}(${git_prompt} ${dirty}${level}${behind}${ahead})${PLAIN}"
+  fi
+
+  local prompt_color="$GREEN"
+  if [[ "$last_exit_code" != "0" ]]; then
+    prompt_color="$RED"
   fi
 
   # if we're on a mac, add battery info
-  local BATTERYSTATUS=" "
+  local battery=" "
   if [ "$PLATFORM" == "MAC" ]; then
-    BATTERYSTATUS="$(battery -p) "
+    battery="$(battery -p) "
   fi
 
-  local PYVENV=""
+  local venv=""
   if [[ -n "$VIRTUAL_ENV" ]]; then
-    PYVENV="($(basename "$VIRTUAL_ENV")) "
+    venv="(${VIRTUAL_ENV##*/}) "
   fi
 
-  local TERMTITLE="\\033]0;\\h : \\W\\007"
-  local PROMPTLINE="\\[$YELLOW\\]$PYVENV\\[$PLAIN\\]\\[$PROMPTCOLOR\\]▶\\[$PLAIN\\] "
-  local NOW
-  NOW="$(date +%H:%M)"
-  export PS1="$TERMTITLE\\[$WHITE\\][$NOW|\\u|\\h] [\\w] ${BATTERYSTATUS}${GITSTATUS}\\n${PROMPTLINE}"
+  local -r term_title="\\033]0;\\W\\007"
+  local -r prompt_line="\\[${YELLOW}\\]${venv}\\[${PLAIN}\\]\\[${prompt_color}\\]▶\\[${PLAIN}\\] "
+  export PS1="${term_title}\\[${WHITE}\\][\\A] [\\w] ${battery}${git_prompt}\\n${prompt_line}"
 }
 shopt -u promptvars
 PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
@@ -171,7 +178,38 @@ export PS1='$ '
 
 # stuff for moving around directories
 # https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
-CDPATH=".:$HOME:$DOTFILES_ROOT:$HOME/dev:$HOME/dev/repos"
+CDPATH=".:$HOME:$HOME/dev:$HOME/dev/repos"
 
 export GOPATH="$HOME/dev/gopath"
 prepend_to_path "$GOPATH/bin"
+
+# =========================================================================== #
+# ssh-agent
+# =========================================================================== #
+
+ssh_env="$HOME/.ssh/environment"
+
+unset -f start_agent
+function start_agent
+{
+  echo "Initialising new SSH agent..."
+  /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"$ssh_env"
+  echo "Succeeded"
+  chmod 600 "$ssh_env"
+  . "$ssh_env" >/dev/null
+}
+
+# Source SSH settings, if applicable
+unset -f find_or_start_agent
+function find_or_start_agent() {
+  if [ -f "$ssh_env" ]; then
+    . "$ssh_env" >/dev/null
+    if ! pgrep ssh-agent | grep -q "$SSH_AGENT_PID"; then
+      start_agent
+    fi
+  else
+    start_agent
+  fi
+}
+
+find_or_start_agent
