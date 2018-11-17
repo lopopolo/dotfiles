@@ -24,16 +24,8 @@ function append_to_path
   fi
 }
 
-# Pull in platform-specific configurations.
-if [[ "$(uname)" == "Linux" ]]; then
-  export PLATFORM=LINUX # for scripts
-  # shellcheck source=bash/bashrc.linux
-  source "$DOTFILES_ROOT/bash/bashrc.linux"
-elif [[ "$(uname)" == "Darwin" ]]; then
-  export PLATFORM=MAC
-  # shellcheck source=bash/bashrc.mac
-  source "$DOTFILES_ROOT/bash/bashrc.mac"
-fi
+# shellcheck source=bash/bashrc.mac
+source "$DOTFILES_ROOT/bash/bashrc.mac"
 
 # TERM setup
 export CLICOLOR=1

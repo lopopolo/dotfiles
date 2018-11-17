@@ -2,6 +2,8 @@
 # vim: filetype=sh
 # mac specific customizations
 
+export PLATFORM="MAC"
+
 alias ls='ls -h -F'
 alias nosleeptillbrooklyn='caffeinate -s'
 alias brew_bundle_install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`'
