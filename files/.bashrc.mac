@@ -50,7 +50,7 @@ function cdf
 unset -f wipe
 function wipe
 {
-  wipeprofile="$(mktemp -d)"
+  local -r wipeprofile="$(mktemp -d)"
   open -n -W -a "Google Chrome" --args \
     --user-data-dir="$wipeprofile" \
     --no-first-run --new-window --incognito \
