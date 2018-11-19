@@ -25,7 +25,7 @@ git-config-rjl:
 
 .PHONY: brewfile
 brewfile:
-	brew leaves -1 | awk '{ print "brew '"'"'" $$1 "'"'"'" }' | git diff --no-index --word-diff homebrew-packages/Brewfile.`hostname -s` -
+	brew bundle dump --force --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: vim
 vim: vim-init vim-update-bundles
