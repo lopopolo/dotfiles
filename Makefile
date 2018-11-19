@@ -25,7 +25,7 @@ git-config-rjl:
 
 .PHONY: brewfile
 brewfile:
-	brew bundle dump --force --file=homebrew-packages/Brewfile.`hostname -s`
+	brew bundle dump --describe --force --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: vim
 vim: vim-init vim-update-bundles

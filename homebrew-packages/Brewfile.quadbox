@@ -3,44 +3,82 @@ tap "goles/battery"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+# Search tool like grep, but optimized for programmers
 brew "ack"
+# Library for command-line editing
 brew "readline"
+# Interpreted, interactive, object-oriented programming language
 brew "python"
+# Automate deployment, configuration, and upgrading
 brew "ansible"
+# Automatic configure script builder
 brew "autoconf"
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
+# Programmable completion for Bash 3.2
 brew "bash-completion"
-brew "brew-cask-completion"
+# Cross-platform make
 brew "cmake"
+# Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Free lossless audio codec
 brew "flac"
+# Distributed revision control system
 brew "git"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
-brew "macvim"
+# GUI for vim, made for macOS
+brew "macvim", link: false
+# MP3 player for Linux and UNIX
 brew "mpg123"
+# Open source relational database management system
 brew "mysql"
+# MySQL database connector for C applications
 brew "mysql-connector-c", link: false
+# Open source relational database management system
 brew "mysql@5.7"
+# Port scanning utility for large networks
 brew "nmap"
+# Platform built on V8 to build network applications
 brew "node"
+# Tool for creating identical machine images for multiple platforms
 brew "packer"
+# Python dependency management tool
 brew "pipenv"
+# Cross-platform library for audio I/O
 brew "portaudio"
+# Framework for managing multi-language pre-commit hooks
 brew "pre-commit"
+# Python version management
 brew "pyenv"
+# Install various Ruby versions and implementations
 brew "ruby-build"
+# Ruby version manager
 brew "rbenv"
+# Tool for downloading RTMP streaming media
 brew "rtmpdump"
+# Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# Autoformat shell script source code
 brew "shfmt"
+# Sparklines for the shell
 brew "spark"
+# Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
+# Tool to build, change, and version infrastructure
 brew "terraform"
+# Extract, view, and test RAR archives
 brew "unrar"
+# Image format providing lossless and lossy compression for web images
 brew "webp"
+# Internet file retriever
 brew "wget"
+# JavaScript package manager
 brew "yarn"
+# Download YouTube videos from the command-line
 brew "youtube-dl"
 brew "goles/battery/battery"
+cask "macvim"
 cask "vagrant"

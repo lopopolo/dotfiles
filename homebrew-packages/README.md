@@ -8,9 +8,5 @@ list of top-level packages installed using homebrew.
 To bootstrap a new system
 
 ```sh
-brew tap bundle
-brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`
+brew_bundle_install
 ```
-
-These dotfiles also include the alias `brew-bundle-install` which executes
-the above host-specific `Brewfile` install.
