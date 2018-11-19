@@ -6,7 +6,7 @@ export PLATFORM="MAC"
 
 alias ls='ls -h -F'
 alias nosleeptillbrooklyn='caffeinate -s'
-alias brew_bundle_install='brew bundle --file=$DOTFILES_ROOT/homebrew-packages/Brewfile.`hostname -s`'
+alias brew_bundle_install='brew bundle --file=$HOME/.dotfiles/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
 # make MacVim my default editor
@@ -30,7 +30,7 @@ prepend_to_path "/usr/local/bin"
 # mac bash completion is broken, but homebrew's works
 # ack bash completion
 if [ ! -f "$(brew --prefix)/etc/bash_completion.d/ack" ]; then
-  ln -s "$DOTFILES_ROOT/vendor/ack/ack_completion.bash" "$(brew --prefix)/etc/bash_completion.d/ack"
+  ln -s "$HOME/.dotfiles/vendor/ack/ack_completion.bash" "$(brew --prefix)/etc/bash_completion.d/ack"
 fi
 
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
