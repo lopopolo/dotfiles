@@ -7,7 +7,7 @@
 #
 # # Integrity Checks
 # ## Dupes
-# Tracks are considered duplicates if they share an  (artist, album, disc
+# Tracks are considered duplicates if they share an (artist, album, disc
 # number, track number) tuple.
 #
 # This definition of dupe is useful for cases where you may have two versions
@@ -36,54 +36,118 @@
 # $ find ~/Music -name '*feat *'
 
 require 'pathname'
+require 'set'
 
-# OS X only
-MUSIC_DIR = File.expand_path '~/Music/iTunes/iTunes Media/Music'
+module Hyper
+  module MusicIntegrity
+    Album = Struct.new(:artist, :title, :database)
 
-abort 'Cannot find iTunes directory. This script only runs on OS X.' unless Pathname.new(MUSIC_DIR).exist?
+    class Runner
+      SOURCE = File.expand_path('~/Music/iTunes/iTunes Media/Music')
+      NO_DISC_SENTINEL = 'no-disc'
 
-TRACKS = Hash.new { |h, k| h[k] = [] }
-NO_DISC = 'single disc album'
-DOT_DOT = %w[. ..].freeze
+      def self.main
+        source = LibrarySource.new(SOURCE, NO_DISC_SENTINEL)
+        checks = [
+          Checks::InconsistentDiscNumbering.new(NO_DISC_SENTINEL),
+          Checks::DuplicateTracks.new,
+          Checks::MissingTracks.new
+        ]
+        source.scan do |database|
+          checks.each do |check|
+            next if check.valid?(database)
 
-def metadata_from_path(path)
-  album = File.basename(path)
-  path = File.dirname(path)
-  artist = File.basename(path)
+            warn("#{database.artist}/#{database.title}: #{check}")
+          end
+        end
+      end
+    end
 
-  [artist, album]
-end
+    class LibrarySource
+      EXT = Set.new(%w[.alac .flac .m4a .mp3]).freeze
 
-def print_error(artist, album, disc, message)
-  if disc == NO_DISC
-    warn "#{artist}/#{album}: #{message}"
-  else
-    warn "#{artist}/#{album} (disc #{disc}): #{message}"
+      def initialize(path, no_disc_sentinel)
+        @root = Pathname.new(path)
+        @no_disc_sentinel = no_disc_sentinel
+      end
+
+      def scan
+        database = Hash.new { |h, k| h[k] = [] }
+        @root.children.each do |artistp|
+          next if artistp.file?
+
+          artist = artistp.basename.to_path
+          artistp.children.each do |albump|
+            next if albump.file?
+
+            album = albump.basename.to_path
+            albump.children.each do |songp|
+              next unless EXT.include?(songp.extname.downcase)
+              next unless songp.file?
+
+              song = songp.basename.to_path
+              match = /^((?<disc>\d\d?)-)?(?<track>\d\d)/.match(song)
+              next unless match
+
+              disc = match[:disc] || @no_disc_sentinel
+              database[disc] << match[:track].to_i
+            end
+            yield Album.new(artist, album, database)
+            database.clear
+          end
+        end
+      end
+    end
+
+    module Checks
+      class Check
+        # @abstract Subclass is expected to implement #valid?
+        # @!method valid?
+      end
+
+      class InconsistentDiscNumbering < Check
+        def initialize(no_disc_sentinel)
+          @no_disc_sentinel = no_disc_sentinel
+        end
+
+        def valid?(album)
+          !(album.database.key?(@no_disc_sentinel) && album.database.length > 1)
+        end
+
+        def to_s
+          'inconsistent disc numbering'
+        end
+      end
+
+      class DuplicateTracks < Check
+        def valid?(album)
+          album.database.all? { |_, tracks| tracks.uniq.length == tracks.length }
+        end
+
+        def to_s
+          'duplicate track numbers'
+        end
+      end
+
+      class MissingTracks < Check
+        def valid?(album)
+          album.database.each do |_, tracks|
+            tracks = tracks.sort
+            return false unless tracks.first == 1
+
+            tracks.each_cons(2) do |a, b|
+              return false unless a + 1 == b
+            end
+          end
+          true
+        end
+
+        def to_s
+          'missing tracks'
+        end
+      end
+    end
   end
 end
 
-(Dir.glob(File.join(MUSIC_DIR, '*', '*')) - DOT_DOT).each do |album_path|
-  TRACKS.clear
-  artist, album = metadata_from_path(album_path)
-
-  (Dir.glob(File.join(album_path, '*')) - DOT_DOT).each do |song_path|
-    song = Pathname.new(song_path).basename.to_path
-    # assume tracks are numbered in the standard
-    # iTunes way: optional_disk_number-track
-    match = /^(?<disc>\d\d?-)?(?<track>\d\d)/.match(song)
-    next unless match
-
-    disc = match[:disc]
-    disc = NO_DISC if disc.nil?
-    TRACKS[disc.chomp('-')] << match[:track].to_i
-  end
-
-  print_error(artist, album, NO_DISC, 'Album has no disc and disc number tracks') if TRACKS.key?(NO_DISC) && TRACKS.length > 1
-  TRACKS.each do |disc, track_numbers|
-    # check for dupes
-    print_error(artist, album, disc, 'Album contains duplicates') if track_numbers.uniq.length != track_numbers.length
-    # check that each disc in the album contains a continuous range of track
-    # numbers that starts at 1
-    print_error(artist, album, disc, 'Incomplete album') if track_numbers.sort != [*1..track_numbers.max]
-  end
-end
+Hyper::MusicIntegrity::Runner.main if $PROGRAM_NAME == __FILE__
