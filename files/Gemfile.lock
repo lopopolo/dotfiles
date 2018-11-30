@@ -20,7 +20,6 @@ GEM
       pry (~> 0.10)
     rainbow (3.0.0)
     rake (12.3.1)
-    redcarpet (3.4.0)
     rubocop (0.60.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -40,7 +39,6 @@ DEPENDENCIES
   pry
   pry-byebug
   rake
-  redcarpet
   rubocop
 
 BUNDLED WITH
