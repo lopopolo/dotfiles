@@ -3,6 +3,8 @@
 source 'https://rubygems.org'
 
 gem 'mry'
+gem 'pry'
+gem 'pry-byebug'
 gem 'rake'
 gem 'redcarpet'
 gem 'rubocop'
