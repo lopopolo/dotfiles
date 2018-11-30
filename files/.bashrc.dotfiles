@@ -29,10 +29,13 @@ source "$HOME/.bashrc.mac"
 export CLICOLOR=1
 export TERM="xterm-256color"
 # colors
+export BLACK="\\033[0;30m"
 export RED="\\033[0;31m"
 export GREEN="\\033[0;32m"
 export YELLOW="\\033[0;33m"
 export BLUE="\\033[0;34m"
+export MAGENTA="\\033[0;35m"
+export CYAN="\\033[0;36m"
 export WHITE="\\033[0;37m"
 export PLAIN="\\033[m"
 
@@ -168,7 +171,7 @@ function prompt_command
 
   local -r term_title="\\033]0;\\W\\007"
   local -r prompt_line="\\[${YELLOW}\\]${venv}\\[${PLAIN}\\]\\[${prompt_color}\\]▶\\[${PLAIN}\\] "
-  export PS1="${term_title}\\[${WHITE}\\][\\A] [\\w] ${battery}${git_prompt}\\n${prompt_line}"
+  export PS1="${term_title}\\[${BLACK}\\][\\A] [\\w] ${battery}${git_prompt}\\n${prompt_line}"
 }
 shopt -u promptvars
 PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
