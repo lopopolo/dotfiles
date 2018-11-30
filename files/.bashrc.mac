@@ -9,16 +9,9 @@ alias nosleeptillbrooklyn='caffeinate -s'
 alias brew_bundle_install='brew bundle --file=$HOME/.dotfiles/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
-# make MacVim my default editor
-unset -f vim
-function vim
-{
-  if [[ "$#" == "0" ]]; then
-    mvim
-  else
-    mvim --remote-tab-silent "$@"
-  fi
-}
+# make gvim my default editor
+alias vim='vimr'
+complete -o filenames -F _filedir_xspec vim
 
 # VS Code
 append_to_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -68,4 +61,5 @@ fi
 export PYENV_ROOT=/usr/local/var/pyenv
 if [[ ":${PATH}:" != *:"${PYENV_ROOT}/shims":* ]]; then
   eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 fi

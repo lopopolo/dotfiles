@@ -29,8 +29,6 @@ brew "flac"
 brew "git"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# GUI for vim, made for macOS
-brew "macvim", link: false
 # MP3 player for Linux and UNIX
 brew "mpg123"
 # Open source relational database management system
@@ -53,12 +51,16 @@ brew "portaudio"
 brew "pre-commit"
 # Python version management
 brew "pyenv"
+# Pyenv plugin to manage virtualenv
+brew "pyenv-virtualenv"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
+# The Rust toolchain installer
+brew "rustup-init"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -67,6 +69,8 @@ brew "shfmt"
 brew "spark"
 # Add a public key to a remote machine's authorized_keys file
 brew "ssh-copy-id"
+# Audio metadata library
+brew "taglib"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Extract, view, and test RAR archives
@@ -80,5 +84,5 @@ brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 brew "goles/battery/battery"
-cask "macvim"
 cask "vagrant"
+cask "vimr"

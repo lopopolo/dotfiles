@@ -1,13 +1,4 @@
-" Start NERDTree automatically.
-" autocmd VimEnter * NERDTree
-
-let s:uname = system("echo -n \"$(uname)\"")
-if s:uname == "Darwin"
-  set guifont=Inconsolata:h20
-else
-  set guifont="Inconsolata 20"
-endif
-
+" set ft=vim
 " Get rid of the macvim and gvim toolbars
 set go-=T
 set go-=m
@@ -23,22 +14,8 @@ inoremap <2-MiddleMouse> <Nop>
 inoremap <3-MiddleMouse> <Nop>
 inoremap <4-MiddleMouse> <Nop>
 
-" tab switching like in iTerm for MacVim
-if s:uname == "Darwin"
+if has('gui_macvim')
+  set guifont=Inconsolata:h18
   macm Window.Select\ Previous\ Tab  key=<D-Left>
   macm Window.Select\ Next\ Tab	     key=<D-Right>
 endif
-
-function! ProseMode()
-  call goyo#execute(0, [])
-  set spell noci nosi noai nolist noshowmode noshowcmd
-  set complete+=s
-  set bg=light
-  if !has('gui_running')
-    let g:solarized_termcolors=256
-  endif
-  colors solarized
-endfunction
-
-command! ProseMode call ProseMode()
-nmap \p :ProseMode<CR>

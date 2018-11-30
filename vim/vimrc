@@ -1,11 +1,25 @@
-" ================================== Pathogen =================================
-filetype off
-source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+let g:python_host_prog = '/usr/local/var/pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/usr/local/var/pyenv/versions/neovim3/bin/python'
+
+" ==================================== Plug ===================================
+call plug#begin()
+
+Plug 'airblade/vim-gitgutter'
+Plug 'altercation/vim-colors-solarized'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'junegunn/goyo.vim'
+Plug 'lifepillar/vim-solarized8'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
+Plug 'zxqfl/tabnine-vim'
+
+call plug#end()
 
 " =============================== Basic settings ==============================
-
 syntax on
 filetype plugin indent on
 
@@ -52,10 +66,8 @@ nmap <silent> <leader>cd :lcd %:h<CR>
 " ================================ Color scheme ===============================
 
 " solarized
-if &t_Co >= 256 || has("gui_running")
-  set background=dark
-  colorscheme solarized
-endif
+set background=light
+colorscheme solarized8
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -107,25 +119,6 @@ nnoremap ; :
 
 " let me type :W to save, cuz that always happens
 cnoreabbrev W w
-
-" ============================== Split shortcuts ==============================
-
-" window
-nmap <leader>sw<left>  :topleft  vnew<CR>
-nmap <leader>sw<right> :botright vnew<CR>
-nmap <leader>sw<up>    :topleft  new<CR>
-nmap <leader>sw<down>  :botright new<CR>
-" buffer
-nmap <leader>s<left>   :leftabove  vnew<CR>
-nmap <leader>s<right>  :rightbelow vnew<CR>
-nmap <leader>s<up>     :leftabove  new<CR>
-nmap <leader>s<down>   :rightbelow new<CR>
-
-" navigating
-nmap <leader><left>    <C-W>h
-nmap <leader><right>   <C-W>l
-nmap <leader><down>    <C-W>j
-nmap <leader><up>      <C-W>k
 
 " =============================== Plugin stuff  ===============================
 
