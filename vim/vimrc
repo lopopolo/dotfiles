@@ -8,12 +8,16 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hashivim/vim-hashicorp-tools'
+Plug 'jeroenbourgois/vim-actionscript'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
+Plug 'mattly/vim-markdown-enhancements'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'uarun/vim-protobuf'
 Plug 'w0rp/ale'
 Plug 'zxqfl/tabnine-vim'
 
@@ -80,39 +84,39 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
 " strip trailing whitespace on save
 fun! <SID>StripTrailingWhitespaces()
-    let l = line(".")
-    let c = col(".")
-    %s/\s\+$//e
-    call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfun
 
 augroup strip_trailing_whitespace
-    au!
-    " but not in markdown where trailing whitespace is significant
-    au BufWritePre * if &ft!~?'markdown' | :call <SID>StripTrailingWhitespaces() | endif
+  autocmd!
+  " but not in markdown where trailing whitespace is significant
+  autocmd BufWritePre * if &ft!~?'markdown' | :call <SID>StripTrailingWhitespaces() | endif
 augroup END
 
 augroup save_on_lose_focus
-    au!
-    " save on lose focus, but don't complain if you can't
-    au FocusLost * silent! wa
+  autocmd!
+  " save on lose focus, but don't complain if you can't
+  autocmd FocusLost * silent! wa
 augroup END
 
 augroup restore_cursor
-    au!
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \   exe "normal g`\"" |
-                \ endif
+  autocmd!
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+              \ if line("'\"") > 0 && line("'\"") <= line("$") |
+              \   exe "normal g`\"" |
+              \ endif
 augroup END
 
 augroup vimrcEx
-    au!
-    " Automatically load .vimrc source when saved
-    autocmd BufWritePost .vimrc,vimrc,.gvimrc,gvimrc source $MYVIMRC
+  autocmd!
+  " Automatically load .vimrc source when saved
+  autocmd BufWritePost .vimrc,vimrc,.gvimrc,gvimrc source $MYVIMRC
 augroup END
 
 " ==================== Typo prevention and other vim remaps ===================

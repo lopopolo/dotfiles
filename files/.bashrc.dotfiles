@@ -1,6 +1,9 @@
 # shellcheck shell=bash
 # vim: filetype=sh
 
+export EDITOR
+EDITOR="$(command -v vim)"
+
 # unset `PROMPT_COMMAND`. This is the beginning of initialization so we aren't in danger
 # of losing anything. If we don't unset it, we end up chaining calls to the function
 # `prompt_command` which breaks coloring the `$PS1` based on exit code.
@@ -52,9 +55,6 @@ shopt -s histappend
 set -o vi
 
 prepend_to_path "$HOME/.dotfiles/scripts"
-
-export EDITOR
-EDITOR="$(command -v vim)"
 
 # =========================================================================== #
 # Aliases
