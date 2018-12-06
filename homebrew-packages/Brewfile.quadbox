@@ -37,6 +37,8 @@ brew "mysql"
 brew "mysql-connector-c", link: false
 # Open source relational database management system
 brew "mysql@5.7"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
 # Platform built on V8 to build network applications
