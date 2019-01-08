@@ -146,7 +146,7 @@ function prompt_command
       done < <(git rev-list --left-right "HEAD...@{u}")
     fi
 
-    if [[ -n "$(git diff-index --name-only -z HEAD)" ]]; then
+    if [[ -n "$(git diff-index --name-only HEAD)" ]]; then
       dirty="*"
       git_color="$YELLOW"
     fi
