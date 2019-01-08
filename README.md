@@ -21,12 +21,24 @@ echo '. "$HOME/.bashrc.dotfiles"' >> "$HOME/.bashrc"
 
 ## Homebrew
 
+Homebrew is a package manager for macOS. [Installation instructions](https://docs.brew.sh/Installation).
+
 Packages for each machine are found in [homebrew-packages](/homebrew-packages).
 
 Install packages for the current machine using:
 
 ```bash
 brew_bundle_install
+```
+
+## Modern bash
+
+macOS ships with bash 3.2 from 2007. The homebrew instructions above install the
+most recent bash. To make it the default login shell:
+
+```bash
+echo /usr/local/bin/bash | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/bash
 ```
 
 ## Languages
