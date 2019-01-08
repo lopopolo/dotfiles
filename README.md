@@ -21,7 +21,8 @@ echo '. "$HOME/.bashrc.dotfiles"' >> "$HOME/.bashrc"
 
 ## Homebrew
 
-Homebrew is a package manager for macOS. [Installation instructions](https://docs.brew.sh/Installation).
+Homebrew is a package manager for macOS.
+[Installation instructions](https://docs.brew.sh/Installation).
 
 Packages for each machine are found in [homebrew-packages](/homebrew-packages).
 

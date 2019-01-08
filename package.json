@@ -1,0 +1,14 @@
+{
+  "name": "lopopolo-dotfiles",
+  "version": "0.1.0",
+  "repository": "https://github.com/lopopolo/dotfiles",
+  "author": "Ryan Lopopolo",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^1.15.3"
+  },
+  "scripts": {
+    "fmt": "prettier --write '**/*.{babelrc,css,eslintrc,html,js,json,md}'"
+  }
+}
