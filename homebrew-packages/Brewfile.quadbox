@@ -47,6 +47,8 @@ brew "node"
 brew "packer"
 # Python dependency management tool
 brew "pipenv"
+# Optimizer for PNG files
+brew "pngcrush"
 # Cross-platform library for audio I/O
 brew "portaudio"
 # Framework for managing multi-language pre-commit hooks
@@ -59,6 +61,8 @@ brew "pyenv-virtualenv"
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
 # The Rust toolchain installer
@@ -80,7 +84,7 @@ brew "unrar"
 # Image format providing lossless and lossy compression for web images
 brew "webp"
 # Internet file retriever
-brew "wget"
+brew "wget", link: false
 # JavaScript package manager
 brew "yarn"
 # Download YouTube videos from the command-line
