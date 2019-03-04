@@ -50,8 +50,8 @@ neovim-python:
 	pyenv install --skip-existing 2.7.15
 	pyenv virtualenv --force 2.7.15 neovim2
 	eval "$$(pyenv init -)" && pyenv activate neovim2 && pip install neovim && pyenv which python
-	pyenv install --skip-existing 3.7.1
-	pyenv virtualenv --force 3.7.1 neovim3
+	pyenv install --skip-existing 3.7.2
+	pyenv virtualenv --force 3.7.2 neovim3
 	eval "$$(pyenv init -)" && pyenv activate neovim3 && pip install neovim && pyenv which python
 
 .PHONY: $(BUNDLES)
