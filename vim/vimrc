@@ -1,6 +1,9 @@
 let g:python_host_prog = '/usr/local/var/pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/usr/local/var/pyenv/versions/neovim3/bin/python'
 
+" https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
+let g:rustfmt_autosave = 1
+
 " ==================================== Plug ===================================
 call plug#begin()
 
