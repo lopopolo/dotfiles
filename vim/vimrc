@@ -139,8 +139,11 @@ map <leader>nt :NERDTreeToggle<CR>
 " nerdtree settings
 let g:NERDTreeChDirMode=1
 
-" supertab
-let g:SuperTabDefaultCompletionType = "context"
+" tabnine
+" disable preview window on tab completion with tabnine
+" https://github.com/Valloric/YouCompleteMe#i-get-a-weird-window-at-the-top-of-my-file-when-i-use-the-semantic-engine
+let g:ycm_add_preview_to_completeopt = 0
+set completeopt-=preview
 
 " ale
 function! LinterStatus() abort
