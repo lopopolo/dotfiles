@@ -135,35 +135,9 @@ function rand_string {
 function prompt_command
 {
   local -r last_exit_code="$?"
-  local git_prompt
-  if git rev-parse HEAD &> /dev/null; then
-    git_prompt="$(__git_ps1 "%s")"
-    if [[ -n "$git_prompt" ]]; then
-      local level="=" ahead behind dirty git_color="$GREEN"
-      if git rev-list "@{u}" >/dev/null 2>&1; then
-        while read -r rev; do
-          if [[ "${rev:0:1}" == "<" ]]; then ahead=">"; level=""; fi
-          if [[ "${rev:0:1}" == ">" ]]; then behind="<"; level=""; fi
-        done < <(git rev-list --left-right "HEAD...@{u}")
-      fi
-
-      if [[ -n "$(git diff-index --name-only HEAD)" ]]; then
-        dirty="*"
-        git_color="$YELLOW"
-      fi
-      git_prompt="${git_color}(${git_prompt} ${dirty}${level}${behind}${ahead})${PLAIN}"
-    fi
-  fi
-
   local prompt_color="$GREEN"
   if [[ "$last_exit_code" != "0" ]]; then
     prompt_color="$RED"
-  fi
-
-  # if we're on a mac, add battery info
-  local battery=" "
-  if [ "$PLATFORM" == "MAC" ]; then
-    battery="$(battery -p) "
   fi
 
   local venv=""
@@ -173,7 +147,7 @@ function prompt_command
 
   local -r term_title="\\033]0;\\W\\007"
   local -r prompt_line="\\[${YELLOW}\\]${venv}\\[${PLAIN}\\]\\[${prompt_color}\\]▶\\[${PLAIN}\\] "
-  export PS1="${term_title}\\[${BLACK}\\][\\A] [\\w] ${battery}${git_prompt}\\n${prompt_line}"
+  export PS1="${term_title}\\[${BLACK}\\][\\A] [\\w]\\n${prompt_line}"
 }
 shopt -u promptvars
 PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
