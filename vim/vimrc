@@ -24,6 +24,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'uarun/vim-protobuf'
 Plug 'w0rp/ale'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
@@ -133,11 +134,19 @@ augroup END
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
-" nerdtree shortcut
-map <leader>n :NERDTree
-map <leader>nt :NERDTreeToggle<CR>
-" nerdtree settings
-let g:NERDTreeChDirMode=1
+" nerdtree
+" How can I map a specific key or shortcut to open NERDTree?
+map <C-o> :NERDTreeToggle<CR>
+augroup nerdtree
+  autocmd!
+  " How can I open a NERDTree automatically when vim starts up if no files were
+  " specified?
+  autocmd StdinReadPre * let s:std_in=1
+  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  " How can I close vim if the only window left open is a NERDTree?
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup END
+let NERDTreeQuitOnOpen = 1
 
 " tabnine
 " disable preview window on tab completion with tabnine
