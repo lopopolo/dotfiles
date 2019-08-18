@@ -64,14 +64,6 @@ set cursorline
 " set autochdir
 set mouse=a
 
-" ============================== Command mappings =============================
-
-" save a buffer I don't have the perms for
-cmap w!! :w !sudo tee %<CR>
-
-" cd to the directory containing the file in the buffer
-nmap <silent> <leader>cd :lcd %:h<CR>
-
 " ================================ Color scheme ===============================
 
 set termguicolors
