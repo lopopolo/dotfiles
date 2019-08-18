@@ -8,14 +8,16 @@ let g:rustfmt_autosave = 1
 call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hashivim/vim-hashicorp-tools'
-Plug 'jeroenbourgois/vim-actionscript'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mattly/vim-markdown-enhancements'
 Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-sensible'
