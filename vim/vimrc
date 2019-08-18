@@ -174,3 +174,8 @@ set statusline+=%=%{LinterStatus()}
 
 " gitgutter
 set updatetime=250
+
+" fzf
+map <C-p> :Files<CR>
+map <C-g> :Rg<CR>
+let $FZF_DEFAULT_COMMAND  = 'rg --files --hidden'
