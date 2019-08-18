@@ -123,6 +123,12 @@ nnoremap ; :
 " let me type :W to save, cuz that always happens
 cnoreabbrev W w
 
+augroup prevent_saving_typoed_names
+  autocmd!
+  " https://stackoverflow.com/a/6211489
+  autocmd BufWritePre [:;]* try | echoerr 'Forbidden file name: ' . expand('<afile>') | endtry
+augroup END
+
 " =============================== Plugin stuff  ===============================
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
