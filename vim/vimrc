@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mattly/vim-markdown-enhancements'
+Plug 'powerline/fonts', { 'do': './install.sh' }
 Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-eunuch'
@@ -23,6 +24,8 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'uarun/vim-protobuf'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'zxqfl/tabnine-vim'
@@ -60,7 +63,6 @@ set gdefault
 nnoremap <leader><space> :noh<cr>
 
 " status lines
-set statusline=%<%F%h%m%r%h%w%y\ %{fugitive#statusline()}\ %{&ff}\ lin:%l\,%L\ col:%c%V\ pos:%o\ %P
 set cursorline
 
 " crutches
@@ -73,7 +75,7 @@ set termguicolors
 
 " solarized
 set background=light
-colorscheme solarized8
+colorscheme solarized8_flat
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -135,6 +137,12 @@ augroup END
 " =============================== Plugin stuff  ===============================
 
 let g:EditorConfig_exclude_patterns = ['fugitive://.*']
+
+
+" airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme =  "solarized"
+let g:airline#extensions#tabline#enabled = 1
 
 " nerdtree
 " How can I map a specific key or shortcut to open NERDTree?
