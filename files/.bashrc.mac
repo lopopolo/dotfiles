@@ -12,7 +12,7 @@ alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 # neovim
 EDITOR='nvim'
 export EDITOR
-alias vim='vimr'
+alias vim='nvim'
 complete -o filenames -F _filedir_xspec vim
 
 # VS Code
