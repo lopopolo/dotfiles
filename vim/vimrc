@@ -7,6 +7,10 @@ let g:rustfmt_autosave = 1
 " ==================================== Plug ===================================
 call plug#begin()
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'hashivim/vim-hashicorp-tools'
@@ -17,8 +21,10 @@ Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mattly/vim-markdown-enhancements'
 Plug 'powerline/fonts', { 'do': './install.sh' }
-Plug 'sheerun/vim-polyglot'
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
@@ -29,7 +35,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'w0rp/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
 
@@ -143,6 +148,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " airline
 let g:airline_powerline_fonts = 1
 let g:airline_theme =  "solarized"
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " nerdtree
@@ -159,27 +165,15 @@ augroup nerdtree
 augroup END
 let NERDTreeQuitOnOpen = 1
 
-" tabnine
-" disable preview window on tab completion with tabnine
-" https://github.com/Valloric/YouCompleteMe#i-get-a-weird-window-at-the-top-of-my-file-when-i-use-the-semantic-engine
-let g:ycm_add_preview_to_completeopt = 0
-set completeopt-=preview
+" deoplete
+let g:deoplete#enable_at_startup = 1
 
-" ale
-function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-
-    return l:counts.total == 0 ? 'OK' : printf(
-    \   '%dW %dE',
-    \   all_non_errors,
-    \   all_errors
-    \)
-endfunction
-
-set statusline+=%=%{LinterStatus()}
+" racer
+let g:racer_experimental_completer = 1
+let g:racer_insert_paren = 1
+au FileType rust nmap <leader>rx <Plug>(rust-doc)
+au FileType rust nmap <leader>rd <Plug>(rust-def)
+au FileType rust nmap <leader>rs <Plug>(rust-def-split)
 
 " gitgutter
 set updatetime=250
