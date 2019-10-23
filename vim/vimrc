@@ -57,6 +57,7 @@ set number
 set ruler
 
 set modeline
+set autoread
 
 let mapleader = ","
 
