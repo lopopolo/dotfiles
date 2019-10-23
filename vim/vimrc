@@ -76,6 +76,15 @@ set cursorline
 " set autochdir
 set mouse=a
 
+" Persistent undo
+if has("persistent_undo")
+  set undofile
+  set undodir=$HOME/.vim/undo
+
+  set undolevels=1000
+  set undoreload=10000
+endif
+
 " ================================ Color scheme ===============================
 
 set termguicolors
