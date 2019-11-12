@@ -164,6 +164,11 @@ CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/repos:$HOME/dev"
 export GOPATH="$HOME/dev/gopath"
 prepend_to_path "$GOPATH/bin"
 
+if [[ -f "$HOME/.cargo/env" ]]; then
+  # shellcheck disable=SC1090
+  source "$HOME/.cargo/env"
+fi
+
 # =========================================================================== #
 # ssh-agent
 # =========================================================================== #
