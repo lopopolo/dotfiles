@@ -6,7 +6,12 @@ TARGETDIR=$(HOME)
 all: bootstrap
 
 .PHONY: bootstrap
-bootstrap: $(DOTFILES) dev vim
+bootstrap: dotfiles dev vim
+
+.PHONY: dotfiles
+dotfiles: $(DOTFILES)
+	mkdir -p $(HOME)/.config/alacritty
+	cp alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
@@ -47,11 +52,11 @@ neovim-node:
 
 .PHONY: neovim-python
 neovim-python:
-	pyenv install --skip-existing 2.7.15
-	pyenv virtualenv --force 2.7.15 neovim2
+	pyenv install --skip-existing 2.7.17
+	pyenv virtualenv --force 2.7.17 neovim2
 	eval "$$(pyenv init -)" && pyenv activate neovim2 && pip install neovim && pyenv which python
-	pyenv install --skip-existing 3.7.2
-	pyenv virtualenv --force 3.7.2 neovim3
+	pyenv install --skip-existing 3.8.0
+	pyenv virtualenv --force 3.8.0 neovim3
 	eval "$$(pyenv init -)" && pyenv activate neovim3 && pip install neovim && pyenv which python
 
 .PHONY: $(BUNDLES)
