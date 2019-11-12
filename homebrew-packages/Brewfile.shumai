@@ -6,8 +6,6 @@ tap "homebrew/core"
 brew "gdbm"
 # YAML Parser
 brew "libyaml"
-# SSL/TLS cryptography library
-brew "openssl"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -60,8 +58,6 @@ brew "cscope"
 brew "icu4c"
 # Platform built on V8 to build network applications
 brew "node"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
 # Ogg Bitstream Library
@@ -190,6 +186,8 @@ brew "mysql@5.7"
 brew "neovim"
 # Port scanning utility for large networks
 brew "nmap"
+# SSL/TLS cryptography library
+brew "openssl"
 # Tool for creating identical machine images for multiple platforms
 brew "packer"
 # Python dependency management tool
@@ -206,6 +204,8 @@ brew "pre-commit"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@2"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -239,4 +239,5 @@ brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 cask "alacritty"
+cask "iterm2"
 cask "vagrant"
