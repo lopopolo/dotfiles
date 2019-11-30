@@ -215,6 +215,8 @@ brew "rbenv"
 brew "ripgrep"
 # The Rust toolchain installer
 brew "rustup-init"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
 # Autoformat shell script source code
@@ -240,8 +242,11 @@ brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
 cask "alacritty"
+cask "discord"
 cask "font-inconsolata"
 cask "font-inconsolata-for-powerline"
 cask "font-inconsolata-for-powerline-bold"
 cask "iterm2"
+cask "parallels"
+cask "slack"
 cask "vagrant"
