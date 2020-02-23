@@ -1,5 +1,4 @@
 DOTFILES = $(shell ls -1A files)
-BUNDLES=$(wildcard vim/bundle/*)
 TARGETDIR=$(HOME)
 
 .PHONY: all
@@ -42,6 +41,8 @@ vim-init:
 	ln -snf $(PWD)/vim $(HOME)/.vim
 	mkdir -p $(HOME)/.config/nvim/
 	ln -snf $(PWD)/vim/init.vim $(HOME)/.config/nvim/init.vim
+	mkdir -p $(HOME)/.config/nvim/after/plugin
+	ln -snf $(PWD)/vim/coc.vim $(HOME)/.config/nvim/after/plugin/coc.vim
 
 .PHONY: neovim-provider
 neovim-provider: neovim-node neovim-python
@@ -52,19 +53,9 @@ neovim-node:
 
 .PHONY: neovim-python
 neovim-python:
-	pyenv install --skip-existing 2.7.17
-	pyenv virtualenv --force 2.7.17 neovim2
-	eval "$$(pyenv init -)" && pyenv activate neovim2 && pip install neovim && pyenv which python
-	pyenv install --skip-existing 3.8.0
-	pyenv virtualenv --force 3.8.0 neovim3
-	eval "$$(pyenv init -)" && pyenv activate neovim3 && pip install neovim && pyenv which python
-
-.PHONY: $(BUNDLES)
-$(BUNDLES):
-	cd "$@" && \
-		if [[ -n "$$(git rev-parse --show-superproject-working-tree)" ]]; then \
-			git checkout master && git pull; \
-		fi
-
-.PHONY: vim-update-bundles
-vim-update-bundles: $(BUNDLES)
+	pyenv install --skip-existing 3.8.1
+	pyenv virtualenv --force 3.8.1 neovim3
+	eval "$$(pyenv init -)" && \
+		pyenv activate neovim3 && \
+		pip install --ignore-installed pynvim && \
+		pyenv which python

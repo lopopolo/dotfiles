@@ -1,4 +1,3 @@
-let g:python_host_prog = '/usr/local/var/pyenv/versions/neovim2/bin/python'
 let g:python3_host_prog = '/usr/local/var/pyenv/versions/neovim3/bin/python'
 
 " https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
@@ -13,6 +12,7 @@ endfunction
 
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -20,11 +20,17 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mattly/vim-markdown-enhancements'
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " color highlighting
 Plug 'powerline/fonts', { 'do': './install.sh' }
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
@@ -33,7 +39,6 @@ Plug 'tpope/vim-surround'
 Plug 'uarun/vim-protobuf'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'w0rp/ale'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
