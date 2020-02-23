@@ -47,45 +47,96 @@ call plug#end()
 syntax on
 filetype plugin indent on
 
+" normal OS clipboard interaction
 set clipboard+=unnamedplus
 
 set nocompatible
-set noswapfile
 
+set termencoding=utf-8
 set encoding=utf-8
 
-set expandtab
+" hide buffers instead of closing them this
+"    means that the current buffer can be put
+"    to background without being written; and
+"    that marks and undo history are preserved
+set hidden
+
+" don't wrap lines
+set nowrap
+" a tab is two spaces
 set tabstop=2
+" expand tabs by default (overloadable per file type later)
+set expandtab
+" number of spaces to use for autoindenting
 set shiftwidth=2
 set smartindent
+" always show line numbers
 set number
-set ruler
-
-set modeline
 set autoread
 
+" change the mapleader from \ to ,
 let mapleader = ","
 
-" searching
+" ignore case when searching
 set ignorecase
+" ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smartcase
+" set show matching parenthesis
 set showmatch
+" highlight search terms
 set hlsearch
+" show search matches as you type
+set incsearch
+" search/replace "globally" (on a line) by default
 set gdefault
+
+" Alias to disable highlighting from search matches
 nnoremap <leader><space> :noh<cr>
 
 " status lines
 set cursorline
 
-" crutches
-" set autochdir
+" change the terminal's title
+set title
+" don't beep
+set visualbell
+" don't beep
+set noerrorbells
+
+" do not keep backup files, it's 70's style cluttering
+set nobackup
+" do not write out changes via backup files
+set nowritebackup
+" do not write annoying intermediate swap files
+set noswapfile
+
+" enable using the mouse if terminal emulator supports it (xterm does)
 set mouse=a
+
+" Speed up the updatetime so gitgutter and friends are quicker
+set updatetime=250
+
+" Make the keyboard faaaaaaast
+set ttyfast
+set timeout timeoutlen=1000 ttimeoutlen=50
+
+" show (partial) command in the last line of the screen
+"    this also shows visual selection info
+set showcmd
+
+" disable mode lines (security measure)
+set nomodeline
+
+" Remap j and k to act as expected when used on long, wrapped, lines
+nnoremap j gj
+nnoremap k gk
 
 " Persistent undo
 if has("persistent_undo")
   set undofile
   set undodir=$HOME/.vim/undo
 
+  " use many muchos levels of undo
   set undolevels=1000
   set undoreload=10000
 endif
@@ -149,6 +200,9 @@ nnoremap ; :
 " let me type :W to save, cuz that always happens
 cnoreabbrev W w
 
+" disable Ex mode
+map Q <Nop>
+
 augroup prevent_saving_typoed_names
   autocmd!
   " https://stackoverflow.com/a/6211489
@@ -189,9 +243,6 @@ let g:racer_insert_paren = 1
 au FileType rust nmap <leader>rx <Plug>(rust-doc)
 au FileType rust nmap <leader>rd <Plug>(rust-def)
 au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-
-" gitgutter
-set updatetime=250
 
 " fzf
 map <C-p> :Files<CR>
