@@ -220,30 +220,6 @@ let g:airline_theme =  "solarized"
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" nerdtree
-" How can I map a specific key or shortcut to open NERDTree?
-map <C-o> :NERDTreeToggle<CR>
-augroup nerdtree
-  autocmd!
-  " How can I open a NERDTree automatically when vim starts up if no files were
-  " specified?
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-  " How can I close vim if the only window left open is a NERDTree?
-  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup END
-let NERDTreeQuitOnOpen = 1
-
-" deoplete
-let g:deoplete#enable_at_startup = 1
-
-" racer
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
-au FileType rust nmap <leader>rx <Plug>(rust-doc)
-au FileType rust nmap <leader>rd <Plug>(rust-def)
-au FileType rust nmap <leader>rs <Plug>(rust-def-split)
-
 " fzf
 map <C-p> :Files<CR>
 map <C-g> :Rg<CR>
