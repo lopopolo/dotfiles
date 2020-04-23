@@ -6,30 +6,30 @@ let g:rustfmt_autosave = 1
 " ==================================== Plug ===================================
 call plug#begin()
 
-function! DoRemote(arg)
-  UpdateRemotePlugins
-endfunction
-
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'hashivim/vim-hashicorp-tools'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'iamcco/markdown-preview.nvim',  { 'do': 'cd app && yarn install'  }
+Plug 'junegunn/fzf',                  { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
 Plug 'mattly/vim-markdown-enhancements'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-prettier', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-lists', {'do': 'yarn install --frozen-lockfile'} " mru and stuff
-Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'} " color highlighting
-Plug 'powerline/fonts', { 'do': './install.sh' }
+Plug 'neoclide/coc.nvim',      {'branch': 'release'}
+Plug 'neoclide/coc-css',       {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint',    {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html',      {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-json',      {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-lists',     {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-prettier',  {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-python',    {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets',  {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tslint',    {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver',  {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-yaml',      {'do': 'yarn install --frozen-lockfile'}
+Plug 'powerline/fonts',        { 'do': './install.sh' }
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
