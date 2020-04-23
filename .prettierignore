@@ -2,10 +2,12 @@
 
 !**/*/
 
+alacritty/
 dist/
 node_modules/
 target/
 vim/plugged/
+vim/undo/
 
 !*.html
 !*.js

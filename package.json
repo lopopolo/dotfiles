@@ -14,6 +14,6 @@
   "scripts": {
     "fmt": "npx prettier --write '**/*'",
     "fmt:md": "npx prettier --write --prose-wrap always '**/*.md'",
-    "fmt:yaml": "npx prettier --write --prose-wrap always '**/*.yaml'"
+    "fmt:yaml": "npx prettier --write --prose-wrap always '**/*.{yaml,yml}'"
   }
 }
