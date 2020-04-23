@@ -1,14 +1,19 @@
 {
-  "name": "lopopolo-dotfiles",
+  "name": "@lopopolo/dotfiles",
   "version": "0.1.0",
-  "repository": "https://github.com/lopopolo/dotfiles",
-  "author": "Ryan Lopopolo",
-  "license": "MIT",
   "private": true,
-  "devDependencies": {
-    "prettier": "^1.15.3"
-  },
+  "homepage": "https://github.com/lopopolo/dotfiles",
+  "bugs": "https://github.com/lopopolo/dotfiles/issues",
+  "license": "MIT",
+  "author": "Ryan Lopopolo <rjl@hyperbo.la> (https://hyperbo.la/)",
+  "contributors": [
+    "Ryan Lopopolo <rjl@hyperbo.la> (https://hyperbo.la/)"
+  ],
+  "repository": "github:lopopolo/dotfiles",
+  "devDependencies": {},
   "scripts": {
-    "fmt": "prettier --write '**/*.{babelrc,css,eslintrc,html,js,json,md}'"
+    "fmt": "npx prettier --write '**/*'",
+    "fmt:md": "npx prettier --write --prose-wrap always '**/*.md'",
+    "fmt:yaml": "npx prettier --write --prose-wrap always '**/*.yaml'"
   }
 }
