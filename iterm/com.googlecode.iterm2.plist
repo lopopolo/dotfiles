@@ -569,17 +569,23 @@
 	<key>NSWindow Frame NSNavPanelAutosaveName</key>
 	<string>786 677 347 181 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>586 548 620 392 0 0 1792 1097 </string>
+	<string>650 518 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>517 139 1090 918 0 0 1792 1097 </string>
+	<string>696 81 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>582 120 1090 926 0 0 1792 1097 </string>
+	<string>581 91 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>291 861 667 196 0 0 1792 1097 </string>
+	<string>383 113 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>312 139 1090 918 0 0 1792 1097 </string>
+	<string>436 115 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>291 171 1090 926 0 0 1792 1097 </string>
+	<string>344 133 1090 918 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 5</key>
+	<string>641 131 1090 918 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 6</key>
+	<string>352 139 1090 918 0 0 1792 1097 </string>
+	<key>NSWindow Frame iTerm Window 7</key>
+	<string>702 116 1090 918 0 0 1792 1097 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2268,7 +2274,15 @@
 	<array>
 		<string>3.3.7</string>
 		<string>3.3.8</string>
+		<string>3.3.9</string>
 	</array>
+	<key>NoSyncFrame_SessionsPreferences</key>
+	<dict>
+		<key>screenFrame</key>
+		<string>{{0, 0}, {1792, 1120}}</string>
+		<key>topLeft</key>
+		<string>{593, 972}</string>
+	</dict>
 	<key>NoSyncFrame_SharedPreferences</key>
 	<dict>
 		<key>screenFrame</key>
@@ -2279,7 +2293,7 @@
 	<key>NoSyncInstallationId</key>
 	<string>87740FFE-A561-48E0-B1FE-8DF6692E4618</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>17</integer>
+	<integer>29</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -3074,9 +3088,11 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-02-05T22:56:43Z</date>
+	<date>2020-04-22T19:17:54Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
+	<key>SUUpdateGroupIdentifier</key>
+	<integer>1520003077</integer>
 	<key>SUUpdateRelaunchingMarker</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3123,6 +3139,8 @@
 	<false/>
 	<key>UseLionStyleFullscreen</key>
 	<true/>
+	<key>UseMetal</key>
+	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
 	<key>WebKitDefaultFontSize</key>
@@ -3140,6 +3158,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.3.8</string>
+	<string>3.3.9</string>
 </dict>
 </plist>
