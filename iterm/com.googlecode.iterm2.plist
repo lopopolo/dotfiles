@@ -571,15 +571,15 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>650 518 620 392 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>696 81 1090 918 0 0 1792 1097 </string>
+	<string>573 134 1210 963 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>581 91 1090 918 0 0 1792 1097 </string>
+	<string>581 115 1090 918 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>383 113 1090 918 0 0 1792 1097 </string>
+	<string>383 113 1090 918 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
 	<string>436 115 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>344 133 1090 918 0 0 1792 1097 </string>
+	<string>702 104 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
 	<string>641 131 1090 918 0 0 1792 1097 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
@@ -1227,7 +1227,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Inconsolata-Regular 18</string>
+			<string>CascadiaCode-Regular 17</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -2276,6 +2276,12 @@
 		<string>3.3.8</string>
 		<string>3.3.9</string>
 	</array>
+	<key>NoSyncBFPRecents</key>
+	<array>
+		<string>Cascadia Mono</string>
+		<string>Cascadia Code</string>
+		<string>Inconsolata</string>
+	</array>
 	<key>NoSyncFrame_SessionsPreferences</key>
 	<dict>
 		<key>screenFrame</key>
@@ -2288,12 +2294,12 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {1792, 1120}}</string>
 		<key>topLeft</key>
-		<string>{574, 895}</string>
+		<string>{82, 991}</string>
 	</dict>
 	<key>NoSyncInstallationId</key>
 	<string>87740FFE-A561-48E0-B1FE-8DF6692E4618</string>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>29</integer>
+	<integer>33</integer>
 	<key>NoSyncNeverAskAboutSettingAlternateMouseScroll</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
@@ -3088,7 +3094,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2020-04-22T19:17:54Z</date>
+	<date>2020-05-14T04:24:50Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SUUpdateGroupIdentifier</key>
