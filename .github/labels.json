@@ -127,7 +127,7 @@
   {
     "name": "S-wip",
     "color": "d3dddd",
-    "description": "Status: This pull request is a work in progress ."
+    "description": "Status: This pull request is a work in progress."
   },
   {
     "name": "S-wontfix",
