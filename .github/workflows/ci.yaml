@@ -9,7 +9,6 @@ on:
   schedule:
     - cron: "0 0 * * WED"
 jobs:
-
   ruby:
     name: Lint and format Ruby
     runs-on: ubuntu-latest
