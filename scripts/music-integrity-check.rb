@@ -86,7 +86,7 @@ module Hyper
               next unless songp.file?
 
               song = songp.basename.to_path
-              match = /^((?<disc>\d\d?)-)?(?<track>\d\d)/.match(song)
+              match = /^(?:(?<disc>\d\d?)-)?(?<track>\d\d)/.match(song)
               next unless match
 
               disc = match[:disc] || @no_disc_sentinel
