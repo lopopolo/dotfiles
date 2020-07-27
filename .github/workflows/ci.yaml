@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: "0 0 * * WED"
+jobs:
+
+  ruby:
+    name: Lint and format Ruby
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Ruby toolchain
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "files/.ruby-version"
+
+      - name: Install gems
+        run: bundle install
+
+      - name: Lint and check formatting with Rubocop
+        run: bundle exec rubocop
+
+  text:
+    name: Lint and format text
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Format with prettier
+        run: npx prettier --check '**/*'
