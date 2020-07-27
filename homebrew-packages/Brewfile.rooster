@@ -15,20 +15,22 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Interpreted, interactive, object-oriented programming language
-brew "python"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Automatic configure script builder
 brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# Like grep but for binary strings
+brew "bgrep"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -51,12 +53,12 @@ brew "cairo"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Reduce a C/C++ program while keeping a property of interest
 brew "creduce"
 # Tool for browsing source code
 brew "cscope"
+# Convert text between DOS, UNIX, and Mac formats
+brew "dos2unix"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
 # Platform built on V8 to build network applications
@@ -111,6 +113,8 @@ brew "libass"
 brew "libbluray"
 # Vorbis General Audio Compression Codec
 brew "libvorbis"
+# Audio codec
+brew "opus"
 # C library for files containing sampled sound
 brew "libsndfile"
 # Library for sample rate conversion of audio data
@@ -121,8 +125,6 @@ brew "libsoxr"
 brew "libvpx"
 # Audio codecs extracted from Android open source project
 brew "opencore-amr"
-# Audio codec
-brew "opus"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
 # Audio time stretcher tool and library
@@ -156,10 +158,12 @@ brew "gnupg"
 # Framework for layout and rendering of i18n text
 brew "pango"
 # Command-driven, interactive function plotting
-brew "gnuplot", link: false
+brew "gnuplot"
+# Command-line benchmarking tool
+brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# malloc implementation emphasizing fragmentation avoidance
+# Implementation of malloc emphasizing fragmentation avoidance
 brew "jemalloc"
 # Regular expressions library
 brew "oniguruma"
@@ -177,12 +181,16 @@ brew "libuv"
 brew "libvterm"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
+# Scalable distributed version control system
+brew "mercurial"
 # MP3 player for Linux and UNIX
 brew "mpg123"
 # Library for a binary-based efficient data interchange format
 brew "msgpack"
 # Open source relational database management system
 brew "mysql"
+# Open source relational database management system
+brew "mysql-client"
 # Open source relational database management system
 brew "mysql@5.7"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -206,7 +214,7 @@ brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
 # Interpreted, interactive, object-oriented programming language
-brew "python@2"
+brew "python@2", link: false
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -224,7 +232,7 @@ brew "shfmt"
 # Sparklines for the shell
 brew "spark"
 # Add a public key to a remote machine's authorized_keys file
-brew "ssh-copy-id"
+brew "ssh-copy-id", link: true
 # Audio metadata library
 brew "taglib"
 # Tool to build, change, and version infrastructure
