@@ -10,7 +10,6 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
-    "Markdown",
     "javascript",
     "javascriptreact",
     "rust",
