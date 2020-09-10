@@ -1,0 +1,14 @@
+---
+extends: default
+
+ignore: |
+  alacritty/alacritty.yml
+  **/node_modules/**/*
+  **/vendor/**
+  **/target/**/*
+  **/vim/plugged/**/*
+  **/vim/undo/**/*
+
+rules:
+  comments: disable
+  line-length: disable
