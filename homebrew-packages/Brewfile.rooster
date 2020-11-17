@@ -4,10 +4,14 @@ tap "homebrew/cask"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+# Codec library for encoding and decoding AV1 video streams
+brew "aom"
+# Automatic configure script builder
+brew "autoconf"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # GNU database manager
 brew "gdbm"
-# YAML Parser
-brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # Library for command-line editing
@@ -16,22 +20,12 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
-# Automate deployment, configuration, and upgrading
-brew "ansible"
-# Codec library for encoding and decoding AV1 video streams
-brew "aom"
-# Automatic configure script builder
-brew "autoconf"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
-# Like grep but for binary strings
-brew "bgrep"
 # Parser generator
 brew "bison"
 # Library for manipulating PNG images
@@ -58,8 +52,6 @@ brew "clang-format"
 brew "cmake"
 # Reduce a C/C++ program while keeping a property of interest
 brew "creduce"
-# Tool for browsing source code
-brew "cscope"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # C/C++ and Java libraries for Unicode and globalization
@@ -164,8 +156,6 @@ brew "gnupg"
 brew "pango"
 # Command-driven, interactive function plotting
 brew "gnuplot"
-# Smarter Dockerfile linter to validate best practices
-brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
@@ -186,42 +176,30 @@ brew "libtermkey"
 brew "libuv"
 # C99 library which implements a VT220 or xterm terminal emulator
 brew "libvterm"
+# YAML Parser
+brew "libyaml"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
-# Scalable distributed version control system
-brew "mercurial"
 # MP3 player for Linux and UNIX
 brew "mpg123"
 # Library for a binary-based efficient data interchange format
 brew "msgpack"
-# Open source relational database management system
-brew "mysql"
-# Open source relational database management system
-brew "mysql-client"
-# Open source relational database management system
-brew "mysql@5.7"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Small build system for use with gyp or CMake
 brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
-# Tool for creating identical machine images for multiple platforms
-brew "packer"
 # Python dependency management tool
 brew "pipenv"
 # Optimizer for PNG files
 brew "pngcrush"
 # Cross-platform library for audio I/O
 brew "portaudio"
-# Framework for managing multi-language pre-commit hooks
-brew "pre-commit"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Interpreted, interactive, object-oriented programming language
-brew "python@2", link: false
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -236,20 +214,8 @@ brew "scc"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
-# Sparklines for the shell
-brew "spark"
-# Add a public key to a remote machine's authorized_keys file
-brew "ssh-copy-id", link: true
-# Audio metadata library
-brew "taglib"
 # Tool to build, change, and version infrastructure
 brew "terraform"
-# Tool to build, change, and version infrastructure
-brew "terraform@0.11"
-# Tool to build, change, and version infrastructure
-brew "terraform@0.12"
-# Linter for Terraform files
-brew "tflint"
 # Extract, view, and test RAR archives
 brew "unrar"
 # Web Assembly Binary Toolkit
@@ -258,11 +224,8 @@ brew "wabt"
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
-# JavaScript package manager
-brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
-cask "alacritty"
 cask "discord"
 cask "font-inconsolata"
 cask "font-inconsolata-for-powerline"

@@ -29,7 +29,8 @@ git-config-rjl:
 
 .PHONY: brewfile
 brewfile:
-	brew bundle dump --describe --force --file=homebrew-packages/Brewfile.`hostname -s`
+	rm homebrew-packages/Brewfile.`hostname -s`
+	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: vim
 vim: vim-init neovim-provider
