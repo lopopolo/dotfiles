@@ -2,9 +2,8 @@
 
 source 'https://rubygems.org'
 
-gem 'mry'
 gem 'neovim'
 gem 'pry'
 gem 'pry-byebug'
-gem 'rake', '>= 12.3.3'
-gem 'rubocop'
+gem 'rake', '>= 12.3.3', require: false
+gem 'rubocop', require: false
