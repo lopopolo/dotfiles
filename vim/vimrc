@@ -1,4 +1,5 @@
 let g:python3_host_prog = '/usr/local/var/pyenv/versions/neovim3/bin/python'
+let g:loaded_python_provider = 0
 
 " https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
 let g:rustfmt_autosave = 1
@@ -10,8 +11,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'fannheyward/coc-rust-analyzer', {'do': 'yarn install --frozen-lockfile'}
 Plug 'hashivim/vim-hashicorp-tools'
-Plug 'iamcco/markdown-preview.nvim',  { 'do': 'cd app && yarn install'  }
-Plug 'junegunn/fzf',                  { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'iamcco/markdown-preview.nvim',  {'do': 'cd app && yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'lifepillar/vim-solarized8'
@@ -30,7 +30,7 @@ Plug 'neoclide/coc-snippets',  {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tslint',    {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver',  {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml',      {'do': 'yarn install --frozen-lockfile'}
-Plug 'powerline/fonts',        { 'do': './install.sh' }
+Plug 'powerline/fonts',        {'do': './install.sh'}
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -40,7 +40,6 @@ Plug 'tpope/vim-surround'
 Plug 'uarun/vim-protobuf'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()
 
@@ -222,6 +221,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " fzf
+set rtp+=/usr/local/opt/fzf
 map <C-p> :Files<CR>
 map <C-g> :Rg<CR>
 let $FZF_DEFAULT_COMMAND  = 'rg --files'
