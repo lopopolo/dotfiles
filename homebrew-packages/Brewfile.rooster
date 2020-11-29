@@ -50,8 +50,6 @@ brew "cairo"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
-# Reduce a C/C++ program while keeping a property of interest
-brew "creduce"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # C/C++ and Java libraries for Unicode and globalization
@@ -76,6 +74,8 @@ brew "gmp"
 brew "libunistring"
 # Manage compile and link flags for libraries
 brew "pkg-config"
+# Implementation of malloc emphasizing fragmentation avoidance
+brew "jemalloc"
 # International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
 # ASN.1 structure parser library
@@ -160,8 +160,6 @@ brew "gnuplot"
 brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
-# Implementation of malloc emphasizing fragmentation avoidance
-brew "jemalloc"
 # Regular expressions library
 brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
@@ -178,6 +176,8 @@ brew "libuv"
 brew "libvterm"
 # YAML Parser
 brew "libyaml"
+# Next-gen compiler infrastructure
+brew "llvm"
 # Just-In-Time Compiler (JIT) for the Lua programming language
 brew "luajit"
 # MP3 player for Linux and UNIX
@@ -200,6 +200,8 @@ brew "portaudio"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.8"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
@@ -214,6 +216,8 @@ brew "scc"
 brew "shellcheck"
 # Autoformat shell script source code
 brew "shfmt"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Extract, view, and test RAR archives
@@ -235,5 +239,4 @@ cask "font-inconsolata-for-powerline-bold"
 cask "iterm2"
 cask "parallels"
 cask "slack"
-cask "vagrant"
 cask "vlc"
