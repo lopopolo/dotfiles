@@ -54,8 +54,8 @@ neovim-node:
 
 .PHONY: neovim-python
 neovim-python:
-	pyenv install --skip-existing 3.8.1
-	pyenv virtualenv --force 3.8.1 neovim3
+	pyenv install --skip-existing 3.9.0
+	pyenv virtualenv --force 3.9.0 neovim3
 	eval "$$(pyenv init -)" && \
 		pyenv activate neovim3 && \
 		pip install --ignore-installed pynvim && \
