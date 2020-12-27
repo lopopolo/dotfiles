@@ -2,6 +2,7 @@
 [user]
 	name = Ryan Lopopolo
 	email = rjl@hyperbo.la
+	signingkey = 46047D739B6AE0B1
 [color]
 	ui = auto
 [core]
@@ -34,3 +35,7 @@
 	detachedHead = false
 [diff]
 	wsErrorHighlight = all
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgsign = true
