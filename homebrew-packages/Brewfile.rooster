@@ -28,6 +28,8 @@ brew "bash"
 brew "bash-completion"
 # Parser generator
 brew "bison"
+# Freely available high-quality data compressor
+brew "bzip2"
 # Library for manipulating PNG images
 brew "libpng"
 # Software library to render fonts
@@ -190,6 +192,10 @@ brew "neovim"
 brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
+# Platform built on V8 to build network applications
+brew "node@14"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
 # Python dependency management tool
 brew "pipenv"
 # Optimizer for PNG files
@@ -232,6 +238,8 @@ brew "yamllint"
 brew "yarn"
 # Download YouTube videos from the command-line
 brew "youtube-dl"
+# General-purpose lossless data-compression library
+brew "zlib"
 cask "discord"
 cask "font-inconsolata"
 cask "font-inconsolata-for-powerline"
