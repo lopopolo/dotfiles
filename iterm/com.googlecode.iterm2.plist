@@ -746,7 +746,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>120</integer>
+			<integer>130</integer>
 			<key>Command</key>
 			<string>/usr/local/bin/bash</string>
 			<key>Cursor Color</key>
