@@ -68,7 +68,7 @@ alias vv='vim "$HOME/.vimrc"'
 
 # Alias g=git and add bash completion
 alias g='git'
-complete -o bashdefault -o default -o nospace -F _git g
+__git_complete g __git_main
 
 # Same for vim
 alias v='vim'
