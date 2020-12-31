@@ -1,0 +1,41 @@
+# vim: ft=gitconfig:
+[user]
+	name = Ryan Lopopolo
+	email = rjl@hyperbo.la
+	signingkey = 717CDD6DC84E7D45
+[color]
+	ui = auto
+[core]
+	excludesfile = ~/.git-global-ignore
+[alias]
+	s = status --untracked-files=no
+	stat = status
+	co = checkout
+	ahead = log @{upstream}..HEAD
+	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
+[github]
+	user = lopopolo
+	token = a3c9b63c113b6b4be414ebe374991ba6
+[fetch]
+  prune = true
+[branch]
+	autosetuprebase = always
+	autosetupmerge = always
+[branch "master"]
+	rebase = true
+[push]
+	default = simple
+[merge]
+	defaultToUpstream = true
+[rebase]
+	autosquash = true
+[rerere]
+	enabled = true
+[advice]
+	detachedHead = false
+[diff]
+	wsErrorHighlight = all
+[tag]
+	forceSignAnnotated = true
+[commit]
+	gpgsign = true

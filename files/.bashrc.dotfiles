@@ -25,7 +25,7 @@ if [[ `uname` == "Darwin" ]]; then
   source "$HOME/.bashrc.mac"
 fi
 if [[ `uname` == "Linux" ]]; then
-  # shellcheck source=files/.bashrc.mac
+  # shellcheck source=files/.bashrc.linux
   source "$HOME/.bashrc.linux"
 fi
 

@@ -1,0 +1,68 @@
+# shellcheck shell=bash
+# vim: filetype=sh
+# Linux specific customizations
+
+alias ls='ls -h --color=auto'
+
+# neovim
+EDITOR='nvim'
+export EDITOR
+alias vim='nvim'
+complete -o filenames -F _filedir_xspec vim
+
+BROWSER='google-chrome-stable'
+export BROWSER
+
+# Bash completion
+source /usr/share/git/completion/git-completion.bash
+if [ -f /etc/bash_completion ]; then
+  source /etc/bash_completion
+fi
+
+# fzf
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/fzf/completion.bash
+
+# HiDPI
+export QT_AUTO_SCREEN_SCALE_FACTOR=2
+export GDK_SCALE=2
+
+# rbenv
+eval "$(rbenv init -)"
+
+# pyenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# =========================================================================== #
+# Prompt
+# =========================================================================== #
+
+eval "$(starship init bash)"
+
+## Set currently executing command in xterm title
+
+# If this is an xterm set the title to user@host:dir
+case "$TERM" in
+  xterm*|rxvt*)
+    # Show the currently running command in the terminal title:
+    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
+    show_command_in_title_bar()
+    {
+      case "$BASH_COMMAND" in
+        *\033]0*)
+          # The command is trying to set the title bar as well;
+          # this is most likely the execution of $PROMPT_COMMAND.
+          # In any case nested escapes confuse the terminal, so don't
+          # output them.
+          ;;
+        *)
+          echo -ne "\033]0;$(dirs +0) (${BASH_COMMAND})\007"
+          ;;
+      esac
+    }
+    trap show_command_in_title_bar DEBUG
+    ;;
+  *)
+    ;;
+esac

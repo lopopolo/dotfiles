@@ -26,6 +26,10 @@ dev:
 git-config-rjl:
 	ln -snf $(PWD)/git-configs/rjl-hyperbola.gitconfig $(TARGETDIR)/.gitconfig
 
+.PHONY: git-config-rjl-arch
+git-config-rjl-arch:
+	ln -snf $(PWD)/git-configs/rjl-hyperbola-arch.gitconfig $(TARGETDIR)/.gitconfig
+
 .PHONY: brewfile
 brewfile:
 	rm homebrew-packages/Brewfile.`hostname -s`
@@ -53,6 +57,7 @@ neovim-node:
 
 .PHONY: neovim-python
 neovim-python:
+	if [ ! -d "$(HOME)/.pyenv" ] && [ -d "/usr/local/var/pyenv" ]; then ln -snf /usr/local/var/pyenv $(HOME)/.pyenv; fi
 	pyenv install --skip-existing 3.9.0
 	pyenv virtualenv --force 3.9.0 neovim3
 	eval "$$(pyenv init -)" && \
