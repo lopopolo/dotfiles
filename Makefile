@@ -19,6 +19,7 @@ $(DOTFILES):
 
 .PHONY: dev
 dev:
+	mkdir -p $(HOME)/dev/artichoke
 	mkdir -p $(HOME)/dev/repos
 	mkdir -p $(HOME)/dev/gopath/bin
 	mkdir -p $(HOME)/dev/gopath/pkg
