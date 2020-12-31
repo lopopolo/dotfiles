@@ -1,0 +1,71 @@
+add_newline = false
+format = """
+$time\
+$directory\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$rust\
+$ruby\
+$python\
+$cmake\
+$dart\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$swift\
+$terraform\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$env_var\
+$crystal\
+$cmd_duration\
+$custom\
+$line_break\
+$lua\
+$jobs\
+$battery\
+$status\
+$character\
+"""
+
+[aws]
+disabled = true
+
+[character]
+success_symbol = "[▶](bold green)"
+error_symbol = "[▶](bold red)"
+
+[directory]
+format = '[\[$path\]]($style) '
+style = "black"
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+style = "black"
+time_format = "%H:%M"

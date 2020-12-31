@@ -4,11 +4,6 @@
 export EDITOR
 EDITOR="$(command -v vim)"
 
-# unset `PROMPT_COMMAND`. This is the beginning of initialization so we aren't in danger
-# of losing anything. If we don't unset it, we end up chaining calls to the function
-# `prompt_command` which breaks coloring the `$PS1` based on exit code.
-unset PROMPT_COMMAND
-
 unset -f prepend_to_path
 function prepend_to_path
 {
@@ -121,35 +116,6 @@ function rand_string {
   LANG=C < /dev/urandom tr -dc A-HJ-KM-NP-Za-km-np-z2-9 | head -c"${1:-32}"
   echo
 }
-
-# =========================================================================== #
-# Prompt
-# =========================================================================== #
-
-# This PS1 does the following:
-# * Set terminal title to current directory name
-# * prints [24-hour time] [current working directory] [battery status] (git prompt)
-# * prints prompt caret colored by last exit code
-function prompt_command
-{
-  local -r last_exit_code="$?"
-  local prompt_color="$GREEN"
-  if [[ "$last_exit_code" != "0" ]]; then
-    prompt_color="$RED"
-  fi
-
-  local venv=""
-  if [[ -n "$VIRTUAL_ENV" ]]; then
-    venv="(${VIRTUAL_ENV##*/}) "
-  fi
-
-  local -r term_title="\\033]0;\\W\\007"
-  local -r prompt_line="\\[${YELLOW}\\]${venv}\\[${PLAIN}\\]\\[${prompt_color}\\]▶\\[${PLAIN}\\] "
-  export PS1="${term_title}\\[${BLACK}\\][\\A] [\\w]\\n${prompt_line}"
-}
-shopt -u promptvars
-PROMPT_COMMAND="prompt_command;$PROMPT_COMMAND"
-export PS1='$ '
 
 # =========================================================================== #
 # Tools

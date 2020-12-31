@@ -11,6 +11,7 @@ bootstrap: dotfiles dev vim
 dotfiles: $(DOTFILES)
 	mkdir -p $(HOME)/.config/alacritty
 	cp alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+	cp starship/starship.toml $(HOME)/.config/starship.toml
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
