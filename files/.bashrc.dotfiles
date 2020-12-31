@@ -54,8 +54,6 @@ shopt -s histappend
 # goodness in readline-enabled apps.
 set -o vi
 
-prepend_to_path "$HOME/.dotfiles/scripts"
-
 # =========================================================================== #
 # Aliases
 # =========================================================================== #
