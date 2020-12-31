@@ -129,34 +129,3 @@ if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1090
   source "$HOME/.cargo/env"
 fi
-
-# =========================================================================== #
-# ssh-agent
-# =========================================================================== #
-
-ssh_env="$HOME/.ssh/environment"
-
-unset -f start_agent
-function start_agent
-{
-  echo "Initialising new SSH agent..."
-  /usr/bin/ssh-agent | sed 's/^echo/#echo/' >"$ssh_env"
-  echo "Succeeded"
-  chmod 600 "$ssh_env"
-  . "$ssh_env" >/dev/null
-}
-
-# Source SSH settings, if applicable
-unset -f find_or_start_agent
-function find_or_start_agent() {
-  if [ -f "$ssh_env" ]; then
-    . "$ssh_env" >/dev/null
-    if ! pgrep ssh-agent | grep -q "$SSH_AGENT_PID"; then
-      start_agent
-    fi
-  else
-    start_agent
-  fi
-}
-
-find_or_start_agent
