@@ -125,9 +125,6 @@ function rand_string {
 # https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
 CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/repos:$HOME/dev"
 
-export GOPATH="$HOME/dev/gopath"
-prepend_to_path "$GOPATH/bin"
-
 if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1090
   source "$HOME/.cargo/env"
