@@ -20,8 +20,14 @@ function append_to_path
   fi
 }
 
-# shellcheck source=files/.bashrc.mac
-source "$HOME/.bashrc.mac"
+if [[ `uname` == "Darwin" ]]; then
+  # shellcheck source=files/.bashrc.mac
+  source "$HOME/.bashrc.mac"
+fi
+if [[ `uname` == "Linux" ]]; then
+  # shellcheck source=files/.bashrc.mac
+  source "$HOME/.bashrc.linux"
+fi
 
 # TERM setup
 export CLICOLOR=1
@@ -57,6 +63,7 @@ alias la='ls -la'
 
 # Make it quicker to edit the bashrc's
 alias b='vim "$HOME/.bashrc.dotfiles"'
+alias bl='vim "$HOME/.bashrc.linux"'
 alias bm='vim "$HOME/.bashrc.mac"'
 # and vimrc
 alias vv='vim "$HOME/.vimrc"'
