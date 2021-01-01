@@ -35,7 +35,11 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
-Plug 'tpope/vim-sensible'
+" vim-sensible has been incorporated into nvm
+" https://github.com/neovim/neovim/issues/1664
+if !has('nvim')
+  Plug 'tpope/vim-sensible'
+endif
 Plug 'tpope/vim-surround'
 Plug 'uarun/vim-protobuf'
 Plug 'vim-airline/vim-airline'
