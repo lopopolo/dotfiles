@@ -3,6 +3,7 @@
 # Linux specific customizations
 
 alias ls='ls -h --color=auto'
+alias sudo='sudo -v; sudo '
 
 # neovim
 EDITOR='nvim'
