@@ -1,5 +1,6 @@
 let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
 
 " https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
 let g:rustfmt_autosave = 1
