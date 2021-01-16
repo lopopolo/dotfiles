@@ -2,7 +2,7 @@
 [user]
 	name = Ryan Lopopolo
 	email = rjl@hyperbo.la
-	signingkey = 717CDD6DC84E7D45
+	signingKey = 717CDD6DC84E7D45
 [color]
 	ui = auto
 [core]
@@ -15,13 +15,16 @@
 	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
 [github]
 	user = lopopolo
-	token = a3c9b63c113b6b4be414ebe374991ba6
 [fetch]
   prune = true
 [branch]
-	autosetuprebase = always
-	autosetupmerge = always
+	autoSetupMerge = always
+	autoSetupRebase = always
+[branch "main"]
+	rebase = true
 [branch "master"]
+	rebase = true
+[branch "trunk"]
 	rebase = true
 [push]
 	default = simple
@@ -37,5 +40,6 @@
 	wsErrorHighlight = all
 [tag]
 	forceSignAnnotated = true
+	gpgSign = true
 [commit]
-	gpgsign = true
+	gpgSign = true
