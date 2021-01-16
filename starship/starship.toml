@@ -62,10 +62,8 @@ error_symbol = "[▶](bold red)"
 
 [directory]
 format = '[\[$path\]]($style) '
-style = "black"
 
 [time]
 disabled = false
 format = '[\[$time\]]($style) '
-style = "black"
 time_format = "%H:%M"
