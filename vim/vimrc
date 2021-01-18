@@ -32,7 +32,6 @@ Plug 'neoclide/coc-tslint',    {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver',  {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-yaml',      {'do': 'yarn install --frozen-lockfile'}
 Plug 'powerline/fonts',        {'do': './install.sh'}
-Plug 'rakr/vim-one'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -152,8 +151,8 @@ endif
 set termguicolors
 
 " solarized
-set background=dark
-colorscheme one
+set background=light
+colorscheme solarized8_flat
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -222,7 +221,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme =  "one"
+let g:airline_theme =  "solarized"
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
