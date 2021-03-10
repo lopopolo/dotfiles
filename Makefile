@@ -20,6 +20,7 @@ $(DOTFILES):
 .PHONY: dev
 dev:
 	mkdir -p $(HOME)/dev/artichoke
+	mkdir -p $(HOME)/dev/hyperbola
 	mkdir -p $(HOME)/dev/repos
 
 .PHONY: git-config-rjl

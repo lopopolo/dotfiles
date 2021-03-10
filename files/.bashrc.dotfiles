@@ -130,7 +130,7 @@ function rand_string {
 
 # stuff for moving around directories
 # https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
-CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/repos:$HOME/dev"
+CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/hyperbola:$HOME/dev/repos:$HOME/dev"
 
 if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1090
