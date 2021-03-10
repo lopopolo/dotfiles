@@ -43,3 +43,5 @@
 	gpgSign = true
 [commit]
 	gpgSign = true
+[init]
+	defaultBranch = trunk
