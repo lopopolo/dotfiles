@@ -1,6 +1,7 @@
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
@@ -44,6 +45,8 @@ brew "libffi"
 brew "pcre"
 # Core application library for C
 brew "glib"
+# Manage compile and link flags for libraries
+brew "pkg-config"
 # Low-level library for pixel manipulation
 brew "pixman"
 # Vector graphics library with cross-device output support
@@ -60,6 +63,8 @@ brew "icu4c"
 brew "node"
 # LLVM bytecode to JavaScript compiler
 brew "emscripten"
+# Simple, fast and user-friendly alternative to find
+brew "fd"
 # Ogg Bitstream Library
 brew "libogg"
 # Free lossless audio codec
@@ -74,8 +79,6 @@ brew "giflib"
 brew "gmp"
 # C string library for manipulating Unicode strings
 brew "libunistring"
-# Manage compile and link flags for libraries
-brew "pkg-config"
 # Implementation of malloc emphasizing fragmentation avoidance
 brew "jemalloc"
 # International domain name library (IDNA2008, Punycode and TR46)
@@ -158,10 +161,14 @@ brew "gnupg"
 brew "pango"
 # Command-driven, interactive function plotting
 brew "gnuplot"
+# Smarter Dockerfile linter to validate best practices
+brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Utility to optimize JPEG files
+brew "jpegoptim"
 # Regular expressions library
 brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
@@ -200,6 +207,8 @@ brew "pinentry-mac"
 brew "pipenv"
 # Optimizer for PNG files
 brew "pngcrush"
+# PNG image optimizing utility
+brew "pngquant"
 # Cross-platform library for audio I/O
 brew "portaudio"
 # Python version management
@@ -240,11 +249,18 @@ brew "yarn"
 brew "youtube-dl"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Voice and text chat software
 cask "discord"
 cask "font-inconsolata"
 cask "font-inconsolata-for-powerline"
 cask "font-inconsolata-for-powerline-bold"
+# Vector graphics editor
+cask "inkscape"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Desktop virtualization software
 cask "parallels"
+# Team communication and collaboration software
 cask "slack"
+# Multimedia player
 cask "vlc"
