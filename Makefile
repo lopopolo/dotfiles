@@ -58,10 +58,4 @@ neovim-node:
 
 .PHONY: neovim-python
 neovim-python:
-	if [ ! -d "$(HOME)/.pyenv" ] && [ -d "/usr/local/var/pyenv" ]; then ln -snf /usr/local/var/pyenv $(HOME)/.pyenv; fi
-	pyenv install --skip-existing 3.9.0
-	pyenv virtualenv --force 3.9.0 neovim3
-	eval "$$(pyenv init -)" && \
-		pyenv activate neovim3 && \
-		pip install --ignore-installed pynvim && \
-		pyenv which python
+	./scripts/initialize-neovim-python-venv.sh
