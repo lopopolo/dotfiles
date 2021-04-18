@@ -55,10 +55,16 @@ brew "cairo"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
+# GNU File, Shell, and Text utilities
+brew "coreutils"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
+# Implementation of malloc emphasizing fragmentation avoidance
+brew "jemalloc"
+# Multi-platform support library with a focus on asynchronous I/O
+brew "libuv"
 # Platform built on V8 to build network applications
 brew "node"
 # LLVM bytecode to JavaScript compiler
@@ -79,8 +85,6 @@ brew "giflib"
 brew "gmp"
 # C string library for manipulating Unicode strings
 brew "libunistring"
-# Implementation of malloc emphasizing fragmentation avoidance
-brew "jemalloc"
 # International domain name library (IDNA2008, Punycode and TR46)
 brew "libidn2"
 # ASN.1 structure parser library
@@ -127,8 +131,6 @@ brew "libsoxr"
 brew "libvpx"
 # Audio codecs extracted from Android open source project
 brew "opencore-amr"
-# Tool for downloading RTMP streaming media
-brew "rtmpdump"
 # Audio time stretcher tool and library
 brew "rubberband"
 # Low-level access to audio, keyboard, mouse, joystick, and graphics
@@ -179,8 +181,6 @@ brew "libssh2"
 brew "unibilium"
 # Library for processing keyboard entry from the terminal
 brew "libtermkey"
-# Multi-platform support library with a focus on asynchronous I/O
-brew "libuv"
 # C99 library which implements a VT220 or xterm terminal emulator
 brew "libvterm"
 # YAML Parser
@@ -223,6 +223,8 @@ brew "ruby-build"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Tool for downloading RTMP streaming media
+brew "rtmpdump"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
