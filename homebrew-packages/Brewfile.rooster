@@ -175,6 +175,8 @@ brew "jpegoptim"
 brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Lets you manipulate the signature block in a Mach-O binary
+brew "ldid"
 # C library implementing the SSH2 protocol
 brew "libssh2"
 # Very basic terminfo library
@@ -199,8 +201,6 @@ brew "neovim"
 brew "ninja"
 # Port scanning utility for large networks
 brew "nmap"
-# Platform built on V8 to build network applications
-brew "node@14"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Python dependency management tool
@@ -237,6 +237,8 @@ brew "shfmt"
 brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
 # Extract, view, and test RAR archives
 brew "unrar"
 # Web Assembly Binary Toolkit
