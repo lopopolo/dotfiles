@@ -54,7 +54,7 @@ neovim-provider: neovim-node neovim-python
 
 .PHONY: neovim-node
 neovim-node:
-	npm install -g neovim
+	sudo npm install -g neovim
 
 .PHONY: neovim-python
 neovim-python:
