@@ -211,7 +211,7 @@ map Q <Nop>
 augroup prevent_saving_typoed_names
   autocmd!
   " https://stackoverflow.com/a/6211489
-  autocmd BufWritePre [:;]* try | echoerr 'Forbidden file name: ' . expand('<afile>') | endtry
+  autocmd BufWritePre [:;"'\[\]]* try | echoerr 'Forbidden file name: ' . expand('<afile>') | endtry
 augroup END
 
 " =============================== Plugin stuff  ===============================
