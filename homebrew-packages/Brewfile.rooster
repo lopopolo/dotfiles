@@ -237,6 +237,8 @@ brew "shfmt"
 brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Static analysis security scanner for your terraform code
+brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Extract, view, and test RAR archives
