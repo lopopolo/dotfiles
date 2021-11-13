@@ -1,3 +1,4 @@
+tap "aquasecurity/trivy"
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -5,6 +6,16 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+# Library and utilities for processing GIFs
+brew "giflib"
+# Image manipulation library
+brew "jpeg"
+# Library for manipulating PNG images
+brew "libpng"
+# TIFF library and utilities
+brew "libtiff"
+# Image format providing lossless and lossy compression for web images
+brew "webp"
 # Codec library for encoding and decoding AV1 video streams
 brew "aom"
 # Automatic configure script builder
@@ -31,8 +42,6 @@ brew "bash-completion"
 brew "bison"
 # Freely available high-quality data compressor
 brew "bzip2"
-# Library for manipulating PNG images
-brew "libpng"
 # Software library to render fonts
 brew "freetype"
 # XML-based font configuration API for X Windows
@@ -55,14 +64,14 @@ brew "cairo"
 brew "clang-format"
 # Cross-platform make
 brew "cmake"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Convert text between DOS, UNIX, and Mac formats
 brew "dos2unix"
 # C/C++ and Java libraries for Unicode and globalization
 brew "icu4c"
-# Implementation of malloc emphasizing fragmentation avoidance
-brew "jemalloc"
 # Multi-platform support library with a focus on asynchronous I/O
 brew "libuv"
 # Platform built on V8 to build network applications
@@ -79,10 +88,6 @@ brew "flac"
 brew "frei0r"
 # Implementation of the Unicode BiDi algorithm
 brew "fribidi"
-# Library and utilities for processing GIFs
-brew "giflib"
-# GNU multiple precision arithmetic library
-brew "gmp"
 # C string library for manipulating Unicode strings
 brew "libunistring"
 # International domain name library (IDNA2008, Punycode and TR46)
@@ -99,18 +104,12 @@ brew "gnutls"
 brew "graphite2"
 # OpenType text shaping engine
 brew "harfbuzz"
-# Image manipulation library
-brew "jpeg"
 # High quality MPEG Audio Layer III (MP3) encoder
 brew "lame"
-# TIFF library and utilities
-brew "libtiff"
 # Color management engine supporting ICC profiles
 brew "little-cms2"
 # Library for JPEG-2000 image manipulation
 brew "openjpeg"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
 # Image processing and image analysis library
 brew "leptonica"
 # Subtitle renderer for the ASS/SSA subtitle format
@@ -169,6 +168,8 @@ brew "hadolint"
 brew "hyperfine"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Implementation of malloc emphasizing fragmentation avoidance
+brew "jemalloc"
 # Utility to optimize JPEG files
 brew "jpegoptim"
 # Regular expressions library
@@ -215,6 +216,8 @@ brew "portaudio"
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
+# Static type checker for Python
+brew "pyright"
 # Interpreted, interactive, object-oriented programming language
 brew "python@3.8"
 # Install various Ruby versions and implementations
@@ -225,6 +228,8 @@ brew "rbenv"
 brew "ripgrep"
 # Tool for downloading RTMP streaming media
 brew "rtmpdump"
+# Experimental Rust compiler front-end for IDEs
+brew "rust-analyzer"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -237,6 +242,10 @@ brew "shfmt"
 brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
+# Terraform Language Server
+brew "terraform-ls"
+# Linter for Terraform files
+brew "tflint"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
@@ -255,6 +264,8 @@ brew "yarn"
 brew "youtube-dl"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
+brew "aquasecurity/trivy/trivy"
 # Voice and text chat software
 cask "discord"
 cask "font-inconsolata"
