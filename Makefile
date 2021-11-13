@@ -8,7 +8,7 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: $(DOTFILES)
+dotfiles: lang-runtimes $(DOTFILES)
 	mkdir -p $(HOME)/.config/alacritty
 	cp alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
 	cp starship/starship.toml $(HOME)/.config/starship.toml
@@ -16,6 +16,13 @@ dotfiles: $(DOTFILES)
 .PHONY: $(DOTFILES)
 $(DOTFILES):
 	ln -snf $(PWD)/files/$@ $(TARGETDIR)/$@
+	ln -snf $(PWD)/.python-version $(TARGETDIR)/.python-version
+
+.PHONY: lang-runtimes
+lang-runtimes:
+	ln -snf $(PWD)/.ruby-version $(TARGETDIR)/.ruby-version
+	ln -snf $(PWD)/Gemfile $(TARGETDIR)/Gemfile
+	ln -snf $(PWD)/Gemfile.lock $(TARGETDIR)/Gemfile.lock
 
 .PHONY: dev
 dev:
