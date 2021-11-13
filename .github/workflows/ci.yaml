@@ -28,6 +28,19 @@ jobs:
       - name: Lint and check formatting with Rubocop
         run: bundle exec rubocop
 
+  shell:
+    name: Lint and format shell scripts
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Format shell sources with shfmt
+        uses: docker://mvdan/shfmt
+        with:
+          entrypoint: /bin/shfmt
+          args: -i 2 -ci -s -d /github/workspace
+
   text:
     name: Lint and format text
     runs-on: ubuntu-latest

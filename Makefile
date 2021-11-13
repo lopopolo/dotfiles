@@ -38,6 +38,11 @@ git-config-rjl:
 git-config-rjl-arch:
 	ln -snf $(PWD)/git-configs/rjl-hyperbola-arch.gitconfig $(TARGETDIR)/.gitconfig
 
+.PHONY: fmt
+fmt:
+	npm run fmt
+	shfmt -f . | grep -v '^vim/' | xargs shfmt -i 2 -ci -s -d
+
 .PHONY: brewfile
 brewfile:
 	rm homebrew-packages/Brewfile.`hostname -s`
