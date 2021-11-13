@@ -277,6 +277,8 @@ cask "inkscape"
 cask "iterm2"
 # Desktop virtualization software
 cask "parallels"
+# Store SSH keys in the Secure Enclave
+cask "secretive"
 # Team communication and collaboration software
 cask "slack"
 # Multimedia player
