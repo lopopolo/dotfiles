@@ -4,7 +4,7 @@ if [ ! -d "$HOME/.pyenv" ] && [ -d "/usr/local/var/pyenv" ]; then
   ln -snf /usr/local/var/pyenv "$HOME/.pyenv"
 fi
 
-python_version="$(cat "$HOME/.dotfiles/files/.python-version")"
+python_version="$(cat "$HOME/.dotfiles/.python-version")"
 neovim_venv="neovim3"
 
 pyenv install --skip-existing "$python_version"
