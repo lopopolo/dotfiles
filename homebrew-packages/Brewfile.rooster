@@ -266,6 +266,8 @@ brew "youtube-dl"
 brew "zlib"
 # Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
 brew "aquasecurity/trivy/trivy"
+# Securely stores and accesses AWS credentials in a development environment
+cask "aws-vault"
 # Voice and text chat software
 cask "discord"
 # Monospaced font that includes programming ligatures
