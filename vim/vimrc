@@ -10,40 +10,45 @@ call plug#begin()
 
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'hashivim/vim-hashicorp-tools'
-" Completion framework
-Plug 'hrsh7th/nvim-cmp'
-" LSP completion source for nvim-cmp
+
+" colors
+Plug 'lifepillar/vim-solarized8'
+
+" lsp and autocomplete goodies
+Plug 'neovim/nvim-lspconfig'
+
 Plug 'hrsh7th/cmp-nvim-lsp'
-" Snippet completion source for nvim-cmp
-Plug 'hrsh7th/cmp-vsnip'
-" Other usefull completion sources
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-" Snippet engine
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'iamcco/markdown-preview.nvim',  {'do': 'cd app && yarn install --frozen-lockfile'}
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'mattly/vim-markdown-enhancements'
-Plug 'nathangrigg/vim-beancount'
-Plug 'neoclide/coc.nvim',      {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
-Plug 'powerline/fonts',        {'do': './install.sh'}
+
+" nvim telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'nvim-telescope/telescope-ui-select.nvim'
+
+" language plugins
 Plug 'sheerun/vim-polyglot'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'nathangrigg/vim-beancount'
 " To enable more of the features of rust-analyzer, such as inlay hints and more!
 Plug 'simrat39/rust-tools.nvim'
-Plug 'tpope/vim-eunuch'
+Plug 'uarun/vim-protobuf'
+
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
 " vim-sensible has been incorporated into neovim
 " https://github.com/neovim/neovim/issues/1664
 if !has('nvim')
   Plug 'tpope/vim-sensible'
 endif
 Plug 'tpope/vim-surround'
-Plug 'uarun/vim-protobuf'
+
+" status line
+Plug 'powerline/fonts',        {'do': './install.sh'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -227,9 +232,8 @@ let g:airline#extensions#tabline#enabled = 1
 
 " fzf
 set rtp+=/usr/local/opt/fzf
-map <C-p> :Files<CR>
-map <C-g> :Rg<CR>
-let $FZF_DEFAULT_COMMAND  = 'rg --files'
+map <C-p> <cmd>lua require('telescope.builtin').find_files()<cr>
+map <C-g> <cmd>lua require('telescope.builtin').live_grep()<cr>
 
 " LSP
 
@@ -238,7 +242,7 @@ let $FZF_DEFAULT_COMMAND  = 'rg --files'
 " menuone: popup even when there's only one match
 " noinsert: Do not insert text until a selection is made
 " noselect: Do not select, force user to select one from the menu
-set completeopt=menuone,noinsert,noselect
+set completeopt=menu,menuone,noselect
 
 " Avoid showing extra messages when using completion
 set shortmess+=c
@@ -254,81 +258,103 @@ set shortmess+=c
 lua << EOF
 local nvim_lsp = require'lspconfig'
 
-require'lspconfig'.bashls.setup{}
-require'lspconfig'.dockerls.setup{}
-require'lspconfig'.graphql.setup{}
-require'lspconfig'.pyright.setup{}
-require'lspconfig'.terraformls.setup{}
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.vimls.setup{}
-require'lspconfig'.yamlls.setup{}
-
-local opts = {
-    tools = { -- rust-tools options
-        autoSetHints = true,
-        hover_with_actions = true,
-        inlay_hints = {
-            show_parameter_hints = false,
-            parameter_hints_prefix = "",
-            other_hints_prefix = "",
-        },
-    },
-
-    -- all the opts to send to nvim-lspconfig
-    -- these override the defaults set by rust-tools.nvim
-    -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
-    server = {
-        -- on_attach is a callback called when the language server attachs to the buffer
-        -- on_attach = on_attach,
-        settings = {
-            -- to enable rust-analyzer settings visit:
-            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
-            ["rust-analyzer"] = {
-                -- enable clippy on save
-                checkOnSave = {
-                    command = "clippy"
-                },
-            }
-        }
-    },
-}
-
-require('rust-tools').setup(opts)
-EOF
-
-" Setup Completion
-" See https://github.com/hrsh7th/nvim-cmp#basic-configuration
-lua << EOF
+-- Setup Completion
+-- See https://github.com/hrsh7th/nvim-cmp#recommended-configuration
 local cmp = require'cmp'
+
 cmp.setup({
-  -- Enable LSP snippets
   snippet = {
+    -- REQUIRED - you must specify a snippet engine
     expand = function(args)
         vim.fn["vsnip#anonymous"](args.body)
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- Add tab support
-    ['<S-Tab>'] = cmp.mapping.select_prev_item(),
-    ['<Tab>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
-      select = true,
-    })
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    -- Accept currently selected item. If none selected, `select` first item.
+    -- Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'vsnip' }, -- For vsnip users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+
+require'lspconfig'.bashls.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.dockerls.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.graphql.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.pyright.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.terraformls.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.tsserver.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.vimls.setup{
+  capabilities = capabilities
+}
+require'lspconfig'.yamlls.setup{
+  capabilities = capabilities
+}
+
+local opts = {
+  tools = { -- rust-tools options
+    autoSetHints = true,
+    hover_with_actions = true,
+    runnables = {
+      use_telescope = true,
+    },
+    inlay_hints = {
+      show_parameter_hints = false,
+      parameter_hints_prefix = "",
+      other_hints_prefix = "",
+    },
   },
 
-  -- Installed sources
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'vsnip' },
-    { name = 'path' },
-    { name = 'buffer' },
+  -- all the opts to send to nvim-lspconfig
+  -- these override the defaults set by rust-tools.nvim
+  -- see https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#rust_analyzer
+  server = {
+    -- on_attach is a callback called when the language server attachs to the buffer
+    -- on_attach = on_attach,
+    settings = {
+      -- to enable rust-analyzer settings visit:
+      -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+      ["rust-analyzer"] = {
+        -- enable clippy on save
+        checkOnSave = {
+          allFeatures = true,
+          command = "clippy",
+        },
+        capabilities = capabilities
+      }
+    }
   },
-})
+}
+
+require('rust-tools').setup(opts)
+
+require('telescope').load_extension('fzf')
 EOF
