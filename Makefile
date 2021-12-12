@@ -59,7 +59,6 @@ vim-init:
 	mkdir -p $(HOME)/.config/nvim/
 	ln -snf $(PWD)/vim/init.vim $(HOME)/.config/nvim/init.vim
 	mkdir -p $(HOME)/.config/nvim/after/plugin
-	ln -snf $(PWD)/vim/coc.vim $(HOME)/.config/nvim/after/plugin/coc.vim
 
 .PHONY: neovim-provider
 neovim-provider: neovim-node neovim-python
