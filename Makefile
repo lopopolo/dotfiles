@@ -49,7 +49,7 @@ brewfile:
 	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: vim
-vim: vim-init neovim-provider neovim-lsp-setup
+vim: vim-init
 
 .PHONY: vim-init
 vim-init:
@@ -59,30 +59,3 @@ vim-init:
 	mkdir -p $(HOME)/.config/nvim/
 	ln -snf $(PWD)/vim/init.vim $(HOME)/.config/nvim/init.vim
 	mkdir -p $(HOME)/.config/nvim/after/plugin
-
-.PHONY: neovim-provider
-neovim-provider: neovim-node neovim-python
-
-.PHONY: neovim-node
-neovim-node:
-	sudo npm install -g neovim
-
-.PHONY: neovim-python
-neovim-python:
-	./scripts/initialize-neovim-python-venv.sh
-
-.PHONY: neovim-lsp-setup
-neovim-lsp-setup:
-	brew install \
-		pyright \
-		rust-analyzer \
-		terraform-ls \
-		tflint
-	npm install -g \
-		bash-language-server \
-		dockerfile-language-server-nodejs \
-		graphql-language-service-cli \
-		typescript \
-		typescript-language-server \
-		vim-language-server \
-		yaml-language-server
