@@ -6,32 +6,6 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-# Library and utilities for processing GIFs
-brew "giflib"
-# Image manipulation library
-brew "jpeg"
-# Library for manipulating PNG images
-brew "libpng"
-# TIFF library and utilities
-brew "libtiff"
-# Image format providing lossless and lossy compression for web images
-brew "webp"
-# Codec library for encoding and decoding AV1 video streams
-brew "aom"
-# Automatic configure script builder
-brew "autoconf"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
-# GNU database manager
-brew "gdbm"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@1.1"
-# Library for command-line editing
-brew "readline"
-# Command-line interface for SQLite
-brew "sqlite"
-# General-purpose data compression with high compression ratio
-brew "xz"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -40,196 +14,48 @@ brew "bash"
 brew "bash-completion"
 # Parser generator
 brew "bison"
-# Freely available high-quality data compressor
-brew "bzip2"
-# Software library to render fonts
-brew "freetype"
-# XML-based font configuration API for X Windows
-brew "fontconfig"
-# GNU internationalization (i18n) and localization (l10n) library
-brew "gettext"
-# Portable Foreign Function Interface library
-brew "libffi"
-# Perl compatible regular expressions library
-brew "pcre"
-# Core application library for C
-brew "glib"
-# Manage compile and link flags for libraries
-brew "pkg-config"
-# Low-level library for pixel manipulation
-brew "pixman"
-# Vector graphics library with cross-device output support
-brew "cairo"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
-# Cross-platform make
-brew "cmake"
-# GNU multiple precision arithmetic library
-brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
-# Convert text between DOS, UNIX, and Mac formats
-brew "dos2unix"
-# C/C++ and Java libraries for Unicode and globalization
-brew "icu4c"
-# Multi-platform support library with a focus on asynchronous I/O
-brew "libuv"
-# Platform built on V8 to build network applications
-brew "node"
-# LLVM bytecode to JavaScript compiler
-brew "emscripten"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
-# Ogg Bitstream Library
-brew "libogg"
-# Free lossless audio codec
-brew "flac"
-# Minimalistic plugin API for video effects
-brew "frei0r"
-# Implementation of the Unicode BiDi algorithm
-brew "fribidi"
-# C string library for manipulating Unicode strings
-brew "libunistring"
-# International domain name library (IDNA2008, Punycode and TR46)
-brew "libidn2"
-# ASN.1 structure parser library
-brew "libtasn1"
-# Low-level cryptographic library
-brew "nettle"
-# Library to load and enumerate PKCS#11 modules
-brew "p11-kit"
-# GNU Transport Layer Security (TLS) Library
-brew "gnutls"
-# Smart font renderer for non-Roman scripts
-brew "graphite2"
-# OpenType text shaping engine
-brew "harfbuzz"
-# High quality MPEG Audio Layer III (MP3) encoder
-brew "lame"
-# Color management engine supporting ICC profiles
-brew "little-cms2"
-# Library for JPEG-2000 image manipulation
-brew "openjpeg"
-# Image processing and image analysis library
-brew "leptonica"
-# Subtitle renderer for the ASS/SSA subtitle format
-brew "libass"
-# Blu-Ray disc playback library for media players like VLC
-brew "libbluray"
-# Vorbis General Audio Compression Codec
-brew "libvorbis"
-# Audio codec
-brew "opus"
-# C library for files containing sampled sound
-brew "libsndfile"
-# Library for sample rate conversion of audio data
-brew "libsamplerate"
-# High quality, one-dimensional sample-rate conversion library
-brew "libsoxr"
-# VP8/VP9 video codec
-brew "libvpx"
-# Audio codecs extracted from Android open source project
-brew "opencore-amr"
-# Audio time stretcher tool and library
-brew "rubberband"
-# Low-level access to audio, keyboard, mouse, joystick, and graphics
-brew "sdl2"
-# Compression/decompression library aiming for high speed
-brew "snappy"
-# Audio codec designed for speech
-brew "speex"
-# OCR (Optical Character Recognition) engine
-brew "tesseract"
-# Open video compression format
-brew "theora"
-# H.264/AVC encoder
-brew "x264"
-# H.265/HEVC encoder
-brew "x265"
-# High-performance, high-quality MPEG-4 video library
-brew "xvid"
-# Play, record, convert, and stream audio and video
-brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
-# Perl compatible regular expressions library with a new API
-brew "pcre2"
 # Distributed revision control system
 brew "git"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
-# Framework for layout and rendering of i18n text
-brew "pango"
-# Command-driven, interactive function plotting
-brew "gnuplot"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Tools and libraries to manipulate images in many formats
-brew "imagemagick"
-# Implementation of malloc emphasizing fragmentation avoidance
-brew "jemalloc"
 # Utility to optimize JPEG files
 brew "jpegoptim"
-# Regular expressions library
-brew "oniguruma"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# Lets you manipulate the signature block in a Mach-O binary
-brew "ldid"
-# C library implementing the SSH2 protocol
-brew "libssh2"
-# Very basic terminfo library
-brew "unibilium"
-# Library for processing keyboard entry from the terminal
-brew "libtermkey"
-# C99 library which implements a VT220 or xterm terminal emulator
-brew "libvterm"
-# YAML Parser
-brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
-# Just-In-Time Compiler (JIT) for the Lua programming language
-brew "luajit"
-# MP3 player for Linux and UNIX
-brew "mpg123"
-# Library for a binary-based efficient data interchange format
-brew "msgpack"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Small build system for use with gyp or CMake
-brew "ninja"
-# Port scanning utility for large networks
-brew "nmap"
+# Platform built on V8 to build network applications
+brew "node"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Python dependency management tool
-brew "pipenv"
 # Optimizer for PNG files
 brew "pngcrush"
 # PNG image optimizing utility
 brew "pngquant"
-# Cross-platform library for audio I/O
-brew "portaudio"
 # Python version management
 brew "pyenv"
 # Pyenv plugin to manage virtualenv
 brew "pyenv-virtualenv"
-# Static type checker for Python
-brew "pyright"
-# Interpreted, interactive, object-oriented programming language
-brew "python@3.8"
 # Install various Ruby versions and implementations
 brew "ruby-build"
 # Ruby version manager
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Tool for downloading RTMP streaming media
-brew "rtmpdump"
-# Experimental Rust compiler front-end for IDEs
-brew "rust-analyzer"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -242,26 +68,16 @@ brew "shfmt"
 brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
-# Terraform Language Server
-brew "terraform-ls"
-# Linter for Terraform files
-brew "tflint"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Extract, view, and test RAR archives
-brew "unrar"
-# Web Assembly Binary Toolkit
-brew "wabt"
 # Internet file retriever
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
-# JavaScript package manager
-brew "yarn"
-# Download YouTube videos from the command-line
-brew "youtube-dl"
+# Programming language designed for robustness, optimality, and clarity
+brew "zig"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
@@ -287,6 +103,8 @@ cask "font-inconsolata-nerd-font"
 cask "inkscape"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Animated screen capture application
+cask "licecap"
 # Desktop virtualization software
 cask "parallels"
 # Store SSH keys in the Secure Enclave
