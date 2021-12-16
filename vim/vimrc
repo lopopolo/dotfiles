@@ -147,6 +147,10 @@ set termguicolors
 let g:gh_color = "soft"
 colorscheme ghdark
 
+let g:lightline = {
+      \ 'colorscheme': 'ghdark',
+      \ }
+
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
