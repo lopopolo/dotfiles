@@ -10,7 +10,8 @@ let g:rustfmt_autosave = 1
 " ==================================== Plug ===================================
 call plug#begin()
 
-Plug 'airblade/vim-gitgutter'
+" status bar
+Plug 'itchyny/lightline.vim'
 
 " colors
 Plug 'lifepillar/vim-solarized8'
@@ -32,11 +33,6 @@ if !has('nvim')
   Plug 'tpope/vim-sensible'
 endif
 Plug 'tpope/vim-surround'
-
-" status line
-Plug 'powerline/fonts',        {'do': './install.sh'}
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -92,6 +88,7 @@ nnoremap <leader><space> :noh<cr>
 
 " status lines
 set cursorline
+set laststatus=2
 
 " change the terminal's title
 set title
@@ -212,21 +209,11 @@ augroup END
 
 " =============================== Plugin stuff  ===============================
 
-let g:EditorConfig_exclude_patterns = ['fugitive://.*']
-
-" airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "violet"
-let g:airline#extensions#ale#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-
 " fzf
 set rtp+=/usr/local/opt/fzf
 map <C-p> :Files<CR>
 map <C-g> :Rg<CR>
 let $FZF_DEFAULT_COMMAND  = 'rg --files'
-
-" LSP
 
 " Set completeopt to have a better completion experience
 " :help completeopt
