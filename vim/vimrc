@@ -14,6 +14,7 @@ Plug 'airblade/vim-gitgutter'
 
 " colors
 Plug 'lifepillar/vim-solarized8'
+Plug 'wojciechkepka/vim-github-dark'
 
 " fuzzy file search
 Plug 'junegunn/fzf.vim'
@@ -142,8 +143,12 @@ endif
 set termguicolors
 
 " solarized
-set background=light
-colorscheme solarized8_flat
+" set background=light
+" colorscheme solarized8_flat
+
+" GitHub Dark
+let g:gh_color = "soft"
+colorscheme ghdark
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -211,7 +216,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline_theme =  "solarized"
+let g:airline_theme = "violet"
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 
