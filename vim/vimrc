@@ -12,6 +12,7 @@ call plug#begin()
 
 " status bar
 Plug 'itchyny/lightline.vim'
+Plug 'mengelbrecht/lightline-bufferline'
 
 " colors
 Plug 'lifepillar/vim-solarized8'
@@ -147,9 +148,19 @@ set termguicolors
 let g:gh_color = "soft"
 colorscheme ghdark
 
-let g:lightline = {
-      \ 'colorscheme': 'ghdark',
-      \ }
+" Force the tabline to always show
+set showtabline=2
+
+let g:lightline#bufferline#clickable        = 1
+let g:lightline#bufferline#show_number  = 1
+let g:lightline#bufferline#shorten_path = 0
+let g:lightline#bufferline#unnamed      = '[No Name]'
+
+let g:lightline                  = {'colorscheme': 'ghdark'}
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline.component_raw    = {'buffers': 1}
 
 " highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
