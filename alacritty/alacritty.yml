@@ -1,17 +1,8 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator
-
-# Any items in the `env` entry below will be added as
-# environment variables. Some entries may override variables
-# set by alacritty it self.
-env:
-  # TERM env customization.
-  #
-  # If this property is not set, alacritty will set it to xterm-256color.
-  #
-  # Note that some xterm terminfo databases don't declare support for italics.
-  # You can verify this by checking for the presence of `smso` and `sitm` in
-  # `infocmp xterm-256color`.
-  TERM: xterm-256color-italic
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+shell:
+  program: /usr/local/bin/bash
+  args:
+    - -l
 
 window:
   # Window dimensions (changes require restart)
@@ -20,26 +11,28 @@ window:
   # setting is ignored.
   dimensions:
     columns: 130
-    lines: 75
+    lines: 45
 
   # Window padding (changes require restart)
   #
-  # Blank space added around the window in pixels. This padding is not scaled by
-  # DPI and the specified value is always added at both opposing sides.
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 10
-    y: 10
+    x: 2
+    y: 2
 
   # Spread additional padding evenly around the terminal content.
-  dynamic_padding: false
+  dynamic_padding: true
 
   # Window decorations
   #
-  # Available values:
-  # - full: borders and title bar
-  # - none: neither borders nor title bar
-  # - transparent: title bar, transparent background and title bar buttons
-  # - buttonless: title bar, transparent background, but no title bar buttons
+  # Values for `decorations`:
+  #     - full: Borders and title bar
+  #     - none: Neither borders nor title bar
+  #
+  # Values for `decorations` (macOS only):
+  #     - transparent: Title bar, transparent background and title bar buttons
+  #     - buttonless: Title bar, transparent background, but no title bar buttons
   decorations: full
 
   # Startup Mode (changes require restart)
@@ -54,75 +47,47 @@ window:
   startup_mode: Windowed
 
 scrolling:
-  # maximum number of lines in the scrollback buffer. Specifying '0' will
-  # disable scrolling.
-  history: 50000
+  # Maximum number of lines in the scrollback buffer.
+  # Specifying '0' will disable scrolling.
+  history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
   multiplier: 3
 
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number of lines the terminal
-  # should scroll when the alternate screen buffer is active. This is used to
-  # allow mouse scrolling for applications like `man`.
-  #
-  # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 3
-
-  # Scroll to the bottom when new text is written to the terminal.
-  auto_scroll: false
-
-# Display tabs using this many cells (changes require restart)
-#
-# Some applications, like Emacs, rely on knowing about the width of a tab. To
-# prevent unexpected behavior in these applications, it's also required to
-# change the `it` value in terminfo when altering this setting.
-#
-tabspaces: 8
-
 # Font configuration (changes require restart)
 font:
-  # The normal (roman) font face to use.
-  # Style can be specified to pick a specific face.
   normal:
-    family: "Inconsolata"
-    # family: "Source Code Pro"
-    # style: Retina
-
-  # The bold font face
+    # Font family
+    family: "Cascadia Mono PL"
+    style: Regular
   bold:
-    family: "Inconsolata"
-    # family: "Source Code Pro"
-    style: Bold
-
-  # The italic font face
+    family: "Cascadia Mono PL"
+    style: SemiBold
   italic:
-    family: "Menlo"
-    # family: "Source Code Pro"
+    family: "Cascadia Mono PL"
     style: Italic
 
-  # Point size of the font
-  size: 18.0
+  # Point size
+  size: 17.0
 
-  # Offset is the extra space around each character. offset.y can be thought of
-  # as modifying the linespacing, and offset.x as modifying the letter spacing.
+  # Offset is the extra space around each character. `offset.y` can be thought of
+  # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
     x: 0
     y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
-  # the default being at the bottom. Increase the x offset to move the glyph to
-  # the right, increase the y offset to move the glyph upward.
+  # the default being at the bottom. Increasing `x` moves the glyph to the right,
+  # increasing `y` moves the glyph upwards.
   glyph_offset:
     x: 0
     y: 0
 
   # Thin stroke font rendering (macOS only)
   #
-  # Thin strokes are suitable for retina displays, but for non-retina you
-  # probably want this set to false.
+  # Thin strokes are suitable for retina displays, but for non-retina screens
+  # it is recommended to set `use_thin_strokes` to `false`
   #
   # macOS >= 10.14.x:
   #
@@ -135,113 +100,117 @@ font:
   # effect.
   use_thin_strokes: true
 
-# When true, bold text is drawn using the bright variant of colors.
+# If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-# custom_cursor_colors: false
+# Colors (GitHub Dark)
+colors:
+  bright:
+    black: '#4d4d4d'
+    blue: '#6ca4f8'
+    cyan: '#2b7489'
+    green: '#56d364'
+    magenta: '#db61a2'
+    red: '#f78166'
+    white: '#ffffff'
+    yellow: '#e3b341'
+  cursor:
+    cursor: '#c9d1d9'
+    text: '#ffffff'
+  normal:
+    black: '#000000'
+    blue: '#6ca4f8'
+    cyan: '#2b7489'
+    green: '#56d364'
+    magenta: '#db61a2'
+    red: '#f78166'
+    white: '#ffffff'
+    yellow: '#e3b341'
+  primary:
+    background: '#101216'
+    foreground: '#8b949e'
+  selection:
+    background: '#3b5070'
+    text: '#ffffff'
 
-schemes:
-  # Colors (Solarized Light)
-  solarized_light: &light
-    # Default colors
-    primary:
-      background: '0xfdf6e3' # base3
-      foreground: '0x657b83' # base00
+mouse:
+  # Click settings
+  #
+  # The `double_click` and `triple_click` settings control the time
+  # alacritty should wait for accepting multiple clicks as one double
+  # or triple click.
+  #double_click: { threshold: 300 }
+  #triple_click: { threshold: 300 }
+  # If this is `true`, the cursor is temporarily hidden when typing.
+  hide_when_typing: false
 
-    # Cursor colors
-    cursor:
-      text:   '0xfdf6e3' # base3
-      cursor: '0x657b83' # base00
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
 
-    # Normal colors
-    normal:
-      black:   '0x073642' # base02
-      red:     '0xdc322f' # red
-      green:   '0x859900' # green
-      yellow:  '0xb58900' # yellow
-      blue:    '0x268bd2' # blue
-      magenta: '0xd33682' # magenta
-      cyan:    '0x2aa198' # cyan
-      white:   '0xeee8d5' # base2
+  # When set to `true`, selected text will be copied to the primary clipboard.
+  save_to_clipboard: false
 
-    # Bright colors
-    bright:
-      black:   '0x002b36' # base03
-      red:     '0xcb4b16' # orange
-      green:   '0x586e75' # base01
-      yellow:  '0x657b83' # base00
-      blue:    '0x839496' # base0
-      magenta: '0x6c71c4' # violet
-      cyan:    '0x93a1a1' # base1
-      white:   '0xfdf6e3' # base3
-  # Colors (Solarized Dark)
-  solarized_dark: &dark
-    # Default colors
-    primary:
-      background: '0x002b36' # base03
-      foreground: '0x839496' # base0
+cursor:
+  # Cursor style
+  #
+  # Values for `style`:
+  #   - ▇ Block
+  #   - _ Underline
+  #   - | Beam
+  style: Block
+  # If this is `true`, the cursor will be rendered as a hollow box when the
+  # window is not focused.
+  unfocused_hollow: true
 
-    # Cursor colors
-    cursor:
-      text:   '0x002b36' # base03
-      cursor: '0x839496' # base0
+# Live config reload (changes require restart)
+live_config_reload: true
 
-    # Normal colors
-    normal:
-      black:   '0x073642' # base02
-      red:     '0xdc322f' # red
-      green:   '0x859900' # green
-      yellow:  '0xb58900' # yellow
-      blue:    '0x268bd2' # blue
-      magenta: '0xd33682' # magenta
-      cyan:    '0x2aa198' # cyan
-      white:   '0xeee8d5' # base2
-
-    # Bright colors
-    bright:
-      black:   '0x002b36' # base03
-      red:     '0xcb4b16' # orange
-      green:   '0x586e75' # base01
-      yellow:  '0x657b83' # base00
-      blue:    '0x839496' # base0
-      magenta: '0x6c71c4' # violet
-      cyan:    '0x93a1a1' # base1
-      white:   '0xfdf6e3' # base3
-
-# Colors
-colors: *light
-
-# Visual Bell
+# Shell
 #
-# Any time the BEL code is received, Alacritty "rings" the visual bell. Once
-# rung, the terminal background will be set to white and transition back to the
-# default background color. You can control the rate of this transition by
-# setting the `duration` property (represented in milliseconds). You can also
-# configure the transition function by setting the `animation` property.
+# You can set `shell.program` to the path of your favorite shell, e.g. `/bin/fish`.
+# Entries in `shell.args` are passed unmodified as arguments to the shell.
 #
-# Possible values for `animation`
-# `Ease`
-# `EaseOut`
-# `EaseOutSine`
-# `EaseOutQuad`
-# `EaseOutCubic`
-# `EaseOutQuart`
-# `EaseOutQuint`
-# `EaseOutExpo`
-# `EaseOutCirc`
-# `Linear`
-#
-# To completely disable the visual bell, set its duration to 0.
-#
-visual_bell:
-  animation: EaseOutExpo
-  color: '0xffffff'
-  duration: 0
+# Default:
+#   - (macOS) /bin/bash --login
+#   - (Linux) user login shell
+#   - (Windows) powershell
+# shell:
+# program: /usr/bin/zsh
+#  args:
+#    - --login
 
-# Background opacity
-background_opacity: 1.0
+# Startup directory
+#
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+working_directory: None
+
+# Send ESC (\x1b) before characters when alt is pressed.
+alt_send_esc: true
+
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
+
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  #
+  # Values for `log_level`:
+  #   - None
+  #   - Error
+  #   - Warn
+  #   - Info
+  #   - Debug
+  #   - Trace
+  log_level: Warn
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
 
 # Key bindings
 #
@@ -335,178 +304,135 @@ background_opacity: 1.0
 #   - AppCursor
 #   - ~AppKeypad
 #   - AppKeypad
-#
 key_bindings:
-  - { key: V,        mods: Command,       action: Paste                        }
-  - { key: C,        mods: Command,       action: Copy                         }
-  - { key: Q,        mods: Command,       action: Quit                         }
-  - { key: N,        mods: Command,       action: SpawnNewInstance             }
-  - { key: Return,   mods: Command,       action: ToggleFullscreen             }
+  # (Windows/Linux only)
+  #- { key: V,        mods: Control|Shift, action: Paste            }
+  #- { key: C,        mods: Control|Shift, action: Copy             }
+  #- { key: Insert,   mods: Shift,         action: PasteSelection   }
+  #- { key: Key0,     mods: Control,       action: ResetFontSize    }
+  #- { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  #- { key: Add,      mods: Control,       action: IncreaseFontSize }
+  #- { key: Subtract, mods: Control,       action: DecreaseFontSize }
+  #- { key: Minus,    mods: Control,       action: DecreaseFontSize }
+  #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
-  - { key: Home,                          chars: "\x1bOH",   mode: AppCursor   }
-  - { key: Home,                          chars: "\x1b[H",   mode: ~AppCursor  }
-  - { key: End,                           chars: "\x1bOF",   mode: AppCursor   }
-  - { key: End,                           chars: "\x1b[F",   mode: ~AppCursor  }
-  - { key: Equals,   mods: Command,       action: IncreaseFontSize             }
-  - { key: Minus,    mods: Command,       action: DecreaseFontSize             }
-  - { key: Minus,    mods: Command|Shift, action: ResetFontSize                }
-  - { key: PageUp,   mods: Shift,         chars: "\x1b[5;2~"                   }
-  - { key: PageUp,   mods: Control,       chars: "\x1b[5;5~"                   }
-  - { key: PageUp,                        chars: "\x1b[5~"                     }
-  - { key: PageDown, mods: Shift,         chars: "\x1b[6;2~"                   }
-  - { key: PageDown, mods: Control,       chars: "\x1b[6;5~"                   }
-  - { key: PageDown,                      chars: "\x1b[6~"                     }
-  - { key: Left,     mods: Shift,         chars: "\x1b[1;2D"                   }
-  - { key: Left,     mods: Control,       chars: "\x1b[1;5D"                   }
-  - { key: Left,     mods: Alt,           chars: "\x1b[1;3D"                   }
-  - { key: Left,                          chars: "\x1b[D",   mode: ~AppCursor  }
-  - { key: Left,                          chars: "\x1bOD",   mode: AppCursor   }
-  - { key: Right,    mods: Shift,         chars: "\x1b[1;2C"                   }
-  - { key: Right,    mods: Control,       chars: "\x1b[1;5C"                   }
-  - { key: Right,    mods: Alt,           chars: "\x1b[1;3C"                   }
-  - { key: Right,                         chars: "\x1b[C",   mode: ~AppCursor  }
-  - { key: Right,                         chars: "\x1bOC",   mode: AppCursor   }
-  - { key: Up,       mods: Shift,         chars: "\x1b[1;2A"                   }
-  - { key: Up,       mods: Control,       chars: "\x1b[1;5A"                   }
-  - { key: Up,       mods: Alt,           chars: "\x1b[1;3A"                   }
-  - { key: Up,                            chars: "\x1b[A",   mode: ~AppCursor  }
-  - { key: Up,                            chars: "\x1bOA",   mode: AppCursor   }
-  - { key: Down,     mods: Shift,         chars: "\x1b[1;2B"                   }
-  - { key: Down,     mods: Control,       chars: "\x1b[1;5B"                   }
-  - { key: Down,     mods: Alt,           chars: "\x1b[1;3B"                   }
-  - { key: Down,                          chars: "\x1b[B",   mode: ~AppCursor  }
-  - { key: Down,                          chars: "\x1bOB",   mode: AppCursor   }
-  - { key: Tab,      mods: Shift,         chars: "\x1b[Z"                      }
-  - { key: F1,                            chars: "\x1bOP"                      }
-  - { key: F2,                            chars: "\x1bOQ"                      }
-  - { key: F3,                            chars: "\x1bOR"                      }
-  - { key: F4,                            chars: "\x1bOS"                      }
-  - { key: F5,                            chars: "\x1b[15~"                    }
-  - { key: F6,                            chars: "\x1b[17~"                    }
-  - { key: F7,                            chars: "\x1b[18~"                    }
-  - { key: F8,                            chars: "\x1b[19~"                    }
-  - { key: F9,                            chars: "\x1b[20~"                    }
-  - { key: F10,                           chars: "\x1b[21~"                    }
-  - { key: F11,                           chars: "\x1b[23~"                    }
-  - { key: F12,                           chars: "\x1b[24~"                    }
-  - { key: Back,                          chars: "\x7f"                        }
-  - { key: Back,     mods: Alt,           chars: "\x1b\x7f"                    }
-  - { key: Insert,                        chars: "\x1b[2~"                     }
-  - { key: Delete,                        chars: "\x1b[3~"                     }
+  # (macOS only)
+  #- { key: Key0,   mods: Command,         action: ResetFontSize    }
+  #- { key: Equals, mods: Command,         action: IncreaseFontSize }
+  #- { key: Add,    mods: Command,         action: IncreaseFontSize }
+  #- { key: Minus,  mods: Command,         action: DecreaseFontSize }
+  #- { key: K,      mods: Command,         action: ClearHistory     }
+  #- { key: K,      mods: Command,         chars: "\x0c"            }
+  #- { key: V,      mods: Command,         action: Paste            }
+  #- { key: C,      mods: Command,         action: Copy             }
+  #- { key: H,      mods: Command,         action: Hide             }
+  #- { key: Q,      mods: Command,         action: Quit             }
+  #- { key: W,      mods: Command,         action: Quit             }
+  #- { key: F,      mods: Command|Control, action: ToggleFullscreen }
 
-    # shortcuts for tmux. the leader key is control-b (0x02)
-  - { key: W,        mods: Command,       chars: "\x02&"                       }  # close tab (kill)
-  - { key: T,        mods: Command,       chars: "\x02c"                       }  # new tab
-  - { key: RBracket, mods: Command|Shift, chars: "\x02n"                       }  # select next tab
-  - { key: LBracket, mods: Command|Shift, chars: "\x02p"                       }  # select previous tab
-  - { key: RBracket, mods: Command,       chars: "\x02o"                       }  # select next pane
-  - { key: LBracket, mods: Command,       chars: "\x02;"                       }  # select last (previously used) pane
-  - { key: F,        mods: Command,       chars: "\x02/"                       }  # search (upwards) (see tmux.conf)
-
-mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
-  double_click: { threshold: 300 }
-  triple_click: { threshold: 300 }
-
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  hide_when_typing: true
-
-  # URL launcher
-  # url:
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux) xdg-open
-    #   - (Windows) explorer
-    # launcher:
-    #   program: xdg-open
-    #   args: []
-
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    # modifiers: Control|Shift
-
-selection:
-  semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: true
-
-# Mouse bindings
-#
-# Available fields:
-# - mouse
-# - action
-# - mods (optional)
-#
-# Values for `mouse`:
-# - Middle
-# - Left
-# - Right
-# - Numeric identifier such as `5`
-#
-# All available `mods` and `action` values are documented in the key binding
-# section.
-# mouse_bindings:
-#   - { mouse: Middle, action: PasteSelection }
-
-cursor:
-  # Cursor style
-  #
-  # Values for 'style':
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  style: Block
-
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  unfocused_hollow: true
-
-# dynamic_title: false
-
-# Live config reload (changes require restart)
-live_config_reload: true
-
-# Shell
-#
-# You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
-# Entries in shell.args are passed unmodified as arguments to the shell.
-# shell:
-#   program: /usr/local/homebrew/bin/fish
-#   args:
-#     - --command=tmux
-
-debug:
-  # Should display the render timer
-  render_timer: false
-
-  # Keep the log file after quitting Alacritty.
-  persistent_logging: false
-
-  # Log level
-  #
-  # Values for `log_level`:
-  #   - None
-  #   - Error
-  #   - Warn
-  #   - Info
-  #   - Debug
-  #   - Trace
-  log_level: None
-
-  # Print all received window events.
-  print_events: false
-
-  # Record all characters and escape sequences as test data.
-  ref_test: false
-
-# vim: nospell
+  - { key: Paste, action: Paste }
+  - { key: Copy, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: L, mods: Control, chars: "\x0c" }
+  - { key: Home, mods: Alt, chars: "\x1b[1;3H" }
+  - { key: Home, chars: "\x1bOH", mode: AppCursor }
+  - { key: Home, chars: "\x1b[H", mode: ~AppCursor }
+  - { key: End, mods: Alt, chars: "\x1b[1;3F" }
+  - { key: End, chars: "\x1bOF", mode: AppCursor }
+  - { key: End, chars: "\x1b[F", mode: ~AppCursor }
+  - { key: PageUp, mods: Shift, action: ScrollPageUp, mode: ~Alt }
+  - { key: PageUp, mods: Shift, chars: "\x1b[5;2~", mode: Alt }
+  - { key: PageUp, mods: Control, chars: "\x1b[5;5~" }
+  - { key: PageUp, mods: Alt, chars: "\x1b[5;3~" }
+  - { key: PageUp, chars: "\x1b[5~" }
+  - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt }
+  - { key: PageDown, mods: Shift, chars: "\x1b[6;2~", mode: Alt }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~" }
+  - { key: PageDown, mods: Alt, chars: "\x1b[6;3~" }
+  - { key: PageDown, chars: "\x1b[6~" }
+  - { key: Tab, mods: Shift, chars: "\x1b[Z" }
+  - { key: Back, chars: "\x7f" }
+  - { key: Back, mods: Alt, chars: "\x1b\x7f" }
+  - { key: Insert, chars: "\x1b[2~" }
+  - { key: Delete, chars: "\x1b[3~" }
+  - { key: Left, mods: Shift, chars: "\x1b[1;2D" }
+  - { key: Left, mods: Control, chars: "\x1b[1;5D" }
+  - { key: Left, mods: Alt, chars: "\x1b[1;3D" }
+  - { key: Left, chars: "\x1b[D", mode: ~AppCursor }
+  - { key: Left, chars: "\x1bOD", mode: AppCursor }
+  - { key: Right, mods: Shift, chars: "\x1b[1;2C" }
+  - { key: Right, mods: Control, chars: "\x1b[1;5C" }
+  - { key: Right, mods: Alt, chars: "\x1b[1;3C" }
+  - { key: Right, chars: "\x1b[C", mode: ~AppCursor }
+  - { key: Right, chars: "\x1bOC", mode: AppCursor }
+  - { key: Up, mods: Shift, chars: "\x1b[1;2A" }
+  - { key: Up, mods: Control, chars: "\x1b[1;5A" }
+  - { key: Up, mods: Alt, chars: "\x1b[1;3A" }
+  - { key: Up, chars: "\x1b[A", mode: ~AppCursor }
+  - { key: Up, chars: "\x1bOA", mode: AppCursor }
+  - { key: Down, mods: Shift, chars: "\x1b[1;2B" }
+  - { key: Down, mods: Control, chars: "\x1b[1;5B" }
+  - { key: Down, mods: Alt, chars: "\x1b[1;3B" }
+  - { key: Down, chars: "\x1b[B", mode: ~AppCursor }
+  - { key: Down, chars: "\x1bOB", mode: AppCursor }
+  - { key: F1, chars: "\x1bOP" }
+  - { key: F2, chars: "\x1bOQ" }
+  - { key: F3, chars: "\x1bOR" }
+  - { key: F4, chars: "\x1bOS" }
+  - { key: F5, chars: "\x1b[15~" }
+  - { key: F6, chars: "\x1b[17~" }
+  - { key: F7, chars: "\x1b[18~" }
+  - { key: F8, chars: "\x1b[19~" }
+  - { key: F9, chars: "\x1b[20~" }
+  - { key: F10, chars: "\x1b[21~" }
+  - { key: F11, chars: "\x1b[23~" }
+  - { key: F12, chars: "\x1b[24~" }
+  - { key: F1, mods: Shift, chars: "\x1b[1;2P" }
+  - { key: F2, mods: Shift, chars: "\x1b[1;2Q" }
+  - { key: F3, mods: Shift, chars: "\x1b[1;2R" }
+  - { key: F4, mods: Shift, chars: "\x1b[1;2S" }
+  - { key: F5, mods: Shift, chars: "\x1b[15;2~" }
+  - { key: F6, mods: Shift, chars: "\x1b[17;2~" }
+  - { key: F7, mods: Shift, chars: "\x1b[18;2~" }
+  - { key: F8, mods: Shift, chars: "\x1b[19;2~" }
+  - { key: F9, mods: Shift, chars: "\x1b[20;2~" }
+  - { key: F10, mods: Shift, chars: "\x1b[21;2~" }
+  - { key: F11, mods: Shift, chars: "\x1b[23;2~" }
+  - { key: F12, mods: Shift, chars: "\x1b[24;2~" }
+  - { key: F1, mods: Control, chars: "\x1b[1;5P" }
+  - { key: F2, mods: Control, chars: "\x1b[1;5Q" }
+  - { key: F3, mods: Control, chars: "\x1b[1;5R" }
+  - { key: F4, mods: Control, chars: "\x1b[1;5S" }
+  - { key: F5, mods: Control, chars: "\x1b[15;5~" }
+  - { key: F6, mods: Control, chars: "\x1b[17;5~" }
+  - { key: F7, mods: Control, chars: "\x1b[18;5~" }
+  - { key: F8, mods: Control, chars: "\x1b[19;5~" }
+  - { key: F9, mods: Control, chars: "\x1b[20;5~" }
+  - { key: F10, mods: Control, chars: "\x1b[21;5~" }
+  - { key: F11, mods: Control, chars: "\x1b[23;5~" }
+  - { key: F12, mods: Control, chars: "\x1b[24;5~" }
+  - { key: F1, mods: Alt, chars: "\x1b[1;6P" }
+  - { key: F2, mods: Alt, chars: "\x1b[1;6Q" }
+  - { key: F3, mods: Alt, chars: "\x1b[1;6R" }
+  - { key: F4, mods: Alt, chars: "\x1b[1;6S" }
+  - { key: F5, mods: Alt, chars: "\x1b[15;6~" }
+  - { key: F6, mods: Alt, chars: "\x1b[17;6~" }
+  - { key: F7, mods: Alt, chars: "\x1b[18;6~" }
+  - { key: F8, mods: Alt, chars: "\x1b[19;6~" }
+  - { key: F9, mods: Alt, chars: "\x1b[20;6~" }
+  - { key: F10, mods: Alt, chars: "\x1b[21;6~" }
+  - { key: F11, mods: Alt, chars: "\x1b[23;6~" }
+  - { key: F12, mods: Alt, chars: "\x1b[24;6~" }
+  - { key: F1, mods: Super, chars: "\x1b[1;3P" }
+  - { key: F2, mods: Super, chars: "\x1b[1;3Q" }
+  - { key: F3, mods: Super, chars: "\x1b[1;3R" }
+  - { key: F4, mods: Super, chars: "\x1b[1;3S" }
+  - { key: F5, mods: Super, chars: "\x1b[15;3~" }
+  - { key: F6, mods: Super, chars: "\x1b[17;3~" }
+  - { key: F7, mods: Super, chars: "\x1b[18;3~" }
+  - { key: F8, mods: Super, chars: "\x1b[19;3~" }
+  - { key: F9, mods: Super, chars: "\x1b[20;3~" }
+  - { key: F10, mods: Super, chars: "\x1b[21;3~" }
+  - { key: F11, mods: Super, chars: "\x1b[23;3~" }
+  - { key: F12, mods: Super, chars: "\x1b[24;3~" }
+  - { key: NumpadEnter, chars: "\n" }
