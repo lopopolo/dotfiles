@@ -16,10 +16,10 @@ dotfiles: lang-runtimes $(DOTFILES)
 .PHONY: $(DOTFILES)
 $(DOTFILES):
 	ln -snf $(PWD)/files/$@ $(TARGETDIR)/$@
-	ln -snf $(PWD)/.python-version $(TARGETDIR)/.python-version
 
 .PHONY: lang-runtimes
 lang-runtimes:
+	ln -snf $(PWD)/.python-version $(TARGETDIR)/.python-version
 	ln -snf $(PWD)/.ruby-version $(TARGETDIR)/.ruby-version
 	ln -snf $(PWD)/Gemfile $(TARGETDIR)/Gemfile
 	ln -snf $(PWD)/Gemfile.lock $(TARGETDIR)/Gemfile.lock
