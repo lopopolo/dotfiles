@@ -2,7 +2,6 @@
 
 !**/*/
 
-alacritty/
 dist/
 node_modules/
 target/
