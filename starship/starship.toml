@@ -1,23 +1,26 @@
 add_newline = false
+
+# A tweak of `format = "$all" to move `time` to the front.
 format = """
-$time\
-$directory\
 $username\
 $hostname\
 $shlvl\
+$singularity\
 $kubernetes\
+$directory\
+$vcsh\
 $git_branch\
 $git_commit\
 $git_state\
+$git_metrics\
 $git_status\
 $hg_branch\
 $docker_context\
 $package\
-$rust\
-$ruby\
-$python\
 $cmake\
+$cobol\
 $dart\
+$deno\
 $dotnet\
 $elixir\
 $elm\
@@ -26,14 +29,25 @@ $golang\
 $helm\
 $java\
 $julia\
+$kotlin\
+$lua\
 $nim\
 $nodejs\
 $ocaml\
 $perl\
 $php\
+$pulumi\
 $purescript\
+$python\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
 $swift\
 $terraform\
+$vlang\
+$vagrant\
 $zig\
 $nix_shell\
 $conda\
@@ -43,15 +57,15 @@ $gcloud\
 $openstack\
 $env_var\
 $crystal\
-$cmd_duration\
 $custom\
+$cmd_duration\
 $line_break\
-$lua\
 $jobs\
 $battery\
+$time\
 $status\
-$character\
-"""
+$shell\
+$character"""
 
 [aws]
 disabled = true
