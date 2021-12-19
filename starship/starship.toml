@@ -70,6 +70,12 @@ $character"""
 [aws]
 disabled = true
 
+[gcloud]
+disabled = true
+
+[openstack]
+disabled = true
+
 [battery]
 full_symbol = "🔋"
 charging_symbol = "⚡️"
