@@ -7,6 +7,7 @@ $hostname\
 $shlvl\
 $singularity\
 $kubernetes\
+$time\
 $directory\
 $vcsh\
 $git_branch\
@@ -62,7 +63,6 @@ $cmd_duration\
 $line_break\
 $jobs\
 $battery\
-$time\
 $status\
 $shell\
 $character"""
