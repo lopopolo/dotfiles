@@ -19,6 +19,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'wojciechkepka/vim-github-dark'
 
 " fuzzy file search
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
 " language plugins
@@ -225,7 +226,6 @@ augroup END
 " =============================== Plugin stuff  ===============================
 
 " fzf
-set rtp+=/usr/local/opt/fzf
 map <C-p> :Files<CR>
 map <C-g> :Rg<CR>
 let $FZF_DEFAULT_COMMAND  = 'rg --files'
