@@ -3,6 +3,8 @@ shell:
   program: /usr/local/bin/bash
   args:
     - -l
+    - -c
+    - "tmux attach || tmux"
 
 window:
   # Window dimensions (changes require restart)
