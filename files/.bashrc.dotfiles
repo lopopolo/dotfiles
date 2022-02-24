@@ -110,7 +110,7 @@ function diff_line_count
 }
 
 function rand_string {
-  cat /dev/urandom | LANG=C LC_ALL=C tr -dc '[:alpha:]' | fold -w ${1:-32} | head -n 1
+  cat /dev/urandom | LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' | fold -w ${1:-32} | head -n 1
 }
 
 # =========================================================================== #
