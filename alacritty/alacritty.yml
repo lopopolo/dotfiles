@@ -106,33 +106,35 @@ font:
 draw_bold_text_with_bright_colors: true
 
 # Colors (GitHub Dark)
+# GitHub Dark Dimmed Theme
+# https://github.com/primer/primitives/blob/8e9779cd917554874bbc60cda0fd3baaf69118ca/data/colors/themes/dark_dimmed.ts
 colors:
   bright:
     black: "#4d4d4d"
     blue: "#6ca4f8"
     cyan: "#2b7489"
-    green: "#56d364"
+    green: "#57ab5a"
     magenta: "#db61a2"
-    red: "#f78166"
+    red: "#c93c37"
     white: "#ffffff"
     yellow: "#e3b341"
   cursor:
     cursor: "#c9d1d9"
     text: "#ffffff"
   normal:
-    black: "#000000"
-    blue: "#6ca4f8"
+    black: "#1c2128"
+    blue: "#c6e6ff"
     cyan: "#2b7489"
-    green: "#56d364"
+    green: "#8ddb8c"
     magenta: "#db61a2"
-    red: "#f78166"
-    white: "#ffffff"
-    yellow: "#e3b341"
+    red: "#e5534b"
+    white: "#cdd9e5"
+    yellow: "#fbe090"
   primary:
-    background: "#101216"
-    foreground: "#8b949e"
+    background: "#22272e"
+    foreground: "#adbac7"
   selection:
-    background: "#3b5070"
+    background: "#0f2d5c"
     text: "#ffffff"
 
 mouse:
