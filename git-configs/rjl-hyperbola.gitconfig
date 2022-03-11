@@ -5,8 +5,6 @@
 	signingKey = 46047D739B6AE0B1
 [color]
 	ui = auto
-[core]
-	excludesfile = ~/.git-global-ignore
 [alias]
 	s = status --untracked-files=no
 	stat = status

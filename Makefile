@@ -10,8 +10,10 @@ bootstrap: dotfiles dev vim
 .PHONY: dotfiles
 dotfiles: lang-runtimes $(DOTFILES)
 	mkdir -p $(HOME)/.config/alacritty
-	cp alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
-	cp starship/starship.toml $(HOME)/.config/starship.toml
+	mkdir -p $(HOME)/.config/git
+	cp $(PWD)/alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
+	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
