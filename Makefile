@@ -8,7 +8,7 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: lang-runtimes $(DOTFILES)
+dotfiles: lang-runtimes $(DOTFILES) git-config
 	mkdir -p $(HOME)/.config/alacritty
 	mkdir -p $(HOME)/.config/git
 	cp $(PWD)/alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
@@ -32,13 +32,9 @@ dev:
 	mkdir -p $(HOME)/dev/hyperbola
 	mkdir -p $(HOME)/dev/repos
 
-.PHONY: git-config-rjl
-git-config-rjl:
-	ln -snf $(PWD)/git-configs/rjl-hyperbola.gitconfig $(TARGETDIR)/.gitconfig
-
-.PHONY: git-config-rjl-arch
-git-config-rjl-arch:
-	ln -snf $(PWD)/git-configs/rjl-hyperbola-arch.gitconfig $(TARGETDIR)/.gitconfig
+.PHONY: git-config
+git-config:
+	ln -snf $(PWD)/git-configs/`hostname -s`.gitconfig $(TARGETDIR)/.gitconfig
 
 .PHONY: fmt
 fmt:
