@@ -11,10 +11,8 @@
 	co = checkout
 	ahead = log @{upstream}..HEAD
 	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
-[github]
-	user = lopopolo
-[fetch]
-	prune = true
+[advice]
+	detachedHead = false
 [branch]
 	autoSetupMerge = always
 	autoSetupRebase = always
@@ -24,22 +22,43 @@
 	rebase = true
 [branch "trunk"]
 	rebase = true
-[push]
-	default = simple
+[commit]
+	gpgSign = true
+[diff]
+	colorMoved = zebra
+	# Use better, descriptive initials (c, i, w) instead of a/b.
+	mnemonicPrefix = true
+	# Show renames/moves as such
+	renames = true
+	wsErrorHighlight = all
+[fetch]
+	prune = true
+[init]
+	defaultBranch = trunk
+[log]
+	# Automatically --follow when given a single path
+	follow = true
 [merge]
 	defaultToUpstream = true
+[push]
+	default = simple
 [rebase]
-	autosquash = true
+	autoSquash = true
 [rerere]
+	autoupdate = true
 	enabled = true
-[advice]
-	detachedHead = false
-[diff]
-	wsErrorHighlight = all
+[status]
+	# Recursively traverse untracked directories to display all contents
+	showUntrackedFiles = all
 [tag]
 	forceSignAnnotated = true
 	gpgSign = true
-[commit]
-	gpgSign = true
-[init]
-	defaultBranch = trunk
+	# Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
+	sort = version:refname
+[versionsort]
+	prereleaseSuffix = -pre
+	prereleaseSuffix = .pre
+	prereleaseSuffix = -beta
+	prereleaseSuffix = .beta
+	prereleaseSuffix = -rc
+	prereleaseSuffix = .rc
