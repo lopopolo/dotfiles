@@ -14,7 +14,7 @@
 [github]
 	user = lopopolo
 [fetch]
-  prune = true
+	prune = true
 [branch]
 	autoSetupMerge = always
 	autoSetupRebase = always
