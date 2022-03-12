@@ -1,5 +1,4 @@
 DOTFILES = $(shell ls -1A files)
-TARGETDIR=$(HOME)
 
 .PHONY: all
 all: bootstrap
@@ -8,23 +7,16 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: lang-runtimes $(DOTFILES) git-config
-	mkdir -p $(HOME)/.config/alacritty
-	mkdir -p $(HOME)/.config/git
-	cp $(PWD)/alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
-	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
-	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
+dotfiles: lang-runtimes alacritty git starship $(DOTFILES)
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
-	ln -snf $(PWD)/files/$@ $(TARGETDIR)/$@
+	ln -snf $(PWD)/files/$@ $(HOME)/$@
 
 .PHONY: lang-runtimes
 lang-runtimes:
-	ln -snf $(PWD)/.python-version $(TARGETDIR)/.python-version
-	ln -snf $(PWD)/.ruby-version $(TARGETDIR)/.ruby-version
-	ln -snf $(PWD)/Gemfile $(TARGETDIR)/Gemfile
-	ln -snf $(PWD)/Gemfile.lock $(TARGETDIR)/Gemfile.lock
+	ln -snf $(PWD)/.python-version $(HOME)/.python-version
+	ln -snf $(PWD)/.ruby-version $(HOME)/.ruby-version
 
 .PHONY: dev
 dev:
@@ -32,9 +24,21 @@ dev:
 	mkdir -p $(HOME)/dev/hyperbola
 	mkdir -p $(HOME)/dev/repos
 
-.PHONY: git-config
-git-config:
-	ln -snf $(PWD)/git-configs/`hostname -s`.gitconfig $(TARGETDIR)/.gitconfig
+.PHONY: git
+git:
+	mkdir -p $(HOME)/.config/git
+	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
+	cp $(PWD)/git/`hostname -s`.gitconfig $(HOME)/.config/git/config
+
+.PHONY: alacritty
+alacritty:
+	mkdir -p $(HOME)/.config/alacritty
+	cp $(PWD)/alacritty/alacritty.yml $(HOME)/.config/alacritty/alacritty.yml
+
+.PHONY: starship
+starship:
+	mkdir -p $(HOME)/.config
+	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
 
 .PHONY: fmt
 fmt:
