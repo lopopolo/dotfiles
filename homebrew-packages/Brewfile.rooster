@@ -6,6 +6,12 @@ tap "homebrew/cask-drivers"
 tap "homebrew/cask-fonts"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+# Automatic configure script builder
+brew "autoconf"
+# Automatic configure script builder
+brew "autoconf@2.69"
+# Tool for generating GNU Standards-compliant Makefiles
+brew "automake"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Bourne-Again SHell, a UNIX command interpreter
@@ -22,12 +28,16 @@ brew "coreutils"
 brew "fzf"
 # Distributed revision control system
 brew "git"
+# Small git utilities
+brew "git-extras"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Command-line pager for JSON data
+brew "jless"
 # Utility to optimize JPEG files
 brew "jpegoptim"
 # Lightweight and flexible command-line JSON processor
@@ -70,6 +80,8 @@ brew "starship"
 brew "terraform"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
+# Terminal multiplexer
+brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
 # Internet file retriever
@@ -82,6 +94,8 @@ brew "zig"
 brew "zlib"
 # Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
 brew "aquasecurity/trivy/trivy"
+# GPU-accelerated terminal emulator
+cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault"
 # Voice and text chat software
@@ -111,5 +125,7 @@ cask "parallels"
 cask "secretive"
 # Team communication and collaboration software
 cask "slack"
+# Music streaming service
+cask "spotify"
 # Multimedia player
 cask "vlc"
