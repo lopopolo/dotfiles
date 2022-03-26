@@ -122,16 +122,16 @@ colors:
     cursor: "#c9d1d9"
     text: "#ffffff"
   normal:
-    black: "#1c2128"
-    blue: "#c6e6ff"
-    cyan: "#2b7489"
-    green: "#8ddb8c"
-    magenta: "#db61a2"
-    red: "#e5534b"
+    black: "#0d1117"
+    blue: "#77bdfb"
+    cyan: "#a2d2fb"
+    green: "#7ce38b"
+    magenta: "#cea5fb"
+    red: "#fa7970"
     white: "#cdd9e5"
     yellow: "#fbe090"
   primary:
-    background: "#22272e"
+    background: "#161b22"
     foreground: "#adbac7"
   selection:
     background: "#0f2d5c"
