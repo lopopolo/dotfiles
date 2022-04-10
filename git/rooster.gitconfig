@@ -22,6 +22,8 @@
 	rebase = true
 [branch "trunk"]
 	rebase = true
+[checkout]
+	defaultRemote = origin
 [commit]
 	gpgSign = true
 [diff]
