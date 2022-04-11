@@ -15,7 +15,13 @@ BROWSER='google-chrome-stable'
 export BROWSER
 
 # Bash completion
-source /usr/share/git/completion/git-completion.bash
+if [ -f /usr/share/git/completion/git-completion.bash ]; then
+  source /usr/share/git/completion/git-completion.bash
+fi
+if [ -f /usr/share/bash-completion/completions/git ]; then
+  source /usr/share/bash-completion/completions/git
+fi
+
 if [ -f /etc/bash_completion ]; then
   source /etc/bash_completion
 fi
@@ -37,7 +43,14 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=2
 export GDK_SCALE=2
 
 # rbenv
-eval "$(rbenv init -)"
+if [ -f $HOME/.rbenv/bin/rbenv ]; then
+  export PATH="$PATH:$HOME/.rbenv/bin"
+fi
+# rbenv on linux
+export RBENV_ROOT=$HOME/.rbenv
+if [[ ":${PATH}:" != *:"${RBENV_ROOT}/shims":* ]]; then
+  eval "$(rbenv init -)"
+fi
 
 # pyenv
 if [ -f $HOME/.pyenv/bin/pyenv ]; then
