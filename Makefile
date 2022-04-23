@@ -7,7 +7,7 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: lang-runtimes alacritty git starship $(DOTFILES)
+dotfiles: lang-runtimes alacritty git starship tmux $(DOTFILES)
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
@@ -39,6 +39,11 @@ alacritty:
 starship:
 	mkdir -p $(HOME)/.config
 	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
+
+.PHONY: tmux
+tmux:
+	mkdir -p $(HOME)/.config/tmux
+	cp $(PWD)/tmux/tmux.conf $(HOME)/.config/tmux/tmux.conf
 
 .PHONY: fmt
 fmt:
