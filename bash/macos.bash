@@ -32,10 +32,11 @@ fi
 # chdir to frontmost window of Finder.app
 unset -f cdf
 cdf() {
-  local -r finder="$(osascript \
-    -e 'tell application "Finder"' \
-    -e 'set myname to POSIX path of (target of window 1 as alias)' \
-    -e 'end tell'
+  local -r finder="$(
+    osascript \
+      -e 'tell application "Finder"' \
+      -e 'set myname to POSIX path of (target of window 1 as alias)' \
+      -e 'end tell'
     2>/dev/null
   )"
 
