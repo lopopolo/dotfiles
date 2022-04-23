@@ -31,21 +31,26 @@ fi
 
 # chdir to frontmost window of Finder.app
 unset -f cdf
-function cdf {
-  cd "$(osascript -e 'tell application "Finder"' \
+cdf() {
+  local -r finder="$(osascript \
+    -e 'tell application "Finder"' \
     -e 'set myname to POSIX path of (target of window 1 as alias)' \
-    -e 'end tell' 2>/dev/null)" || return 1
+    -e 'end tell'
+    2>/dev/null
+  )"
+
+  cd "$finder" || return 1
 }
 
 # create a temporary and ephemeral Chrome instance
 unset -f wipe
 function wipe {
   local -r wipeprofile="$(mktemp -d)"
-  open -n -W -a "Google Chrome" --args \
-    --user-data-dir="$wipeprofile" \
-    --no-first-run --new-window --incognito \
-    https://www.google.com
-  rm -r "$wipeprofile"
+
+  open -a "Google Chrome" -nW --args \
+    --user-data-dir="$wipeprofile" --no-first-run --new-window --incognito
+
+  rm -rf "$wipeprofile"
 }
 
 # rbenv on mac
