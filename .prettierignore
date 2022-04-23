@@ -17,3 +17,5 @@ vim/undo/
 
 **/vendor/*
 !**/vendor/*.md
+
+alacritty/alacritty.yml
