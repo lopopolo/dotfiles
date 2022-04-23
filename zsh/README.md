@@ -1,7 +1,7 @@
-# bash Config
+# zsh Config
 
 The bash configuration files in this directory have no effect until they are
-sourced in the current user's `~/.bashrc` and `~/.bash_profile`.
+sourced in the current user's `~/.zshrc`.
 
 This example configuration assumes `gpg` and [Secretive] are installed with
 Homebrew.
@@ -13,19 +13,19 @@ Homebrew.
 ### Example
 
 ```bash
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=`tty`
 export SSH_AUTH_SOCK=/Users/lopopolo/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
-. "$HOME/.dotfiles/bash/dotfiles.bash"
+source "$HOME/.dotfiles/zsh/dotfiles.zsh"
 ```
 
 ### Caveats
 
-- rustup will dump some lines to `.bashrc` here when installing for the first
+- rustup will dump some lines to `.zshrc` here when installing for the first
   time. These lines are already included in this directory's bash configuration.
-  Remove them from `.bashrc` after rustup is installed.
+  Remove them from `.zshrc` after rustup is installed.
 
 ## `.bash_profile`
 
@@ -40,12 +40,10 @@ if [ -f /etc/profile ]; then
   PATH=""
   source /etc/profile
 fi
-
-. "$HOME/.bashrc"
 ```
 
 ### Caveats
 
-- rustup will dump some lines to `.bash_profile` here when installing for the
-  first time. These lines are already included in this directory's bash
-  configuration. Remove them from `.bash_profile` after rustup is installed.
+- rustup will dump some lines to `.zprofile` here when installing for the first
+  time. These lines are already included in this directory's bash configuration.
+  Remove them from `.zprofile` after rustup is installed.

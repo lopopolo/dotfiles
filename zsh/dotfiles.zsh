@@ -1,63 +1,55 @@
-# shellcheck shell=bash
+# shellcheck shell=zsh
 # vim: filetype=sh
+
+# initialize completion system
+# https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null
+then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+  autoload -Uz compinit
+  compinit
+fi
 
 EDITOR="$(command -v vim)"
 export EDITOR
 
-unset -f prepend_to_path
-prepend_to_path() {
-  if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
-    export PATH="$1:${PATH}"
-  fi
-}
-
-unset -f append_to_path
-append_to_path() {
-  if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
-    export PATH="${PATH}:$1"
-  fi
-}
-
 if [[ "$(uname)" == "Darwin" ]]; then
   # shellcheck source=bash/macos.bash
-  source "$HOME/.dotfiles/bash/macos.bash"
-fi
-if [[ "$(uname)" == "Linux" ]]; then
-  # shellcheck source=bash/linux.bash
-  source "$HOME/.dotfiles/bash/linux.bash"
+  source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
 
 # TERM setup
 export CLICOLOR=1
 export TERM="xterm-256color"
 
-# bash history
-# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-# https://news.ycombinator.com/item?id=11811272
-export HISTCONTROL=ignoreboth
-export HISTSIZE=""
-export HISTIGNORE="ls:exit:history:[bf]g:jobs"
-shopt -s histappend
+# zsh history
+# https://www.soberkoder.com/better-zsh-history/
+# https://github.com/ohmyzsh/ohmyzsh/blob/a879ff1515b6bd80eea695c03e22289bd6743718/lib/history.zsh
+HISTFILE="$HOME/.zsh_history"
+HISTFILESIZE=1000000000
+HISTSIZE=1000000000
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt share_history          # share command history data
 
-# The single best bash config option of all time. Also, see .inputrc for more vi
-# goodness in readline-enabled apps.
-set -o vi
+# vi mode
+bindkey -v
 
 # =========================================================================== #
 # Aliases
 # =========================================================================== #
 alias la='ls -la'
 
-# and vimrc
-alias vv='vim "$HOME/.vimrc"'
-
 # Alias g=git and add bash completion
 alias g='git'
-__git_complete g __git_main
+compdef g=git
 
 # Same for vim
 alias v='vim'
-complete -o filenames -F _filedir_xspec v
+compdef v=vim
 
 # json pretty printing
 alias jsonpp='python -mjson.tool'
@@ -65,11 +57,6 @@ alias jsonpp='python -mjson.tool'
 # =========================================================================== #
 # useful shell functions
 # =========================================================================== #
-unset -f freq
-unset -f is_not_ascii
-unset -f diff_line_count
-unset -f rand_string
-unset -f ytld
 
 # freq prints out a list of my most frequently used commands
 freq() {
@@ -118,8 +105,9 @@ ytdl() {
 # =========================================================================== #
 
 # stuff for moving around directories
-# https://bosker.wordpress.com/2012/02/12/bash-scripters-beware-of-the-cdpath/
-CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/hyperbola:$HOME/dev/repos:$HOME/dev"
+# https://koenwoortman.com/zsh-cdpath/
+setopt auto_cd
+cdpath=($HOME $HOME/dev/artichoke $HOME/dev/hyperbola $HOME/dev/repos $HOME/dev)
 
 if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1091
