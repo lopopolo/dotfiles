@@ -5,16 +5,14 @@ EDITOR="$(command -v vim)"
 export EDITOR
 
 unset -f prepend_to_path
-function prepend_to_path
-{
+function prepend_to_path {
   if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
     export PATH="$1:${PATH}"
   fi
 }
 
 unset -f append_to_path
-function append_to_path
-{
+function append_to_path {
   if ! [[ "$PATH" =~ (^|:)${1}($|:) ]]; then
     export PATH="${PATH}:$1"
   fi
@@ -78,8 +76,7 @@ unset -f diff_line_count
 unset -f rand_string
 
 # freq prints out a list of my most frequently used commands
-function freq
-{
+function freq {
   cut -d" " -f1 ~/.bash_history |
     grep -Ev "^[[:space:]]*$" |
     sort |
@@ -90,27 +87,25 @@ function freq
 
 # This function prints out lines in the given files that
 # contain non-ascii characters
-function is_not_ascii
-{
+function is_not_ascii {
   if [[ "$#" == "0" ]]; then
     echo "Usage: $0 file1 file2 ..."
     return 1
   fi
   local argc="$#"
-  while (( "$#" )); do
+  while (("$#")); do
     if [[ "$argc" -gt "1" ]]; then echo "$1:"; fi
     perl -nwe 'print if /[^[:ascii:]]/' "$1"
     shift
   done
 }
 
-function diff_line_count
-{
+function diff_line_count {
   git diff-index --numstat HEAD
 }
 
 function rand_string {
-  </dev/urandom LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' | fold -w "${1:-32}" | head -n 1
+  LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
 # =========================================================================== #
