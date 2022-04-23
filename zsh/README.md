@@ -1,6 +1,6 @@
 # zsh Config
 
-The bash configuration files in this directory have no effect until they are
+The zsh configuration files in this directory have no effect until they are
 sourced in the current user's `~/.zshrc`.
 
 This example configuration assumes `gpg` and [Secretive] are installed with
@@ -24,7 +24,7 @@ source "$HOME/.dotfiles/zsh/dotfiles.zsh"
 ### Caveats
 
 - rustup will dump some lines to `.zshrc` here when installing for the first
-  time. These lines are already included in this directory's bash configuration.
+  time. These lines are already included in this directory's zsh configuration.
   Remove them from `.zshrc` after rustup is installed.
 
 ## `.zprofile`
@@ -45,5 +45,5 @@ fi
 ### Caveats
 
 - rustup will dump some lines to `.zprofile` here when installing for the first
-  time. These lines are already included in this directory's bash configuration.
+  time. These lines are already included in this directory's zsh configuration.
   Remove them from `.zprofile` after rustup is installed.

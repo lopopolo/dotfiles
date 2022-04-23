@@ -18,7 +18,7 @@ EDITOR="$(command -v vim)"
 export EDITOR
 
 if [[ "$(uname)" == "Darwin" ]]; then
-  # shellcheck source=bash/macos.bash
+  # shellcheck source=zsh/macos.zsh
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
 
@@ -46,7 +46,7 @@ bindkey -v
 # =========================================================================== #
 alias la='ls -la'
 
-# Alias g=git and add bash completion
+# Alias g=git and add shell completion
 alias g='git'
 compdef g=git
 
@@ -63,7 +63,7 @@ alias jsonpp='python -mjson.tool'
 
 # freq prints out a list of my most frequently used commands
 freq() {
-  cut -d" " -f1 ~/.bash_history |
+  cut -d" " -f1 ~/.zsh_history |
     grep -Ev "^[[:space:]]*$" |
     sort |
     uniq -c |
