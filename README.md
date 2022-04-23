@@ -5,23 +5,24 @@ Configs and scripts for making a machine feel like `$HOME`.
 ## Setup
 
 `git clean` in my home directory terrifies me, so these dotfiles are scoped to a
-subdirectory of `$HOME` and can bootstrap themselves by making symlinks.
+subdirectory of `$HOME` and can bootstrap themselves by making symlinks or
+copying files into `.config`.
 
-```bash
+These dotfiles assume they are located at `$HOME/.dotfiles`.
+
+```shell
 cd $HOME
 git clone git@github.com:lopopolo/dotfiles.git .dotfiles
 cd .dotfiles
 make
-
-# inject bash config into system provided config files
-echo '. "$HOME/.bashrc"' >> "$HOME/.bash_profile"
-echo '. "$HOME/.dotfiles/bash/dotfiles.bash"' >> "$HOME/.bashrc"
 ```
 
 ## Homebrew
 
-Homebrew is a package manager for macOS.
-[Installation instructions](https://docs.brew.sh/Installation).
+Homebrew is a package manager for macOS. [Installation
+instructions][install-brew].
+
+[install-brew]: https://docs.brew.sh/Installation
 
 Packages for each machine are found in [homebrew-packages](/homebrew-packages).
 
@@ -31,26 +32,24 @@ Install packages for the current machine using:
 brew_bundle_install
 ```
 
-## Modern bash
+## Shell
 
-macOS ships with bash 3.2 from 2007. The homebrew instructions above install the
-most recent bash. To make it the default login shell:
+This repository ships with shell configuration files for `bash` and `zsh`. See
+the READMEs in the config directories for details:
 
-```bash
-echo /usr/local/bin/bash | sudo tee -a /etc/shells
-chsh -s /usr/local/bin/bash
-```
+- [`bash`](bash)
+- [`zsh`](zsh)
 
 ## Languages
 
 ### ruby
 
-```
+```shell
 rbenv install "$(cat $HOME/.ruby-version)"
 ```
 
 ### python
 
-```
+```shell
 pyenv install "$(cat $HOME/.python-version)"
 ```
