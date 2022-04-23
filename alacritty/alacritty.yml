@@ -470,7 +470,7 @@ colors:
 #  args:
 #    - --login
 shell:
-  program: /usr/local/bin/bash
+  program: /bin/zsh
   args:
     - -l
     - -c
