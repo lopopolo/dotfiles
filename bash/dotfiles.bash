@@ -108,6 +108,15 @@ rand_string() {
   LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
+ytdl() {
+  local quality="bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"
+  if [[ "$1" == "--best" ]]; then
+    quality="bestvideo+bestaudio"
+    shift
+  fi
+  docker run --rm -i -v "$(pwd)":/workdir:rw mikenye/youtube-dl:latest -f "$quality" "$1"
+}
+
 # =========================================================================== #
 # Tools
 # =========================================================================== #
