@@ -8,11 +8,11 @@ Homebrew.
 
 [secretive]: https://github.com/maxgoedjen/secretive
 
-## `.bashrc`
+## `.zshrc`
 
 ### Example
 
-```bash
+```zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=`tty`
@@ -27,11 +27,11 @@ source "$HOME/.dotfiles/zsh/dotfiles.zsh"
   time. These lines are already included in this directory's bash configuration.
   Remove them from `.zshrc` after rustup is installed.
 
-## `.bash_profile`
+## `.zprofile`
 
 ### Example
 
-```bash
+```zsh
 # This is needed to prevent `path_helper` from mucking with the PATH when
 # launching tmux.
 #
