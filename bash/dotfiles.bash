@@ -117,6 +117,6 @@ rand_string() {
 CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/hyperbola:$HOME/dev/repos:$HOME/dev"
 
 if [[ -f "$HOME/.cargo/env" ]]; then
-  # shellcheck disable=SC1090
+  # shellcheck disable=SC1091
   source "$HOME/.cargo/env"
 fi

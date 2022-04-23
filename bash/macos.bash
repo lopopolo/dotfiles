@@ -26,6 +26,7 @@ prepend_to_path "/usr/local/bin"
 # mac bash completion is broken, but homebrew's works
 
 if [ -f "$(brew --prefix)/etc/bash_completion" ]; then
+  # shellcheck disable=SC1091
   source "$(brew --prefix)/etc/bash_completion"
 fi
 
@@ -36,7 +37,7 @@ cdf() {
     osascript \
       -e 'tell application "Finder"' \
       -e 'set myname to POSIX path of (target of window 1 as alias)' \
-      -e 'end tell'
+      -e 'end tell' \
     2>/dev/null
   )"
 

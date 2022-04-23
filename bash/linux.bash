@@ -16,25 +16,32 @@ export BROWSER
 
 # Bash completion
 if [ -f /usr/share/git/completion/git-completion.bash ]; then
+  # shellcheck disable=SC1091
   source /usr/share/git/completion/git-completion.bash
 fi
 if [ -f /usr/share/bash-completion/completions/git ]; then
+  # shellcheck disable=SC1091
   source /usr/share/bash-completion/completions/git
 fi
 
 if [ -f /etc/bash_completion ]; then
+  # shellcheck disable=SC1091
   source /etc/bash_completion
 fi
 
 # fzf
 ## Arch
 if [ -f /usr/share/fzf/key-bindings.bash ]; then
+  # shellcheck disable=SC1091
   source /usr/share/fzf/key-bindings.bash
+  # shellcheck disable=SC1091
   source /usr/share/fzf/completion.bash
 fi
 ## Ubuntu / Debian
 if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
+  # shellcheck disable=SC1091
   source /usr/share/doc/fzf/examples/key-bindings.bash
+  # shellcheck disable=SC1091
   source /usr/share/doc/fzf/examples/completion.bash
 fi
 
@@ -84,21 +91,9 @@ eval "$(starship init bash)"
 case "$TERM" in
   xterm* | rxvt*)
     # Show the currently running command in the terminal title:
-    # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
-    show_command_in_title_bar() {
-      case "$BASH_COMMAND" in
-        *\033]0*)
-          # The command is trying to set the title bar as well;
-          # this is most likely the execution of $PROMPT_COMMAND.
-          # In any case nested escapes confuse the terminal, so don't
-          # output them.
-          ;;
-        *)
-          echo -ne "\033]0;$(dirs +0) (${BASH_COMMAND})\007"
-          ;;
-      esac
-    }
-    trap show_command_in_title_bar DEBUG
+    # https://www.davidpashley.com/articles/xterm-titles-with-bash/
+    set -o functrace
+    trap 'echo -ne "\e]0;"; echo -n $BASH_COMMAND; echo -ne "\007"' DEBUG
     ;;
   *) ;;
 
