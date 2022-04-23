@@ -46,7 +46,7 @@ cdf() {
 
 # create a temporary and ephemeral Chrome instance
 unset -f wipe
-function wipe {
+wipe() {
   local -r wipeprofile="$(mktemp -d)"
 
   open -a "Google Chrome" -nW --args \
