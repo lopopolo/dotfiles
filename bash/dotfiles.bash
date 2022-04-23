@@ -1,8 +1,8 @@
 # shellcheck shell=bash
 # vim: filetype=sh
 
-export EDITOR
 EDITOR="$(command -v vim)"
+export EDITOR
 
 unset -f prepend_to_path
 function prepend_to_path
@@ -20,13 +20,13 @@ function append_to_path
   fi
 }
 
-if [[ `uname` == "Darwin" ]]; then
-  # shellcheck source=files/.bashrc.mac
-  source "$HOME/.bashrc.mac"
+if [[ "$(uname)" == "Darwin" ]]; then
+  # shellcheck source=bash/macos.bash
+  source "$HOME/.dotfiles/bash/macos.bash"
 fi
-if [[ `uname` == "Linux" ]]; then
-  # shellcheck source=files/.bashrc.linux
-  source "$HOME/.bashrc.linux"
+if [[ "$(uname)" == "Linux" ]]; then
+  # shellcheck source=bash/linux.bash
+  source "$HOME/.dotfiles/bash/linux.bash"
 fi
 
 # TERM setup
@@ -110,7 +110,7 @@ function diff_line_count
 }
 
 function rand_string {
-  cat /dev/urandom | LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' | fold -w ${1:-32} | head -n 1
+  </dev/urandom LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' | fold -w "${1:-32}" | head -n 1
 }
 
 # =========================================================================== #

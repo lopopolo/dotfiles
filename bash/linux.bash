@@ -43,7 +43,7 @@ export QT_AUTO_SCREEN_SCALE_FACTOR=2
 export GDK_SCALE=2
 
 # rbenv
-if [ -f $HOME/.rbenv/bin/rbenv ]; then
+if [ -f "$HOME/.rbenv/bin/rbenv" ]; then
   export PATH="$PATH:$HOME/.rbenv/bin"
 fi
 # rbenv on linux
@@ -53,7 +53,7 @@ if [[ ":${PATH}:" != *:"${RBENV_ROOT}/shims":* ]]; then
 fi
 
 # pyenv
-if [ -f $HOME/.pyenv/bin/pyenv ]; then
+if [ -f "$HOME/.pyenv/bin/pyenv" ]; then
    export PATH="$PATH:$HOME/.pyenv/bin"
 fi
 # pyenv on linux
