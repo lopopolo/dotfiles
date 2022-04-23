@@ -10,6 +10,9 @@ then
   autoload -Uz compinit
   compinit
 fi
+# case insensitive auto completion
+# https://superuser.com/a/1092328
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 EDITOR="$(command -v vim)"
 export EDITOR
