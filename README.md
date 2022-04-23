@@ -12,7 +12,6 @@ cd $HOME
 git clone git@github.com:lopopolo/dotfiles.git .dotfiles
 cd .dotfiles
 make
-make git-config-<TAB> # options for work or personal
 
 # inject bash config into system provided config files
 echo '. "$HOME/.bashrc"' >> "$HOME/.bash_profile"

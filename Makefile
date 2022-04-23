@@ -43,7 +43,7 @@ starship:
 .PHONY: fmt
 fmt:
 	npm run fmt
-	shfmt -f . | grep -v '^vim/' | xargs shfmt -i 2 -ci -s -d
+	shfmt -f . | grep -v '^vim/' | xargs -n1 shfmt -i 2 -ci -d
 
 .PHONY: brewfile
 brewfile:
