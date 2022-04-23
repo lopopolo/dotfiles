@@ -45,6 +45,11 @@ fmt:
 	npm run fmt
 	shfmt -f . | grep -v '^vim/' | xargs -n1 shfmt -i 2 -ci -d
 
+.PHONY: lint
+lint:
+	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs shellcheck -x
+	find . -name '*.zsh' | grep -v 'vim/' | xargs -n1 zsh -n
+
 .PHONY: brewfile
 brewfile:
 	rm homebrew-packages/Brewfile.`hostname -s`
