@@ -21,7 +21,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
 
-export CLICOLOR=1
 
 # =========================================================================== #
 # Shell history                                                               #
@@ -106,8 +105,15 @@ ytdl() {
 }
 
 # =========================================================================== #
-# Tools
+# Tools                                                                       #
 # =========================================================================== #
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  # Avoid defining the `CLICOLOR` env variable to get colorized `ls` output on
+  # macOS. `-G` is equivalent to `CLICOLOR=1` and `--color=auto`. See `man ls`.
+  alias ls="ls -G"
+  compdef ls=ls
+fi
 
 # stuff for moving around directories
 # https://koenwoortman.com/zsh-cdpath/
