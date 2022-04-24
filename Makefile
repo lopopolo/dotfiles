@@ -49,7 +49,7 @@ tmux:
 fmt:
 	npm run fmt
 	shfmt -f . | grep -v '^vim/' | xargs -n1 shfmt -i 2 -ci -d -w
-	shfmt -i 2 -ci -d -w zsh/*
+	shfmt -i 2 -ci -d -w zsh/*.zsh
 
 .PHONY: lint
 lint:
