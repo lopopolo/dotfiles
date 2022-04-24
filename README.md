@@ -24,7 +24,7 @@ instructions][install-brew].
 
 [install-brew]: https://docs.brew.sh/Installation
 
-Packages for each machine are found in [homebrew-packages](homebrew-packages).
+Packages for each machine are found in [`homebrew-packages`](homebrew-packages).
 
 Install packages for the current machine using:
 
