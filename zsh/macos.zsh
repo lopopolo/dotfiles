@@ -37,17 +37,22 @@ wipe() {
   rm -rf "$wipeprofile"
 }
 
-# rbenv on mac
+# =========================================================================== #
+# Programming language version managers                                       #
+# =========================================================================== #
+
+# rbenv on macOS
 export RBENV_ROOT=/usr/local/var/rbenv
-if [[ ":${PATH}:" != *:"${RBENV_ROOT}/shims":* ]]; then
+if command -v rbenv >/dev/null; then
   eval "$(rbenv init -)"
 fi
 
-# pyenv on mac
+# pyenv on macOS
 if [[ -o login ]]; then
   export PYENV_ROOT=/usr/local/var/pyenv
-  path=("$PYENV_ROOT/bin" $path)
-  eval "$(pyenv init --path)"
+  if command -v pyenv >/dev/null; then
+    eval "$(pyenv init --path)"
+  fi
 fi
 
 if command -v pyenv >/dev/null; then
