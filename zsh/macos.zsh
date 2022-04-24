@@ -35,10 +35,16 @@ cdf() {
 # This function will block until the new Chrome instance is quit.
 wipe() {
   local -r profile="$(mktemp -d)"
+  local -r chrome_args=(
+    --disable-bundled-ppapi-flash --disable-offline-load-stale-cache
+    --disk-cache-size=1 --media-cache-size=1 --disk-cache-dir=/dev/null
+    --no-first-run --no-referrers --no-default-browser-check
+    --new-window --incognito --user-data-dir="${profile}"
+  )
 
-  open -a "Google Chrome" -nW --args --user-data-dir="$profile" --no-first-run --new-window --incognito
+  open -a "Google Chrome" -nW --args "${chrome_args[@]}"
 
-  rm -rf "$profile"
+  rm -rf "${profile}"
 }
 
 # =========================================================================== #
