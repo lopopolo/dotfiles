@@ -14,7 +14,7 @@ export PATH
 # Useful shell functions                                                      #
 # =========================================================================== #
 
-# chdir to frontmost window of Finder.app
+# Change the current directory to the frontmost window of Finder.app.
 cdf() {
   local -r finder="$(
     osascript \
@@ -27,14 +27,18 @@ cdf() {
   cd "$finder" || return 1
 }
 
-# create a temporary and ephemeral Chrome instance
+# Create a temporary and ephemeral Chrome instance.
+#
+# This function launches a new, separate Chrome instance with a temporary
+# profile in incognito mode.
+#
+# This function will block until the new Chrome instance is quit.
 wipe() {
-  local -r wipeprofile="$(mktemp -d)"
+  local -r profile="$(mktemp -d)"
 
-  open -a "Google Chrome" -nW --args \
-    --user-data-dir="$wipeprofile" --no-first-run --new-window --incognito
+  open -a "Google Chrome" -nW --args --user-data-dir="$profile" --no-first-run --new-window --incognito
 
-  rm -rf "$wipeprofile"
+  rm -rf "$profile"
 }
 
 # =========================================================================== #
