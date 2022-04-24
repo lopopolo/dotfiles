@@ -28,7 +28,7 @@ Packages for each machine are found in [homebrew-packages](homebrew-packages).
 
 Install packages for the current machine using:
 
-```bash
+```shell
 make brew_bundle_install
 ```
 
@@ -42,13 +42,15 @@ the READMEs in the config directories for details:
 
 ## Languages
 
-### ruby
+These dotfiles setup version managers for Ruby and Python.
+
+### Ruby
 
 ```shell
 rbenv install "$(cat $HOME/.ruby-version)"
 ```
 
-### python
+### Python
 
 ```shell
 pyenv install "$(cat $HOME/.python-version)"
