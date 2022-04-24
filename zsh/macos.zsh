@@ -4,7 +4,7 @@
 
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  fpath=("$(brew --prefix)/share/zsh/site-functions" "$fpath[@]")
 fi
 
 path=("/usr/local/sbin" "/usr/local/bin" $path)
