@@ -15,9 +15,6 @@ export EDITOR
 alias vim='nvim'
 complete -o filenames -F _filedir_xspec vim
 
-# VS Code
-append_to_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 # homebrew stuff
 prepend_to_path "/usr/local/sbin"
 prepend_to_path "/usr/local/bin"

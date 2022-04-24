@@ -6,9 +6,6 @@ fi
 alias nosleeptillbrooklyn='caffeinate -s'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
-# VS Code
-path+=("/Applications/Visual Studio Code.app/Contents/Resources/app/bin")
-
 # homebrew stuff
 path+=("/usr/local/sbin" "/usr/local/bin")
 export PATH
