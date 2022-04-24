@@ -73,18 +73,8 @@ freq() {
 # - ASCII control bytes.
 # - Non-ASCII bytes.
 is_not_ascii() {
-  if [[ "$#" == "0" ]]; then
-    echo "Usage: $0 file1 file2 ..."
-    return 1
-  fi
-  local argc="$#"
-  while (("$#")); do
-    if [[ "$argc" -gt "1" ]]; then echo "$1:"; fi
-    perl -nwe 'print if /[^[:ascii:]]/' "$1"
-    shift
-  done
+  grep -Ev '^[[:print:]]*$' "$@"
 }
-
 
 # Generate a random ASCII alphanumeric string.
 #
