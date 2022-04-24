@@ -60,18 +60,18 @@ alias jsonpp='python -mjson.tool'
 # useful shell functions
 # =========================================================================== #
 
-# freq prints out a list of my most frequently used commands
+# Print out a list of the most frequently used commands found in `.zsh_history`.
+#
+# This function takes a single optional argument for the number of top commands
+# to print, which defaults to 10.
 freq() {
-  cut -d" " -f1 ~/.zsh_history |
-    grep -Ev "^[[:space:]]*$" |
-    sort |
-    uniq -c |
-    sort -rn |
-    head
+  cut -d" " -f1 ~/.zsh_history | grep -Ev "^[[:space:]]*$" | sort | uniq -c | sort -rn | head -n"${1:-10}"
 }
 
-# This function prints out lines in the given files that
-# contain non-ascii characters
+# Print out lines in the given files that contain either:
+#
+# - ASCII control bytes.
+# - Non-ASCII bytes.
 is_not_ascii() {
   if [[ "$#" == "0" ]]; then
     echo "Usage: $0 file1 file2 ..."
@@ -85,14 +85,24 @@ is_not_ascii() {
   done
 }
 
-diff_line_count() {
-  git diff-index --numstat HEAD
-}
 
+# Generate a random ASCII alphanumeric string.
+#
+# This function takes a single optional argument for the string length, which
+# defaults to 32.
+#
+# This function omits confusables like i, I, l, and L.
 rand_string() {
   LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
+# Download a video using youtube-dl in a Docker container.
+#
+# By default, this function takes a URL to a video as its only argument. It will
+# attempt to download the best quality MP4 video.
+#
+# If invoked as `ytdl --best URL`, this function will download the best quality
+# video, but the output container is unspecified.
 ytdl() {
   local quality="bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"
   if [[ "$1" == "--best" ]]; then
