@@ -7,7 +7,6 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 alias ls='ls -h -F'
 alias nosleeptillbrooklyn='caffeinate -s'
-alias brew_bundle_install='brew bundle --file=$HOME/.dotfiles/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
 # neovim

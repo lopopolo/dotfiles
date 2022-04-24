@@ -29,7 +29,7 @@ Packages for each machine are found in [homebrew-packages](homebrew-packages).
 Install packages for the current machine using:
 
 ```bash
-brew_bundle_install
+make brew_bundle_install
 ```
 
 ## Shell

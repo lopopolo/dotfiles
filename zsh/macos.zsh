@@ -4,7 +4,6 @@ if type brew &>/dev/null; then
 fi
 
 alias nosleeptillbrooklyn='caffeinate -s'
-alias brew_bundle_install='brew bundle --file=$HOME/.dotfiles/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
 # VS Code

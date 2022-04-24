@@ -61,6 +61,10 @@ brewfile:
 	rm homebrew-packages/Brewfile.`hostname -s`
 	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
 
+.PHONY:
+brew_bundle_install:
+	brew bundle --file=homebrew-packages/Brewfile.`hostname -s`
+
 .PHONY: vim
 vim: vim-init
 
