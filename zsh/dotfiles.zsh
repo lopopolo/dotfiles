@@ -23,17 +23,22 @@ fi
 
 export CLICOLOR=1
 
-# zsh history
+# =========================================================================== #
+# Shell history                                                               #
+# =========================================================================== #
+
+# Enable history.
 # https://www.soberkoder.com/better-zsh-history/
 # https://github.com/ohmyzsh/ohmyzsh/blob/a879ff1515b6bd80eea695c03e22289bd6743718/lib/history.zsh
+
 HISTFILE="$HOME/.zsh_history"
-HISTFILESIZE=1000000000
-HISTSIZE=1000000000
+HISTSIZE=10000000
+SAVEHIST=10000000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
-setopt share_history          # share command history data
+setopt share_history          # share command history data between all sessions
 
 # vi mode
 bindkey -v
