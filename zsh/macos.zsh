@@ -1,12 +1,11 @@
+# https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+
 alias nosleeptillbrooklyn='caffeinate -s'
 alias brew_bundle_install='brew bundle --file=$HOME/.dotfiles/homebrew-packages/Brewfile.`hostname -s`'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
-
-# neovim
-EDITOR='nvim'
-export EDITOR
-alias vim='nvim'
-compdef vim=nvim
 
 # VS Code
 path+=("/Applications/Visual Studio Code.app/Contents/Resources/app/bin")

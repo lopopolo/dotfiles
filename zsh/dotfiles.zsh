@@ -1,26 +1,20 @@
 # shellcheck shell=zsh
 # vim: filetype=sh
 
-# initialize completion system
-# https://docs.brew.sh/Shell-Completion
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-
-  autoload -Uz compinit
-  compinit
-fi
-# case insensitive auto completion
-# https://superuser.com/a/1092328
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-
-EDITOR="$(command -v vim)"
-export EDITOR
-
 if [[ "$(uname)" == "Darwin" ]]; then
   # shellcheck source=zsh/macos.zsh
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
 
+# =========================================================================== #
+# Shell completion                                                            #
+# =========================================================================== #
+
+autoload -Uz compinit
+compinit
+# case insensitive auto completion
+# https://superuser.com/a/1092328
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # =========================================================================== #
 # Shell history                                                               #
@@ -39,21 +33,25 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data between all sessions
 
-# vi mode
+# =========================================================================== #
+# Editor, vim, aliases, completion                                            #
+# =========================================================================== #
+
+# zsh vi mode line editing
 bindkey -v
 
+export EDITOR='nvim'
+alias vim='nvim'
+compdef vim=nvim
+
 # =========================================================================== #
-# Aliases
+# Aliases                                                                     #
 # =========================================================================== #
+
 alias la='ls -la'
 
-# Alias g=git and add shell completion
 alias g='git'
 compdef g=git
-
-# Same for vim
-alias v='vim'
-compdef v=vim
 
 # json pretty printing
 alias jsonpp='python -mjson.tool'
