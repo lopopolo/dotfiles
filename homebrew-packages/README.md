@@ -7,8 +7,8 @@ packages installed using homebrew.
 
 To bootstrap a new system
 
-```sh
-brew_bundle_install
+```shell
+make brew_bundle_install
 ```
 
 [`brew bundle`]: https://github.com/Homebrew/homebrew-bundle
