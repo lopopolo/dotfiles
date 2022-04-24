@@ -71,6 +71,14 @@ fi
 alias nosleeptillbrooklyn='caffeinate -s'
 alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
 
+# Avoid defining the `CLICOLOR` env variable to get colorized `ls` output on
+# macOS. `-G` is equivalent to `CLICOLOR=1` and `--color=auto`. See `man ls`.
+#
+# `-h` uses human size suffixes in combination with `-l`.
+# `-F` displays markers for directories for executables, directories, and
+# symlinks.
+alias ls="ls -G -h -F"
+
 # =========================================================================== #
 # Prompt                                                                      #
 # =========================================================================== #

@@ -126,16 +126,6 @@ ytdl() {
 # Tools                                                                       #
 # =========================================================================== #
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  # Avoid defining the `CLICOLOR` env variable to get colorized `ls` output on
-  # macOS. `-G` is equivalent to `CLICOLOR=1` and `--color=auto`. See `man ls`.
-  #
-  # `-h` uses human size suffixes in combination with `-l`.
-  # `-F` displays markers for directories for executables, directories, and
-  # symlinks.
-  alias ls="ls -G -h -F"
-fi
-
 # stuff for moving around directories
 # https://koenwoortman.com/zsh-cdpath/
 setopt auto_cd
