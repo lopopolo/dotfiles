@@ -1,6 +1,13 @@
 # shellcheck shell=zsh
 # vim: filetype=sh
 
+# =========================================================================== #
+# Platform-specific setup                                                     #
+# =========================================================================== #
+
+# NOTE: completions cannot be set up in the platform-specific configs since
+# `compinit` hasn't been called yet.
+
 if [[ "$(uname)" == "Darwin" ]]; then
   # shellcheck source=zsh/macos.zsh
   source "$HOME/.dotfiles/zsh/macos.zsh"
@@ -12,9 +19,22 @@ fi
 
 autoload -Uz compinit
 compinit
+# Completion tools
+# https://github.com/ohmyzsh/ohmyzsh/blob/a879ff1515b6bd80eea695c03e22289bd6743718/lib/completion.zsh
+#
 # case insensitive auto completion
 # https://superuser.com/a/1092328
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' list-colors ''
+
+# disable named-directories autocompletion
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+
+# Use caching so that commands like apt and dpkg complete are useable
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' cache-path $ZSH_CACHE_DIR
+
+autoload -U +X bashcompinit && bashcompinit
 
 # =========================================================================== #
 # Shell history                                                               #
@@ -57,7 +77,7 @@ compdef g=git
 alias jsonpp='python -mjson.tool'
 
 # =========================================================================== #
-# useful shell functions
+# useful shell functions                                                      #
 # =========================================================================== #
 
 # Print out a list of the most frequently used commands found in `.zsh_history`.
