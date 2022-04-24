@@ -1,14 +1,18 @@
+# =========================================================================== #
+# Homebrew setup                                                              #
+# =========================================================================== #
+
 # https://docs.brew.sh/Shell-Completion
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
 
-alias nosleeptillbrooklyn='caffeinate -s'
-alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
-
-# homebrew stuff
-path+=("/usr/local/sbin" "/usr/local/bin")
+path=("/usr/local/sbin" "/usr/local/bin" $path)
 export PATH
+
+# =========================================================================== #
+# Useful shell functions                                                      #
+# =========================================================================== #
 
 # chdir to frontmost window of Finder.app
 cdf() {
@@ -52,7 +56,14 @@ if command -v pyenv >/dev/null; then
 fi
 
 # =========================================================================== #
-# Prompt
+# Tools                                                                       #
+# =========================================================================== #
+
+alias nosleeptillbrooklyn='caffeinate -s'
+alias listening_ports='sudo lsof -PiTCP -sTCP:LISTEN'
+
+# =========================================================================== #
+# Prompt                                                                      #
 # =========================================================================== #
 
 eval "$(starship init zsh)"

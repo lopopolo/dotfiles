@@ -77,7 +77,7 @@ compdef g=git
 alias jsonpp='python -mjson.tool'
 
 # =========================================================================== #
-# useful shell functions                                                      #
+# Useful shell functions                                                      #
 # =========================================================================== #
 
 # Print out a list of the most frequently used commands found in `.zsh_history`.
