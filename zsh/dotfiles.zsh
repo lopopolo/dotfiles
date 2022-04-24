@@ -21,9 +21,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
 
-# TERM setup
 export CLICOLOR=1
-export TERM="xterm-256color"
 
 # zsh history
 # https://www.soberkoder.com/better-zsh-history/

@@ -27,9 +27,7 @@ if [[ "$(uname)" == "Linux" ]]; then
   source "$HOME/.dotfiles/bash/linux.bash"
 fi
 
-# TERM setup
 export CLICOLOR=1
-export TERM="xterm-256color"
 
 # bash history
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
