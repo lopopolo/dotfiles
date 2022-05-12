@@ -3,7 +3,7 @@
 require 'rubygems'
 
 # print ruby version at every prompt
-PROMPT_RUBY_VERSION = "[#{RUBY_VERSION}]"
+PROMPT_RUBY_VERSION = "[#{RUBY_VERSION}]".freeze
 IRB.conf[:PROMPT][:CUSTOM] = {
   PROMPT_N: "#{PROMPT_RUBY_VERSION} | ",
   PROMPT_I: "#{PROMPT_RUBY_VERSION} > ",

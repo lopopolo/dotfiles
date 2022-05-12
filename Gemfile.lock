@@ -37,6 +37,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.17.0)
       parser (>= 3.1.1.0)
+    rubocop-rake (0.6.0)
+      rubocop (~> 1.0)
     ruby-progressbar (1.11.0)
     thor (1.2.1)
     unicode-display_width (2.1.0)
@@ -51,6 +53,7 @@ DEPENDENCIES
   pry-byebug
   rake (>= 12.3.3)
   rubocop
+  rubocop-rake
 
 BUNDLED WITH
    2.3.9
