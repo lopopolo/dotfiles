@@ -1,4 +1,5 @@
 tap "aquasecurity/trivy"
+tap "bazelbuild/tap"
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -18,6 +19,8 @@ brew "awscli"
 brew "bash"
 # Programmable completion for Bash 3.2
 brew "bash-completion"
+# User-friendly launcher for Bazel
+brew "bazelisk"
 # Parser generator
 brew "bison"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
@@ -96,6 +99,8 @@ brew "yamllint"
 brew "zlib"
 # Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
 brew "aquasecurity/trivy/trivy"
+# Tool for building Bazel targets when source files change
+brew "bazelbuild/tap/ibazel"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
