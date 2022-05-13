@@ -119,7 +119,7 @@ ytdl() {
     quality="bestvideo+bestaudio"
     shift
   fi
-  docker run --rm -i -v "$(pwd)":/workdir:rw mikenye/youtube-dl:latest -f "$quality" "$1"
+  docker run --rm -i -v "$(pwd)":/workdir:rw mikenye/youtube-dl:latest -f "$quality" "$@"
 }
 
 # =========================================================================== #
