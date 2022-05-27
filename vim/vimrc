@@ -23,6 +23,7 @@ Plug 'junegunn/fzf.vim'
 
 " language plugins
 Plug 'sheerun/vim-polyglot'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'hashivim/vim-hashicorp-tools'
 Plug 'nathangrigg/vim-beancount'
 Plug 'uarun/vim-protobuf'
