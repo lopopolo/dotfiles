@@ -88,17 +88,3 @@ append_to_path "$HOME/.cargo/bin"
 # =========================================================================== #
 
 eval "$(starship init bash)"
-
-## Set currently executing command in xterm title
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-  xterm* | rxvt*)
-    # Show the currently running command in the terminal title:
-    # https://www.davidpashley.com/articles/xterm-titles-with-bash/
-    set -o functrace
-    trap 'echo -ne "\e]0;"; echo -n $BASH_COMMAND; echo -ne "\007"' DEBUG
-    ;;
-  *) ;;
-
-esac
