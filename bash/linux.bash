@@ -44,6 +44,10 @@ if [ -f /usr/share/doc/fzf/examples/key-bindings.bash ]; then
   # shellcheck disable=SC1091
   source /usr/share/doc/fzf/examples/completion.bash
 fi
+if [ -f $HOME/.fzf/shell/key-bindings.bash ]; then
+  source $HOME/.fzf/shell/key-bindings.bash
+  source $HOME/.fzf/shell/completion.bash
+fi
 
 # HiDPI
 export QT_AUTO_SCREEN_SCALE_FACTOR=2
