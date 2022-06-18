@@ -67,6 +67,7 @@ unset -f freq
 unset -f is_not_ascii
 unset -f diff_line_count
 unset -f rand_string
+unset -f rand_alpha_lower
 unset -f ytld
 
 # freq prints out a list of my most frequently used commands
@@ -98,8 +99,25 @@ diff_line_count() {
   git diff-index --numstat HEAD
 }
 
+# Generate a random ASCII alphanumeric string.
+#
+# This function takes a single optional argument for the string length, which
+# defaults to 32.
+#
+# This function omits confusables like i, I, l, and L.
 rand_string() {
   LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
+}
+
+# Generate a random ASCII alphanumeric string with only lowercase alphabetic
+# characters.
+#
+# This function takes a single optional argument for the string length, which
+# defaults to 16.
+#
+# This function omits confusables like i, l.
+rand_alpha_lower() {
+  LANG=C LC_ALL=C tr -dc 'a-km-np-z' </dev/urandom | fold -w "${1:-16}" | head -n 1
 }
 
 ytdl() {

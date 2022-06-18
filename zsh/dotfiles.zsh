@@ -106,6 +106,17 @@ rand_string() {
   LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
+# Generate a random ASCII alphanumeric string with only lowercase alphabetic
+# characters.
+#
+# This function takes a single optional argument for the string length, which
+# defaults to 16.
+#
+# This function omits confusables like i, l.
+rand_alpha_lower() {
+  LANG=C LC_ALL=C tr -dc 'a-km-np-z' </dev/urandom | fold -w "${1:-16}" | head -n 1
+}
+
 # Download a video using youtube-dl in a Docker container.
 #
 # By default, this function takes a URL to a video as its only argument. It will
