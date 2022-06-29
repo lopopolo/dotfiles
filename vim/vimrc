@@ -19,7 +19,8 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'wojciechkepka/vim-github-dark'
 
 " fuzzy file search
-Plug 'junegunn/fzf.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 
 " language plugins
 Plug 'sheerun/vim-polyglot'
@@ -230,11 +231,9 @@ augroup END
 
 " =============================== Plugin stuff  ===============================
 
-" fzf
-set rtp+=/usr/local/opt/fzf
-map <C-p> :Files<CR>
-map <C-g> :Rg<CR>
-let $FZF_DEFAULT_COMMAND  = 'rg --files'
+" fuzzy finding
+map <C-p> <cmd>Telescope find_files<cr>
+map <C-g> <cmd>Telescope live_grep<cr>
 
 " Set completeopt to have a better completion experience
 " :help completeopt
