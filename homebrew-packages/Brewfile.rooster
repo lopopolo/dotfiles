@@ -37,6 +37,8 @@ brew "git"
 brew "git-extras"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
@@ -122,6 +124,8 @@ cask "font-inconsolata-g"
 cask "font-inconsolata-nerd-font"
 # Vector graphics editor
 cask "inkscape"
+# Orchestrates virtual Ubuntu instances
+cask "multipass"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Team communication and collaboration software
