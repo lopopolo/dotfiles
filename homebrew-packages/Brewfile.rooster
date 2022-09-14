@@ -1,4 +1,3 @@
-tap "aquasecurity/trivy"
 tap "bazelbuild/tap"
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
@@ -87,14 +86,14 @@ brew "tfsec"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
+# Vulnerability scanner for container images, file systems, and Git repos
+brew "trivy"
 # Internet file retriever
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
 # General-purpose lossless data-compression library
 brew "zlib"
-# Scanner for vulnerabilities in container images, file systems, and Git repositories, as well as for configuration issues
-brew "aquasecurity/trivy/trivy"
 # Tool for building Bazel targets when source files change
 brew "bazelbuild/tap/ibazel"
 # GPU-accelerated terminal emulator
