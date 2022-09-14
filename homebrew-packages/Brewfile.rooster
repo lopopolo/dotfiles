@@ -45,8 +45,6 @@ brew "hadolint"
 brew "hyperfine"
 # Command-line pager for JSON data
 brew "jless"
-# Utility to optimize JPEG files
-brew "jpegoptim"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Next-gen compiler infrastructure
@@ -109,28 +107,11 @@ cask "alacritty"
 cask "aws-vault"
 # Voice and text chat software
 cask "discord"
-# Monospaced font that includes programming ligatures
-cask "font-cascadia-code"
-# Version of Cascadia Code with embedded Powerline symbols
-cask "font-cascadia-code-pl"
-# Version of Cascadia Code without ligatures
-cask "font-cascadia-mono"
-# Version of Cascadia Code without ligatures and with embedded Powerline symbols
-cask "font-cascadia-mono-pl"
-cask "font-inconsolata"
-cask "font-inconsolata-for-powerline"
-cask "font-inconsolata-for-powerline-bold"
-cask "font-inconsolata-g"
-cask "font-inconsolata-nerd-font"
 # Vector graphics editor
 cask "inkscape"
 # Orchestrates virtual Ubuntu instances
 cask "multipass"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
-# Team communication and collaboration software
-cask "slack"
-# Music streaming service
-cask "spotify"
 # Multimedia player
 cask "vlc"
