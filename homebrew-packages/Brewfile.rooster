@@ -15,10 +15,6 @@ brew "autoconf@2.69"
 brew "automake"
 # Official Amazon AWS command-line interface
 brew "awscli"
-# Bourne-Again SHell, a UNIX command interpreter
-brew "bash"
-# Programmable completion for Bash 3.2
-brew "bash-completion"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # Parser generator
