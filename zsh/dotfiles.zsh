@@ -152,4 +152,5 @@ cdpath=($HOME $HOME/dev/artichoke $HOME/dev/hyperbola $HOME/dev/repos $HOME/dev)
 if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1091
   source "$HOME/.cargo/env"
+  export CARGO_NET_GIT_FETCH_WITH_CLI=true
 fi
