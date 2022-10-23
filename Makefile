@@ -65,6 +65,28 @@ brewfile:
 brew_bundle_install:
 	brew bundle --file=homebrew-packages/Brewfile.`hostname -s`
 
+.PHONY: cargo_bins_install
+cargo_bins_install:
+	cargo install --locked \
+		bindgen-cli \
+		cargo-about \
+		cargo-bisect-rustc \
+		cargo-bloat \
+		cargo-deny \
+		cargo-diet \
+		cargo-expand \
+		cargo-fuzz \
+		cargo-geiger \
+		cargo-insta \
+		cargo-mutants \
+		cargo-nextest \
+		cargo-outdated \
+		cargo-spellcheck \
+		cargo-tally \
+		cargo-udeps \
+		flamegraph \
+		ucd-generate
+
 .PHONY: vim
 vim: vim-init
 
