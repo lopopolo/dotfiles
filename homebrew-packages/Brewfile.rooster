@@ -41,6 +41,8 @@ brew "hyperfine"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# High-performance theorem prover
+brew "z3"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Fast, highly customisable system info script
@@ -97,6 +99,8 @@ brew "bazelbuild/tap/ibazel"
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
 # Voice and text chat software
 cask "discord"
 # Vector graphics editor
