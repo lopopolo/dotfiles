@@ -12,6 +12,6 @@
   "repository": "github:lopopolo/dotfiles",
   "devDependencies": {},
   "scripts": {
-    "fmt": "npx prettier --write '**/*'"
+    "fmt": "npx prettier --write \"**/*\""
   }
 }
