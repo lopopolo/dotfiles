@@ -1,4 +1,3 @@
-tap "bazelbuild/tap"
 tap "beeftornado/rmtree"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -37,6 +36,8 @@ brew "go"
 brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
+# Tools for building Bazel targets when source files change
+brew "ibazel"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
@@ -93,8 +94,6 @@ brew "wget"
 brew "yamllint"
 # General-purpose lossless data-compression library
 brew "zlib"
-# Tool for building Bazel targets when source files change
-brew "bazelbuild/tap/ibazel"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
