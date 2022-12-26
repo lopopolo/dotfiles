@@ -13,6 +13,11 @@ Homebrew.
 ### Example
 
 ```zsh
+# Uncomment below to enable profiling and access in the new shell with the
+# `zprof` command.
+#
+# zmodload zsh/zprof
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export GPG_TTY=`tty`

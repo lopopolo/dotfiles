@@ -8,7 +8,7 @@
 # NOTE: completions cannot be set up in the platform-specific configs since
 # `compinit` hasn't been called yet.
 
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ "$OSTYPE" == darwin* ]]; then
   # shellcheck source=zsh/macos.zsh
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
