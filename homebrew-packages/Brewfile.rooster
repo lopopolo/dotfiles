@@ -68,6 +68,8 @@ brew "ruby-build"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Extremely fast Python linter, written in Rust
+brew "ruff"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -88,10 +90,14 @@ brew "tmux"
 brew "tree"
 # Vulnerability scanner for container images, file systems, and Git repos
 brew "trivy"
+# Visual Binary Diff
+brew "vbindiff"
 # Internet file retriever
 brew "wget"
 # Linter for YAML files
 brew "yamllint"
+# CLI to convert between YAML, TOML, JSON and HCL
+brew "yj"
 # General-purpose lossless data-compression library
 brew "zlib"
 # GPU-accelerated terminal emulator
