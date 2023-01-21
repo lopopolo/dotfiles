@@ -80,6 +80,8 @@ brew "shellcheck"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
+# State of the art linter for the Go programming language
+brew "staticcheck"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Static analysis security scanner for your terraform code
