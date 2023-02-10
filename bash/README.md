@@ -13,7 +13,8 @@ Homebrew.
 ### Example
 
 ```bash
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# install fzf keybindings with `/usr/local/opt/fzf/install --xdg`
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.bash
 
 export GPG_TTY=`tty`
 export SSH_AUTH_SOCK=/Users/lopopolo/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
