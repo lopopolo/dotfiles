@@ -32,6 +32,8 @@ brew "git-extras"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Stricter gofmt
+brew "gofumpt"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
@@ -92,6 +94,8 @@ brew "tmux"
 brew "tree"
 # Vulnerability scanner for container images, file systems, and Git repos
 brew "trivy"
+# Command-line tool for URL parsing and manipulation
+brew "trurl"
 # Visual Binary Diff
 brew "vbindiff"
 # Internet file retriever
