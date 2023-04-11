@@ -147,5 +147,16 @@ CDPATH=".:$HOME:$HOME/dev/artichoke:$HOME/dev/hyperbola:$HOME/dev/repos:$HOME/de
 if [[ -f "$HOME/.cargo/env" ]]; then
   # shellcheck disable=SC1091
   source "$HOME/.cargo/env"
+
+  # This option tells Cargo to use the `git` binary instead of `libgit2` for git
+  # operations, which is significantly faster.
+  #
+  # https://doc.rust-lang.org/cargo/reference/config.html#netgit-fetch-with-cli
   export CARGO_NET_GIT_FETCH_WITH_CLI=true
+
+  # This option tells Cargo to use the HTTP-based `sparse` protocol for accessing
+  # crates.io, which only downloads the necessary parts of the index and is faster.
+  #
+  # https://doc.rust-lang.org/cargo/reference/config.html#registriescrates-ioprotocol
+  export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 fi
