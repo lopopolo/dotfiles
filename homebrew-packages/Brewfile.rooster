@@ -2,12 +2,12 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
-# Automatic configure script builder
-brew "autoconf"
-# Automatic configure script builder
-brew "autoconf@2.69"
-# Tool for generating GNU Standards-compliant Makefiles
-brew "automake"
+# Library for command-line editing
+brew "readline"
+# Command-line interface for SQLite
+brew "sqlite"
+# General-purpose data compression with high compression ratio
+brew "xz"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # User-friendly launcher for Bazel
@@ -16,6 +16,8 @@ brew "bazelisk"
 brew "bison"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
+# GNU multiple precision arithmetic library
+brew "gmp"
 # GNU File, Shell, and Text utilities
 brew "coreutils"
 # Perl lib for reading and writing EXIF metadata
@@ -40,6 +42,8 @@ brew "ibazel"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# YAML Parser
+brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Fast, highly customisable system info script
@@ -86,8 +90,6 @@ brew "tmux"
 brew "tree"
 # Vulnerability scanner for container images, file systems, and Git repos
 brew "trivy"
-# Command-line tool for URL parsing and manipulation
-brew "trurl"
 # Visual Binary Diff
 brew "vbindiff"
 # Internet file retriever
