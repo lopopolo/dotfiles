@@ -32,8 +32,6 @@ brew "git-extras"
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
-# Stricter gofmt
-brew "gofumpt"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
@@ -44,8 +42,6 @@ brew "ibazel"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# High-performance theorem prover
-brew "z3"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Fast, highly customisable system info script
@@ -82,8 +78,6 @@ brew "shellcheck"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
-# State of the art linter for the Go programming language
-brew "staticcheck"
 # Tool to build, change, and version infrastructure
 brew "terraform"
 # Static analysis security scanner for your terraform code
