@@ -6,5 +6,5 @@ gem 'bundler-audit', '~> 0.9', require: false
 gem 'pry', '~> 0.14'
 gem 'pry-byebug', '~> 3.10'
 gem 'rake', '>= 12.3.3', require: false
-gem 'rubocop', '~> 1.48', require: false
+gem 'rubocop', '~> 1.50', require: false
 gem 'rubocop-rake', '~> 0.6', require: false
