@@ -13,8 +13,6 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-    allow:
-      - dependency-type: "all"
     open-pull-requests-limit: 10
     assignees:
       - lopopolo
