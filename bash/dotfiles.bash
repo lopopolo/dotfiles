@@ -161,6 +161,7 @@ if [[ -f "$HOME/.cargo/env" ]]; then
   export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 fi
 
-if command -v go &> /dev/null; then
-  export PATH=$PATH:$(go env GOPATH)/bin
+if command -v go &>/dev/null; then
+  PATH=$PATH:$(go env GOPATH)/bin
+  export PATH
 fi
