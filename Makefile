@@ -82,11 +82,11 @@ cargo_bins_install:
 		cargo-mutants \
 		cargo-nextest \
 		cargo-outdated \
-		cargo-spellcheck \
 		cargo-tally \
 		cargo-udeps \
 		flamegraph \
 		ucd-generate
+	LIBCLANG_PATH=/usr/local/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
 
 .PHONY: vim
 vim: vim-init
