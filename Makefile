@@ -94,7 +94,6 @@ vim: vim-init
 .PHONY: vim-init
 vim-init:
 	ln -snf $(PWD)/vim/vimrc $(HOME)/.vimrc
-	ln -snf $(PWD)/vim/gvimrc $(HOME)/.gvimrc
 	ln -snf $(PWD)/vim $(HOME)/.vim
 	mkdir -p $(HOME)/.config/nvim/
 	mkdir -p $(HOME)/.local/state/nvim/undo
