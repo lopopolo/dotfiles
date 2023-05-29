@@ -49,7 +49,7 @@ require("lazy").setup({
   -- tab bar and status line
   { "nvim-tree/nvim-web-devicons", lazy = true },
   { "akinsho/bufferline.nvim", config = function() require("bufferline").setup() end },
-  { "nvim-lualine/lualine.nvim", config = function() require("lualine").setup() end },
+  { "nvim-lualine/lualine.nvim", config = function() require("lualine").setup() end, event = "VeryLazy" },
   -- syntax
   {
     "nvim-treesitter/nvim-treesitter",
