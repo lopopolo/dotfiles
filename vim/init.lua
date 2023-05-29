@@ -4,9 +4,6 @@ vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
-vim.g.rustfmt_autosave = 1
-
 -- neovim defaults this to `on`, but in order for rust autoindent settings to
 -- be loaded, we must turn this off before loading packages.
 vim.cmd.filetype({"indent", "off"})
@@ -134,7 +131,13 @@ require("lazy").setup({
   },
   -- programming lang support
   { "fatih/vim-go", build = ":GoUpdateBinaries" },
-  "rust-lang/rust.vim",
+  {
+    "rust-lang/rust.vim",
+    init = function()
+      -- https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
+      vim.g.rustfmt_autosave = 1
+    end,
+  },
 })
 
 vim.cmd.syntax("on")
