@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/linux,macos,windows,vim,xcode,intellij,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=linux,macos,windows,vim,xcode,intellij,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/vim,linux,macos,xcode,windows,intellij,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=vim,linux,macos,xcode,windows,intellij,visualstudiocode
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -201,12 +201,6 @@ tags
 .history
 .ionide
 
-# Support for Project snippet scope
-.vscode/*.code-snippets
-
-# Ignore code-workspaces
-*.code-workspace
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -245,8 +239,9 @@ xcuserdata/
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/linux,macos,windows,vim,xcode,intellij,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/vim,linux,macos,xcode,windows,intellij,visualstudiocode
