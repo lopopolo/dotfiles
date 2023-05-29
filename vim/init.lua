@@ -301,6 +301,7 @@ vim.opt.undodir = vim.fn.expand("$HOME/.local/state/nvim/undo")
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
 
+-----------------------------------
 -- programming language settings --
 -----------------------------------
 
