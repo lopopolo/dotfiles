@@ -38,8 +38,9 @@ require("lazy").setup({
       { "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable "make" == 1, build = "make" },
     },
     config = function()
-      require("telescope").setup()
-      require("telescope").load_extension("fzf")
+      local telescope = require("telescope")
+      telescope.setup()
+      telescope.load_extension("fzf")
 
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<C-p>", builtin.find_files, {})
