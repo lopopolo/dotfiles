@@ -46,21 +46,10 @@ require("lazy").setup({
       vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
     end,
   },
-  -- tab bar
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      require("bufferline").setup()
-    end,
-  },
-  -- status line
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup()
-    end,
-  },
+  -- tab bar and status line
+  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "akinsho/bufferline.nvim", config = function() require("bufferline").setup() end },
+  { "nvim-lualine/lualine.nvim", config = function() require("lualine").setup() end },
   -- syntax
   {
     "nvim-treesitter/nvim-treesitter",
