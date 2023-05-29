@@ -97,5 +97,5 @@ vim-init:
 	ln -snf $(PWD)/vim/gvimrc $(HOME)/.gvimrc
 	ln -snf $(PWD)/vim $(HOME)/.vim
 	mkdir -p $(HOME)/.config/nvim/
-	ln -snf $(PWD)/vim/init.vim $(HOME)/.config/nvim/init.vim
-	mkdir -p $(HOME)/.config/nvim/after/plugin
+	mkdir -p $(HOME)/.local/state/nvim/undo
+	ln -snf $(PWD)/vim/init.lua $(HOME)/.config/nvim/init.lua
