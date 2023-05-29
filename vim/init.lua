@@ -320,3 +320,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.go",
   command = "setlocal noexpandtab ts=4 sw=4 sts=4",
 })
+
+-- set gitconfig filetype for dotfiles
+vim.api.nvim_create_augroup("detect_gitconfig", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "detect_gitconfig",
+  pattern = "*.gitconfig",
+  command = "set ft=gitconfig",
+})
