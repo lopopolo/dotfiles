@@ -1,1 +1,1 @@
-vim/plugged/* linguist-vendored
+vim/autoload/plug.vim linguist-vendored
