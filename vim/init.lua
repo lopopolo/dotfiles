@@ -140,6 +140,9 @@ require("lazy").setup({
 vim.cmd.syntax("on")
 vim.cmd.filetype({"plugin", "indent", "on"})
 
+-------------------------
+-- trailing whitespace --
+-------------------------
 
 -- highlight trailing whitespace
 vim.cmd.highlight("ExtraWhitespace ctermbg=red guibg=red")
@@ -148,6 +151,15 @@ vim.cmd.match([[ExtraWhitespace /\s\+\%#\@<!$/]])
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   command = "highlight ExtraWhitespace ctermbg=red guibg=red",
+})
+
+-- strip trailing whitespace for all files (except markdown where trailing
+-- whitespace is significant)
+vim.api.nvim_create_augroup("strip_trailing_whitespace", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  group = "strip_trailing_whitespace",
+  pattern = "*",
+  command = [[if &ft!~?'markdown' | let l = line(".") | let c = col(".") | %s/\\s\\+$//e | call cursor(l, c)]],
 })
 
 --------------------------
@@ -310,15 +322,6 @@ vim.opt.undoreload = 10000
 -----------------------------------
 -- programming language settings --
 -----------------------------------
-
--- strip trailing whitespace for all files (except markdown where trailing
--- whitespace is significant)
-vim.api.nvim_create_augroup("strip_trailing_whitespace", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = "strip_trailing_whitespace",
-  pattern = "*",
-  command = [[if &ft!~?'markdown' | let l = line(".") | let c = col(".") | %s/\\s\\+$//e | call cursor(l, c)]],
-})
 
 -- use tabs for golang
 vim.api.nvim_create_augroup("golang_tabs", { clear = true })
