@@ -34,13 +34,36 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   -- fuzzy file search
-  "nvim-lua/plenary.nvim",
-  "nvim-telescope/telescope.nvim",
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable "make" == 1, build = "make" },
+    },
+    config = function()
+      require("telescope").setup()
+      require("telescope").load_extension("fzf")
+
+      local builtin = require("telescope.builtin")
+      vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+      vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
+    end,
+  },
   -- tab bar
-  { "akinsho/bufferline.nvim", dependencies = "nvim-tree/nvim-web-devicons" },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("bufferline").setup()
+    end,
+  },
   -- status line
-  "nvim-lualine/lualine.nvim",
+  {
+    "nvim-lualine/lualine.nvim",
+    config = function()
+      require("lualine").setup()
+    end,
+  },
   -- syntax
   {
     "nvim-treesitter/nvim-treesitter",
@@ -117,23 +140,6 @@ require("lazy").setup({
 vim.cmd.syntax("on")
 vim.cmd.filetype({"plugin", "indent", "on"})
 
------------------------------------
--- fuzzy finder and file browser --
------------------------------------
-
-require("telescope").setup()
-require("telescope").load_extension("fzf")
-
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
-
-----------------------------
--- status and buffer bars --
-----------------------------
-
-require("bufferline").setup()
-require("lualine").setup()
 
 -- highlight trailing whitespace
 vim.cmd.highlight("ExtraWhitespace ctermbg=red guibg=red")
