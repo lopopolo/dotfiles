@@ -331,3 +331,16 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = "*.gitconfig",
   command = "set ft=gitconfig",
 })
+
+-- set bash filetype for brewfiles
+vim.api.nvim_create_augroup("detect_gitconfig", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "detect_gitconfig",
+  pattern = "Brewfile",
+  command = "set ft=bash",
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = "detect_gitconfig",
+  pattern = "Brewfile.[A-Za-z0-9-]+",
+  command = "set ft=bash",
+})
