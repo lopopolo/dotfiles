@@ -59,7 +59,7 @@ lint:
 
 .PHONY: brewfile
 brewfile:
-	rm homebrew-packages/Brewfile.`hostname -s`
+	rm -f homebrew-packages/Brewfile.`hostname -s`
 	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY:
