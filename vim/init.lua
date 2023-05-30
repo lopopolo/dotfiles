@@ -82,6 +82,7 @@ require("lazy").setup({
           "make",
           "objc",
           "python",
+          "regex",
           "ruby",
           "rust",
           "scss",
