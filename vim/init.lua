@@ -94,8 +94,15 @@ require("lazy").setup({
           "yaml",
         },
 
-        highlight = { enable = true },
-        indent = { enable = true, disable = { "python" } },
+        highlight = {
+          enable = true,
+          -- https://github.com/nvim-treesitter/nvim-treesitter/issues/1501
+          additional_vim_regex_highlighting = { "ruby" },
+        },
+        indent = {
+          enable = true,
+          disable = { "python", "ruby" },
+        },
       })
     end,
   },
@@ -122,6 +129,7 @@ require("lazy").setup({
   },
   -- programming lang support
   { "fatih/vim-go", build = ":GoUpdateBinaries" },
+  "vim-ruby/vim-ruby",
   {
     "rust-lang/rust.vim",
     init = function()
@@ -131,8 +139,8 @@ require("lazy").setup({
   },
 })
 
-vim.cmd.syntax("on")
-vim.cmd.filetype({"plugin", "indent", "on"})
+vim.cmd("filetype plugin indent on")
+vim.cmd("syntax on")
 
 -------------------------
 -- trailing whitespace --
