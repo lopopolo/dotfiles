@@ -74,7 +74,7 @@ require("lazy").setup({
   },
   -- programming lang support
   { "fatih/vim-go", build = ":GoUpdateBinaries" },
-  "vim-ruby/vim-ruby",
+  "hashivim/vim-terraform",
   {
     "rust-lang/rust.vim",
     init = function()
@@ -82,6 +82,7 @@ require("lazy").setup({
       vim.g.rustfmt_autosave = 1
     end,
   },
+  "vim-ruby/vim-ruby",
 })
 
 vim.cmd("filetype plugin indent on")
