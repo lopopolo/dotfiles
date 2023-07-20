@@ -1,7 +1,6 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-versions"
-tap "homebrew/core"
+# Cryptography and SSL/TLS Toolkit
+brew "openssl@3"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -50,8 +49,6 @@ brew "llvm"
 brew "neovim"
 # Platform built on V8 to build network applications
 brew "node"
-# Cryptography and SSL/TLS Toolkit
-brew "openssl@3"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Optimizer for PNG files
