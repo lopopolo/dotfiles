@@ -107,7 +107,7 @@ vim.api.nvim_create_augroup("strip_trailing_whitespace", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "strip_trailing_whitespace",
   pattern = "*",
-  command = [[if &ft!~?'markdown' | let l = line(".") | let c = col(".") | %s/\\s\\+$//e | call cursor(l, c)]],
+  command = "if &ft!~?'markdown' | let l = line('.') | let c = col('.') | %s/\\s\\+$//e | call cursor(l, c)",
 })
 
 --------------------------
