@@ -11,6 +11,7 @@
 	co = checkout
 	ahead = log @{upstream}..HEAD
 	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
+	work = "!f () { git branch --no-color --format='%(refname:short)' --sort=-committerdate | fzf --preview='git log --color=always {} --' ; } ; git checkout \"`f`\""
 [advice]
 	detachedHead = false
 [branch]
