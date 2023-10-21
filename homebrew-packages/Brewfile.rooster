@@ -63,8 +63,6 @@ brew "ruby-build"
 brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Extremely fast Python linter, written in Rust
-brew "ruff"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
@@ -77,8 +75,6 @@ brew "shfmt"
 brew "starship"
 # Tool to build, change, and version infrastructure
 brew "terraform"
-# Static analysis security scanner for your terraform code
-brew "tfsec"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
