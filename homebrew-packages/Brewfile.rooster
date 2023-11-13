@@ -37,6 +37,8 @@ brew "hadolint"
 brew "hyperfine"
 # Tools for building Bazel targets when source files change
 brew "ibazel"
+# GNU utilities for networking
+brew "inetutils"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
