@@ -51,22 +51,8 @@ wipe() {
 # Programming language version managers                                       #
 # =========================================================================== #
 
-# rbenv on macOS
-export RBENV_ROOT=/usr/local/var/rbenv
-if command -v rbenv >/dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-# pyenv on macOS
-if [[ -o login ]]; then
-  export PYENV_ROOT=/usr/local/var/pyenv
-  if command -v pyenv >/dev/null; then
-    eval "$(pyenv init --path)"
-  fi
-fi
-
 if command -v pyenv >/dev/null; then
-  eval "$(pyenv init -)"
+  eval "$(rtx activate zsh)"
 fi
 
 # =========================================================================== #
