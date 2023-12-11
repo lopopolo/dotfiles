@@ -49,22 +49,16 @@ brew "libyaml"
 brew "llvm"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Platform built on V8 to build network applications
-brew "node"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Optimizer for PNG files
 brew "pngcrush"
 # PNG image optimizing utility
 brew "pngquant"
-# Python version management
-brew "pyenv"
-# Install various Ruby versions and implementations
-brew "ruby-build"
-# Ruby version manager
-brew "rbenv"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Polyglot runtime manager (asdf rust clone)
+brew "rtx"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
