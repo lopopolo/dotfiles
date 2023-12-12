@@ -51,7 +51,7 @@ wipe() {
 # Programming language version managers                                       #
 # =========================================================================== #
 
-if command -v pyenv >/dev/null; then
+if command -v rtx >/dev/null; then
   eval "$(rtx activate zsh)"
 fi
 
