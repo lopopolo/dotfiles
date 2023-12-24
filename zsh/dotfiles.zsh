@@ -88,7 +88,7 @@ alias jsonpp='python -mjson.tool'
 # This function takes a single optional argument for the number of top commands
 # to print, which defaults to 10.
 freq() {
-  cut -d" " -f1 ~/.zsh_history | grep -Ev "^[[:space:]]*$" | sort | uniq -c | sort -rn | head -n"${1:-10}"
+  history 1 | awk '{print $2}' | awk '{count[$0]++} END {for (cmd in count) print count[cmd], cmd}' | sort -rn | head -n"${1:-10}"
 }
 
 # Print out lines in the given files that contain either:
@@ -135,11 +135,17 @@ rand_pin() {
 # If invoked as `ytdl --best URL`, this function will download the best quality
 # video, but the output container is unspecified.
 ytdl() {
+  if [ $# -eq 0 ]; then
+    echo "Usage: ytdl [--best] <URL>"
+    return 1
+  fi
+
   local quality="bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"
   if [[ "$1" == "--best" ]]; then
     quality="bestvideo+bestaudio"
     shift
   fi
+
   docker run --rm -i -v "$(pwd)":/downloads:rw jauderho/yt-dlp:latest -f "$quality" "$@"
 }
 
