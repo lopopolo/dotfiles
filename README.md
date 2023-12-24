@@ -34,24 +34,18 @@ make brew_bundle_install
 
 ## Shell
 
-This repository ships with shell configuration files for `bash` and `zsh`. See
-the READMEs in the config directories for details:
+This repository ships with shell configuration files for `zsh`. See the READMEs
+in the config directories for details:
 
-- [`bash`](bash)
 - [`zsh`](zsh)
 
 ## Languages
 
-These dotfiles setup version managers for Ruby and Python.
+These dotfiles setup the [`rtx`] version manager which should be used to manage
+Python, Ruby, Node.js, and Go installs.
 
-### Ruby
-
-```shell
-rbenv install "$(cat $HOME/.ruby-version)"
-```
-
-### Python
+[`rtx`]: https://github.com/jdx/rtx
 
 ```shell
-pyenv install "$(cat $HOME/.python-version)"
+rtx install
 ```
