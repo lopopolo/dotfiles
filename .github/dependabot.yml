@@ -5,6 +5,10 @@ updates:
     directory: "/"
     schedule:
       interval: "monthly"
+    groups:
+      gha-deps:
+        patterns:
+          - "*"
     assignees:
       - lopopolo
     labels:
@@ -13,7 +17,22 @@ updates:
     directory: "/"
     schedule:
       interval: monthly
-    open-pull-requests-limit: 10
+    groups:
+      bundler-deps:
+        patterns:
+          - "*"
+    assignees:
+      - lopopolo
+    labels:
+      - A-deps
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: monthly
+    groups:
+      npm-deps:
+        patterns:
+          - "*"
     assignees:
       - lopopolo
     labels:
