@@ -81,6 +81,8 @@ brew "wget"
 brew "yamllint"
 # General-purpose lossless data-compression library
 brew "zlib"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
