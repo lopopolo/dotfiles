@@ -1,0 +1,73 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[colors.bright]
+black = "#4d4d4d"
+blue = "#6ca4f8"
+cyan = "#2b7489"
+green = "#57ab5a"
+magenta = "#db61a2"
+red = "#c93c37"
+white = "#ffffff"
+yellow = "#e3b341"
+
+[colors.cursor]
+cursor = "#c9d1d9"
+text = "#ffffff"
+
+[colors.normal]
+black = "#0d1117"
+blue = "#77bdfb"
+cyan = "#a2d2fb"
+green = "#7ce38b"
+magenta = "#cea5fb"
+red = "#fa7970"
+white = "#cdd9e5"
+yellow = "#fbe090"
+
+[colors.primary]
+background = "#161b22"
+foreground = "#adbac7"
+
+[colors.selection]
+background = "#0f2d5c"
+text = "#ffffff"
+
+[font]
+size = 17.0
+
+[font.bold]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "SemiBold"
+
+[font.bold_italic]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "SemiBold Italic"
+
+[font.italic]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "CaskaydiaCove Nerd Font Mono"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[shell]
+args = ["--login", "-c", "tmux new-session -A -s base"]
+program = "/bin/zsh"
+
+[window]
+decorations = "full"
+dynamic_padding = true
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 130
+lines = 45
+
+[window.padding]
+x = 5
+y = 5
