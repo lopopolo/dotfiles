@@ -1,4 +1,6 @@
 tap "homebrew/bundle"
+# YAML Parser
+brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
 # Library for command-line editing
@@ -7,6 +9,8 @@ brew "readline"
 brew "sqlite"
 # General-purpose data compression with high compression ratio
 brew "xz"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
 # Official Amazon AWS command-line interface
 brew "awscli"
 # User-friendly launcher for Bazel
@@ -41,8 +45,6 @@ brew "inetutils"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
-# YAML Parser
-brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Polyglot runtime manager (asdf rust clone)
