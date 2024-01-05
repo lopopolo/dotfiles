@@ -51,8 +51,8 @@ wipe() {
 # Programming language version managers                                       #
 # =========================================================================== #
 
-if command -v rtx >/dev/null; then
-  eval "$(rtx activate zsh)"
+if command -v mise >/dev/null; then
+  eval "$(mise activate zsh)"
 fi
 
 # =========================================================================== #

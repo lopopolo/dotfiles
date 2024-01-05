@@ -41,11 +41,11 @@ in the config directories for details:
 
 ## Languages
 
-These dotfiles setup the [`rtx`] version manager which should be used to manage
+These dotfiles setup the [`mise`] version manager which should be used to manage
 Python, Ruby, Node.js, and Go installs.
 
-[`rtx`]: https://github.com/jdx/rtx
+[`mise`]: https://github.com/jdx/mise
 
 ```shell
-rtx install
+mise install
 ```

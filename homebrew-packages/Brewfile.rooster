@@ -45,6 +45,8 @@ brew "jq"
 brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Pinentry for GPG on Mac
@@ -55,8 +57,6 @@ brew "pngcrush"
 brew "pngquant"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
-# Polyglot runtime manager (asdf rust clone)
-brew "rtx"
 # Rust toolchain installer
 brew "rustup-init"
 # Fast and accurate code counter with complexity and COCOMO estimates
