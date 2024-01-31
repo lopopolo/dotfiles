@@ -56,7 +56,7 @@ style = "Regular"
 history = 10000
 
 [shell]
-args = ["--login", "-c", "tmux new-session -A -s base"]
+args = ["--login", "-i", "-c", "tmux new-session -A -s base"]
 program = "/bin/zsh"
 
 [window]
