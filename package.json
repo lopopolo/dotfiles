@@ -11,7 +11,7 @@
   ],
   "repository": "github:lopopolo/dotfiles",
   "devDependencies": {
-    "prettier": "^3.1.1"
+    "prettier": "^3.2.4"
   },
   "scripts": {
     "fmt": "prettier --write \"**/*\""
