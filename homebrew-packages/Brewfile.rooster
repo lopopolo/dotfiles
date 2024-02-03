@@ -1,4 +1,5 @@
 tap "homebrew/bundle"
+tap "homebrew/cask-fonts"
 # YAML Parser
 brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
@@ -93,6 +94,38 @@ cask "aws-vault"
 cask "balenaetcher"
 # Voice and text chat software
 cask "discord"
+# Monospaced font that includes programming ligatures
+cask "font-cascadia-code"
+# Version of Cascadia Code with embedded Powerline symbols
+cask "font-cascadia-code-pl"
+# Version of Cascadia Code without ligatures
+cask "font-cascadia-mono"
+# Version of Cascadia Code without ligatures and with embedded Powerline symbols
+cask "font-cascadia-mono-pl"
+# Developer targeted fonts with a high number of glyphs
+cask "font-caskaydia-cove-nerd-font"
+# Developer targeted fonts with a high number of glyphs
+cask "font-caskaydia-mono-nerd-font"
+cask "font-courier-prime"
+# Free monospaced font with programming ligatures
+cask "font-fira-code"
+# Developer targeted fonts with a high number of glyphs
+cask "font-fira-code-nerd-font"
+cask "font-fira-mono"
+cask "font-fira-sans"
+cask "font-inconsolata"
+cask "font-noto-color-emoji"
+cask "font-noto-emoji"
+cask "font-noto-mono"
+cask "font-noto-mono-for-powerline"
+cask "font-noto-sans"
+# Language Specific OTFs Simplified Chinese (简体中文)
+cask "font-noto-sans-cjk-sc"
+cask "font-noto-sans-mono"
+# Language Specific Monospace OTFs Simplified Chinese (简体中文)
+cask "font-noto-sans-mono-cjk-sc"
+cask "font-roboto-mono"
+cask "font-ubuntu-mono"
 # Vector graphics editor
 cask "inkscape"
 # Orchestrates virtual Ubuntu instances
