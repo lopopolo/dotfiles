@@ -1,5 +1,7 @@
 tap "homebrew/bundle"
+tap "homebrew/cask"
 tap "homebrew/cask-fonts"
+tap "homebrew/core"
 # YAML Parser
 brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
@@ -78,6 +80,8 @@ brew "tmux"
 brew "tree"
 # Vulnerability scanner for container images, file systems, and Git repos
 brew "trivy"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
 # Internet file retriever
 brew "wget"
 # Linter for YAML files
@@ -118,9 +122,11 @@ cask "font-noto-color-emoji"
 cask "font-noto-emoji"
 cask "font-noto-mono"
 cask "font-noto-mono-for-powerline"
+# Sans-serif variable font
 cask "font-noto-sans"
 # Language Specific OTFs Simplified Chinese (简体中文)
 cask "font-noto-sans-cjk-sc"
+# Monospaced variable font
 cask "font-noto-sans-mono"
 # Language Specific Monospace OTFs Simplified Chinese (简体中文)
 cask "font-noto-sans-mono-cjk-sc"
