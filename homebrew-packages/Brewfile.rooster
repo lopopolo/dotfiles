@@ -1,11 +1,9 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-fonts"
-tap "homebrew/core"
-# YAML Parser
-brew "libyaml"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@3"
+# YAML Parser
+brew "libyaml"
 # Library for command-line editing
 brew "readline"
 # Command-line interface for SQLite
@@ -14,8 +12,6 @@ brew "sqlite"
 brew "xz"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
-# Official Amazon AWS command-line interface
-brew "awscli"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # Parser generator
@@ -28,8 +24,6 @@ brew "gmp"
 brew "coreutils"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Simple, fast and user-friendly alternative to find
-brew "fd"
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -78,14 +72,10 @@ brew "terraform"
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
 brew "tree"
-# Vulnerability scanner for container images, file systems, and Git repos
-brew "trivy"
 # Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
 # Internet file retriever
 brew "wget"
-# Linter for YAML files
-brew "yamllint"
 # General-purpose lossless data-compression library
 brew "zlib"
 # Fish shell like syntax highlighting for zsh
