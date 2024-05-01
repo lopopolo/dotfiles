@@ -7,7 +7,7 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: lang-runtimes alacritty git starship tmux $(DOTFILES)
+dotfiles: lang-runtimes alacritty git starship terraform tmux $(DOTFILES)
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
@@ -39,6 +39,11 @@ alacritty:
 starship:
 	mkdir -p $(HOME)/.config
 	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
+
+.PHONY: terraform
+terraform:
+	cp $(PWD)/terraform/.terraformrc $(HOME)/.terraformrc
+	mkdir -p $(HOME)/.terraform.d/plugin-cache
 
 .PHONY: tmux
 tmux:
