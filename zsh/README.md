@@ -18,8 +18,8 @@ Homebrew.
 #
 # zmodload zsh/zprof
 
-# install fzf keybindings with `/usr/local/opt/fzf/install --xdg`
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh ] && source "${XDG_CONFIG_HOME:-$HOME/.config}"/fzf/fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
 
 export GPG_TTY=`tty`
 export SSH_AUTH_SOCK=/Users/lopopolo/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
