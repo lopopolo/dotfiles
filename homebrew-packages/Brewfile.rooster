@@ -90,16 +90,16 @@ cask "balenaetcher"
 cask "discord"
 # Monospaced font that includes programming ligatures
 cask "font-cascadia-code"
+# Version of Cascadia Code with embedded Nerd Fonts symbols
+cask "font-cascadia-code-nf"
 # Version of Cascadia Code with embedded Powerline symbols
 cask "font-cascadia-code-pl"
 # Version of Cascadia Code without ligatures
 cask "font-cascadia-mono"
+# Version of Cascadia Code without ligatures and with embedded Nerd Fonts symbols
+cask "font-cascadia-mono-nf"
 # Version of Cascadia Code without ligatures and with embedded Powerline symbols
 cask "font-cascadia-mono-pl"
-# Developer targeted fonts with a high number of glyphs
-cask "font-caskaydia-cove-nerd-font"
-# Developer targeted fonts with a high number of glyphs
-cask "font-caskaydia-mono-nerd-font"
 cask "font-courier-prime"
 # Free monospaced font with programming ligatures
 cask "font-fira-code"

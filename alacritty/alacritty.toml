@@ -37,19 +37,19 @@ text = "#ffffff"
 size = 17.0
 
 [font.bold]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "Cascadia Mono NF"
 style = "SemiBold"
 
 [font.bold_italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "Cascadia Mono NF"
 style = "SemiBold Italic"
 
 [font.italic]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "Cascadia Mono NF"
 style = "Italic"
 
 [font.normal]
-family = "CaskaydiaCove Nerd Font Mono"
+family = "Cascadia Mono NF"
 style = "Regular"
 
 [scrolling]
