@@ -124,8 +124,6 @@ cask "font-roboto-mono"
 cask "font-ubuntu-mono"
 # Vector graphics editor
 cask "inkscape"
-# Orchestrates virtual Ubuntu instances
-cask "multipass"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Multimedia player
