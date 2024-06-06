@@ -117,8 +117,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- normal OS clipboard interaction
 vim.opt.clipboard = "unnamedplus"
 
-vim.opt.termencoding = "utf-8"
-vim.opt.encoding = "utf-8"
+-- vim.opt.termencoding = "utf-8"
+-- vim.opt.encoding = "utf-8"
 
 -- hide buffers instead of closing them this. means that the current buffer can
 -- be put to background without being written; and that marks and undo history
