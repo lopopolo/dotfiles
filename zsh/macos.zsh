@@ -2,13 +2,11 @@
 # Homebrew setup                                                              #
 # =========================================================================== #
 
-# https://docs.brew.sh/Shell-Completion
-if type brew &>/dev/null; then
-  fpath=("$(brew --prefix)/share/zsh/site-functions" "$fpath[@]")
+if type brew &>/dev/null
+then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
-
-path=("/usr/local/sbin" "/usr/local/bin" $path)
-export PATH
 
 # =========================================================================== #
 # Useful shell functions                                                      #

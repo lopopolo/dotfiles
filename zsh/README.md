@@ -35,18 +35,7 @@ source "$HOME/.dotfiles/zsh/dotfiles.zsh"
 
 ## `.zprofile`
 
-### Example
-
-```zsh
-# This is needed to prevent `path_helper` from mucking with the PATH when
-# launching tmux.
-#
-# See: https://superuser.com/a/583502
-if [ -f /etc/profile ]; then
-  PATH=""
-  source /etc/profile
-fi
-```
+Should be empty.
 
 ### Caveats
 

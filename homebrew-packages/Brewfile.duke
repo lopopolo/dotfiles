@@ -1,0 +1,75 @@
+tap "homebrew/bundle"
+# Automate deployment, configuration, and upgrading
+brew "ansible"
+# User-friendly launcher for Bazel
+brew "bazelisk"
+# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
+brew "clang-format"
+# Perl lib for reading and writing EXIF metadata
+brew "exiftool"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Distributed revision control system
+brew "git"
+# GNU Pretty Good Privacy (PGP) package
+brew "gnupg"
+# Smarter Dockerfile linter to validate best practices
+brew "hadolint"
+# Command-line benchmarking tool
+brew "hyperfine"
+# Tools for building Bazel targets when source files change
+brew "ibazel"
+# Command-line pager for JSON data
+brew "jless"
+# Polyglot runtime manager (asdf rust clone)
+brew "mise"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Pinentry for GPG on Mac
+brew "pinentry-mac"
+# Optimizer for PNG files
+brew "pngcrush"
+# PNG image optimizing utility
+brew "pngquant"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Rust toolchain installer
+brew "rustup-init"
+# Fast and accurate code counter with complexity and COCOMO estimates
+brew "scc"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
+# Autoformat shell script source code
+brew "shfmt"
+# Cross-shell prompt for astronauts
+brew "starship"
+# Tool to build, change, and version infrastructure
+brew "terraform"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Extremely fast Python package installer and resolver, written in Rust
+brew "uv"
+# Internet file retriever
+brew "wget"
+# Fish shell like syntax highlighting for zsh
+brew "zsh-syntax-highlighting"
+# GPU-accelerated terminal emulator
+cask "alacritty"
+# Securely stores and accesses AWS credentials in a development environment
+cask "aws-vault"
+# Tool to flash OS images to SD cards & USB drives
+cask "balenaetcher"
+cask "font-cascadia-code"
+cask "font-cascadia-code-nf"
+cask "font-cascadia-code-pl"
+cask "font-cascadia-mono"
+cask "font-cascadia-mono-nf"
+cask "font-cascadia-mono-pl"
+# Store SSH keys in the Secure Enclave
+cask "secretive"
+# Multimedia player
+cask "vlc"
+# Lossless audio decoder
+cask "xld"
