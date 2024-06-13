@@ -41,4 +41,3 @@ echo 'use-agent' > ~/.gnupg/gpg.conf
    ```shell
    wget -O- https://github.com/web-flow.gpg | gpg --import
    ```
-
