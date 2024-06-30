@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 # Automate deployment, configuration, and upgrading
 brew "ansible"
+# Checks ansible playbooks for practices and behaviour
+brew "ansible-lint"
 # User-friendly launcher for Bazel
 brew "bazelisk"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
@@ -13,6 +15,8 @@ brew "fzf"
 brew "git"
 # GNU Pretty Good Privacy (PGP) package
 brew "gnupg"
+# Fast linters runner for Go
+brew "golangci-lint"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
@@ -55,6 +59,8 @@ brew "uv"
 brew "wget"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Command-line interface for 1Password
+cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
