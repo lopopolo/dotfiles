@@ -12,6 +12,7 @@ dotfiles: lang-runtimes alacritty git starship terraform tmux $(DOTFILES)
 .PHONY: $(DOTFILES)
 $(DOTFILES):
 	ln -snf $(PWD)/files/$@ $(HOME)/$@
+	mkdir -p $(HOME)/.terraform.d/plugin-cache
 
 .PHONY: lang-runtimes
 lang-runtimes:
