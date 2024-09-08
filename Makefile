@@ -91,7 +91,7 @@ cargo_bins_install:
 		cargo-udeps \
 		flamegraph \
 		ucd-generate
-	LIBCLANG_PATH=/usr/local/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
+	LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
 
 .PHONY: vim
 vim: vim-init
