@@ -55,7 +55,9 @@ style = "Regular"
 [scrolling]
 history = 10000
 
-[shell]
+[terminal]
+
+[terminal.shell]
 args = ["--login", "-i", "-c", "tmux new-session -A -s base"]
 program = "/bin/zsh"
 
