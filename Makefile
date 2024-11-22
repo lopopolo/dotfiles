@@ -43,7 +43,6 @@ starship:
 
 .PHONY: terraform
 terraform:
-	cp $(PWD)/terraform/.terraformrc $(HOME)/.terraformrc
 	mkdir -p $(HOME)/.terraform.d/plugin-cache
 
 .PHONY: tmux
