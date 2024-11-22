@@ -25,6 +25,10 @@ brew "hyperfine"
 brew "ibazel"
 # Command-line pager for JSON data
 brew "jless"
+# Let's Encrypt client and ACME library
+brew "lego"
+# YAML Parser
+brew "libyaml"
 # Next-gen compiler infrastructure
 brew "llvm"
 # Polyglot runtime manager (asdf rust clone)
@@ -103,6 +107,8 @@ vscode "github.vscode-github-actions"
 vscode "github.vscode-pull-request-github"
 vscode "golang.go"
 vscode "hashicorp.terraform"
+vscode "lencerf.beancount"
+vscode "mechatroner.rainbow-csv"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.black-formatter"
@@ -138,6 +144,7 @@ vscode "redhat.vscode-yaml"
 vscode "rust-lang.rust-analyzer"
 vscode "shopify.ruby-lsp"
 vscode "tamasfe.even-better-toml"
+vscode "tomoki1207.pdf"
 vscode "twxs.cmake"
 vscode "vadimcn.vscode-lldb"
 vscode "visualstudioexptteam.intellicode-api-usage-examples"
