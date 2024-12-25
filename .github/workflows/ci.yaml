@@ -15,12 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Install Ruby toolchain
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@a2bbe5b1b236842c1cb7dd11e8e3b51e0a616acc # v1.202.0
         with:
           ruby-version: ".ruby-version"
+          bundler-cache: true
 
       - name: Install gems
         run: bundle install
@@ -33,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Format shell sources with shfmt
         uses: docker://mvdan/shfmt
@@ -46,16 +47,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
-      - name: Format with prettier
+      - name: Install Node.js toolchain
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: "lts/*"
+
+      - name: Install toolchain
+        run: npm ci
+
+      - name: Lint and check formatting with prettier
         run: npx prettier --check '**/*'
 
-      - name: Lint YAML sources with yamllint
-        run: |
-          sudo -H python3 -m pip install --upgrade pip setuptools wheel
-          sudo -H python3 -m pip install --upgrade yamllint
-          yamllint --version
-          echo "Linting YAML sources with yamllint ..."
-          yamllint --strict .
-          echo "OK"
+      - name: Install uv
+        uses: astral-sh/setup-uv@38f3f104447c67c051c4a08e39b64a148898af3a # v4.2.0
+
+      - name: Set up Python
+        run: uv python install
+
+      - name: Run yamllint
+        run: uv run yamllint --strict --format github .

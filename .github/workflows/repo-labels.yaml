@@ -20,10 +20,10 @@ jobs:
     name: Synchronize repository labels
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4.2.2
 
       - name: Sync GitHub Issue Labels
-        uses: crazy-max/ghaction-github-labeler@v5
+        uses: crazy-max/ghaction-github-labeler@b54af0c25861143e7c8813d7cbbf46d2c341680c # v5.1.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           yaml-file: .github/labels.yaml
