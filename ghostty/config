@@ -1,0 +1,49 @@
+font-family = Cascadia Mono NF
+font-style = Regular
+font-style-bold = Semibold
+font-style-italic = Italic
+font-style-bold-italic = Semibold Italic
+font-size = 17
+font-thicken = true
+
+bold-is-bright = true
+
+background = #161b22
+foreground = #adbac7
+
+cursor-color = #c9d1d9
+cursor-style = block
+cursor-style-blink = false
+cursor-click-to-move = true
+shell-integration-features = no-cursor
+
+selection-background = #0f2d5c
+selection-foreground = #ffffff
+
+palette = 0=#1d1117
+palette = 1=#fa7971
+palette = 2=#8ce38b
+palette = 3=#fbe091
+palette = 4=#78bdfb
+palette = 5=#cea6fb
+palette = 6=#a3d2fb
+palette = 7=#cdd9e5
+palette = 8=#4d4d4d
+palette = 9=#c93c37
+palette = 10=#57ab5a
+palette = 11=#e3b341
+palette = 12=#6ca4f8
+palette = 13=#db61a2
+palette = 14=#2b7489
+palette = 15=#ffffff
+
+window-height = 45
+window-width = 130
+
+window-padding-x = 5
+window-padding-y = 5
+window-padding-balance = true
+
+copy-on-select = true
+
+scrollback-limit = 100000
