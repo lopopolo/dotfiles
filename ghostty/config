@@ -47,3 +47,5 @@ window-padding-balance = true
 copy-on-select = true
 
 scrollback-limit = 100000
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
