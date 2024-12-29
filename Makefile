@@ -77,24 +77,23 @@ brew_bundle_install:
 
 .PHONY: cargo_bins_install
 cargo_bins_install:
-	cargo install --locked \
-		bindgen-cli \
-		cargo-about \
-		cargo-bisect-rustc \
-		cargo-bloat \
-		cargo-deny \
-		cargo-diet \
-		cargo-expand \
-		cargo-fuzz \
-		cargo-geiger \
-		cargo-insta \
-		cargo-mutants \
-		cargo-nextest \
-		cargo-outdated \
-		cargo-tally \
-		cargo-udeps \
-		flamegraph \
-		ucd-generate
+	cargo install --locked bindgen-cli
+	cargo install --locked cargo-about
+	cargo install --locked cargo-bisect-rustc
+	cargo install --locked cargo-bloat
+	cargo install --locked cargo-deny
+	cargo install --locked cargo-diet
+	cargo install --locked cargo-expand
+	cargo install --locked cargo-fuzz
+	cargo install --locked cargo-geiger
+	cargo install --locked cargo-insta
+	cargo install --locked cargo-mutants
+	cargo install --locked cargo-nextest
+	cargo install --locked cargo-outdated
+	cargo install --locked cargo-tally
+	cargo install --locked cargo-udeps
+	cargo install --locked flamegraph
+	cargo install --locked ucd-generate
 	LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
 
 .PHONY: vim
