@@ -67,6 +67,8 @@ brew "tree"
 brew "uv"
 # Internet file retriever
 brew "wget"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Command-line interface for 1Password
@@ -83,6 +85,8 @@ cask "font-cascadia-code-pl"
 cask "font-cascadia-mono"
 cask "font-cascadia-mono-nf"
 cask "font-cascadia-mono-pl"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Open-source code editor
@@ -142,7 +146,9 @@ vscode "redhat.java"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
 vscode "rust-lang.rust-analyzer"
+vscode "shopify.ruby-extensions-pack"
 vscode "shopify.ruby-lsp"
+vscode "sorbet.sorbet-vscode-extension"
 vscode "tamasfe.even-better-toml"
 vscode "tomoki1207.pdf"
 vscode "twxs.cmake"
