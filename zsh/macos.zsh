@@ -7,7 +7,7 @@ if [ -f /opt/homebrew/bin/brew ]; then
 fi
 
 # Must be set before compinit
-if command -v brew &>/dev/null; then
+if command -v brew &> /dev/null; then
   FPATH="$(brew --prefix --quiet)/share/zsh/site-functions:${FPATH}"
 fi
 
@@ -24,13 +24,13 @@ fi
 # ```
 #
 # Must be set before compinit
-if command -v docker &>/dev/null; then
+if command -v docker &> /dev/null; then
   completions="$HOME/.docker/completions"
   if [[ -d $completions ]]; then
     FPATH="$completions:$FPATH"
   elif [[ ! -f $completions/_docker ]]; then
     mkdir -p "$completions"
-    docker completion zsh >"$completions/_docker"
+    docker completion zsh > "$completions/_docker"
     FPATH="$completions:$FPATH"
   fi
 fi
@@ -46,7 +46,7 @@ cdf() {
       -e 'tell application "Finder"' \
       -e 'set myname to POSIX path of (target of window 1 as alias)' \
       -e 'end tell' \
-      2>/dev/null
+      2> /dev/null
   )"
 
   cd "$finder" || return 1
@@ -76,7 +76,7 @@ wipe() {
 # Programming language version managers                                       #
 # =========================================================================== #
 
-if command -v mise >/dev/null; then
+if command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
