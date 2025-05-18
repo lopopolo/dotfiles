@@ -6,8 +6,33 @@ if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if type brew &>/dev/null; then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+# Must be set before compinit
+if command -v brew &>/dev/null; then
+  FPATH="$(brew --prefix --quiet)/share/zsh/site-functions:${FPATH}"
+fi
+
+# =========================================================================== #
+# Docker Desktop setup                                                        #
+# =========================================================================== #
+
+# https://docs.docker.com/engine/cli/completion/#zsh
+#
+# Manual setup
+# ```
+# mkdir -p ~/.docker/completions
+# docker completion zsh > ~/.docker/completions/_docker
+# ```
+#
+# Must be set before compinit
+if command -v docker &>/dev/null; then
+  completions="$HOME/.docker/completions"
+  if [[ -d $completions ]]; then
+    FPATH="$completions:$FPATH"
+  elif [[ ! -f $completions/_docker ]]; then
+    mkdir -p "$completions"
+    docker completion zsh > "$completions/_docker"
+    FPATH="$completions:$FPATH"
+  fi
 fi
 
 # =========================================================================== #
