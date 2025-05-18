@@ -106,7 +106,7 @@ is_not_ascii() {
 #
 # This function omits confusables like 1, i, I, l, and L.
 rand_string() {
-  LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' </dev/urandom | fold -w "${1:-32}" | head -n 1
+  LANG=C LC_ALL=C tr -dc 'A-HJ-KM-NP-Za-km-np-z2-9' < /dev/urandom | fold -w "${1:-32}" | head -n 1
 }
 
 # Generate a random ASCII string with only lowercase alphabetic characters.
@@ -116,7 +116,7 @@ rand_string() {
 #
 # This function omits confusables like i, l.
 rand_alpha_lower() {
-  LANG=C LC_ALL=C tr -dc 'a-km-np-z' </dev/urandom | fold -w "${1:-16}" | head -n 1
+  LANG=C LC_ALL=C tr -dc 'a-km-np-z' < /dev/urandom | fold -w "${1:-16}" | head -n 1
 }
 
 # Generate a random ASCII string with only numeric characters.
@@ -124,7 +124,7 @@ rand_alpha_lower() {
 # This function takes a single optional argument for the string length, which
 # defaults to 6.
 rand_pin() {
-  LANG=C LC_ALL=C tr -dc '0-9' </dev/urandom | fold -w "${1:-6}" | head -n 1
+  LANG=C LC_ALL=C tr -dc '0-9' < /dev/urandom | fold -w "${1:-6}" | head -n 1
 }
 
 # Download a video using youtube-dl in a Docker container.
@@ -175,7 +175,7 @@ if [[ -f "$HOME/.cargo/env" ]]; then
   export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 fi
 
-if command -v go &>/dev/null; then
+if command -v go &> /dev/null; then
   path=("$(go env GOPATH)/bin" $path)
   export PATH
 fi

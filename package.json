@@ -15,6 +15,6 @@
   },
   "scripts": {
     "fmt": "prettier --write \"**/*\"",
-    "fmt:sh": "shfmt -f . | grep -v vim/undo | grep -v node_modules | xargs shfmt -w -l -s -i 2 -ci"
+    "fmt:sh": "shfmt -f . | grep -v vim/undo | grep -v node_modules | xargs -n1 shfmt -w -l -s -i 2 -ci"
   }
 }
