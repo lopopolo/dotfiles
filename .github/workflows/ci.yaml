@@ -40,7 +40,7 @@ jobs:
         uses: docker://mvdan/shfmt
         with:
           entrypoint: /bin/shfmt
-          args: -w -l -s -i 2 -ci -sr -d /github/workspace
+          args: -l -s -i 2 -ci -sr -d /github/workspace
 
   text:
     name: Lint and format text
