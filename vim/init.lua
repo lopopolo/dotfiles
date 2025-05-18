@@ -306,3 +306,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "set ft=bash",
   group = detect_brewfile_grp,
 })
+
+-- set toml filetype for telegraf config
+local detect_telegraf_toml_grp = vim.api.nvim_create_augroup("detect_telegraf_toml", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "telegraf.conf",
+  command = "set ft=toml",
+  group = detect_telegraf_toml_grp,
+})
