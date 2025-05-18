@@ -30,7 +30,7 @@ if command -v docker &>/dev/null; then
     FPATH="$completions:$FPATH"
   elif [[ ! -f $completions/_docker ]]; then
     mkdir -p "$completions"
-    docker completion zsh > "$completions/_docker"
+    docker completion zsh >"$completions/_docker"
     FPATH="$completions:$FPATH"
   fi
 fi

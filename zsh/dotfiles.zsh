@@ -8,7 +8,7 @@
 # NOTE: completions cannot be set up in the platform-specific configs since
 # `compinit` hasn't been called yet.
 
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ $OSTYPE == darwin* ]]; then
   # shellcheck source=zsh/macos.zsh
   source "$HOME/.dotfiles/zsh/macos.zsh"
 fi
@@ -141,7 +141,7 @@ ytdl() {
   fi
 
   local quality="bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4"
-  if [[ "$1" == "--best" ]]; then
+  if [[ $1 == "--best" ]]; then
     quality="bestvideo+bestaudio"
     shift
   fi
