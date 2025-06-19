@@ -5,6 +5,8 @@ brew "clang-format"
 brew "cryptography"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
+# Like neofetch, but much faster because written mostly in C
+brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -23,6 +25,8 @@ brew "hadolint"
 brew "hyperfine"
 # Tools for building Bazel targets when source files change
 brew "ibazel"
+# Update of iperf: measures TCP, UDP, and SCTP bandwidth
+brew "iperf3"
 # Command-line pager for JSON data
 brew "jless"
 # Let's Encrypt client and ACME library
@@ -87,6 +91,8 @@ cask "font-cascadia-mono-nf"
 cask "font-cascadia-mono-pl"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Tool to control external monitor brightness & volume
+cask "monitorcontrol"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
 # Open-source code editor
@@ -100,6 +106,7 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "charliermarsh.ruff"
 vscode "coolbear.systemd-unit-file"
 vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
 vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
@@ -113,6 +120,7 @@ vscode "golang.go"
 vscode "hashicorp.terraform"
 vscode "lencerf.beancount"
 vscode "mechatroner.rainbow-csv"
+vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-python.black-formatter"
@@ -142,6 +150,7 @@ vscode "ms-vscode.powershell"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vscode.remote-repositories"
 vscode "ms-vscode.remote-server"
+vscode "openai.chatgpt"
 vscode "redhat.java"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
