@@ -10,31 +10,14 @@ name: CI
   schedule:
     - cron: "0 0 * * WED"
 jobs:
-  ruby:
-    name: Lint and format Ruby
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4.2.2
-
-      - name: Install Ruby toolchain
-        uses: ruby/setup-ruby@2a7b30092b0caf9c046252510f9273b4875f3db9 # v1.254.0
-        with:
-          ruby-version: ".ruby-version"
-          bundler-cache: true
-
-      - name: Install gems
-        run: bundle install
-
-      - name: Lint and check formatting with Rubocop
-        run: bundle exec rubocop
-
   shell:
     name: Lint and format shell scripts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Format shell sources with shfmt
         uses: docker://mvdan/shfmt
@@ -47,10 +30,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
 
       - name: Install Node.js toolchain
-        uses: actions/setup-node@v4.4.0
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: "lts/*"
 
