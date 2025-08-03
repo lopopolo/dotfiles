@@ -1,4 +1,7 @@
+tap "hashicorp/tap"
 tap "homebrew/bundle"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
 # Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
 brew "clang-format"
 # Cryptographic recipes and primitives for Python
@@ -61,8 +64,6 @@ brew "shellcheck"
 brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Tool to build, change, and version infrastructure
-brew "terraform"
 # Terminal multiplexer
 brew "tmux"
 # Display directories as trees (with optional color/HTML output)
@@ -75,12 +76,14 @@ brew "wget"
 brew "zizmor"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Terraform
+brew "hashicorp/tap/terraform"
 # Command-line interface for 1Password
 cask "1password-cli"
 # GPU-accelerated terminal emulator
 cask "alacritty"
 # Securely stores and accesses AWS credentials in a development environment
-cask "aws-vault"
+cask "aws-vault-binary"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
 cask "font-cascadia-code"
@@ -129,6 +132,7 @@ vscode "ms-python.isort"
 vscode "ms-python.mypy-type-checker"
 vscode "ms-python.python"
 vscode "ms-python.vscode-pylance"
+vscode "ms-python.vscode-python-envs"
 vscode "ms-toolsai.jupyter"
 vscode "ms-toolsai.jupyter-keymap"
 vscode "ms-toolsai.jupyter-renderers"
@@ -173,3 +177,4 @@ vscode "vscjava.vscode-maven"
 vscode "vscodevim.vim"
 vscode "wholroyd.jinja"
 vscode "william-voyek.vscode-nginx"
+vscode "zizmor.zizmor-vscode"
