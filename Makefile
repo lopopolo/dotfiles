@@ -16,8 +16,10 @@ $(DOTFILES):
 
 .PHONY: lang-runtimes
 lang-runtimes:
-	ln -snf $(PWD)/.python-version $(HOME)/.python-version
-	ln -snf $(PWD)/.ruby-version $(HOME)/.ruby-version
+	mkdir -p $(HOME)/.config/mise
+	cp $(PWD)/mise/config.toml $(HOME)/.config/mise/config.toml
+	rm -f $(HOME)/.python-version
+	rm -f $(HOME)/.ruby-version
 
 .PHONY: dev
 dev:
@@ -77,23 +79,6 @@ brew_bundle_install:
 
 .PHONY: cargo_bins_install
 cargo_bins_install:
-	cargo install --locked bindgen-cli
-	cargo install --locked cargo-about
-	cargo install --locked cargo-bisect-rustc
-	cargo install --locked cargo-bloat
-	cargo install --locked cargo-deny
-	cargo install --locked cargo-diet
-	cargo install --locked cargo-expand
-	cargo install --locked cargo-fuzz
-	cargo install --locked cargo-geiger
-	cargo install --locked cargo-insta
-	cargo install --locked cargo-mutants
-	cargo install --locked cargo-nextest
-	cargo install --locked cargo-outdated
-	cargo install --locked cargo-tally
-	cargo install --locked cargo-udeps
-	cargo install --locked flamegraph
-	cargo install --locked ucd-generate
 	LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
 
 .PHONY: vim

@@ -1,0 +1,31 @@
+[settings]
+idiomatic_version_file_enable_tools = [
+  "golang",
+  "node",
+  "python",
+  "ruby",
+]
+
+[tools]
+node = "lts/*"
+python = "3.13"
+ruby = "3.4"
+terraform = "1"
+
+"cargo:bindgen-cli" = "latest"
+"cargo:cargo-about" = "latest"
+"cargo:cargo-bisect-rustc" = "latest"
+"cargo:cargo-bloat" = "latest"
+"cargo:cargo-deny" = "latest"
+"cargo:cargo-diet" = "latest"
+"cargo:cargo-expand" = "latest"
+"cargo:cargo-fuzz" = "latest"
+"cargo:cargo-geiger" = "latest"
+"cargo:cargo-insta" = "latest"
+"cargo:cargo-mutants" = "latest"
+"cargo:cargo-nextest" = "latest"
+"cargo:cargo-outdated" = "latest"
+"cargo:cargo-tally" = "latest"
+"cargo:cargo-udeps" = "latest"
+"cargo:flamegraph" = "latest"
+"cargo:ucd-generate" = "latest"
