@@ -29,11 +29,13 @@ fi
 # Must be set before compinit
 if command -v docker &> /dev/null; then
   completions="$HOME/.docker/completions"
-  if [[ -d $completions ]]; then
-    FPATH="$completions:$FPATH"
-  elif [[ ! -f $completions/_docker ]]; then
+  # completion docs: https://docs.docker.com/engine/cli/completion/#zsh
+  if [[ ! -f $completions/_docker ]]; then
     mkdir -p "$completions"
     docker completion zsh > "$completions/_docker"
+  fi
+
+  if [[ -f $completions/_docker ]]; then
     FPATH="$completions:$FPATH"
   fi
 fi
