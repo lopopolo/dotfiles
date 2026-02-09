@@ -7,10 +7,7 @@
 
 if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-fi
-
-# Must be set before compinit
-if command -v brew &> /dev/null; then
+  # Must be set before compinit
   FPATH="$(brew --prefix --quiet)/share/zsh/site-functions:${FPATH}"
 fi
 
@@ -35,9 +32,7 @@ if command -v docker &> /dev/null; then
     docker completion zsh > "$completions/_docker"
   fi
 
-  if [[ -f $completions/_docker ]]; then
-    FPATH="$completions:$FPATH"
-  fi
+  FPATH="$completions:$FPATH"
 fi
 
 # =========================================================================== #
@@ -104,4 +99,6 @@ alias ls="ls -G -h -F"
 # Prompt                                                                      #
 # =========================================================================== #
 
-eval "$(starship init zsh)"
+if command -v starship > /dev/null; then
+  eval "$(starship init zsh)"
+fi

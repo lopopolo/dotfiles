@@ -18,26 +18,14 @@ fi
 # =========================================================================== #
 
 autoload -Uz compinit
-compinit
-# Completion tools
-# https://github.com/ohmyzsh/ohmyzsh/blob/a879ff1515b6bd80eea695c03e22289bd6743718/lib/completion.zsh
-#
-# case insensitive auto completion
-# https://superuser.com/a/1092328
+: ${ZSH_CACHE_DIR:="$HOME/.cache/zsh"}
+mkdir -p "$ZSH_CACHE_DIR"
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' list-colors ''
-
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USERNAME -o pid,user,comm -w -w"
-
-# disable named-directories autocompletion
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
-
-# Use caching so that commands like apt and dpkg complete are useable
 zstyle ':completion:*' use-cache yes
 zstyle ':completion:*' cache-path "$ZSH_CACHE_DIR"
-
-autoload -U +X bashcompinit && bashcompinit
+compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
+# autoload -U +X bashcompinit && bashcompinit
 
 # =========================================================================== #
 # Shell history                                                               #
@@ -48,13 +36,15 @@ autoload -U +X bashcompinit && bashcompinit
 # https://github.com/ohmyzsh/ohmyzsh/blob/a879ff1515b6bd80eea695c03e22289bd6743718/lib/history.zsh
 
 HISTFILE="$HOME/.zsh_history"
-HISTSIZE=10000000
-SAVEHIST=10000000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
 setopt hist_ignore_dups       # ignore duplicated commands history list
 setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_reduce_blanks     # collapse extra whitespace in commands before saving
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data between all sessions
+setopt inc_append_history     # save every command to history immediately, not when the shell exits
 
 # =========================================================================== #
 # Editor, vim, aliases, completion                                            #
@@ -64,18 +54,12 @@ setopt share_history          # share command history data between all sessions
 bindkey -v
 
 export EDITOR='nvim'
+
 alias vim='nvim'
 compdef vim=nvim
-
-# =========================================================================== #
-# Aliases                                                                     #
-# =========================================================================== #
-
-alias la='ls -la'
-
 alias g='git'
 compdef g=git
-
+alias la='ls -la'
 # json pretty printing
 alias jsonpp='python -mjson.tool'
 
@@ -153,8 +137,6 @@ ytdl() {
 # Tools                                                                       #
 # =========================================================================== #
 
-# stuff for moving around directories
-# https://koenwoortman.com/zsh-cdpath/
 setopt auto_cd
 cdpath=($HOME $HOME/dev/artichoke $HOME/dev/hyperbola $HOME/dev/repos $HOME/dev)
 
