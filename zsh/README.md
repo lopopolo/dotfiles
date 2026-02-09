@@ -18,13 +18,19 @@ Homebrew.
 #
 # zmodload zsh/zprof
 
+source "$HOME/.dotfiles/zsh/dotfiles.zsh"
+
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
+if command -v fd > /dev/null; then
+  # Use fd instead of find for fzf (faster, respects .gitignore)
+  export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+  export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
+
 export GPG_TTY=`tty`
 export SSH_AUTH_SOCK=/Users/lopopolo/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-
-source "$HOME/.dotfiles/zsh/dotfiles.zsh"
 ```
 
 ### Caveats
