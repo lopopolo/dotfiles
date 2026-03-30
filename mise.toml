@@ -1,3 +1,4 @@
 [tools]
 node = "lts"
+shfmt = "latest"
 uv = "latest"
