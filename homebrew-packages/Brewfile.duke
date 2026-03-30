@@ -15,8 +15,6 @@ brew "gh"
 brew "git"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Smarter Dockerfile linter to validate best practices
-brew "hadolint"
 # Command-line benchmarking tool
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
@@ -53,10 +51,6 @@ brew "ripgrep"
 brew "rustup"
 # Fast and accurate code counter with complexity and COCOMO estimates
 brew "scc"
-# Static analysis and lint tool, for (ba)sh scripts
-brew "shellcheck"
-# Autoformat shell script source code
-brew "shfmt"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Terminal multiplexer
@@ -67,8 +61,6 @@ brew "tree"
 brew "uv"
 # Internet file retriever
 brew "wget"
-# Find security issues in GitHub Actions setups
-brew "zizmor"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Command-line interface for 1Password
@@ -178,21 +170,8 @@ vscode "vscodevim.vim"
 vscode "wholroyd.jinja"
 vscode "william-voyek.vscode-nginx"
 vscode "zizmor.zizmor-vscode"
-cargo "bindgen-cli"
-cargo "cargo-about"
-cargo "cargo-bisect-rustc"
-cargo "cargo-bloat"
 cargo "cargo-deny"
-cargo "cargo-diet"
-cargo "cargo-expand"
 cargo "cargo-fuzz"
 cargo "cargo-geiger"
-cargo "cargo-insta"
 cargo "cargo-mutants"
-cargo "cargo-nextest"
 cargo "cargo-outdated"
-cargo "cargo-spellcheck"
-cargo "cargo-tally"
-cargo "cargo-udeps"
-cargo "flamegraph"
-cargo "ucd-generate"
