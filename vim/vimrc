@@ -1,246 +1,66 @@
-let g:loaded_node_provider = 0
-let g:loaded_perl_provider = 0
-let g:loaded_python_provider = 0
-let g:loaded_python3_provider = 0
-let g:loaded_ruby_provider = 0
+" Legacy Vim fallback.
+" Neovim is configured in vim/init.lua.
 
-" https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
-let g:rustfmt_autosave = 1
+set nocompatible
 
-" ==================================== Plug ===================================
-call plug#begin()
-
-" status bar
-Plug 'itchyny/lightline.vim'
-Plug 'mengelbrecht/lightline-bufferline'
-
-" colors
-Plug 'lifepillar/vim-solarized8'
-Plug 'wojciechkepka/vim-github-dark'
-
-" fuzzy file search
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-
-" language plugins
-Plug 'sheerun/vim-polyglot'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'hashivim/vim-hashicorp-tools'
-Plug 'nathangrigg/vim-beancount'
-Plug 'uarun/vim-protobuf'
-
-Plug 'tpope/vim-fugitive'
-" vim-sensible has been incorporated into neovim
-" https://github.com/neovim/neovim/issues/1664
-if !has('nvim')
-  Plug 'tpope/vim-sensible'
-endif
-Plug 'tpope/vim-surround'
-
-call plug#end()
-
-" =============================== Basic settings ==============================
 syntax on
 filetype plugin indent on
 
-" normal OS clipboard interaction
 set clipboard+=unnamedplus
-
-set nocompatible
 
 set termencoding=utf-8
 set encoding=utf-8
 
-" hide buffers instead of closing them this
-"    means that the current buffer can be put
-"    to background without being written; and
-"    that marks and undo history are preserved
 set hidden
-
-" don't wrap lines
 set nowrap
-" a tab is two spaces
 set tabstop=2
-" expand tabs by default (overloadable per file type later)
-set expandtab
-" number of spaces to use for autoindenting
 set shiftwidth=2
+set expandtab
 set smartindent
-" always show line numbers
 set number
 set autoread
 
-" change the mapleader from \ to ,
-let mapleader = ","
-
-" ignore case when searching
 set ignorecase
-" ignore case if search pattern is all lowercase, case-sensitive otherwise
 set smartcase
-" set show matching parenthesis
 set showmatch
-" highlight search terms
 set hlsearch
-" show search matches as you type
 set incsearch
-" search/replace "globally" (on a line) by default
 set gdefault
 
-" Alias to disable highlighting from search matches
-nnoremap <leader><space> :noh<cr>
-
-" status lines
-set cursorline
-set laststatus=2
-
-" change the terminal's title
-set title
-" don't beep
-set visualbell
-" don't beep
-set noerrorbells
-
-" do not keep backup files, it's 70's style cluttering
 set nobackup
-" do not write out changes via backup files
 set nowritebackup
-" do not write annoying intermediate swap files
 set noswapfile
-
-" enable using the mouse if terminal emulator supports it (xterm does)
+set nomodeline
 set mouse=a
 
-" Speed up the updatetime so gitgutter and friends are quicker
-set updatetime=250
+let mapleader = ","
 
-" Make the keyboard faaaaaaast
-set ttyfast
-set timeout timeoutlen=1000 ttimeoutlen=50
-
-" show (partial) command in the last line of the screen
-"    this also shows visual selection info
-set showcmd
-
-" disable mode lines (security measure)
-set nomodeline
-
-" Remap j and k to act as expected when used on long, wrapped, lines
 nnoremap j gj
 nnoremap k gk
+nnoremap ; :
+nnoremap <leader><space> :noh<cr>
+cnoreabbrev W w
+nnoremap Q <Nop>
 
-" Persistent undo
 if has("persistent_undo")
   set undofile
   set undodir=$HOME/.vim/undo
-
-  " use many muchos levels of undo
   set undolevels=1000
   set undoreload=10000
 endif
 
-" ================================ Color scheme ===============================
-
-set termguicolors
-
-" solarized
-" set background=light
-" colorscheme solarized8_flat
-
-" GitHub Dark
-let g:gh_color = "soft"
-colorscheme ghdark
-
-" Force the tabline to always show
-set showtabline=2
-
-let g:lightline#bufferline#clickable    = 1
-let g:lightline#bufferline#show_number  = 1
-let g:lightline#bufferline#shorten_path = 0
-let g:lightline#bufferline#unnamed      = '[No Name]'
-
-let g:lightline                  = {'colorscheme': 'ghdark'}
-let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-let g:lightline.component_type   = {'buffers': 'tabsel'}
-let g:lightline.component_raw    = {'buffers': 1}
-
-" highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 
-" =============================== Auto commands ===============================
-
-" strip trailing whitespace on save
-fun! <SID>StripTrailingWhitespaces()
+function! s:StripTrailingWhitespaces() abort
   let l = line(".")
   let c = col(".")
   %s/\s\+$//e
   call cursor(l, c)
-endfun
+endfunction
 
 augroup strip_trailing_whitespace
   autocmd!
-  " but not in markdown where trailing whitespace is significant
-  autocmd BufWritePre * if &ft!~?'markdown' | :call <SID>StripTrailingWhitespaces() | endif
+  autocmd BufWritePre * if &ft!~?'markdown' | call <SID>StripTrailingWhitespaces() | endif
 augroup END
-
-augroup save_on_lose_focus
-  autocmd!
-  " save on lose focus, but don't complain if you can't
-  autocmd FocusLost * silent! wa
-augroup END
-
-augroup restore_cursor
-  autocmd!
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
-              \ if line("'\"") > 0 && line("'\"") <= line("$") |
-              \   exe "normal g`\"" |
-              \ endif
-augroup END
-
-augroup vimrcEx
-  autocmd!
-  " Automatically load .vimrc source when saved
-  autocmd BufWritePost .vimrc,vimrc,.gvimrc,gvimrc source $MYVIMRC
-augroup END
-
-augroup golangTabs
-  autocmd!
-  autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
-augroup END
-
-" ==================== Typo prevention and other vim remaps ===================
-
-nnoremap ; :
-
-" let me type :W to save, cuz that always happens
-cnoreabbrev W w
-
-" disable Ex mode
-map Q <Nop>
-
-augroup prevent_saving_typoed_names
-  autocmd!
-  " https://stackoverflow.com/a/6211489
-  autocmd BufWritePre [:;"'\[\]]* try | echoerr 'Forbidden file name: ' . expand('<afile>') | endtry
-augroup END
-
-" =============================== Plugin stuff  ===============================
-
-" fuzzy finding
-map <C-p> <cmd>Telescope find_files<cr>
-map <C-g> <cmd>Telescope live_grep<cr>
-
-" Set completeopt to have a better completion experience
-" :help completeopt
-" menuone: popup even when there's only one match
-" noinsert: Do not insert text until a selection is made
-" noselect: Do not select, force user to select one from the menu
-set completeopt=menu,menuone,noselect
-
-" Avoid showing extra messages when using completion
-set shortmess+=c

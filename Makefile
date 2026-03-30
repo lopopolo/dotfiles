@@ -31,7 +31,9 @@ dev:
 git:
 	mkdir -p $(HOME)/.config/git
 	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
-	cp $(PWD)/git/`hostname -s`.gitconfig $(HOME)/.config/git/config
+	if [ "$$(hostname -s)" != "Mac" ]; then \
+		cp $(PWD)/git/`hostname -s`.gitconfig $(HOME)/.config/git/config; \
+		fi
 
 .PHONY: ghostty
 ghostty:
@@ -86,3 +88,4 @@ vim-init:
 	mkdir -p $(HOME)/.config/nvim/
 	mkdir -p $(HOME)/.local/state/nvim/undo
 	ln -snf $(PWD)/vim/init.lua $(HOME)/.config/nvim/init.lua
+	ln -snf $(PWD)/vim/nvim-pack-lock.json $(HOME)/.config/nvim/nvim-pack-lock.json

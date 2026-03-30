@@ -3,87 +3,97 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.rustfmt_autosave = 1
 
 -- neovim defaults this to `on`, but in order for rust autoindent settings to
 -- be loaded, we must turn this off before loading packages.
 vim.cmd.filetype({"indent", "off"})
 
----------------------------
--- setup package manager --
----------------------------
-
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
 -------------------
 -- setup plugins --
 -------------------
 
-require("lazy").setup({
+local github = function(repo)
+  return "https://github.com/" .. repo
+end
+
+local plugins = {
   -- fuzzy file search
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable "make" == 1, build = "make" },
-    },
-    config = function()
-      local telescope = require("telescope")
-      telescope.setup()
-      telescope.load_extension("fzf")
-
-      local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<C-p>", builtin.find_files, {})
-      vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
-    end,
-  },
+  github("nvim-lua/plenary.nvim"),
+  github("nvim-telescope/telescope.nvim"),
   -- tab bar and status line
-  { "nvim-tree/nvim-web-devicons", lazy = true },
-  { "akinsho/bufferline.nvim", config = function() require("bufferline").setup() end },
-  { "nvim-lualine/lualine.nvim", config = function() require("lualine").setup() end, event = "VeryLazy" },
+  github("nvim-tree/nvim-web-devicons"),
+  github("akinsho/bufferline.nvim"),
+  github("nvim-lualine/lualine.nvim"),
   -- colorscheme
-  {
-    "projekt0n/github-nvim-theme",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      vim.opt.termguicolors = true
-
-      require("github-theme").setup({
-        -- disable all italics
-        options = {
-          styles = {
-            comments = "NONE",
-            keywords = "NONE",
-          }
-        }
-      })
-
-      vim.cmd("colorscheme github_dark_dimmed")
-    end,
-  },
+  github("projekt0n/github-nvim-theme"),
   -- programming lang support
-  { "fatih/vim-go", build = ":GoUpdateBinaries" },
-  "hashivim/vim-terraform",
-  {
-    "rust-lang/rust.vim",
-    init = function()
-      -- https://github.com/rust-lang/rust.vim#formatting-with-rustfmt
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-  "vim-ruby/vim-ruby",
+  github("hashivim/vim-terraform"),
+  github("rust-lang/rust.vim"),
+  github("vim-ruby/vim-ruby"),
+}
+
+if vim.fn.executable("make") == 1 then
+  table.insert(plugins, {
+    src = github("nvim-telescope/telescope-fzf-native.nvim"),
+    data = { build = { "make" } },
+  })
+end
+
+local pack_hooks_grp = vim.api.nvim_create_augroup("pack_hooks", { clear = true })
+vim.api.nvim_create_autocmd("PackChanged", {
+  group = pack_hooks_grp,
+  callback = function(ev)
+    if ev.data.kind ~= "install" and ev.data.kind ~= "update" then
+      return
+    end
+
+    local build = ev.data.spec.data and ev.data.spec.data.build
+    if build then
+      local result = vim.system(build, { cwd = ev.data.path, text = true }):wait()
+      if result.code ~= 0 then
+        local output = result.stderr
+        if output == "" then
+          output = result.stdout
+        end
+
+        vim.schedule(function()
+          vim.notify(
+            string.format("Failed building %s:\n%s", ev.data.spec.name, output),
+            vim.log.levels.ERROR
+          )
+        end)
+      end
+    end
+  end,
 })
+
+vim.pack.add(plugins, { confirm = false, load = true })
+
+local telescope = require("telescope")
+telescope.setup()
+pcall(telescope.load_extension, "fzf")
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<C-p>", builtin.find_files, {})
+vim.keymap.set("n", "<C-g>", builtin.live_grep, {})
+
+require("bufferline").setup()
+require("lualine").setup()
+
+vim.opt.termguicolors = true
+
+require("github-theme").setup({
+  -- disable all italics
+  options = {
+    styles = {
+      comments = "NONE",
+      keywords = "NONE",
+    }
+  }
+})
+
+vim.cmd("colorscheme github_dark_dimmed")
 
 vim.cmd("filetype plugin indent on")
 vim.cmd("syntax on")
@@ -261,7 +271,7 @@ vim.opt.modeline = false
 ---------------------
 
 vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand("$HOME/.local/state/nvim/undo")
+vim.opt.undodir = vim.fn.stdpath("state") .. "/undo"
 -- use many levels of undo
 vim.opt.undolevels = 1000
 vim.opt.undoreload = 10000
@@ -278,12 +288,40 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   group = golang_tabs_grp,
 })
 
--- gofmt on save
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+-- format Go buffers with gofmt before writing them to disk
+local gofmt_on_save_grp = vim.api.nvim_create_augroup("gofmt_on_save", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.go",
-  command = "GoFmt",
-  group = format_sync_grp,
+  group = gofmt_on_save_grp,
+  callback = function(args)
+    if vim.fn.executable("gofmt") ~= 1 then
+      return
+    end
+
+    local buf = args.buf
+    local view = vim.fn.winsaveview()
+    local input = table.concat(vim.api.nvim_buf_get_lines(buf, 0, -1, false), "\n")
+    if vim.bo[buf].endofline then
+      input = input .. "\n"
+    end
+
+    local result = vim.system({ "gofmt" }, { stdin = input, text = true }):wait()
+    if result.code ~= 0 then
+      local output = result.stderr
+      if output == "" then
+        output = result.stdout
+      end
+      error(string.format("gofmt failed:\n%s", vim.trim(output)))
+    end
+
+    local formatted = vim.split(result.stdout, "\n", { plain = true })
+    if formatted[#formatted] == "" then
+      table.remove(formatted, #formatted)
+    end
+
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, formatted)
+    vim.fn.winrestview(view)
+  end,
 })
 
 -- set gitconfig filetype for dotfiles
