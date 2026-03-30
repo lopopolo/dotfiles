@@ -1,8 +1,6 @@
 tap "homebrew/bundle"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# Formatting tools for C, C++, Obj-C, Java, JavaScript, TypeScript
-brew "clang-format"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Like neofetch, but much faster because written mostly in C
@@ -17,10 +15,6 @@ brew "gh"
 brew "git"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Stricter gofmt
-brew "gofumpt"
-# Fast linters runner for Go
-brew "golangci-lint"
 # Smarter Dockerfile linter to validate best practices
 brew "hadolint"
 # Command-line benchmarking tool
@@ -31,12 +25,8 @@ brew "imagemagick"
 brew "iperf3"
 # Command-line pager for JSON data
 brew "jless"
-# Let's Encrypt client and ACME library
-brew "lego"
 # YAML Parser
 brew "libyaml"
-# Next-gen compiler infrastructure
-brew "llvm"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -89,6 +79,8 @@ cask "aws-vault-binary"
 cask "balenaetcher"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
 cask "font-cascadia-code"
 cask "font-cascadia-code-nf"
 cask "font-cascadia-code-pl"
@@ -99,8 +91,14 @@ cask "font-cascadia-mono-pl"
 cask "ghostty"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
+# Music tagger
+cask "musicbrainz-picard"
 # Store SSH keys in the Secure Enclave
 cask "secretive"
+# Music streaming service
+cask "spotify"
+# Mesh VPN based on WireGuard
+cask "tailscale-app"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
@@ -180,8 +178,6 @@ vscode "vscodevim.vim"
 vscode "wholroyd.jinja"
 vscode "william-voyek.vscode-nginx"
 vscode "zizmor.zizmor-vscode"
-go "golang.org/x/tools/gopls"
-go "honnef.co/go/tools/cmd/staticcheck"
 cargo "bindgen-cli"
 cargo "cargo-about"
 cargo "cargo-bisect-rustc"

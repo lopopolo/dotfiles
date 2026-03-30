@@ -7,17 +7,17 @@ all: bootstrap
 bootstrap: dotfiles dev vim
 
 .PHONY: dotfiles
-dotfiles: lang-runtimes alacritty ghostty git starship terraform tmux $(DOTFILES)
+dotfiles: autoremove-legacy ghostty git starship terraform tmux $(DOTFILES)
 
 .PHONY: $(DOTFILES)
 $(DOTFILES):
 	ln -snf $(PWD)/files/$@ $(HOME)/$@
 	mkdir -p $(HOME)/.terraform.d/plugin-cache
 
-.PHONY: lang-runtimes
-lang-runtimes:
-	mkdir -p $(HOME)/.config/mise
-	cp $(PWD)/mise/config.toml $(HOME)/.config/mise/config.toml
+.PHONY: autoremove-legacy
+autoremove-legacy:
+	rm -rf $(HOME)/.config/alacritty
+	rm -rf $(HOME)/.config/mise
 	rm -f $(HOME)/.python-version
 	rm -f $(HOME)/.ruby-version
 
@@ -32,11 +32,6 @@ git:
 	mkdir -p $(HOME)/.config/git
 	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
 	cp $(PWD)/git/`hostname -s`.gitconfig $(HOME)/.config/git/config
-
-.PHONY: alacritty
-alacritty:
-	mkdir -p $(HOME)/.config/alacritty
-	cp $(PWD)/alacritty/alacritty.toml $(HOME)/.config/alacritty/alacritty.toml
 
 .PHONY: ghostty
 ghostty:
