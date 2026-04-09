@@ -5,11 +5,17 @@
 # Homebrew setup                                                              #
 # =========================================================================== #
 
+# Disable Homebrew auto-updating while running this script
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 if [ -f /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   # Must be set before compinit
   FPATH="$(brew --prefix --quiet)/share/zsh/site-functions:${FPATH}"
 fi
+
+# Allow Homebrew to autoupdate, again
+unset HOMEBREW_NO_AUTO_UPDATE
 
 # =========================================================================== #
 # Docker Desktop setup                                                        #
