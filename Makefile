@@ -1,25 +1,22 @@
-DOTFILES = $(shell ls -1A files)
+HOSTNAME = $(shell hostname -s)
+DOTFILES_DIR = $(CURDIR)
+
+define link_dotfile
+	@if [ -e "$(2)" ] && [ ! -L "$(2)" ]; then \
+		echo "Refusing to overwrite non-symlink: $(2)"; \
+		exit 1; \
+	fi
+	ln -snf "$(1)" "$(2)"
+endef
 
 .PHONY: all
 all: bootstrap
 
 .PHONY: bootstrap
-bootstrap: dotfiles dev vim
+bootstrap: dotfiles completions dev vim
 
 .PHONY: dotfiles
-dotfiles: autoremove-legacy ghostty git starship terraform tmux $(DOTFILES)
-
-.PHONY: $(DOTFILES)
-$(DOTFILES):
-	ln -snf $(PWD)/files/$@ $(HOME)/$@
-	mkdir -p $(HOME)/.terraform.d/plugin-cache
-
-.PHONY: autoremove-legacy
-autoremove-legacy:
-	rm -rf $(HOME)/.config/alacritty
-	rm -rf $(HOME)/.config/mise
-	rm -f $(HOME)/.python-version
-	rm -f $(HOME)/.ruby-version
+dotfiles: editline ghostty git python readline ruby shell starship terraform tmux
 
 .PHONY: dev
 dev:
@@ -30,29 +27,60 @@ dev:
 .PHONY: git
 git:
 	mkdir -p $(HOME)/.config/git
-	cp $(PWD)/git/ignore $(HOME)/.config/git/ignore
-	if [ "$$(hostname -s)" != "Mac" ]; then \
-		cp $(PWD)/git/`hostname -s`.gitconfig $(HOME)/.config/git/config; \
-		fi
+	cp $(DOTFILES_DIR)/git/ignore $(HOME)/.config/git/ignore
+	cp $(DOTFILES_DIR)/git/config.common $(HOME)/.config/git/config.common
+	if [ ! -f "$(DOTFILES_DIR)/git/$(HOSTNAME).gitconfig" ]; then \
+		echo "Missing host Git config: git/$(HOSTNAME).gitconfig"; \
+		exit 1; \
+	fi
+	cp $(DOTFILES_DIR)/git/$(HOSTNAME).gitconfig $(HOME)/.config/git/config
+
+.PHONY: editline
+editline:
+	$(call link_dotfile,$(DOTFILES_DIR)/editline/editrc,$(HOME)/.editrc)
 
 .PHONY: ghostty
 ghostty:
 	mkdir -p $(HOME)/.config/ghostty
-	cp $(PWD)/ghostty/config $(HOME)/.config/ghostty/config
+	cp $(DOTFILES_DIR)/ghostty/config $(HOME)/.config/ghostty/config
+
+.PHONY: python
+python:
+	$(call link_dotfile,$(DOTFILES_DIR)/python/pdbrc,$(HOME)/.pdbrc)
+
+.PHONY: readline
+readline:
+	$(call link_dotfile,$(DOTFILES_DIR)/readline/inputrc,$(HOME)/.inputrc)
+
+.PHONY: ruby
+ruby:
+	$(call link_dotfile,$(DOTFILES_DIR)/ruby/irbrc,$(HOME)/.irbrc)
+
+.PHONY: shell
+shell:
+	$(call link_dotfile,$(DOTFILES_DIR)/shell/hushlogin,$(HOME)/.hushlogin)
 
 .PHONY: starship
 starship:
 	mkdir -p $(HOME)/.config
-	cp $(PWD)/starship/starship.toml $(HOME)/.config/starship.toml
+	cp $(DOTFILES_DIR)/starship/starship.toml $(HOME)/.config/starship.toml
 
 .PHONY: terraform
 terraform:
+	$(call link_dotfile,$(DOTFILES_DIR)/terraform/terraformrc,$(HOME)/.terraformrc)
 	mkdir -p $(HOME)/.terraform.d/plugin-cache
 
 .PHONY: tmux
 tmux:
 	mkdir -p $(HOME)/.config/tmux
-	cp $(PWD)/tmux/tmux.conf $(HOME)/.config/tmux/tmux.conf
+	cp $(DOTFILES_DIR)/tmux/tmux.conf $(HOME)/.config/tmux/tmux.conf
+
+.PHONY: completions
+completions:
+	if command -v docker >/dev/null; then \
+		mkdir -p $(HOME)/.docker/completions; \
+		docker completion zsh >$(HOME)/.docker/completions/_docker; \
+	fi
 
 .PHONY: fmt
 fmt:
@@ -70,9 +98,9 @@ brewfile:
 	rm -f homebrew-packages/Brewfile.`hostname -s`
 	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
 
-.PHONY:
+.PHONY: brew_bundle_install
 brew_bundle_install:
-	brew bundle --file=homebrew-packages/Brewfile.`hostname -s`
+	brew bundle --file=homebrew-packages/Brewfile.$(HOSTNAME)
 
 .PHONY: cargo_bins_install
 cargo_bins_install:
@@ -83,9 +111,9 @@ vim: vim-init
 
 .PHONY: vim-init
 vim-init:
-	ln -snf $(PWD)/vim/vimrc $(HOME)/.vimrc
-	ln -snf $(PWD)/vim $(HOME)/.vim
+	$(call link_dotfile,$(DOTFILES_DIR)/vim/vimrc,$(HOME)/.vimrc)
+	$(call link_dotfile,$(DOTFILES_DIR)/vim,$(HOME)/.vim)
 	mkdir -p $(HOME)/.config/nvim/
 	mkdir -p $(HOME)/.local/state/nvim/undo
-	ln -snf $(PWD)/vim/init.lua $(HOME)/.config/nvim/init.lua
-	ln -snf $(PWD)/vim/nvim-pack-lock.json $(HOME)/.config/nvim/nvim-pack-lock.json
+	$(call link_dotfile,$(DOTFILES_DIR)/vim/init.lua,$(HOME)/.config/nvim/init.lua)
+	$(call link_dotfile,$(DOTFILES_DIR)/vim/nvim-pack-lock.json,$(HOME)/.config/nvim/nvim-pack-lock.json)

@@ -4,8 +4,9 @@ Package lists are maintained using [`brew bundle`].
 
 [`brew bundle`]: https://github.com/Homebrew/homebrew-bundle
 
-This directory contains a Brewfile per host containing a list of top-level
-packages installed using homebrew.
+This directory contains a Brewfile per host containing a snapshot of top-level
+packages installed using Homebrew. These are machine snapshots rather than a
+role-based package taxonomy.
 
 To bootstrap a new system
 
@@ -13,12 +14,11 @@ To bootstrap a new system
 make brew_bundle_install
 ```
 
-This manifest also manages cask installs for bootstrapping a new macOS machine.
+These manifests also manage cask installs for bootstrapping a new macOS machine.
 Some apps are not tracked here but should be.
 
 TODO apps:
 
-- ChatGPT
 - Google Chrome
 - Google Drive
 - OneDrive

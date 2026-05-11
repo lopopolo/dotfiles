@@ -222,7 +222,13 @@ vim.api.nvim_create_autocmd("FocusLost", {
   group = save_on_lose_focus_grp,
   pattern = "*",
   callback = function()
-    pcall(vim.cmd.wall)
+    for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+      if is_normal_file_buffer(buf) and vim.bo[buf].modified then
+        vim.api.nvim_buf_call(buf, function()
+          pcall(vim.cmd.write)
+        end)
+      end
+    end
   end,
 })
 

@@ -29,12 +29,12 @@ echo 'use-agent' > ~/.gnupg/gpg.conf
 
 1. Import private key for developer machine and mark as ultimately trusted:
    ```shell
-   pbpaste | gnupg --import
+   pbpaste | gpg --import
    echo "B54B7B3FA506699945AF2E6E46047D739B6AE0B1:6" | gpg --import-ownertrust
    ```
 2. Import other @lopopolo public keys and mark as ultimately trusted:
    ```shell
-   pbpaste | gnupg --import
+   pbpaste | gpg --import
    echo "BFD9A9916E5A87A9B3550C11717CDD6DC84E7D45:6" | gpg --import-ownertrust
    ```
 3. Import GitHub webflow signing key:

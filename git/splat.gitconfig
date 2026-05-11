@@ -1,70 +1,11 @@
 # vim: ft=gitconfig:
+[include]
+	path = config.common
 [user]
 	email = rjl@hyperbo.la
 	name = Ryan Lopopolo
 	signingkey = 8DED78F01C224F64
-[color]
-	ui = auto
-[alias]
-	s = status --untracked-files=no
-	stat = status
-	co = checkout
-	ahead = log @{upstream}..HEAD
-	recent = for-each-ref --sort='-authordate' --format='%(refname:short)%09%(authordate)' --count=5 refs/heads
 [core]
 	editor = \"C:\\Users\\rjl\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code\" --wait
 [gpg]
 	program = C:\\Program Files (x86)\\GnuPG\\bin\\gpg.exe
-[advice]
-	detachedHead = false
-[branch]
-	autoSetupMerge = always
-	autoSetupRebase = always
-[branch "main"]
-	rebase = true
-[branch "master"]
-	rebase = true
-[branch "trunk"]
-	rebase = true
-[checkout]
-	defaultRemote = origin
-[commit]
-	gpgSign = true
-[diff]
-	colorMoved = zebra
-	# Use better, descriptive initials (c, i, w) instead of a/b.
-	mnemonicPrefix = true
-	# Show renames/moves as such
-	renames = true
-	wsErrorHighlight = all
-[fetch]
-	prune = true
-[init]
-	defaultBranch = trunk
-[log]
-	# Automatically --follow when given a single path
-	follow = true
-[merge]
-	defaultToUpstream = true
-[push]
-	default = simple
-[rebase]
-	autoSquash = true
-[rerere]
-	autoupdate = true
-	enabled = true
-[status]
-	# Recursively traverse untracked directories to display all contents
-	showUntrackedFiles = all
-[tag]
-	forceSignAnnotated = true
-	gpgSign = true
-	# Sort tags as version numbers whenever applicable, so 1.10.2 is AFTER 1.2.0.
-	sort = version:refname
-[versionsort]
-	prereleaseSuffix = -pre
-	prereleaseSuffix = .pre
-	prereleaseSuffix = -beta
-	prereleaseSuffix = .beta
-	prereleaseSuffix = -rc
-	prereleaseSuffix = .rc

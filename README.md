@@ -17,6 +17,16 @@ cd .dotfiles
 make
 ```
 
+The default target runs `make bootstrap`, which:
+
+- installs dotfiles and app configs into `$HOME` and `$HOME/.config`;
+- generates shell completions that should not be generated during shell startup;
+- creates the standard development directories under `$HOME/dev`;
+- links Vim and Neovim configuration.
+
+The bootstrap intentionally refuses to replace existing non-symlink dotfiles.
+Move existing files out of the way before rerunning `make`.
+
 ## Homebrew
 
 Homebrew is a package manager for macOS. [Installation
@@ -25,6 +35,9 @@ instructions][install-brew].
 [install-brew]: https://docs.brew.sh/Installation
 
 Packages for each machine are found in [`homebrew-packages`](homebrew-packages).
+These Brewfiles are host snapshots: they capture the top-level Homebrew
+formulae, casks, and VS Code extensions installed on each named machine rather
+than a role-based package taxonomy.
 
 Install packages for the current machine using:
 
