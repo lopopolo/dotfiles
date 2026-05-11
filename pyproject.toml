@@ -1,9 +1,12 @@
 [project]
 name = "lopopolo-dotfiles"
 version = "0.1.0"
-description = "Add your description here"
+description = "Personal dotfiles and bootstrap tooling."
 readme = "README.md"
 requires-python = ">=3.12"
+classifiers = [
+    "Private :: Do Not Upload",
+]
 dependencies = []
 
 [dependency-groups]
@@ -13,3 +16,6 @@ dev = [
 
 [tool.setuptools]
 packages = []
+
+[tool.uv]
+package = false

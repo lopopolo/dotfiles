@@ -6,4 +6,4 @@
 	email = rjl@hyperbo.la
 	signingKey = 46047D739B6AE0B1
 [alias]
-	work = "!f () { git branch --no-color --format='%(refname:short)' --sort=-committerdate | fzf --preview='git log --color=always {} --' ; } ; git checkout \"`f`\""
+	work = "!f () { git branch --no-color --format='%(refname:short)' --sort=-committerdate | fzf --preview='git log --color=always {} --' ; } ; git checkout \"$(f)\""

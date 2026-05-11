@@ -58,10 +58,11 @@ wipe() {
     --new-window --incognito --user-data-dir="${profile}"
   )
 
-  local status=0
-  open -a "Google Chrome" -nW --args "${chrome_args[@]}" || status=$?
-  rm -rf "${profile}"
-  return "$status"
+  {
+    open -a "Google Chrome" -nW --args "${chrome_args[@]}"
+  } always {
+    rm -rf "${profile}"
+  }
 }
 
 # =========================================================================== #

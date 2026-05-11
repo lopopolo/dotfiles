@@ -37,8 +37,12 @@
 	# Automatically --follow when given a single path.
 	follow = true
 [merge]
+	conflictStyle = zdiff3
 	defaultToUpstream = true
+[pull]
+	rebase = true
 [push]
+	autoSetupRemote = true
 	default = simple
 [rebase]
 	autoSquash = true
