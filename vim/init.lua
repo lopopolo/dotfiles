@@ -89,8 +89,8 @@ require("github-theme").setup({
     styles = {
       comments = "NONE",
       keywords = "NONE",
-    }
-  }
+    },
+  },
 })
 
 vim.cmd("colorscheme github_dark_dimmed")
@@ -103,21 +103,65 @@ vim.cmd("syntax on")
 -------------------------
 
 -- highlight trailing whitespace
-vim.cmd.highlight("ExtraWhitespace ctermbg=red guibg=red")
-vim.cmd.match([[ExtraWhitespace /\s\+\%#\@<!$/]])
+local trailing_ws_highlight_grp = vim.api.nvim_create_augroup("trailing_whitespace_highlight", { clear = true })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  command = "highlight ExtraWhitespace ctermbg=red guibg=red",
+local function set_extra_whitespace_highlight()
+  vim.api.nvim_set_hl(0, "ExtraWhitespace", {
+    ctermbg = "red",
+    bg = "red",
+  })
+end
+
+set_extra_whitespace_highlight()
+
+vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
+  group = trailing_ws_highlight_grp,
+  callback = function()
+    if vim.w.extra_whitespace_match_id then
+      return
+    end
+
+    vim.w.extra_whitespace_match_id = vim.fn.matchadd("ExtraWhitespace", [[\s\+\%#\@<!$]])
+  end,
 })
 
--- strip trailing whitespace for all files (except markdown where trailing
--- whitespace is significant)
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = trailing_ws_highlight_grp,
+  pattern = "*",
+  callback = set_extra_whitespace_highlight,
+})
+
+-- strip trailing whitespace for all files except prose-ish formats where
+-- trailing whitespace may be significant
+local trailing_ws_excluded_filetypes = {
+  markdown = true,
+  ["markdown.mdx"] = true,
+  gitcommit = true,
+  mail = true,
+  mutt = true,
+}
+
+local function is_normal_file_buffer(buf)
+  return vim.bo[buf].buftype == "" and vim.bo[buf].modifiable
+end
+
 local strip_trailing_ws_grp = vim.api.nvim_create_augroup("strip_trailing_whitespace", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*",
-  command = "if &ft!~?'markdown' | let l = line('.') | let c = col('.') | %s/\\s\\+$//e | call cursor(l, c)",
   group = strip_trailing_ws_grp,
+  pattern = "*",
+  callback = function(args)
+    if not is_normal_file_buffer(args.buf) then
+      return
+    end
+
+    if trailing_ws_excluded_filetypes[vim.bo[args.buf].filetype] then
+      return
+    end
+
+    local view = vim.fn.winsaveview()
+    vim.cmd([[keepjumps keeppatterns %s/\s\+$//e]])
+    vim.fn.winrestview(view)
+  end,
 })
 
 --------------------------
@@ -160,17 +204,26 @@ vim.keymap.set("n", "k", "gk", { noremap = true })
 -- (happens when dropping a file on gvim).
 local restore_cursor_grp = vim.api.nvim_create_augroup("restore_cursor", { clear = true })
 vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*",
-  command = [[if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif]],
   group = restore_cursor_grp,
+  pattern = "*",
+  callback = function()
+    local mark = vim.api.nvim_buf_get_mark(0, '"')
+    local line_count = vim.api.nvim_buf_line_count(0)
+
+    if mark[1] > 0 and mark[1] <= line_count then
+      pcall(vim.api.nvim_win_set_cursor, 0, mark)
+    end
+  end,
 })
 
 -- save on lose focus, but don't complain if you can't
 local save_on_lose_focus_grp = vim.api.nvim_create_augroup("save_on_lose_focus", { clear = true })
 vim.api.nvim_create_autocmd("FocusLost", {
-  pattern = "*",
-  command = "silent! wa",
   group = save_on_lose_focus_grp,
+  pattern = "*",
+  callback = function()
+    pcall(vim.cmd.wall)
+  end,
 })
 
 ---------------------
@@ -185,15 +238,15 @@ vim.cmd.cnoreabbrev({"W", "w"})
 -- disable Ex mode
 vim.cmd.map({"Q", "<Nop>"})
 
--- prevent saving filenames that beging with `:`, `;`, `"`, `'`, `[` or `]`.
+-- prevent saving filenames that begin with `:`, `;`, `"`, `'`, `[` or `]`.
 -- these are common typos I make when typing the `:w` command quickly.
---
--- https://stackoverflow.com/a/6211489
 local prevent_typos_grp = vim.api.nvim_create_augroup("prevent_saving_typoed_names", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "[:;\"'\\[\\]]*",
-  command = "try | echoerr 'Forbidden file name: ' . expand('<afile>') | endtry",
   group = prevent_typos_grp,
+  pattern = "[:;\"'\\[\\]]*",
+  callback = function(args)
+    error("Forbidden file name: " .. args.file)
+  end,
 })
 
 --------------------------------
@@ -283,17 +336,26 @@ vim.opt.undoreload = 10000
 -- use tabs for golang
 local golang_tabs_grp = vim.api.nvim_create_augroup("golang_tabs", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.go",
-  command = "setlocal noexpandtab ts=4 sw=4 sts=4",
   group = golang_tabs_grp,
+  pattern = "*.go",
+  callback = function()
+    vim.bo.expandtab = false
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.softtabstop = 4
+  end,
 })
 
 -- format Go buffers with gofmt before writing them to disk
 local gofmt_on_save_grp = vim.api.nvim_create_augroup("gofmt_on_save", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
   group = gofmt_on_save_grp,
+  pattern = "*.go",
   callback = function(args)
+    if not is_normal_file_buffer(args.buf) then
+      return
+    end
+
     if vim.fn.executable("gofmt") ~= 1 then
       return
     end
@@ -327,28 +389,32 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 -- set gitconfig filetype for dotfiles
 local detect_gitconfig_grp = vim.api.nvim_create_augroup("detect_gitconfig", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "*.gitconfig",
-  command = "set ft=gitconfig",
   group = detect_gitconfig_grp,
+  pattern = "*.gitconfig",
+  callback = function()
+    vim.bo.filetype = "gitconfig"
+  end,
 })
 
 -- set bash filetype for brewfiles
 local detect_brewfile_grp = vim.api.nvim_create_augroup("detect_brewfile", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "Brewfile",
-  command = "set ft=bash",
   group = detect_brewfile_grp,
-})
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "Brewfile.[A-Za-z0-9-]+",
-  command = "set ft=bash",
-  group = detect_brewfile_grp,
+  pattern = {
+    "Brewfile",
+    "Brewfile.*",
+  },
+  callback = function()
+    vim.bo.filetype = "bash"
+  end,
 })
 
 -- set toml filetype for telegraf config
 local detect_telegraf_toml_grp = vim.api.nvim_create_augroup("detect_telegraf_toml", { clear = true })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-  pattern = "telegraf.conf",
-  command = "set ft=toml",
   group = detect_telegraf_toml_grp,
+  pattern = "telegraf.conf",
+  callback = function()
+    vim.bo.filetype = "toml"
+  end,
 })
