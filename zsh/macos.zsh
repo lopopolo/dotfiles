@@ -37,7 +37,7 @@ cdf() {
       -e 'tell application "Finder"' \
       -e 'set myname to POSIX path of (target of window 1 as alias)' \
       -e 'end tell' \
-      2>/dev/null
+      2> /dev/null
   )"
 
   cd "$finder" || return 1
@@ -69,7 +69,7 @@ wipe() {
 # Programming language version managers                                       #
 # =========================================================================== #
 
-if command -v mise >/dev/null; then
+if command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
 fi
 
@@ -92,6 +92,6 @@ alias ls="ls -G -h -F"
 # Prompt                                                                      #
 # =========================================================================== #
 
-if command -v starship >/dev/null; then
+if command -v starship > /dev/null; then
   eval "$(starship init zsh)"
 fi

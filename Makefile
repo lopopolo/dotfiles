@@ -77,20 +77,20 @@ tmux:
 
 .PHONY: completions
 completions:
-	if command -v docker >/dev/null; then \
+	if command -v docker > /dev/null; then \
 		mkdir -p $(HOME)/.docker/completions; \
-		docker completion zsh >$(HOME)/.docker/completions/_docker; \
+		docker completion zsh > $(HOME)/.docker/completions/_docker; \
 	fi
 
 .PHONY: fmt
 fmt:
 	npm run fmt
-	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -w
+	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -w
 
 .PHONY: fmt-check
 fmt-check:
 	npm exec -- prettier --check '**/*'
-	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -d
+	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -d
 
 .PHONY: lint
 lint:

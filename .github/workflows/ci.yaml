@@ -19,11 +19,22 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Format shell sources with shfmt
-        uses: docker://mvdan/shfmt
-        with:
-          entrypoint: /bin/shfmt
-          args: -l -s -i 2 -ci -sr -d /github/workspace
+      - name: Install shell toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install --yes zsh
+          go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
+      - name: Check shell formatting with shfmt
+        run: |
+          export PATH="$HOME/go/bin:$PATH"
+          shfmt -f . \
+            | grep -v '^vim/' \
+            | grep -v '\.zsh$' \
+            | xargs -r shfmt -i 2 -ci -sr -d
+
+      - name: Check zsh syntax
+        run: zsh -n zsh/*.zsh
 
   text:
     name: Lint and format text
