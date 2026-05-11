@@ -69,8 +69,12 @@ cask "1password-cli"
 cask "aws-vault-binary"
 # Tool to flash OS images to SD cards & USB drives
 cask "balenaetcher"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 cask "font-cascadia-code"
