@@ -84,13 +84,13 @@ completions:
 
 .PHONY: fmt
 fmt:
-	npm run fmt
-	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -w
+	pnpm run fmt
+	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -w
 
 .PHONY: fmt-check
 fmt-check:
-	npm exec -- prettier --check '**/*'
-	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -d
+	pnpm exec prettier --check '**/*'
+	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -d
 
 .PHONY: lint
 lint:

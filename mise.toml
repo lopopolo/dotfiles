@@ -2,3 +2,18 @@
 node = "lts"
 shfmt = "latest"
 uv = "latest"
+
+[hooks]
+postinstall = "corepack enable"
+
+[settings]
+experimental = true
+
+[env]
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[tasks.pnpm-install]
+description = "Install dependencies with pnpm when lockfile changes"
+run = "pnpm install"
+sources = ["package.json", "pnpm-lock.yaml", "mise.toml"]
+outputs = ["node_modules/.pnpm/lock.yaml"]
