@@ -2,6 +2,8 @@
 extends: default
 
 ignore: |
+  pnpm-lock.yaml
+  pnpm-workspace.yaml
   **/node_modules/**/*
   **/vendor/**
   **/target/**/*
