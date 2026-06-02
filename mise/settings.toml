@@ -1,0 +1,8 @@
+[settings]
+# Avoid network work from shell hooks on unreliable connections.
+auto_install = false
+exec_auto_install = false
+not_found_auto_install = false
+prefer_offline = true
+fetch_remote_versions_timeout = "2s"
+http_timeout = "5s"

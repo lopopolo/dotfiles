@@ -16,7 +16,7 @@ all: bootstrap
 bootstrap: dotfiles completions dev vim
 
 .PHONY: dotfiles
-dotfiles: editline ghostty git python readline ruby shell starship terraform tmux
+dotfiles: editline ghostty git mise python readline ruby shell starship terraform tmux
 
 .PHONY: dev
 dev:
@@ -34,6 +34,11 @@ git:
 		exit 1; \
 	fi
 	cp $(DOTFILES_DIR)/git/$(HOSTNAME).gitconfig $(HOME)/.config/git/config
+
+.PHONY: mise
+mise:
+	mkdir -p $(HOME)/.config/mise
+	cp $(DOTFILES_DIR)/mise/settings.toml $(HOME)/.config/mise/config.toml
 
 .PHONY: editline
 editline:

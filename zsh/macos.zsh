@@ -4,16 +4,21 @@
 # Homebrew setup                                                              #
 # =========================================================================== #
 
-# Disable Homebrew auto-updating while running this script
+# Disable Homebrew auto-update only during shell startup so `brew shellenv` cannot
+# trigger network work when opening a terminal on unreliable connections.
 export HOMEBREW_NO_AUTO_UPDATE=1
 
+# Disable Homebrew analytics for every shell; this avoids background reporting
+# without changing normal install, upgrade, or update behavior.
+export HOMEBREW_NO_ANALYTICS=1
+
 if [ -f /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/brew shellenv zsh)"
   # Must be set before compinit
-  FPATH="$(brew --prefix --quiet)/share/zsh/site-functions:${FPATH}"
+  FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 fi
 
-# Allow Homebrew to autoupdate, again
+# Re-enable Homebrew auto-update for normal `brew install`/`brew upgrade` usage.
 unset HOMEBREW_NO_AUTO_UPDATE
 
 # =========================================================================== #
