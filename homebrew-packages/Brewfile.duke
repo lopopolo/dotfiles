@@ -1,6 +1,8 @@
 tap "homebrew/bundle"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Create and run Linux containers using lightweight virtual machines
+brew "container"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
 # Like neofetch, but much faster because written mostly in C

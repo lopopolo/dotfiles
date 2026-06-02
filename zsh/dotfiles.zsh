@@ -110,7 +110,7 @@ rand_pin() {
   LANG=C LC_ALL=C tr -dc '0-9' < /dev/urandom | fold -w "${1:-6}" | head -n 1
 }
 
-# Download a video using youtube-dl in a Docker container.
+# Download a video using yt-dlp in an Apple container.
 #
 # By default, this function takes a URL to a video as its only argument. It will
 # attempt to download the best quality MP4 video.
@@ -129,7 +129,22 @@ ytdl() {
     shift
   fi
 
-  docker run --rm -i -v "$(pwd)":/downloads:rw jauderho/yt-dlp:latest -f "$quality" "$@"
+  if ! command -v container > /dev/null; then
+    echo "ytdl: Apple container CLI is not installed"
+    return 127
+  fi
+
+  local image="docker.io/jauderho/yt-dlp:latest"
+  local pull_marker="${XDG_CACHE_HOME:-$HOME/.cache}/ytdl/container-image-pulled"
+
+  container system start || return 1
+  zmodload zsh/datetime
+  if [[ ! -f "$pull_marker" ]] || ((EPOCHSECONDS - $(stat -f %m "$pull_marker") > 86400)); then
+    mkdir -p "${pull_marker:h}"
+    container image pull "$image" || return 1
+    touch "$pull_marker"
+  fi
+  container run --rm -i --volume "$(pwd)":/downloads --workdir /downloads "$image" -f "$quality" "$@"
 }
 
 # =========================================================================== #
