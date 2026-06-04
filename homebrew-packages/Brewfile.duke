@@ -21,22 +21,12 @@ brew "gnupg"
 brew "hyperfine"
 # Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-# Update of iperf: measures TCP, UDP, and SCTP bandwidth
-brew "iperf3"
-# Command-line pager for JSON data
-brew "jless"
-# YAML Parser
-brew "libyaml"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-# Port scanning utility for large networks
-brew "nmap"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Package compiler and linker metadata toolkit
-brew "pkgconf"
 # Optimizer for PNG files
 brew "pngcrush"
 # PNG image optimizing utility
@@ -51,8 +41,6 @@ brew "rclone"
 brew "ripgrep"
 # Rust toolchain installer
 brew "rustup"
-# Fast and accurate code counter with complexity and COCOMO estimates
-brew "scc"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Terminal multiplexer
@@ -101,7 +89,6 @@ cask "visual-studio-code"
 cask "vlc"
 # Lossless audio decoder
 cask "xld"
-vscode "bierner.markdown-mermaid"
 vscode "bmarkovic.haproxy"
 vscode "bradlc.vscode-tailwindcss"
 vscode "charliermarsh.ruff"
@@ -111,7 +98,6 @@ vscode "docker.docker"
 vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "esbenp.prettier-vscode"
-vscode "github.copilot-chat"
 vscode "github.github-vscode-theme"
 vscode "github.remotehub"
 vscode "github.vscode-github-actions"
@@ -174,3 +160,4 @@ vscode "vscodevim.vim"
 vscode "wholroyd.jinja"
 vscode "william-voyek.vscode-nginx"
 vscode "zizmor.zizmor-vscode"
+npm "corepack"
