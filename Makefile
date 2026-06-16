@@ -105,7 +105,7 @@ lint:
 .PHONY: brewfile
 brewfile:
 	rm -f homebrew-packages/Brewfile.`hostname -s`
-	brew bundle dump --describe --file=homebrew-packages/Brewfile.`hostname -s`
+	brew bundle dump --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: brew_bundle_install
 brew_bundle_install:

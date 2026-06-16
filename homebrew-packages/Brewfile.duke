@@ -87,8 +87,6 @@ cask "tailscale-app"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
-# Lossless audio decoder
-cask "xld"
 vscode "bmarkovic.haproxy"
 vscode "bradlc.vscode-tailwindcss"
 vscode "charliermarsh.ruff"
