@@ -20,22 +20,7 @@ shell-integration-features = no-cursor
 selection-background = #0f2d5c
 selection-foreground = #ffffff
 
-palette = 0=#1d1117
-palette = 1=#fa7971
-palette = 2=#8ce38b
-palette = 3=#fbe091
-palette = 4=#78bdfb
-palette = 5=#cea6fb
-palette = 6=#a3d2fb
-palette = 7=#cdd9e5
-palette = 8=#4d4d4d
-palette = 9=#c93c37
-palette = 10=#57ab5a
-palette = 11=#e3b341
-palette = 12=#6ca4f8
-palette = 13=#db61a2
-palette = 14=#2b7489
-palette = 15=#ffffff
+theme = GitHub Dark
 
 window-height = 45
 window-width = 130
@@ -49,3 +34,8 @@ copy-on-select = clipboard
 scrollback-limit = 2147483648
 
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
+
+macos-icon = custom-style
+macos-icon-frame = aluminum
+macos-icon-ghost-color = #ff47f9
+macos-icon-screen-color = #ff1a8c,#00a2f7
