@@ -2,19 +2,29 @@
 
 !**/*/
 
+.gocache/
+.gopath/
+.pnpm-store/
+.venv/
 dist/
 node_modules/
-.pnpm-store/
 target/
 vim/plugged/
 vim/undo/
+venv/
 
+!*.css
 !*.html
 !*.js
 !*.json
 !*.md
+!*.mjs
+!*.scss
 !*.yaml
 !*.yml
+
+pnpm-lock.yaml
+pnpm-workspace.yaml
 
 **/vendor/*
 !**/vendor/*.md
