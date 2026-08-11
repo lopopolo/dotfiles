@@ -1,0 +1,11 @@
+root = true
+
+# shfmt reads these instead of command-line flags, but only when its
+# invocations pass no parser or printer flags at all; even -s turns
+# EditorConfig lookup off, so simplify must live here too.
+[*.sh]
+indent_style = space
+indent_size = 2
+switch_case_indent = true
+space_redirects = true
+simplify = true

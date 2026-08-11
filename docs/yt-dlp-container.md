@@ -32,12 +32,15 @@ ytdl --version
 
 The function starts the `container` service, pulls the latest
 `docker.io/jauderho/yt-dlp:latest` image if it has not pulled it in the last
-day, and runs `yt-dlp` with the current directory mounted at `/downloads`.
+day, prunes dangling image data left by a superseded image, and runs `yt-dlp`
+with the current directory mounted at `/downloads`.
 
 ## Updating
 
 The `ytdl` function refreshes the yt-dlp image automatically at most once per
-day. To force a refresh sooner, remove the pull marker and run `ytdl` again:
+day. After a successful refresh it prunes only dangling images; the current
+tagged yt-dlp image and other tagged images remain available. To force a refresh
+sooner, remove the pull marker and run `ytdl` again:
 
 ```shell
 rm ~/.cache/ytdl/container-image-pulled
@@ -56,6 +59,6 @@ command-line tool. Apple `container` is a better fit for that use because it is
 CLI-first, runs OCI images, and does not require opening Docker Desktop before
 running `ytdl`.
 
-The tradeoff is that Apple `container` is a newer pre-1.0 tool, so the wrapper
-keeps to a small command surface: start the service, refresh the image
-periodically, mount the current directory, and run `yt-dlp`.
+The tradeoff is that Apple `container` is a newer tool, so the wrapper keeps to
+a small command surface: start the service, refresh the image periodically,
+mount the current directory, and run `yt-dlp`.

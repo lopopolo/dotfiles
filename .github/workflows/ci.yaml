@@ -15,38 +15,51 @@ concurrency:
 jobs:
   shell:
     name: Lint and format shell scripts
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
-      - name: Install shell toolchain
+      - name: Setup mise
+        id: mise
+        uses: ./.github/actions/setup-mise
+
+      - name: Install shell lint tools
+        uses: ./.github/actions/mise-install
+        with:
+          executable: ${{ steps.mise.outputs.executable }}
+          tools: |
+            aqua:koalaman/shellcheck
+            aqua:mvdan/sh
+
+      - name: Install zsh
         run: |
           sudo apt-get update
           sudo apt-get install --yes zsh
-          go install mvdan.cc/sh/v3/cmd/shfmt@latest
 
-      - name: Check shell formatting with shfmt
-        run: |
-          export PATH="$HOME/go/bin:$PATH"
-          shfmt -f . \
-            | grep -v '^vim/' \
-            | grep -v '\.zsh$' \
-            | xargs -r shfmt -i 2 -ci -sr -d
-
-      - name: Check zsh syntax
-        run: zsh -n zsh/*.zsh
+      - name: Lint shell
+        run: make lint
 
   text:
     name: Lint and format text
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+
+      - name: Setup mise
+        id: mise
+        uses: ./.github/actions/setup-mise
+
+      - name: Resolve toolchain versions
+        id: toolchains
+        uses: ./.github/actions/mise-tool-versions
+        with:
+          executable: ${{ steps.mise.outputs.executable }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@0ebf47130e4866e96fce0953f49152a61190b271 # v6.0.9
@@ -54,7 +67,7 @@ jobs:
       - name: Install Node.js toolchain
         uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: "lts/*"
+          node-version: ${{ steps.toolchains.outputs.node }}
           cache: pnpm
 
       - name: Install Node.js dependencies

@@ -8,6 +8,10 @@ This directory contains a Brewfile per host containing a snapshot of top-level
 packages installed using Homebrew. These are machine snapshots rather than a
 role-based package taxonomy.
 
+VS Code extensions are restored with Settings Sync and npm packages are owned by
+the Node.js toolchain managed with mise, so both are excluded from generated
+Brewfiles.
+
 To bootstrap a new system
 
 ```shell
