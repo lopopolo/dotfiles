@@ -61,5 +61,9 @@ Python, Ruby, Node.js, and Go installs.
 [`mise`]: https://github.com/jdx/mise
 
 ```shell
-mise install
+mise install --locked
 ```
+
+See [Dependency and Supply Chain Posture] for the ownership and update policy.
+
+[Dependency and Supply Chain Posture]: ./docs/dependencies.md
