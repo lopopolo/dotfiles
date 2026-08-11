@@ -35,9 +35,10 @@ instructions][install-brew].
 [install-brew]: https://docs.brew.sh/Installation
 
 Packages for each machine are found in [`homebrew-packages`](homebrew-packages).
-These Brewfiles are host snapshots: they capture the top-level Homebrew
-formulae, casks, and VS Code extensions installed on each named machine rather
-than a role-based package taxonomy.
+These Brewfiles are host snapshots: they capture the top-level Homebrew formulae
+and casks installed on each named machine rather than a role-based package
+taxonomy. VS Code extensions are restored with Settings Sync, and
+language-scoped tools are managed with mise.
 
 Install packages for the current machine using:
 

@@ -104,16 +104,11 @@ lint:
 
 .PHONY: brewfile
 brewfile:
-	rm -f homebrew-packages/Brewfile.`hostname -s`
-	brew bundle dump --file=homebrew-packages/Brewfile.`hostname -s`
+	brew bundle dump --force --no-vscode --no-npm --file=homebrew-packages/Brewfile.`hostname -s`
 
 .PHONY: brew_bundle_install
 brew_bundle_install:
 	brew bundle --file=homebrew-packages/Brewfile.$(HOSTNAME)
-
-.PHONY: cargo_bins_install
-cargo_bins_install:
-	LIBCLANG_PATH=/opt/homebrew/opt/llvm/lib/libclang.dylib cargo install --locked cargo-spellcheck
 
 .PHONY: vim
 vim: vim-init
