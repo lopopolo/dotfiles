@@ -142,6 +142,9 @@ ytdl() {
   if [[ ! -f "$pull_marker" ]] || ((EPOCHSECONDS - $(stat -f %m "$pull_marker") > 86400)); then
     mkdir -p "${pull_marker:h}"
     container image pull "$image" || return 1
+    if ! container image prune > /dev/null; then
+      echo "ytdl: warning: could not prune superseded container image data" >&2
+    fi
     touch "$pull_marker"
   fi
   container run --rm -i --volume "$(pwd)":/downloads --workdir /downloads "$image" -f "$quality" "$@"
