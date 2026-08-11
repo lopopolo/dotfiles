@@ -90,16 +90,16 @@ completions:
 .PHONY: fmt
 fmt:
 	pnpm run fmt
-	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -w
+	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -w
 
 .PHONY: fmt-check
 fmt-check:
 	pnpm exec prettier --check '**/*'
-	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -i 2 -ci -sr -d
+	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs -n1 shfmt -d
 
 .PHONY: lint
 lint:
-	./script/lint-shell
+	./scripts/lint_shell.sh
 
 .PHONY: brewfile
 brewfile:

@@ -66,7 +66,7 @@ wipe() {
   {
     open -a "Google Chrome" -nW --args "${chrome_args[@]}"
   } always {
-    rm -rf "${profile}"
+    rm -rf -- "$profile"
   }
 }
 
