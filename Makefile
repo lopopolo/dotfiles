@@ -99,7 +99,7 @@ fmt-check:
 
 .PHONY: lint
 lint:
-	shfmt -f . | grep -v '^vim/' | grep -v '\.zsh$$' | xargs shellcheck -x
+	shfmt -f . | grep -Ev '^(node_modules/|vim/)|\.zsh$$' | xargs shellcheck -x
 	find . -name '*.zsh' | grep -v 'vim/' | xargs -n1 zsh -n
 
 .PHONY: brewfile
