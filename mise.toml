@@ -1,7 +1,9 @@
 [tools]
 node = "lts"
-shfmt = "latest"
 uv = "latest"
+
+"aqua:koalaman/shellcheck" = "0.11.0"
+"aqua:mvdan/sh" = "3.13.1"
 
 [hooks]
 postinstall = "corepack enable"
