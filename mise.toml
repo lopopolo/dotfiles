@@ -1,6 +1,6 @@
 [tools]
-node = "lts"
-uv = "latest"
+node = "24.18.0"
+uv = "0.11.29"
 
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:mvdan/sh" = "3.13.1"

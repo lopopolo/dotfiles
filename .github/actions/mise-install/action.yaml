@@ -1,0 +1,20 @@
+---
+name: Install mise tools
+description: Install a declared subset of the locked mise toolchain
+inputs:
+  executable:
+    description: Absolute path to the verified mise executable
+    required: true
+  tools:
+    description: Newline-delimited mise.toml tool names to install
+    required: true
+runs:
+  using: composite
+  steps:
+    - name: Install locked tools
+      shell: bash
+      env:
+        ACTION_PATH: ${{ github.action_path }}
+        MISE: ${{ inputs.executable }}
+        MISE_TOOLS: ${{ inputs.tools }}
+      run: '"$ACTION_PATH/install.sh"'
