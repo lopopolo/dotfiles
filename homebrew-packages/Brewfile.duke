@@ -24,6 +24,8 @@ brew "imagemagick"
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Mac App Store command-line interface
+brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -56,6 +58,8 @@ brew "wget"
 brew "yq"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Securely stores and accesses AWS credentials in a development environment
@@ -74,6 +78,10 @@ cask "font-cascadia-mono"
 cask "font-cascadia-mono-nf"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
+cask "google-chrome"
+# Client for the Google Drive storage service
+cask "google-drive"
 # Tool to control external monitor brightness & volume
 cask "monitorcontrol"
 # Music tagger
@@ -88,3 +96,23 @@ cask "tailscale-app"
 cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
+# Video communication and virtual meeting platform
+cask "zoom"
+mas "1Blocker", id: 1365531024
+mas "1Password for Safari", id: 1569813296
+mas "Amphetamine", id: 937984704
+mas "Flighty", id: 1358823008
+mas "GarageBand", id: 682658836
+mas "Home Assistant", id: 1099568401
+mas "iMovie", id: 408981434
+mas "Infuse", id: 1136220934
+mas "Keynote", id: 409183694
+mas "Microsoft Excel", id: 462058435
+mas "Microsoft PowerPoint", id: 462062816
+mas "Microsoft Word", id: 462054704
+mas "Numbers", id: 409203825
+mas "OneDrive", id: 823766827
+mas "Pages", id: 409201541
+mas "Paku", id: 1534130193
+mas "Slack", id: 803453959
+mas "Telegram", id: 747648890

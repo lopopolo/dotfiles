@@ -9,8 +9,9 @@ application, or sufficiently complex maintenance surface.
 
 Dependencies belong to one of four surfaces:
 
-- Homebrew owns durable macOS applications, fonts, system utilities, and native
-  libraries recorded in `homebrew-packages/Brewfile.duke`.
+- Homebrew Bundle owns durable macOS applications, fonts, system utilities,
+  native libraries, and Mac App Store install intent recorded in
+  `homebrew-packages/Brewfile.duke`.
 - mise owns language runtimes and repository-local command-line tooling declared
   in `mise.toml`.
 - pnpm owns Node.js dependencies and their transitive graph through
@@ -51,8 +52,9 @@ pnpm owns `pnpm-lock.yaml`; do not hand-edit the lockfile.
 ## Homebrew
 
 The Duke Brewfile records desired top-level formulae and casks, not transitive
-formula dependencies. Regeneration deliberately excludes npm packages and VS
-Code extensions.
+formula dependencies. Its `mas` declarations snapshot Mac App Store applications
+that should be restored after signing in. Regeneration deliberately excludes npm
+packages and VS Code extensions.
 
 Use `brew bundle check` to validate desired state and `brew bundle cleanup`
 without `--force` to review drift. Package upgrades are rolling workstation
