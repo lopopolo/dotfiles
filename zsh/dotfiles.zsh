@@ -173,3 +173,9 @@ if [[ -f "$HOME/.cargo/env" ]]; then
   # https://doc.rust-lang.org/cargo/reference/config.html#registriescrates-ioprotocol
   export CARGO_REGISTRIES_CRATES_IO_PROTOCOL=sparse
 fi
+
+# Activate mise after all other tool managers have modified PATH so its
+# project-specific tool versions take precedence.
+if command -v mise > /dev/null; then
+  eval "$(mise activate zsh)"
+fi
