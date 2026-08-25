@@ -16,8 +16,6 @@ brew "gh"
 brew "git"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Command-line benchmarking tool
-brew "hyperfine"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
