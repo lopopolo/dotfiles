@@ -108,6 +108,19 @@ brewfile:
 .PHONY: brew_bundle_install
 brew_bundle_install:
 	brew bundle --file=homebrew-packages/Brewfile.$(HOSTNAME)
+	$(MAKE) signing-keys mise-install
+
+.PHONY: mise-install
+mise-install: signing-key-mise
+	./scripts/install_mise.sh
+
+.PHONY: signing-keys
+signing-keys: signing-key-mise
+	./scripts/import_signing_keys.sh github artichoke node rust llvm
+
+.PHONY: signing-key-mise
+signing-key-mise:
+	./scripts/import_signing_keys.sh mise
 
 .PHONY: vim
 vim: vim-init

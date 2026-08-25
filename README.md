@@ -46,6 +46,13 @@ Install packages for the current machine using:
 make brew_bundle_install
 ```
 
+This also installs the latest official mise release after verifying its signed
+installer. To install or refresh mise independently, run:
+
+```shell
+make mise-install
+```
+
 ## Shell
 
 This repository ships with shell configuration files for `zsh`. See the READMEs
@@ -55,7 +62,8 @@ in the config directories for details:
 
 ## Languages
 
-These dotfiles setup the [`mise`] version manager which should be used to manage
+These dotfiles set up the [`mise`] tool manager from its official release
+binaries. Mise automatically keeps itself current and should be used to manage
 Python, Ruby, Node.js, and Go installs.
 
 [`mise`]: https://github.com/jdx/mise
