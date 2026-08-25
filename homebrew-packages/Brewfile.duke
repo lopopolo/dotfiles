@@ -18,8 +18,6 @@ brew "git"
 brew "gnupg"
 # Command-line benchmarking tool
 brew "hyperfine"
-# Tools and libraries to manipulate images in select formats
-brew "imagemagick"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
