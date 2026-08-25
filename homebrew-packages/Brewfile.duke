@@ -4,8 +4,6 @@ brew "bat"
 brew "container"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Like neofetch, but much faster because written mostly in C
-brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -16,18 +14,12 @@ brew "gh"
 brew "git"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
-# Command-line benchmarking tool
-brew "hyperfine"
-# Tools and libraries to manipulate images in select formats
-brew "imagemagick"
 # Command-line pager for JSON data
 brew "jless"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Mac App Store command-line interface
 brew "mas"
-# Polyglot runtime manager (asdf rust clone)
-brew "mise"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Pinentry for GPG on Mac

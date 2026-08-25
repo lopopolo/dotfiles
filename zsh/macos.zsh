@@ -71,8 +71,10 @@ wipe() {
 }
 
 # =========================================================================== #
-# Programming language version managers                                       #
+# Tool managers                                                               #
 # =========================================================================== #
+
+path=("$HOME/.local/bin" $path)
 
 if command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
