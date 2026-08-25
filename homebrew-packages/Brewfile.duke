@@ -4,8 +4,6 @@ brew "bat"
 brew "container"
 # Perl lib for reading and writing EXIF metadata
 brew "exiftool"
-# Like neofetch, but much faster because written mostly in C
-brew "fastfetch"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
