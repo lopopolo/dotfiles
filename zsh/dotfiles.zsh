@@ -56,6 +56,9 @@ export EDITOR='nvim'
 
 alias vim='nvim'
 compdef vim=nvim
+alias vimdiff='nvim -d'
+compdef vimdiff=nvim
+alias vimtutor='nvim +Tutor'
 alias g='git'
 compdef g=git
 alias la='ls -la'
