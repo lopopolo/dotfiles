@@ -21,3 +21,47 @@ description = "Install dependencies with pnpm when lockfile changes"
 run = "pnpm install"
 sources = ["package.json", "pnpm-lock.yaml", "mise.toml"]
 outputs = ["node_modules/.pnpm/lock.yaml"]
+
+[tasks.bootstrap]
+description = "Install dotfiles and create development directories"
+run = "./scripts/bootstrap.sh"
+
+[tasks.completions]
+description = "Generate shell completions"
+run = "./scripts/generate_completions.sh"
+
+[tasks.fmt]
+description = "Format repository files"
+run = "./scripts/format.sh"
+
+[tasks.fmt-check]
+description = "Check repository formatting"
+run = "./scripts/format.sh --check"
+
+[tasks.lint]
+description = "Lint repository shell"
+run = "./scripts/lint_shell.sh"
+
+[tasks.check]
+description = "Run all repository checks"
+depends = ["fmt-check", "lint"]
+
+[tasks.brewfile]
+description = "Snapshot Homebrew packages for the current machine"
+run = "./scripts/snapshot_homebrew_packages.sh"
+
+[tasks.brew-bundle-install]
+description = "Install Homebrew packages and refresh mise"
+run = "./scripts/install_homebrew_packages.sh"
+
+[tasks.mise-install]
+description = "Install or refresh mise from its signed installer"
+run = "./scripts/refresh_mise.sh"
+
+[tasks.signing-keys]
+description = "Import and locally certify upstream signing keys"
+run = "./scripts/import_signing_keys.sh"
+
+[tasks.signing-key-mise]
+description = "Import and locally certify the mise release key"
+run = "./scripts/import_signing_keys.sh mise"

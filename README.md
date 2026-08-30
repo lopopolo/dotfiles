@@ -14,10 +14,10 @@ These dotfiles assume they are located at `$HOME/.dotfiles`.
 cd $HOME
 git clone git@github.com:lopopolo/dotfiles.git .dotfiles
 cd .dotfiles
-make
+./scripts/bootstrap.sh
 ```
 
-The default target runs `make bootstrap`, which:
+The bootstrap script:
 
 - installs dotfiles and app configs into `$HOME` and `$HOME/.config`;
 - generates shell completions that should not be generated during shell startup;
@@ -25,7 +25,7 @@ The default target runs `make bootstrap`, which:
 - links Vim and Neovim configuration.
 
 The bootstrap intentionally refuses to replace existing non-symlink dotfiles.
-Move existing files out of the way before rerunning `make`.
+Move existing files out of the way before rerunning the bootstrap script.
 
 ## Homebrew
 
@@ -43,14 +43,14 @@ language-scoped tools are managed with mise.
 Install packages for the current machine using:
 
 ```shell
-make brew_bundle_install
+./scripts/install_homebrew_packages.sh
 ```
 
 This also installs the latest official mise release after verifying its signed
 installer. To install or refresh mise independently, run:
 
 ```shell
-make mise-install
+./scripts/refresh_mise.sh
 ```
 
 ## Shell
@@ -71,6 +71,9 @@ Python, Ruby, Node.js, and Go installs.
 ```shell
 mise install --locked
 ```
+
+Repository maintenance commands are mise tasks. List them with `mise tasks ls`
+and run all checks with `mise run check`.
 
 See [Dependency and Supply Chain Posture] for the ownership and update policy.
 

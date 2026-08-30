@@ -15,7 +15,7 @@ Brewfiles.
 To bootstrap a new system
 
 ```shell
-make brew_bundle_install
+./scripts/install_homebrew_packages.sh
 ```
 
 These manifests also manage cask installs for bootstrapping a new macOS machine.

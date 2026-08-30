@@ -13,7 +13,7 @@
   description: "Area: Homebrew packages and config."
 - name: "A-install"
   color: "f7e101"
-  description: "Area: Makefile and bootstrapping."
+  description: "Area: mise tasks and bootstrapping."
 - name: "A-python"
   color: "f7e101"
   description: "Area: Python version and packages."

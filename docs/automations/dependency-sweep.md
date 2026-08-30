@@ -79,8 +79,8 @@ Automation-authored comments must begin with `Codex automation note:`.
 Run the checks relevant to every changed surface:
 
 ```shell
-mise exec -- make fmt-check
-mise exec -- make lint
+mise run fmt-check
+mise run lint
 mise install --locked
 brew bundle check --file=homebrew-packages/Brewfile.duke
 ```

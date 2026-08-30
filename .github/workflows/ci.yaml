@@ -40,7 +40,9 @@ jobs:
           sudo apt-get install --yes zsh
 
       - name: Lint shell
-        run: make lint
+        env:
+          MISE: ${{ steps.mise.outputs.executable }}
+        run: '"$MISE" run lint'
 
   text:
     name: Lint and format text

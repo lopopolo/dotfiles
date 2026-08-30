@@ -104,8 +104,8 @@ it is available; otherwise record that it was unavailable.
 For documentation or workflow changes, also run:
 
 ```sh
-mise exec -- make fmt-check
-mise exec -- make lint
+mise run fmt-check
+mise run lint
 ```
 
 Open an inbox item after every run summarizing:
