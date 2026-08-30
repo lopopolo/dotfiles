@@ -34,7 +34,7 @@ main() {
   readonly config_path
 
   emit_version node node "$config_path" "$github_output" "$mise"
-  emit_version uv uv "$config_path" "$github_output" "$mise"
+  emit_version uv aqua:astral-sh/uv "$config_path" "$github_output" "$mise"
 }
 
 main "$@"
