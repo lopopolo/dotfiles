@@ -14,5 +14,7 @@ read and follow its repository runbook.
 Current runbooks:
 
 - [Dependency Sweep]
+- [GitHub Actions Runner Images]
 
 [Dependency Sweep]: ./dependency-sweep.md
+[GitHub Actions Runner Images]: ./github-actions-runner-images.md
