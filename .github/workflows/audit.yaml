@@ -116,9 +116,17 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: Run zizmor 🌈
-        uses: zizmorcore/zizmor-action@6599ee8b7a49aef6a770f63d261d214911a7ce02 # v0.6.0
+      - name: Setup mise
+        id: mise
+        uses: ./.github/actions/setup-mise
+
+      - name: Install zizmor
+        uses: ./.github/actions/mise-install
         with:
-          advanced-security: false
-          persona: "pedantic"
-          version: "1.26.1"
+          executable: ${{ steps.mise.outputs.executable }}
+          tools: aqua:zizmorcore/zizmor
+
+      - name: Run zizmor 🌈
+        env:
+          ZIZMOR_GITHUB_TOKEN: ${{ github.token }}
+        run: zizmor --persona=pedantic --format=github .

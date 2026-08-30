@@ -8,10 +8,6 @@ outputs:
 runs:
   using: composite
   steps:
-    - name: Disable mise version download tracking
-      shell: bash
-      run: printf '%s\n' 'MISE_USE_VERSIONS_HOST_TRACK=false' >> "$GITHUB_ENV"
-
     - name: Install mise
       id: install
       shell: bash
