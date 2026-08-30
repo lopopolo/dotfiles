@@ -1,6 +1,6 @@
 [tools]
-node = "24.18.0"
-uv = "0.11.29"
+node = "24.19.0"
+uv = "0.12.5"
 
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:mvdan/sh" = "3.13.1"
@@ -10,6 +10,7 @@ postinstall = "corepack enable"
 
 [settings]
 experimental = true
+use_versions_host_track = false
 
 [env]
 _.path = ["{{config_root}}/node_modules/.bin"]
