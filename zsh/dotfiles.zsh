@@ -176,6 +176,7 @@ fi
 
 # Activate mise after all other tool managers have modified PATH so its
 # project-specific tool versions take precedence.
+export MISE_USE_VERSIONS_HOST_TRACK=false
 if command -v mise > /dev/null; then
   eval "$(mise activate zsh)"
 fi

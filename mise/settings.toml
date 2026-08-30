@@ -1,6 +1,8 @@
 [settings]
 # Keep the standalone mise binary current with its signed upstream releases.
 auto_update = true
+# Do not report anonymous tool download statistics to mise-versions.jdx.dev.
+use_versions_host_track = false
 # Avoid installing tools or resolving missing commands during shell startup.
 auto_install = false
 exec_auto_install = false
