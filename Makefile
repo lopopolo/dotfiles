@@ -1,4 +1,11 @@
-HOSTNAME = $(shell hostname -s)
+# macOS can derive the kernel hostname from transient network state. Prefer its
+# persistent Bonjour hostname for selecting a machine-specific configuration.
+HOSTNAME = $(shell \
+	if [ "$$(uname -s)" = "Darwin" ]; then \
+		scutil --get LocalHostName 2>/dev/null || hostname -s; \
+	else \
+		hostname -s; \
+	fi)
 DOTFILES_DIR = $(CURDIR)
 
 define link_dotfile
