@@ -24,10 +24,10 @@ time, so a weekly cadence is sufficient.
 Review GitHub Actions workflow files under `.github/workflows/`, with emphasis
 on `runs-on` labels and runner-image-sensitive assumptions.
 
-The audit and CI workflows use explicit `ubuntu-24.04` runners, while the
-repository-label workflow uses `ubuntu-latest`. Preserve that distinction:
-developer-environment and policy checks require a reproducible Linux baseline,
-whereas label synchronization intentionally follows GitHub's moving default.
+Review every `runs-on` entry. This policy applies to every job, regardless of
+its operating system or purpose. Each job must use a versioned label for a
+generally available image. Every `*-latest` selector is prohibited. Do not
+hardcode the repository's current label in this runbook.
 
 Do not update pinned GitHub Actions versions. Dependabot owns action dependency
 updates. Do not update job or service container images unless a runner-image
@@ -50,18 +50,23 @@ and retirements in the inbox summary and any pull request.
 
 ## Decision Rules
 
-Preserve the intent of each job. An explicit label is a compatibility decision;
-`*-latest` is a deliberate choice to follow GitHub's moving default. Do not
-mechanically convert one style to the other.
+For each run:
 
-When a new image becomes generally available, add or migrate coverage before a
-previous image's brownouts begin. Remove a deprecated image before retirement
-unless the repository documents a compatibility reason to retain it. Do not add
-preview or beta images merely because they exist.
+1. List every `runs-on` label in `.github/workflows/`.
+2. For each operating-system and architecture family, identify the newest
+   generally available versioned label from the runner-image README and its
+   announcement issues.
+3. If a job uses a `*-latest` selector or an older versioned label, migrate it
+   to that GA label. Apply the rule to every affected job, including policy and
+   repository-label jobs.
+4. If the candidate image is preview-only or a job has a concrete compatibility
+   blocker, do not migrate it. Record the blocker and the next review date.
+5. If the change alters a matrix or generated check names, inspect the required
+   status-check contexts in the repository rulesets.
 
-If a proposed label change alters a job matrix or its generated check names,
-inspect required status-check contexts in the repository rulesets. Keep those
-contexts aligned with the workflow jobs.
+Do not wait for a failure or brownout to make a GA migration. Do not update
+action versions or unrelated container images; make compatibility adjustments
+only when the runner migration requires them.
 
 ## Changes
 
