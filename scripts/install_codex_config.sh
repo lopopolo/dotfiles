@@ -186,8 +186,8 @@ merge_config() {
     ' "$target" > "$CODEX_CONFIG_TEMP"
 }
 
-install_managed_link() {
-  local source target backup current_link
+install_managed_file() {
+  local source target backup current_link install_temp
 
   source=$1
   target=$2
@@ -195,28 +195,33 @@ install_managed_link() {
 
   if [[ -L $target ]]; then
     current_link=$(readlink "$target")
-    if [[ $current_link == "$source" ]]; then
-      return 0
+    if [[ $current_link != "$source" ]]; then
+      echo "install-codex-config: refusing to replace symlink: $target" >&2
+      return 1
     fi
 
-    echo "install-codex-config: refusing to replace symlink: $target" >&2
-    return 1
+    rm -- "$target"
   fi
 
   if [[ -e $target ]]; then
     if cmp -s -- "$source" "$target"; then
-      rm -- "$target"
-    else
-      backup="$target.pre-dotfiles"
-      if [[ -e $backup || -L $backup ]]; then
-        echo "install-codex-config: local file differs and backup exists: $backup" >&2
-        return 1
-      fi
-      mv -- "$target" "$backup"
+      return 0
     fi
+
+    backup="$target.pre-dotfiles"
+    if [[ -e $backup || -L $backup ]]; then
+      echo "install-codex-config: local file differs and backup exists: $backup" >&2
+      return 1
+    fi
+    mv -- "$target" "$backup"
   fi
 
-  ln -s -- "$source" "$target"
+  install_temp=$(mktemp "$target.XXXXXX")
+  if ! cp -p -- "$source" "$install_temp"; then
+    rm -f -- "$install_temp"
+    return 1
+  fi
+  mv -f -- "$install_temp" "$target"
 }
 
 main() {
@@ -239,13 +244,13 @@ main() {
     return 1
   fi
 
-  install_managed_link \
+  install_managed_file \
     "$dotfiles_root/codex/rules/default.rules" \
     "$config_dir/rules/default.rules"
-  install_managed_link \
+  install_managed_file \
     "$dotfiles_root/codex/hooks/lockfile_policy.py" \
     "$config_dir/hooks/lockfile_policy.py"
-  install_managed_link \
+  install_managed_file \
     "$dotfiles_root/codex/hooks.json" \
     "$config_dir/hooks.json"
 
