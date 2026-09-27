@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 ~/.codex/hooks/lockfile_policy.py pre",
+            "timeout": 10,
+            "statusMessage": "Checking lockfile edit policy"
+          }
+        ]
+      },
+      {
+        "matcher": "^Bash$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 ~/.codex/hooks/lockfile_policy.py pre",
+            "timeout": 10,
+            "statusMessage": "Checking lockfile edit policy"
+          }
+        ]
+      }
+    ]
+  }
+}

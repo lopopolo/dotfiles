@@ -19,6 +19,8 @@ functions and leave one deliberate top-level entry point: `main "$@"`.
 ## Workstation setup
 
 - `bootstrap.sh` installs dotfiles and creates development directories.
+- `install_codex_config.sh` installs repo-managed Codex configuration and
+  policy files while preserving local Codex state.
 - `generate_completions.sh` generates completions that should not run during
   shell startup.
 - `install_homebrew_packages.sh` installs the machine-specific Brewfile,

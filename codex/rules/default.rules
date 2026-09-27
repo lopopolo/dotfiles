@@ -1,0 +1,73 @@
+# Git changes and branch operations.
+prefix_rule(pattern=["git", "add"], decision="allow")
+prefix_rule(pattern=["git", "branch", "-d"], decision="allow")
+prefix_rule(pattern=["git", "branch", "-D"], decision="allow")
+prefix_rule(pattern=["git", "checkout"], decision="allow")
+prefix_rule(pattern=["git", "commit"], decision="allow")
+prefix_rule(pattern=["git", "fetch", "--prune", "origin"], decision="allow")
+prefix_rule(pattern=["git", "fetch", "origin"], decision="allow")
+prefix_rule(pattern=["git", "merge"], decision="allow")
+prefix_rule(pattern=["git", "pull"], decision="allow")
+prefix_rule(pattern=["git", "push", "origin"], decision="allow")
+prefix_rule(pattern=["git", "push", "--force-with-lease", "origin"], decision="allow")
+prefix_rule(pattern=["git", "push", "-u", "origin"], decision="allow")
+prefix_rule(pattern=["git", "rebase"], decision="allow")
+prefix_rule(pattern=["git", "stash"], decision="allow")
+prefix_rule(pattern=["git", "worktree", "add"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "GIT_EDITOR=true git rebase --continue"], decision="allow")
+
+# Keep destructive history changes and remote writes in the Auto-review path.
+prefix_rule(pattern=["git", "branch", "-D"], decision="prompt", justification="Review deletion of an unmerged branch.")
+prefix_rule(pattern=["git", "checkout", ["--", "-B", "-f", "--force"]], decision="prompt", justification="Review checkout operations that can discard or replace local work.")
+prefix_rule(pattern=["git", "merge"], decision="prompt", justification="Review changes that merge another branch into the current branch.")
+prefix_rule(pattern=["git", "push"], decision="prompt", justification="Review every update sent to a remote repository.")
+prefix_rule(pattern=["git", "rebase"], decision="prompt", justification="Review operations that rewrite local branch history.")
+prefix_rule(pattern=["git", "stash", ["drop", "pop"]], decision="prompt", justification="Review stash operations that can remove or apply saved work.")
+
+# GitHub CLI operations.
+prefix_rule(pattern=["gh", "issue", ["create", "delete", "view"]], decision="allow")
+prefix_rule(pattern=["gh", "pr", ["checks", "diff", "list", "status", "view"]], decision="allow")
+prefix_rule(pattern=["gh", "run", "view"], decision="allow")
+
+# Local process and filesystem utilities.
+prefix_rule(pattern=["chmod", "+x"], decision="allow")
+prefix_rule(pattern=["kill"], decision="allow")
+prefix_rule(pattern=["make"], decision="allow")
+prefix_rule(pattern=["mkdir", "-p"], decision="allow")
+prefix_rule(pattern=[["pgrep", "ps"]], decision="allow")
+prefix_rule(pattern=["sysctl", "-n"], decision="allow")
+
+# Language and project tooling.
+prefix_rule(pattern=["cargo", "add"], decision="allow")
+prefix_rule(pattern=["cargo", "format"], decision="allow")
+prefix_rule(pattern=["cargo", "test"], decision="allow")
+prefix_rule(pattern=["cargo", "+nightly", "miri", "test"], decision="allow")
+prefix_rule(pattern=["mise", "exec", "--", "go", "run", "./hld/cmd/ansible", "deploy"], decision="allow")
+prefix_rule(pattern=["mise", "exec", "--", "make"], decision="allow")
+prefix_rule(pattern=["mise", "exec", "--", "pnpm", "add"], decision="allow")
+prefix_rule(pattern=["mise", "exec", "--", "pnpm", "run", ["build", "fmt", "lint", "test", "typecheck"]], decision="allow")
+prefix_rule(pattern=["mise", "run", "start-judge"], decision="allow")
+prefix_rule(pattern=["pnpm", "exec", "prettier"], decision="allow")
+prefix_rule(pattern=["/bin/zsh", "-lc", "CI=true pnpm install --no-frozen-lockfile"], decision="allow")
+
+# Container workflows.
+prefix_rule(pattern=["container", ["build", "create", "delete", "exec"]], decision="allow")
+prefix_rule(pattern=["container", "image", ["inspect", "list", "pull"]], decision="allow")
+prefix_rule(pattern=["container", ["inspect", "list", "logs"]], decision="allow")
+prefix_rule(pattern=["container", "network", ["create", "inspect"]], decision="allow")
+prefix_rule(pattern=["container", "run"], decision="allow")
+prefix_rule(pattern=["container", "stop"], decision="allow")
+prefix_rule(pattern=["container", "system"], decision="allow")
+
+# Keep commands that change or execute container state reviewable.
+prefix_rule(pattern=["container", "delete"], decision="prompt", justification="Review container deletion.")
+prefix_rule(pattern=["container", "exec"], decision="prompt", justification="Review commands executed inside a container.")
+prefix_rule(pattern=["container", "run"], decision="prompt", justification="Review creation and execution of a container.")
+prefix_rule(pattern=["container", "stop"], decision="prompt", justification="Review stopping a container.")
+prefix_rule(pattern=["container", "system"], decision="prompt", justification="Review container system maintenance commands.")
+
+# Terminating an arbitrary process can interrupt unrelated work.
+prefix_rule(pattern=["kill"], decision="prompt", justification="Review process termination outside the workspace sandbox.")
+
+# Read-only inspection.
+prefix_rule(pattern=[["head", "tail"]], decision="allow")

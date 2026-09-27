@@ -96,6 +96,7 @@ main() {
   readonly hostname
 
   install_git_config "$dotfiles_root" "$hostname"
+  "$dotfiles_root/scripts/install_codex_config.sh"
   install_copied_configs "$dotfiles_root"
   install_linked_configs "$dotfiles_root"
   install_vim_config "$dotfiles_root"

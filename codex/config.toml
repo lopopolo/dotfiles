@@ -1,0 +1,9 @@
+# Approve for me: keep the workspace sandbox and send eligible approval
+# requests to Codex Auto-review. Keep machine-local state in ~/.codex/config.toml.
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "workspace-write"
+web_search = "cached"
+
+[sandbox_workspace_write]
+network_access = false
