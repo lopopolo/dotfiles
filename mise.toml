@@ -15,6 +15,7 @@ use_versions_host_track = false
 
 [env]
 _.path = ["{{config_root}}/node_modules/.bin"]
+UV_SYSTEM_CERTS = "true"
 
 [tasks.pnpm-install]
 description = "Install dependencies with pnpm when lockfile changes"
