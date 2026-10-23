@@ -10,9 +10,8 @@ This directory is the repo-managed source for Codex defaults and policy:
 `scripts/install_codex_config.sh` merges the managed defaults into `~/.codex`
 and copies the policy files. The copies keep active Codex hooks available while
 Git checks out commits that do not yet contain these files. Run the installer
-again to refresh them after changes. `scripts/bootstrap.sh` runs that
-installer. Keep
-the command inventory and setting values in their source files rather than
+again to refresh them after changes. `scripts/bootstrap.sh` runs that installer.
+Keep the command inventory and setting values in their source files rather than
 duplicating them here.
 
 The installer preserves Codex's mutable, machine-local state. Keep credentials,
