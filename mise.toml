@@ -1,15 +1,13 @@
 [tools]
-node = "24.19.0"
+node = "26.13.0"
 
 "aqua:astral-sh/uv" = "0.12.5"
 "aqua:koalaman/shellcheck" = "0.11.0"
 "aqua:mvdan/sh" = "3.13.1"
 "aqua:zizmorcore/zizmor" = "1.29.0"
 
-[hooks]
-postinstall = "corepack enable"
-
 [settings]
+idiomatic_version_file_enable_tools = ["pnpm"]
 experimental = true
 use_versions_host_track = false
 
