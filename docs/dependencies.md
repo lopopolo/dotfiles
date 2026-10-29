@@ -46,8 +46,8 @@ official Linux x64 archive checksum live together in
 `.github/actions/setup-mise/action.yaml`. Update and verify both values in the
 same change.
 
-Corepack selects pnpm from the exact `packageManager` entry in `package.json`.
-pnpm owns `pnpm-lock.yaml`; do not hand-edit the lockfile.
+mise selects pnpm from the exact `packageManager` entry in `package.json`. pnpm
+owns `pnpm-lock.yaml`; do not hand-edit the lockfile.
 
 ## Homebrew
 
