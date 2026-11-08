@@ -65,6 +65,29 @@ checksum = "sha256:6feedafc72915794163114f512348e2437d080d0047ef8b8fa2ec63b575f1
 url = "https://github.com/mvdan/sh/releases/download/v3.13.1/shfmt_v3.13.1_darwin_amd64"
 url_api = "https://api.github.com/repos/mvdan/sh/releases/assets/390322886"
 
+[[tools."aqua:pnpm/pnpm"]]
+version = "10.34.5"
+backend = "aqua:pnpm/pnpm"
+specifiers = ["10.34.5"]
+
+[tools."aqua:pnpm/pnpm"."platforms.linux-x64"]
+checksum = "sha256:69a535476f407fb0f64427913c2b592ca2ed6bf93f92e2cb82a32349e31f36eb"
+checksum_source = "mise-versions"
+url = "https://github.com/pnpm/pnpm/releases/download/v10.34.5/pnpm-linux-x64"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/472419171"
+
+[tools."aqua:pnpm/pnpm"."platforms.macos-arm64"]
+checksum = "sha256:888389e8dd5ed45279043c1d3383c0942a8248b3d29ce614b302f468191f7659"
+checksum_source = "mise-versions"
+url = "https://github.com/pnpm/pnpm/releases/download/v10.34.5/pnpm-macos-arm64"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/472419170"
+
+[tools."aqua:pnpm/pnpm"."platforms.macos-x64"]
+checksum = "sha256:4deaaaf1c0246fc4230f6450959f932dbc2abfd2686f8515dabf97b0717cb9b1"
+checksum_source = "mise-versions"
+url = "https://github.com/pnpm/pnpm/releases/download/v10.34.5/pnpm-macos-x64"
+url_api = "https://api.github.com/repos/pnpm/pnpm/releases/assets/472419168"
+
 [[tools."aqua:zizmorcore/zizmor"]]
 version = "1.29.0"
 backend = "aqua:zizmorcore/zizmor"
@@ -104,11 +127,3 @@ url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-arm64.tar.gz"
 [tools.node."platforms.macos-x64"]
 checksum = "sha256:525c9b29bb0263d687de60a4cec0e2a6db876a8eb032369e5795eca71e7c358e"
 url = "https://nodejs.org/dist/v26.13.0/node-v26.13.0-darwin-x64.tar.gz"
-
-[[tools.pnpm]]
-version = "10.34.5"
-backend = "npm:pnpm"
-specifiers = ["10.34.5"]
-
-[tools.pnpm.options]
-checksum = "sha512:a4ee05f2f73658255bd6a89859c065a45c28a57daefae2c893a168ee2b73168c37b91e83e57ea67654ad03f03031746430e8bce38e362e042605fb8abc80192e"
