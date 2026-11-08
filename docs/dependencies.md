@@ -46,7 +46,8 @@ official Linux x64 archive checksum live together in
 `.github/actions/setup-mise/action.yaml`. Update and verify both values in the
 same change.
 
-mise selects pnpm from the exact `packageManager` entry in `package.json`. pnpm
+mise installs the standalone pnpm release through `aqua:pnpm/pnpm`. Keep its
+version equal to the `packageManager` pin in `package.json`, which CI uses. pnpm
 owns `pnpm-lock.yaml`; do not hand-edit the lockfile.
 
 ## Homebrew
